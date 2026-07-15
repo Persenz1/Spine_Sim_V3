@@ -1,0 +1,35 @@
+id: CROSS_GRIPPER_GEOMETRY
+title: 十字对爪固定几何
+order: 3
+description: 本领域固定四个爪单元相对于参考中心的安装关系和中央空区尺寸。
+
+facts:
+  - id: GEOMETRY.CROSS.LAYOUT
+    title: 四单元十字布局
+    order: 1
+    status: fixed
+    scopes: [cross_gripper]
+    summary: 四个单元中线延长后交于 C；两个相对单元的根部背板中点距离为 80 mm，四个根部背板中点围成 80 mm × 80 mm 的中央正方形空区。
+    value:
+      opposite_root_midpoint_distance: 80
+      central_clear_square_side: 80
+    unit: mm
+    equations:
+      - label: 单元参考点通式
+        latex: |-
+          \mathbf O_i=\mathbf C-40\,\mathbf e_{x_i}\ \text{mm}
+      - label: 一组正式编号
+        latex: |-
+          \begin{aligned}
+          \mathbf e_{x_1}&=+\mathbf E_X, & \mathbf O_1&=(-40,0,z_C)\ \text{mm},\\
+          \mathbf e_{x_2}&=-\mathbf E_X, & \mathbf O_2&=(+40,0,z_C)\ \text{mm},\\
+          \mathbf e_{x_3}&=+\mathbf E_Y, & \mathbf O_3&=(0,-40,z_C)\ \text{mm},\\
+          \mathbf e_{x_4}&=-\mathbf E_Y, & \mathbf O_4&=(0,+40,z_C)\ \text{mm}.
+          \end{aligned}
+    notes:
+      - 编号本身可以改变，但几何和方向关系不得改变。
+      - 本编号中各单元局部正 x 指向十字中心。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "5"

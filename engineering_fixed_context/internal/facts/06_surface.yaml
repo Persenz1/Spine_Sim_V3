@@ -1,0 +1,107 @@
+id: SURFACE
+title: 表面类别、表示和统一查询能力
+order: 6
+description: 本领域固定首版表面类别、主几何表示、完整网格分支及所有表面进入接触求解器时必须共享的接口能力。
+
+facts:
+  - id: SURFACE.CATEGORIES.FIRST_RELEASE
+    title: 首版表面类别
+    order: 1
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper, experiment]
+    value: [红砖, 混凝土, 不同目数砂纸]
+    summary: 首版研究红砖、混凝土和不同目数砂纸；具体砂纸目数集合尚未固定。
+    constraints:
+      - 不得擅自硬编码唯一的砂纸目数集合。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "9.1"
+
+  - id: SURFACE.INTERFACE.UNIFIED
+    title: 统一可扩展表面接口
+    order: 2
+    status: interface_required
+    scopes: [solver, single_spine, array_unit, cross_gripper]
+    summary: 不同表面可以采用不同参数和随机生成后端，但必须通过同一表面接口进入接触求解器；上层不得按材料类别复制接触逻辑。
+    requirements:
+      - 提供表面高度或三维几何。
+      - 提供局部法向。
+      - 提供局部坡度和必要的曲率信息。
+      - 提供摩擦参数。
+      - 提供局部材料承载或损伤参数。
+      - 提供空间查询和邻域查询能力。
+    constraints:
+      - 求解器上层不得针对红砖、混凝土或砂纸分别编写接触逻辑。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "9.2"
+
+  - id: SURFACE.HEIGHT_FIELD.PRIMARY
+    title: 主表面表示与区域
+    order: 3
+    status: fixed
+    scopes: [solver, single_spine, array_unit, cross_gripper]
+    summary: 正式研究主线采用单值高度场，主仿真区域为 150 mm × 150 mm。
+    value:
+      size_x: 150
+      size_y: 150
+    unit: mm
+    equations:
+      - latex: |-
+          z=h(x,y)
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "9.3"
+
+  - id: SURFACE.TRIANGLE_MESH.SECONDARY
+    title: 完整三角网格能力分支
+    order: 4
+    status: interface_required
+    scopes: [solver, single_spine, array_unit, cross_gripper]
+    summary: 保留完整三角网格分支，用于检验高度场无法表达的非单值三维结构；该分支不建立另一套接触机理。
+    requirements:
+      - 能检验倒扣和非单值几何。
+      - 能进行完整三维碰撞检查。
+      - 能表达高度场无法表示的局部结构。
+    constraints:
+      - 三角网格分支与高度场分支共享接触、摩擦、柔顺和失效机理。
+      - 高度场是正式研究主线，完整网格是次级工程能力验证分支。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "9.4"
+
+  - id: SURFACE.PARAMETERS.UNRESOLVED
+    title: 尚未固定的表面参数
+    order: 5
+    status: unresolved
+    scopes: [solver, experiment]
+    summary: 表面统计、摩擦、强度和采样参数由后续文献、合成试验或真实测量确定，当前不得设为唯一默认值。
+    registry:
+      - id: SURFACE.PSD
+        topic: PSD 或其他谱参数
+      - id: SURFACE.HEIGHT_DISTRIBUTION
+        topic: 高度分布
+      - id: SURFACE.CORRELATION_LENGTH
+        topic: 相关长度
+      - id: SURFACE.ANISOTROPY
+        topic: 各向异性
+      - id: SURFACE.NON_GAUSSIAN
+        topic: 非高斯参数
+      - id: SURFACE.GRIT_SCALE_DENSITY
+        topic: 砂粒尺度和密度
+      - id: SURFACE.FRICTION
+        topic: 摩擦系数
+      - id: SURFACE.LOCAL_STRENGTH
+        topic: 局部强度
+      - id: SURFACE.RESOLUTION
+        topic: 网格或采样分辨率
+      - id: SURFACE.RANDOM_SEEDS
+        topic: 随机种子数量
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "9.5"

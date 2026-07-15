@@ -1,0 +1,45 @@
+id: DAMAGE_SCOPE
+title: 损伤记忆边界与首版范围排除
+order: 8
+description: 本领域固定连续试验内部允许保留的轻量损伤记忆，以及首版机理和求解器明确不包含的内容。
+
+facts:
+  - id: DAMAGE.MEMORY.LIGHTWEIGHT
+    title: 连续过程内的轻量损伤记忆
+    order: 1
+    status: interface_required
+    scopes: [single_spine, array_unit, cross_gripper, solver]
+    summary: 一次连续拖拽或一次整爪承载仿真中允许保留轻量级局部损伤记忆；新的独立试验或随机表面样本从无损状态开始。
+    requirements:
+      - 局部承载点发生材料失效后，不应立即恢复为原始完整强度。
+      - 可以采用局部损伤变量、强度折减或失效标记。
+      - 新的独立试验或新的随机表面样本从无损状态开始。
+    constraints:
+      - 不显式模拟裂纹路径、碎屑、断口重建和地形重网格化。
+      - 具体损伤演化律由后续机理推导决定，本事实库不预设公式。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "14"
+
+  - id: SCOPE.FIRST_RELEASE.EXCLUSIONS
+    title: 首版明确不做的内容
+    order: 2
+    status: excluded
+    scopes: [global, solver]
+    summary: 下列能力不属于首版机理和求解器范围，不得在未显式扩展工程边界前加入正式主线。
+    requirements:
+      - 不做显式裂纹扩展有限元。
+      - 不做碎屑和颗粒动力学。
+      - 不做针尖磨损演化。
+      - 不做针杆或锥段的分布承载接触。
+      - 不做安装座内部真实结构有限元。
+      - 不做导轨和框架柔性。
+      - 不做整机质量和惯性动力学。
+      - 不做大角度倾覆后的运动。
+      - 不做任意复杂控制器。
+      - 不强行拟合某一次实验的绝对曲线。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "15"

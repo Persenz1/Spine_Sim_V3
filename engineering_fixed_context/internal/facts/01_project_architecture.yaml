@@ -1,0 +1,99 @@
+id: PROJECT
+title: 工程目标、验证边界与仿真层级
+order: 1
+description: 本领域定义求解器为什么存在、怎样判断阶段成果有效，以及各物理层级之间不可破坏的依赖关系。
+
+facts:
+  - id: PROJECT.GOALS.CORE
+    title: 核心工程目标
+    order: 1
+    status: fixed
+    scopes: [global, solver, experiment]
+    summary: 建立自研三维准静态求解器，服务爪单元设计筛选、参数研究、实验趋势对比和十字主动对爪扩展。
+    requirements:
+      - 比较并筛选爪单元设计。
+      - 研究针刺安装角、角度梯度、阵列尺寸、阵列方向、针距、针径和针尖半径的影响。
+      - 比较刚性阵列与独立轴向弹簧柔顺阵列。
+      - 选择独立弹簧刚度。
+      - 预测不同设计的相对抓附能力。
+      - 与直线模组拖拽实验比较趋势和方案排序。
+      - 将经验证的爪单元模型扩展到十字主动啮合对爪，预测偏心面内载荷下的整体承载能力。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "1.1"
+
+  - id: PROJECT.GOALS.VALIDATION
+    title: 当前验证目标
+    order: 2
+    status: fixed
+    scopes: [global, solver, experiment]
+    summary: 当前不要求求解器与实验在绝对数值上完全等价，也不以拟合单次偶然峰值为首要目标。
+    requirements:
+      - 参数变化方向一致。
+      - 不同设计方案的排序大体一致。
+      - 能解释刚性阵列与柔顺阵列、不同阵列方向和不同安装角产生差异的原因。
+    constraints:
+      - 不把单次偶然峰值拟合作为首要目标。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "1.2"
+
+  - id: PROJECT.OUTPUTS.NO_BINARY_SUCCESS
+    title: 暂不定义二元抓附成功
+    order: 3
+    status: fixed
+    scopes: [solver, experiment]
+    summary: 当前不固定“抓附成功/失败”的实验阈值，也不固定综合评分；求解器必须保存可供后续定义判据的原始连续量和事件记录。
+    requirements:
+      - 输出力—位移曲线。
+      - 输出力—时间曲线。
+      - 输出法向位置或法向位移。
+      - 输出各针接触状态。
+      - 输出各针载荷。
+      - 记录接触、滑移、脱离、局部失效、再挂接和限位事件。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "1.3"
+
+  - id: PROJECT.ARCHITECTURE.PHYSICAL_LEVELS
+    title: 三个物理层级
+    order: 4
+    status: fixed
+    scopes: [global, solver]
+    summary: 工程按能够独立形成和验证的物理算子划分为单刺、阵列爪单元和整十字对爪三个层级。
+    definitions:
+      - term: 单爪刺层
+        meaning: 一根针刺与粗糙表面的连续搜索、接触、加载、滑移、失效、脱离和再搜索。
+      - term: 阵列爪单元层
+        meaning: 规则多刺阵列在刚性背板共同运动下的部分接触、载荷共享和重分配。
+      - term: 整十字对爪层
+        meaning: 四个相同爪单元同步向中心收紧，并在偏心面内载荷下共同承载。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "2"
+  - id: PROJECT.ARCHITECTURE.DEPENDENCY
+    title: 物理算子单向依赖
+    order: 5
+    status: fixed
+    scopes: [global, solver]
+    summary: 高层只能复用低层物理入口，不得重复实现或暗中改写低层机理。
+    equations:
+      - label: 推荐实现依赖关系
+        latex: |-
+          \text{表面查询}
+          \rightarrow
+          \text{单刺算子}
+          \rightarrow
+          \text{阵列单元算子}
+          \rightarrow
+          \text{十字对爪算子}
+    constraints:
+      - 高层不得重复实现低层机理。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "2"

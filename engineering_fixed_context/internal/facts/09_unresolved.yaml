@@ -1,0 +1,80 @@
+id: UNRESOLVED
+title: 尚未固定且禁止擅自硬编码的登记项
+order: 9
+description: 本领域汇总后续由文献、临时计算或实验标定确定的事项。未固定不代表可以忽略，而是必须保留参数、接口或决策位置。
+
+facts:
+  - id: UNRESOLVED.REGISTRY.GLOBAL
+    title: 全局未决登记表
+    order: 1
+    status: unresolved
+    scopes: [global, solver, experiment]
+    summary: 以下事项在正式机理推导或实验标定完成前不得被假设为唯一值；相关实现必须能显式表达“尚未确定”。
+    registry:
+      - id: UNRESOLVED.A1.ENGAGEMENT_CRITERIA
+        topic: 单刺几何候选和稳定挂接的最终判据
+        scope: A1/A2
+      - id: UNRESOLVED.A2.FRICTION_STABILITY
+        topic: 摩擦稳定条件的具体实现
+        scope: A2
+      - id: UNRESOLVED.A3.CONTACT_MIGRATION
+        topic: 接触点滑移和迁移算法
+        scope: A3
+      - id: UNRESOLVED.A2.CONTACT_STIFFNESS
+        topic: 局部接触刚度
+        scope: A2
+      - id: UNRESOLVED.MATERIAL.NEEDLE
+        topic: 高碳钢具体材料参数
+        scope: A2/A3
+      - id: UNRESOLVED.SURFACE.STATISTICS
+        topic: 红砖、混凝土和砂纸的表面统计参数
+        scope: A1
+      - id: UNRESOLVED.SURFACE.FRICTION
+        topic: 各表面的摩擦系数
+        scope: A2
+      - id: UNRESOLVED.SURFACE.STRENGTH
+        topic: 局部材料强度与失效域
+        scope: A3
+      - id: UNRESOLVED.DAMAGE.EVOLUTION
+        topic: 损伤变量演化规律
+        scope: A3/B3/C3
+      - id: UNRESOLVED.SURFACE.RESOLUTION
+        topic: 表面网格分辨率
+        scope: A1
+      - id: UNRESOLVED.STOCHASTIC.SAMPLE_COUNT
+        topic: 随机样本数量
+        scope: A/B/C
+      - id: UNRESOLVED.NUMERICS.EVENT_STEPS
+        topic: 数值初始步长、最小步长和事件容差
+        scope: A/B/C
+      - id: UNRESOLVED.SPRING.SAMPLING
+        topic: 弹簧刚度的具体离散采样点
+        scope: B
+      - id: UNRESOLVED.NORMAL_LOAD.SAMPLING
+        topic: 法向预载 0.5–2 N 的具体离散点
+        scope: B/C
+      - id: UNRESOLVED.SANDPAPER.GRITS
+        topic: 具体砂纸目数集合
+        scope: A1/experiment
+      - id: UNRESOLVED.METRIC.BINARY_SUCCESS
+        topic: “成功抓附”的二元阈值
+        scope: validation
+      - id: UNRESOLVED.METRIC.COMPOSITE_SCORE
+        topic: 综合性能评分
+        scope: validation
+      - id: UNRESOLVED.C1.STOP_THRESHOLD
+        topic: 整爪搜索停止阈值
+        scope: C1
+      - id: UNRESOLVED.C1.MAX_SEARCH_DISTANCE
+        topic: 整爪最大搜索距离
+        scope: C1
+      - id: UNRESOLVED.VALIDATION.ERROR_TOLERANCE
+        topic: 实验与仿真的允许误差范围
+        scope: validation
+    constraints:
+      - 未固定项不得在正式机理推导完成前随意假设为唯一值。
+      - 未固定项不得因暂时缺少数值而从程序接口或结果记录中消失。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "16"

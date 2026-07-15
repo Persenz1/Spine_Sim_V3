@@ -1,0 +1,65 @@
+schema_version: 1
+
+required_domain_fields:
+  - id
+  - title
+  - order
+  - facts
+
+required_fact_fields:
+  - id
+  - title
+  - order
+  - status
+  - scopes
+  - summary
+  - provenance
+
+allowed_statuses:
+  - fixed
+  - fixed_set
+  - fixed_range
+  - model_switch
+  - interface_required
+  - unresolved
+  - excluded
+
+allowed_scopes:
+  - global
+  - single_spine
+  - array_unit
+  - cross_gripper
+  - solver
+  - experiment
+
+optional_fact_fields:
+  - symbol
+  - value
+  - unit
+  - definitions
+  - equations
+  - requirements
+  - constraints
+  - notes
+  - registry
+  - dependencies
+
+field_shapes:
+  definitions:
+    type: list
+    item_required_fields: [term, meaning]
+  equations:
+    type: list
+    item_required_fields: [latex]
+    item_optional_fields: [label, description]
+  registry:
+    type: list
+    item_required_fields: [id, topic]
+    item_optional_fields: [scope, note]
+  provenance:
+    type: mapping
+    required_fields: [type, source, section]
+
+id_rules:
+  pattern: "^[A-Z][A-Z0-9_]*(\\.[A-Z0-9_]+)+$"
+  unique: true

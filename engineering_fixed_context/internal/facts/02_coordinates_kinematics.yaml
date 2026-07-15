@@ -1,0 +1,130 @@
+id: COORDINATES_KINEMATICS
+title: 坐标系、方向约定与刚体运动学
+order: 2
+description: 本领域固定全局与局部坐标、针轴方向、允许自由度和整爪小角度摇摆边界。
+
+facts:
+  - id: COORDINATE.GLOBAL.FRAME
+    title: 全局坐标系
+    order: 1
+    status: fixed
+    scopes: [global, single_spine, array_unit, cross_gripper]
+    summary: 墙面名义平面为全局 X-Y 平面，正 Z 从墙面指向爪单元背板。
+    equations:
+      - latex: |-
+          \mathcal F_G=\{C,\mathbf E_X,\mathbf E_Y,\mathbf E_Z\}
+    definitions:
+      - term: $\mathbf E_X,\mathbf E_Y$
+        meaning: 墙面名义平面内的全局基向量。
+      - term: $\mathbf E_Z$
+        meaning: 墙面法向，从墙面指向爪单元背板。
+      - term: $C=(0,0,z_C)$
+        meaning: 四条单元中线延长后的公共交点。
+    constraints:
+      - 十字对爪四条单元中线分别与全局 $\pm X,\pm Y$ 方向重合。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "3.1"
+
+  - id: COORDINATE.UNIT.FRAME
+    title: 单爪单元局部坐标系
+    order: 2
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper]
+    summary: 每个爪单元使用局部 x/y 与全局 Z 组成的右手坐标系；局部正 x 同时是从头部到根部的方向以及主动搜索和拖拽方向。
+    equations:
+      - latex: |-
+          \mathcal F_i=\{O_i,\mathbf e_{x_i},\mathbf e_{y_i},\mathbf E_Z\}
+      - label: 右手系横向基向量
+        latex: |-
+          \mathbf e_{y_i}=\mathbf E_Z\times\mathbf e_{x_i}
+    definitions:
+      - term: 局部 $+x_i$
+        meaning: 从单元头部指向根部，也是主动搜索和拖拽方向；头部位于局部负 x，根部位于局部正 x。
+      - term: 局部 $y_i$
+        meaning: 背板平面内、垂直于单元中线的横向。
+      - term: 局部 $z$
+        meaning: 与全局 Z 共用。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "3.2"
+
+  - id: COORDINATE.NEEDLE.AXIS
+    title: 针轴方向和安装角
+    order: 3
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper]
+    summary: 安装角是针轴与安装背板平面的夹角；从安装座出口指向针尖球心的轴向量具有局部正 x 分量和负 Z 分量，并为未来偏航角保留接口。
+    equations:
+      - label: 预留偏航角的通用针轴
+        latex: |-
+          \boxed{
+          \mathbf a=
+          \cos\alpha\cos\beta\,\mathbf e_x+
+          \cos\alpha\sin\beta\,\mathbf e_y-
+          \sin\alpha\,\mathbf E_Z
+          }
+      - label: 当前正式工况
+        latex: |-
+          \beta=0,
+          \qquad
+          \mathbf a=
+          \cos\alpha\,\mathbf e_x-
+          \sin\alpha\,\mathbf E_Z
+    definitions:
+      - term: $\alpha$
+        meaning: 针轴与安装背板平面的夹角。
+      - term: $\beta$
+        meaning: 针轴在背板平面内向正或负 y 偏转的偏航角。
+    constraints:
+      - 首版不扫描偏航角，但底层数据和坐标接口必须保留 $\beta$。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "3.3"
+
+  - id: KINEMATICS.UNIT.RIGID_BOARD
+    title: 单刺和阵列单元背板运动
+    order: 4
+    status: fixed
+    scopes: [single_spine, array_unit]
+    summary: 安装背板视为绝对刚性，只允许沿局部 x 和全局 Z 平移。
+    equations:
+      - latex: |-
+          \mathbf q_i=
+          \begin{bmatrix}
+          u_{x_i}\\
+          u_{z_i}
+          \end{bmatrix}
+    definitions:
+      - term: $u_{x_i}$
+        meaning: 沿局部 $x_i$ 的搜索和拖拽位移。
+      - term: $u_{z_i}$
+        meaning: 法向接近、压紧和卸载位移。
+    constraints:
+      - 背板不发生俯仰、滚转、偏航、翘曲或局部弯曲。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "4.1"
+
+  - id: KINEMATICS.CROSS.RIGID_REFERENCE
+    title: 整十字对爪刚体关系与摇摆开关
+    order: 5
+    status: model_switch
+    scopes: [cross_gripper]
+    summary: 四个单元相对无质量、无限刚性的虚拟参考体保持固定安装关系；偏心承载阶段可选择是否允许整爪绕全局 X、Y 小角度摇摆。
+    value:
+      rocking: ["off", "on"]
+      optional_rotations: [theta_X, theta_Y]
+    constraints:
+      - 不建模实际框架、导轨、驱动杆或连接件的柔性。
+      - 外部框架、导轨和连接件不得替爪刺接触承担外部载荷。
+      - 首版不考虑绕 Z 轴整体偏航、大角度翻转、动态倾覆、框架有限元或单个爪单元相对整爪独立转动。
+      - 失去准静态稳定平衡后即可终止，不模拟脱落后的大角度运动。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "4.2"

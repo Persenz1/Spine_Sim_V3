@@ -1,0 +1,252 @@
+id: LOADING
+title: 法向预载、直线拖拽、同步搜索与偏心承载
+order: 7
+description: 本领域固定执行器推力含义、各层级载荷范围、拖拽速度与行程、十字对爪共同搜索约束，以及偏心面内加载工况。
+
+facts:
+  - id: LOAD.NORMAL.ACTUATOR_OUTPUT
+    title: 恒定法向主动推力的含义
+    order: 1
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper, solver]
+    summary: 法向预载采用恒定推力执行器输出模式；恒定的是主动推力，不是墙面对单元的实际法向接触合力。
+    symbol: P_i
+    constraints:
+      - 实际法向接触力由接触状态、表面几何、整体平衡、单元法向位置和整爪小角度摇摆共同决定。
+      - 不得将恒主动推力误写为恒实际接触合力边界。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "10.1"
+
+  - id: LOAD.NORMAL.SINGLE_SPINE
+    title: 单刺层法向主动预载
+    order: 2
+    status: fixed
+    scopes: [single_spine]
+    symbol: P_z
+    value: 0.5
+    unit: N
+    summary: 单根针的法向主动预载固定为 0.5 N，单刺层不扫描该参数。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "10.2"
+
+  - id: LOAD.NORMAL.ARRAY_UNIT
+    title: 阵列单元法向主动预载范围
+    order: 3
+    status: fixed_range
+    scopes: [array_unit]
+    symbol: P_z
+    value:
+      min: 0.5
+      max: 2
+    unit: N
+    summary: 每个阵列单元的法向主动推力范围固定为 0.5–2 N，具体离散扫描点后续确定。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "10.3"
+
+  - id: LOAD.NORMAL.CROSS_GRIPPER
+    title: 十字对爪各单元法向主动推力
+    order: 4
+    status: fixed_range
+    scopes: [cross_gripper]
+    symbol: P_i
+    value:
+      per_unit_min: 0.5
+      per_unit_max: 2
+    unit: N
+    summary: 四个单元分别施加法向主动推力，每个单元的范围均为 0.5–2 N。
+    constraints:
+      - 不得将该范围误写为整爪总推力 0.5–2 N。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "10.4"
+
+  - id: LOAD.NORMAL.INFEASIBLE_TERMINATION
+    title: 法向预载不可行终止
+    order: 5
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper, solver]
+    summary: 法向恒推力求解不得无限向墙面推进；到达几何或结构边界前仍不能建立目标推力时，必须标记预载不可行。
+    constraints:
+      - 非承载针体或安装座发生禁止碰撞时终止推进。
+      - 柔顺针达到轴向硬限位且仍不可平衡时终止推进。
+      - 达到几何允许的最近位置时终止推进。
+      - 接触状态不存在可行平衡时终止推进。
+    notes:
+      - 具体安全间隙和数值容差由实现阶段确定。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "10.5"
+
+  - id: LOAD.DRAG.SPEED
+    title: 直线拖拽物理速度
+    order: 6
+    status: fixed
+    scopes: [single_spine, array_unit, experiment]
+    symbol: v_x
+    value: 1
+    unit: mm/s
+    summary: 单刺和阵列单元沿局部正 x 方向以 1 mm/s 的物理速度拖拽。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "11.1"
+
+  - id: LOAD.DRAG.QUASI_STATIC
+    title: 直线拖拽准静态边界
+    order: 7
+    status: fixed
+    scopes: [single_spine, array_unit, solver]
+    summary: 拖拽求解忽略惯性和冲击动力学；速度主要用于将位移映射为时间。
+    equations:
+      - label: 位移到时间的换算
+        latex: |-
+          t=\frac{x}{1\ \text{mm/s}}
+    constraints:
+      - 若无速率相关材料模型，平衡方程不显式依赖 $v_x$。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "11.2"
+
+  - id: NUMERICS.DRAG.VARIABLE_STEP
+    title: 可变位移步长和事件定位
+    order: 8
+    status: interface_required
+    scopes: [single_spine, array_unit, solver]
+    symbol: \Delta x
+    summary: 物理拖拽速度保持不变，数值求解使用可变位移步长，并在非光滑事件附近减步和定位事件。
+    requirements:
+      - 接触建立、滑移、局部失效、脱离、再挂接和硬限位附近允许减小步长。
+      - 上述事件允许进行事件定位。
+    constraints:
+      - 不得通过改变实际拖拽速度代替可变数值步长。
+      - 初始步长、最小步长和事件容差尚未固定。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "11.3"
+
+  - id: LOAD.DRAG.TRAVEL
+    title: 单刺和阵列直线拖拽行程
+    order: 9
+    status: fixed
+    scopes: [single_spine, array_unit]
+    value: 100
+    unit: mm
+    summary: 单刺和阵列单元直线拖拽层的当前最大行程统一为 100 mm；全过程连续推进，不在每次脱离后重置。
+    requirements:
+      - 行程内允许连续经历搜索、接触、加载、滑移或局部失效、脱离和继续搜索。
+    constraints:
+      - 每次脱离后不得重置到初始位置。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "11.4"
+
+  - id: LOAD.CROSS.SEARCH_SYNCHRONIZATION
+    title: 十字对爪共同搜索坐标
+    order: 10
+    status: fixed
+    scopes: [cross_gripper]
+    symbol: s
+    summary: 四个单元由同一驱动器同步向中心收紧，只有一个共同径向搜索坐标；地形和接触状态可以不同，但单元不得独立采用不同搜索位移。
+    equations:
+      - latex: |-
+          u_{x_1}=u_{x_2}=u_{x_3}=u_{x_4}=s
+    constraints:
+      - 搜索距离只有上限，不要求每次达到上限。
+      - 若上限前已形成足够好的预紧或潜在承载状态，应停止收紧、保持共同位置、锁定径向搜索位移并进入偏心承载阶段。
+      - “足够好”的停止准则必须由单元仿真和单元实验反推，当前不预设数值。
+      - 整爪最大搜索距离应取单元层中能够基本发挥最大抓附能力的最小搜索距离。
+      - 不得直接沿用单元层 100 mm 作为整爪必然搜索距离。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "12"
+
+  - id: LOAD.CROSS.ECCENTRIC_POINT
+    title: 偏心外载加载点
+    order: 11
+    status: fixed
+    scopes: [cross_gripper, experiment]
+    summary: 外载作用点位于十字参考中心沿正 Z 方向 50 mm 处。
+    equations:
+      - latex: |-
+          \mathbf r_P=
+          \begin{bmatrix}
+          0\\0\\50
+          \end{bmatrix}\ \text{mm}
+      - latex: |-
+          P=(0,0,z_C+50\ \text{mm})
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "13.1"
+
+  - id: LOAD.CROSS.DIRECTIONS
+    title: 偏心面内加载方向
+    order: 12
+    status: fixed_set
+    scopes: [cross_gripper, experiment]
+    summary: 正式比较外载与一组爪单元轴线对齐，以及外载位于两组爪单元轴线之间的两个墙面内方向。
+    equations:
+      - label: 工况 A：全局正 X
+        latex: |-
+          \hat{\mathbf d}_A=
+          \begin{bmatrix}
+          1\\0\\0
+          \end{bmatrix}
+      - label: 工况 B：从正 X 向正 Y 偏 45°
+        latex: |-
+          \hat{\mathbf d}_B=
+          \frac{1}{\sqrt2}
+          \begin{bmatrix}
+          1\\1\\0
+          \end{bmatrix}
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "13.2"
+
+  - id: LOAD.CROSS.ECCENTRIC_MOMENT
+    title: 偏心外力矩定义
+    order: 13
+    status: fixed
+    scopes: [cross_gripper, solver]
+    summary: 加载点偏置使墙面内外力相对于 C 产生主要绕全局 X/Y 轴的倾覆力矩，而不是绕 Z 的纯扭转。
+    equations:
+      - latex: |-
+          \mathbf F_{\mathrm{ext}}=F\hat{\mathbf d}
+      - latex: |-
+          \mathbf M_{\mathrm{ext}}=
+          \mathbf r_P\times\mathbf F_{\mathrm{ext}}
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "13.3"
+
+  - id: LOAD.CROSS.DISPLACEMENT_CONTROL
+    title: 偏心承载加载方式和输出
+    order: 14
+    status: fixed
+    scopes: [cross_gripper, solver, experiment]
+    summary: 正式求解采用准静态位移推进获取整体反力曲线；失稳后不继续强制纯力控制。
+    requirements:
+      - 输出整体反力—加载点位移曲线。
+      - 输出峰值可承受外力。
+      - 输出四个单元的载荷分配。
+      - 输出一侧压紧与对侧剥离过程。
+      - 输出单元级和针级渐进失效。
+      - 输出失去稳定平衡的临界状态。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "13.4"

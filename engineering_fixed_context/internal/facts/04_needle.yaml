@@ -1,0 +1,119 @@
+id: NEEDLE
+title: 单根针刺几何、材料和结构开关
+order: 4
+description: 本领域定义针尖、针杆、露出长度、针径、材料边界、弯曲开关和安装座内埋段的工程处理。
+
+facts:
+  - id: NEEDLE.TIP.GEOMETRY
+    title: 球形针尖局部曲率
+    order: 1
+    status: fixed_set
+    scopes: [single_spine, array_unit, cross_gripper]
+    symbol: R_t
+    value: [50, 100]
+    unit: μm
+    summary: 针尖局部退化为球面接触头；球形针尖只表示最尖端局部曲率，不表示针杆末端连接一个完整独立球体。
+    requirements:
+      - 实际几何由圆柱针杆、锥形过渡段和局部球形针尖依次组成。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.1"
+
+  - id: NEEDLE.CONTACT.COLLISION_BOUNDARY
+    title: 承载接触和禁止碰撞边界
+    order: 2
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper, solver]
+    summary: 只有球形针尖参与接触承载；其他针体和安装结构只参与非穿透与可装配检查。
+    constraints:
+      - 锥形过渡段、圆柱针杆和安装座不参与承载，只参与非穿透与可装配检查。
+      - 非承载部位与表面发生禁止碰撞时，该构型不能继续按纯针尖接触处理。
+      - 首版不建立锥段或针杆的分布接触承载模型。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.2"
+
+  - id: NEEDLE.LENGTH.EXPOSED
+    title: 固定角阵列针尖球心露出长度
+    order: 3
+    status: fixed
+    scopes: [single_spine, array_unit]
+    symbol: L_e
+    value: 4
+    unit: mm
+    summary: 安装座出口到针尖球心的轴向距离为 4 mm；固定安装角阵列中的所有针默认使用该值。
+    notes:
+      - 线性角度梯度阵列采用单独的露出长度补偿规则。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.3"
+
+  - id: NEEDLE.DIAMETER.SET
+    title: 针径扫描集合
+    order: 4
+    status: fixed_set
+    scopes: [single_spine, array_unit, cross_gripper]
+    symbol: d
+    value: [0.6, 0.8]
+    unit: mm
+    summary: 针杆直径在两个固定候选值之间扫描。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.4"
+
+  - id: NEEDLE.MATERIAL.BASE
+    title: 针体材料类别
+    order: 5
+    status: fixed
+    scopes: [single_spine, array_unit, cross_gripper]
+    value: 高碳钢
+    summary: 针体材料类别固定为高碳钢，但当前不固定具体牌号和材料参数。
+    constraints:
+      - 具体牌号、弹性模量、屈服强度和断裂强度属于后续材料参数表，不得在理论阶段擅自指定。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.5"
+
+  - id: NEEDLE.BENDING.SWITCH
+    title: 露出针体弯曲开关
+    order: 6
+    status: model_switch
+    scopes: [single_spine, array_unit, cross_gripper, solver]
+    value:
+      needle_bending: ["off", "on"]
+    summary: 露出针体是否发生弹性弯曲由统一模型开关控制。
+    definitions:
+      - term: "off"
+        meaning: 露出针体视为刚体。
+      - term: "on"
+        meaning: 根据针径、露出长度和后续给定材料参数建立梁柔顺。
+    constraints:
+      - 针体弯曲与独立弹簧压缩必须分开建模，避免重复计入柔顺。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.6"
+
+  - id: NEEDLE.EMBEDMENT.MODEL_BOUNDARY
+    title: 安装座内埋段工程处理
+    order: 7
+    status: fixed
+    scopes: [single_spine, array_unit, solver]
+    summary: 实物内埋深只作为结构背景记录；求解器不显式模拟内埋针体和安装座细节。
+    value:
+      rigid_array_nominal_embedment: 8
+      compliant_array_nominal_embedment: 4
+    unit: mm
+    constraints:
+      - 安装座内部机构统一退化为理想刚性约束或理想轴向移动副。
+    notes:
+      - 实物刚性阵列约有 8 mm 预埋，柔顺阵列约有 4 mm 预埋。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "6.7"

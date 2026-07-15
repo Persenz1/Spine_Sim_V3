@@ -1,0 +1,155 @@
+id: ARRAY
+title: 阵列拓扑、设计空间与安装柔顺
+order: 5
+description: 本领域固定规则阵列的索引、尺寸、针距、角度模式、露出长度补偿，以及刚性和独立轴向弹簧两种安装模式。
+
+facts:
+  - id: ARRAY.TOPOLOGY.RECTANGULAR
+    title: 规则矩形田字格阵列
+    order: 1
+    status: fixed_set
+    scopes: [array_unit, cross_gripper]
+    symbol: n_x\times n_y
+    value:
+      n_x: [2, 3, 4, 5, 6]
+      n_y: [2, 3, 4, 5, 6]
+    summary: 阵列采用规则矩形田字格排布；局部 x 和 y 方向的针数分别独立扫描。
+    definitions:
+      - term: $n_x$
+        meaning: 沿单元局部 x 方向的针数。
+      - term: $n_y$
+        meaning: 沿单元局部 y 方向的针数。
+    constraints:
+      - 不采用交错排列。
+      - 针朝向在同一模式内按规定保持一致。
+      - x、y 两方向针距相同。
+      - 必须保留 $2\times5$ 与 $5\times2$ 等转置阵列的独立结果，不得视为等价。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "7.1"
+
+  - id: ARRAY.SPACING.SET
+    title: 等中心距扫描集合
+    order: 2
+    status: fixed_set
+    scopes: [array_unit, cross_gripper]
+    symbol: s_x=s_y=s
+    value: [4, 5, 6]
+    unit: mm
+    summary: 阵列局部 x、y 两方向采用相同的针尖中心距。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "7.2"
+
+  - id: ARRAY.ANGLE.FIXED_SET
+    title: 固定安装角模式
+    order: 3
+    status: fixed_set
+    scopes: [array_unit, cross_gripper]
+    symbol: \alpha
+    value: [50, 60, 70, 80]
+    unit: °
+    summary: 固定角模式中同一阵列的所有针采用相同安装角。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "7.3"
+
+  - id: ARRAY.ANGLE.LINEAR_GRADIENTS
+    title: 线性角度梯度模式
+    order: 4
+    status: fixed_set
+    scopes: [array_unit, cross_gripper]
+    value:
+      gradient_1_root_to_head: [80, 50]
+      gradient_2_root_to_head: [80, 60]
+    unit: °
+    summary: 安装角只沿局部 x 方向变化；同一 x 坐标排内的所有针共享相同安装角。
+    constraints:
+      - 对任意 $n_x$，各排角度按根部到头部线性插值。
+      - 不要求每排角度必须为 10° 整数。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "7.4"
+
+  - id: ARRAY.ANGLE.GRADIENT_LENGTH_COMPENSATION
+    title: 梯度阵列露出长度补偿
+    order: 5
+    status: fixed
+    scopes: [array_unit, cross_gripper]
+    summary: 根部排球心露出长度固定为 4 mm、安装角为 80°；其他排调整轴向露出长度，使未加载针尖球心处于同一全局 z 高度。
+    equations:
+      - label: 球心共面条件
+        latex: |-
+          L_j\sin\alpha_j=4\sin80^\circ
+      - label: 第 j 排露出长度
+        latex: |-
+          \boxed{
+          L_j=\frac{4\sin80^\circ}{\sin\alpha_j}\ \text{mm}
+          }
+    constraints:
+      - 开启针体弯曲时必须使用各排实际 $L_j$ 计算柔顺，不得继续使用统一 4 mm。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "7.5"
+
+  - id: ARRAY.NEEDLE.DATA_EXTENSIBILITY
+    title: 针级任意分布扩展接口
+    order: 6
+    status: interface_required
+    scopes: [array_unit, solver]
+    summary: 首版不扫描任意针级分布，但底层数组不能把全阵列同角度、同长度或同材料硬编码为唯一结构。
+    requirements:
+      - 允许每根针独立安装角。
+      - 允许每根针独立偏航角。
+      - 允许每根针独立露出长度。
+      - 允许每根针独立材料或刚度参数。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "7.6"
+
+  - id: ARRAY.MOUNT.RIGID_MODE
+    title: 刚性阵列安装模式
+    order: 7
+    status: fixed
+    scopes: [array_unit, cross_gripper]
+    summary: 刚性阵列中的所有针在安装座内无相对轴向运动，全部针基座运动由共同刚性背板位移决定。
+    constraints:
+      - 针体是否弯曲仍由独立的 `needle_bending` 开关控制。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "8.1"
+
+  - id: ARRAY.MOUNT.AXIAL_SPRING_MODE
+    title: 独立轴向弹簧阵列
+    order: 8
+    status: fixed_range
+    scopes: [array_unit, cross_gripper]
+    summary: 每根针具有与针轴共线、彼此独立的线性压缩弹簧；刚度范围固定，具体采样点后续确定。
+    value:
+      stiffness_min: 100
+      stiffness_max: 2000
+    unit: N/m
+    equations:
+      - label: 弹簧压缩行程
+        latex: |-
+          0\le\delta_s\le4\ \text{mm}
+    constraints:
+      - 弹簧只能压缩，可以回弹到原长，但不能伸长超过原长。
+      - 弹簧无初始预压，不得承受拉力。
+      - 不允许针在安装座内转动。
+      - 忽略导向摩擦，各针弹簧彼此独立。
+      - 达到 4 mm 压缩行程后切换到刚性硬限位。
+      - 若维持接触需要 $\delta_s<0$，应解除轴向约束或判定接触脱开，不得允许弹簧拉伸。
+    notes:
+      - 具体刚度离散采样点由参数扫描计划确定。
+    provenance:
+      type: engineering_decision
+      source: docs/extract/ENGINEERING_FIXED_CONTEXT.md
+      section: "8.2"
