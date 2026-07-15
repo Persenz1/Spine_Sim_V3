@@ -1,0 +1,218 @@
+{
+  "paper_title": "A Wheeled Wall-Climbing Robot with Bio-Inspired Spine Mechanisms",
+  "source_file": "机理文献/条件备选/06_A Wheeled Wall-Climbing Robot with Bio-Inspired Spine Mechanisms.pdf",
+  "authors": [
+    "Yanwei Liu",
+    "Shaoming Sun",
+    "Xuan Wu",
+    "Tao Mei"
+  ],
+  "year": 2015,
+  "doi": "10.1016/S1672-6529(14)60096-2",
+  "pdf_pages": 12,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "render_review": {
+    "all_pages": "All 12 PDF pages were rendered to PNG at 120 dpi and visually inspected. The paper title, two-column reading order, all section boundaries, figures, tables, conclusions and reference boundary were checked.",
+    "high_resolution_pages": [4, 5, 6, 7, 8, 9],
+    "high_resolution_dpi": 300,
+    "individual_pages_visually_rechecked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "notes": "Retained equations, stiffness-matrix units, force directions, fitted c values, Table 4 values and all three figure crops were checked against page renders rather than text extraction alone."
+  },
+  "sections_checked": [
+    "Abstract and Section 1 Introduction",
+    "Section 2 Robot design, Sections 2.1 Mechanical design and 2.2 Bio-inspired spine mechanism",
+    "Section 3 Modeling and simulation, Sections 3.1 Quasi-static equilibrium analysis, 3.2 Multi-spine/surface interaction simulation model and 3.3 Simulation results",
+    "Section 4 Experiments, Sections 4.1 Spine/surface interaction testing and 4.2 Climbing experiments",
+    "Section 5 Discussion and conclusion",
+    "Acknowledgment and references checked for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "status": "verified",
+      "notes": "The 3x3 stiffness-matrix arrangement, x/y/theta order and anticlockwise theta direction were checked against Fig. 3 and the rendered equation. Retained in E1."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 5,
+      "status": "verified",
+      "notes": "The matrix relation K(delta1 delta2 delta3)=(F1 F2 F3) and the three applied displacement vectors were checked. The evidence card reports it as the FEA identification procedure rather than silently treating the non-unit displacement columns as identity."
+    },
+    {
+      "equation": "Eqs. (3)-(5)",
+      "page": 5,
+      "status": "verified",
+      "notes": "FA, FT and T expressions, all sin/cos terms, mu1, L and r factors were checked against the page render and Fig. 5. Retained in E2."
+    },
+    {
+      "equation": "Eqs. (6)-(9)",
+      "page": 6,
+      "status": "verified",
+      "notes": "K0=T_alpha0^T K T_alpha0, Fm=Km delta_m, Km=T_m^T K0 T_m, the m Delta alpha rotation matrix and all signs were checked. Retained in E3."
+    },
+    {
+      "equation": "Eqs. (10)-(11)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Delta r=Delta x_m-Delta u_m and m Delta H=Delta y_m-Delta v_m were checked with Fig. 7b. Retained in E4."
+    },
+    {
+      "equation": "Eqs. (12)-(14)",
+      "page": 7,
+      "status": "verified",
+      "notes": "The three scalar compatibility/equilibrium rows for the m-th spine were inspected and used to interpret Eq. (18), but omitted from the compact card because E3-E4 already preserve the transferable structure."
+    },
+    {
+      "equation": "Eqs. (15)-(17)",
+      "page": 7,
+      "status": "verified",
+      "notes": "The factor of two for symmetric wheels, sums from i=1 to m, and M=2 sum F_ix(i Delta H-|R| cos beta) were checked. Retained in E5."
+    },
+    {
+      "equation": "Eq. (18)",
+      "page": 7,
+      "status": "verified",
+      "notes": "The (3m+2)-dimensional unknown vector, block coefficient matrix, right-hand side, FA/2 and FT/2 closure rows were visually checked at 300 dpi. The full block matrix is deliberately omitted from the evidence card because it hard-codes the paper's flat-wall, fixed-pin and equal-spacing assumptions; the assembly structure remains traceable through Eqs. (6)-(17)."
+    },
+    {
+      "equation": "Eq. (19) and adjacent inequality",
+      "page": 7,
+      "status": "uncertain",
+      "notes": "The printed c=tan(theta_min-tan^-1(1/mu)) and F_mx<cF_my inequality are legible and were transcribed exactly. However, the adjacent text describing when the force is outside the constraint does not uniquely resolve the admissible side/equality event. The evidence card flags this as non-executable without re-derivation."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 5,
+      "status": "verified",
+      "notes": "PA2200 and stainless-steel density, Young's modulus, Poisson ratio and tensile strength were visually checked. Only modulus and tensile strength are retained as reproduction-relevant values."
+    },
+    {
+      "table": "Table 2",
+      "page": 5,
+      "status": "verified",
+      "notes": "Both 3x3 stiffness matrices and the mixed unit matrix were checked at 300 dpi. All nine entries of each matrix retained in E1 match the rendered table."
+    },
+    {
+      "table": "Table 3",
+      "page": 8,
+      "status": "verified",
+      "notes": "Wheel/tail mass, length, width, wheel diameter and floor/brick speeds were checked. Values used in the card are separated from model inputs."
+    },
+    {
+      "table": "Table 4",
+      "page": 9,
+      "status": "verified",
+      "notes": "Tail lengths 100/110/120/200 mm and simulation/experiment phi_max pairs 87/85, 99/95, 103/100 and 105/100 degrees were checked."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Robot T-layout, wheel width, spacers and circular spine arrangement were inspected. The 16x4 hierarchy and dimensions are retained textually; later force/geometry figures are more mechanism-dense."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": false,
+      "reason": "Biological tarsus images were inspected as design inspiration but contain no transferable force, stiffness or failure data."
+    },
+    {
+      "figure": "Figs. 3-4",
+      "page": 4,
+      "extracted": true,
+      "file": "figures/fig03_04_p04_compliant_spine_geometry.png",
+      "reason": "Irreplaceable definition of the x/y/theta frame, wheel-driven suspension deformation, S-shaped versus straight suspension geometry, and dimensions supporting E1. The crop includes both figures and complete captions."
+    },
+    {
+      "figure": "Figs. 5-6",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig05_06_p05_robot_and_multispine_equilibrium.png",
+      "reason": "Combined crop preserves whole-robot/tail force directions and the multi-spine active-contact set used by E2 and E5. Both captions and all labels were visually verified."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 6,
+      "extracted": false,
+      "reason": "The alpha0, Delta x_m, Delta y_m, R and beta geometry was inspected at 300 dpi. E3-E4 and the source pointer preserve the needed relation without a fourth image."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 8,
+      "extracted": false,
+      "reason": "The bio-inspired preload/adhesive/pull-off sequence and the regular design's missing preload phase are unambiguous in text and simulation values; the plot is not needed once the state sequence is retained."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 8,
+      "extracted": false,
+      "reason": "The phi_max-versus-c curves for four weights were inspected. They are simulation-only and the transferable non-monotonic weight warning is represented textually."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 9,
+      "extracted": false,
+      "reason": "The two-load-cell fixture was inspected. Instrument identity and measured components are sufficient; the hardware photograph is not required for model transfer."
+    },
+    {
+      "figure": "Fig. 11",
+      "page": 9,
+      "extracted": true,
+      "file": "figures/fig11_p09_brick_pull_off_constraint.png",
+      "reason": "Direct brick evidence for the angle-dependent Fx/Fy constraint. The crop preserves all scatter points, axes, units, four fitted slopes and the complete caption."
+    },
+    {
+      "figure": "Figs. 12-13",
+      "page": 10,
+      "extracted": false,
+      "reason": "Video stills confirm floor-to-wall transition on brick and pearl brocade but do not validate force histories. The surface-specific performance and mode boundary are retained textually."
+    }
+  ],
+  "omitted_sections": [
+    "General survey of suction, adhesives, magnets and prior climbing robots in the Introduction",
+    "Detailed biological image description beyond the compliant-chain design analogy",
+    "Ordinary prototype fabrication and actuator details not affecting the retained models",
+    "Acknowledgment",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.7, Section 3.2, Eq. (19) and adjacent prose",
+      "item": "Admissible side of the pull-off constraint",
+      "detail": "The formula and inequality are legible, but the wording about being outside F_mx<cF_my does not uniquely define the release event. No executable inequality direction is inferred."
+    },
+    {
+      "location": "PDF p.3 and p.6-8, Sections 2.1 and 3.2-3.3",
+      "item": "Mapping of physical 16x4 array to model n=64",
+      "detail": "The hardware is described as 16 arrays across wheel width with four spines each, while the 2D model uses n=64 equally spaced angular rows. The phase/width reduction is not explained."
+    },
+    {
+      "location": "PDF p.9, Section 4.1, Fig. 11",
+      "item": "Pull-off trial count and uncontrolled history variables",
+      "detail": "The text says several trials but gives no sample count, variance or raw data. Approaching angle, dragging distance and preload are explicitly ignored."
+    },
+    {
+      "location": "PDF p.8-10, Sections 3.3 and 4.2",
+      "item": "Validation depth",
+      "detail": "Whole-robot climbable angle trends are compared, but no per-spine force, active contact count or Eq. (18) load distribution is experimentally measured."
+    }
+  ],
+  "known_warnings": [
+    "The paper provides no measured brick topography, friction coefficient, local strength or damage threshold; brick performance cannot be interpreted as a pure morphology effect.",
+    "The 3x3 stiffness matrices are FEA outputs for the paper's PA2200 geometries and were not validated by physical stiffness tests.",
+    "The multi-spine solver assumes fixed pin contacts, no sliding before disengagement, small linear suspension deflection and identical local stiffness after rotation.",
+    "The 2D model collapses wheel width, lateral staggering, contact competition and left-right asymmetry.",
+    "The symbol M denotes the aggregate spine-system moment, while M_m denotes a local spine-tip moment set to zero; these must not be conflated.",
+    "The fitted coefficient c is angle- and protocol-dependent and must not be used as a substrate material constant.",
+    "Pearl-brocade results arise from penetration and cannot be transferred to hard-brick asperity interlocking.",
+    "The floor-to-wall transition is demonstrated by video frames but is outside the quasi-static model's validated scope."
+  ],
+  "evidence_card_character_count": 3485,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows.",
+  "status": "PASS_WITH_WARNINGS"
+}

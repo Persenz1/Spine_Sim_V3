@@ -1,0 +1,197 @@
+{
+  "paper_title": "A Spiny Climbing Robot with Dual-Rail Mechanism",
+  "source_file": "机理文献/核心文献/23_A spiny climbing robot with dual-rail mechanism.pdf",
+  "authors": [
+    "Yanwei Liu",
+    "Hao Wang",
+    "Chongyang Hu",
+    "Qiang Zhou",
+    "Pengyang Li"
+  ],
+  "year": 2023,
+  "doi": "10.3390/biomimetics8010014",
+  "pdf_pages": 14,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+  "render_review": {
+    "all_pages": "All 14 PDF pages were rendered to PNG at 150 dpi and visually checked in four contact sheets. Retained equations, values, captions and conclusions were then rechecked on individual page renders.",
+    "high_resolution_pages": [5, 6, 7, 8, 10, 11, 12],
+    "high_resolution_dpi": 300,
+    "individual_pages_visually_rechecked": [3, 5, 6, 7, 8, 10, 11, 12, 13],
+    "notes": "Equations (1)-(7), force directions, the Eq. (5) subscript conflict, all retained numerical values and the three figure crops were verified from rendered PDF pages rather than text extraction alone."
+  },
+  "sections_checked": [
+    "Abstract and Section 1 Introduction",
+    "Section 2 Robot Design, Sections 2.1-2.3",
+    "Section 3 Modeling and Analysis, Sections 3.1-3.3",
+    "Section 4 Results and Discussion, Sections 4.1-4.3",
+    "Section 5 Conclusions",
+    "Author statements and references checked for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E1. The outer-rail constraint f(x1,y1)=0, inner-rail constraint g(x2,y2)=0, constant-link constraint and all subscripts/squares were visually checked against the page render and Fig. 7."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained in E2. The x3/y3 vector, R(alpha+beta), negative b/c vector, x2/y2 translation and explicit rotation matrix signs were visually checked."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained in E2 as alpha = atan2(y2-y1, x2-x1); argument order and subscripts were visually checked."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Retained as E3. The normal-force sum, tangential-force sum and pitch-moment equation sum F_mx(ml-l+l_T)=Gh were visually checked; positive adhesion and the force directions were cross-checked against Fig. 9 and the text on p.7."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 7,
+      "status": "uncertain",
+      "notes": "The printed equation is F_(m+1)y - F_my = k_x Delta x. The immediately adjacent text and Fig. 10a identify the discussed sequence as normal forces F_1x to F_nx. The printed subscript was verified, but the internal x/y inconsistency cannot be resolved from this paper; it was excluded from executable formulas."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E4. F_1y=0 and F_(m+1)y = F'_my = F_my + F_7y/6 for m=1 to 6 were visually checked together with the seven-to-six-foot sequence in Fig. 10b."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E4. Both factors, (m-1)/6 times F_7y and (m-1)/21 times (G+F_f), were visually checked. Its use is explicitly limited to the equal-stiffness, quasi-static seven-foot case."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1-2",
+      "page": "3",
+      "extracted": false,
+      "reason": "Robot and track construction were inspected. The 16-unit, two-foot-per-unit hierarchy is retained textually; the hardware schematic is not needed once the kinematic and load-distribution figures are preserved."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 3,
+      "extracted": false,
+      "reason": "The compliant spiny-toe structure and biological comparison were inspected. The transferable normal-contact and tangential-load-sharing functions are represented textually; no stiffness or force scale is encoded in the figure."
+    },
+    {
+      "figure": "Fig. 4-6",
+      "page": "4-5",
+      "extracted": false,
+      "reason": "Dual-rail hardware and qualitative attachment/detachment sequences were checked. Fig. 7 provides the complete coordinate and geometry interface, while the two-stage sequence is preserved textually."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig07_p05_dual_rail_geometry.png",
+      "reason": "Required to define Eqs. (1)-(3): outer/inner rails, coordinate origin, rail points, linkage angle, fixed foot geometry and spine-tip coordinates."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 6,
+      "extracted": false,
+      "reason": "Both fixed-body and climbing detachment trajectories were visually checked. The approximately 3 mm lift, near-spine-axis pullout direction and later wall clearance are compactly and unambiguously retained in text."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 7,
+      "extracted": false,
+      "reason": "The full free-body diagram was inspected to verify Eq. (4), positive force directions, stiffness axes and moment arms. Fig. 10 is retained because it also shows the redistribution states."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig10_p08_track_load_distribution.png",
+      "reason": "Irreplaceable definition of the intended normal equal-difference distribution and the seven-foot to six-foot tangential redistribution event used by Eqs. (6)-(7)."
+    },
+    {
+      "figure": "Fig. 11-12",
+      "page": 9,
+      "extracted": false,
+      "reason": "Prototype and force-test rig were checked. Their geometry does not add a reusable mechanism beyond the stated 2D test-zone boundary and Fig. 13 time history."
+    },
+    {
+      "figure": "Fig. 13",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig13_p10_force_redistribution_validation.png",
+      "reason": "Direct experimental evidence for stepwise loading, force jumps during contact replacement, low detachment resistance and tail support force; all axes, legends and eight stages are retained."
+    },
+    {
+      "figure": "Fig. 14",
+      "page": 11,
+      "extracted": false,
+      "reason": "Brick, pebble-concrete and coarse-stucco demonstrations were inspected. Approximate particle sizes, speeds and payload are more compactly retained as values; the image does not provide 3D topography."
+    },
+    {
+      "figure": "Fig. 15",
+      "page": 12,
+      "extracted": false,
+      "reason": "The attachment/detachment frame sequence was checked against Figs. 6 and 8. Its state order and seven-to-six-to-seven transition are fully represented in text and Fig. 13."
+    }
+  ],
+  "omitted_sections": [
+    "General wall-climbing-robot motivation and adhesion-technology survey",
+    "Ordinary DC motor, bevel gear, radio control, battery and SLS manufacturing details",
+    "Biological comparison image not needed to define the engineered suspension",
+    "Robot photographs that do not add a model variable",
+    "Author contributions, funding, institutional statements, data statement, conflict statement and full references"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.7, Section 3.3, Eq. (5) and Fig. 10a",
+      "item": "Normal-force equal-difference equation",
+      "detail": "The paper prints y force subscripts with k_x Delta x, while the surrounding text and figure specify normal x forces. The intended physical relation is inferable but the authorial equation cannot be corrected without an erratum or re-derivation."
+    },
+    {
+      "location": "PDF p.7-8, Sections 3.2-3.3",
+      "item": "Equal foot-unit stiffness",
+      "detail": "The paper states that k_x and k_y are statistical results affected by morphology, compliance, spine count and engagement probability and vary in practice, then assumes all attached units have equal stiffness for the analytical distribution."
+    },
+    {
+      "location": "PDF p.6, Section 3.1 and Fig. 8b",
+      "item": "Detachment clearance versus force capability",
+      "detail": "The approximately 3 mm value is a 2D kinematic lift. The 2 mm full-spine penetration is a worst-case assumption, not a measured penetration depth, and no friction, jamming or pullout force is included."
+    },
+    {
+      "location": "PDF p.9-11, Section 4.1 and Fig. 13",
+      "item": "Force-test repeatability",
+      "detail": "Only one representative 36-grit-sandpaper trace is reported. Trial count, climbing speed, uncertainty, simultaneous forces on all attached units and raw data are absent."
+    },
+    {
+      "location": "PDF p.11, Section 4.2",
+      "item": "Surface descriptors",
+      "detail": "P120 mesh and approximate mean particle sizes are empirical references. Measurement method, distributions, embedding depth, 3D height statistics, friction and strength are not reported."
+    },
+    {
+      "location": "PDF p.11-13, Sections 4.2 and 5",
+      "item": "Whole-robot performance range",
+      "detail": "The 36 mm/s no-load speed and 200 g payload at 20 mm/s are reported without repeats or dispersion and only for upward 90-degree climbing; turning, lateral travel and ground-to-wall transition were not demonstrated."
+    }
+  ],
+  "known_warnings": [
+    "Eq. (5) must not be implemented as printed without resolving its x/y subscript conflict.",
+    "Eqs. (6)-(7) are an equal-stiffness, equal-deformation-increment baseline, not a general stochastic or failure-aware load-sharing law.",
+    "Foot-unit stiffness cannot be treated as a fixed material constant; the authors define it as a state- and surface-dependent statistical response.",
+    "The 0.01 N and 0.02 N detachment resistances come from a single foot-unit trace and are not single-spine or universal values.",
+    "The 3 mm detachment distance is geometric clearance and does not establish the available pullout force or energy.",
+    "P120 mesh and approximate particle size must not be converted into a numerical 3D topography-capacity relation.",
+    "The robot is a single spiny track with compliant tails, not a paired-claw system with known internal preload or a validated 6D wrench domain."
+  ],
+  "evidence_card_character_count": 3410,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; within the allowed 3500-character extension because the paper contains separate dual-rail kinematics, track load redistribution and whole-robot validation evidence.",
+  "status": "PASS_WITH_WARNINGS"
+}

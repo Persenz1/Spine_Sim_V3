@@ -1,0 +1,85 @@
+{
+  "paper_title": "Measurement of R-curve in clay brick blocks using optical measuring technique",
+  "pdf_pages": 10,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "2. Materials and methods",
+    "2.1. The DIC technique",
+    "2.2. The pre-cracking procedure",
+    "2.3. Assessment of stress intensity factor",
+    "2.3.1. K_IC determination from R-curve",
+    "2.3.2. K_IC determination by CTOD method",
+    "3. Results and discussion",
+    "3.1. K_IC of clay brick blocks from R-curve",
+    "3.2. K_IC of clay brick blocks from CTOD",
+    "4. Conclusions",
+    "References checked for document completeness; not used as primary evidence"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "status": "verified",
+      "notes": "K_I = FS/[B W^(3/2)] f(a/W); symbols and specimen dimensions verified against p.5."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 4,
+      "status": "uncertain",
+      "notes": "The rendered formula is legible but displays a cube-root index on a/W and an unusual bracket structure. It was not transcribed into the evidence card and must be checked against the cited source before implementation."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Rendered as CTOD = K_I^2/(k sigma_ys E). The paper defines the correction coefficient and yield stress but does not report the numerical E or sigma_ys used."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 5,
+      "status": "verified",
+      "notes": "CMOD/CTOD = a/[r(W-a)] + 1; r = 0.5 and central plastic-hinge assumption verified on p.6."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 8,
+      "status": "verified",
+      "notes": "All seven K_IC, CTOD_C and cross-method K_IC values were visually checked."
+    }
+  ],
+  "figures_checked": [
+    {"figure": "Fig. 1", "page": 3, "extracted": false, "reason": "Notch geometry is captured by dimensions in the parameter table."},
+    {"figure": "Fig. 2", "page": 3, "extracted": false, "reason": "General DIC apparatus photograph is replaceable by a short method description."},
+    {"figure": "Fig. 3", "page": 4, "extracted": false, "reason": "Sandwiched-beam setup is not needed for the current solver and is textually recoverable."},
+    {"figure": "Fig. 4", "page": 4, "extracted": false, "reason": "Pre-crack CMOD slope change is secondary to the final fracture evidence."},
+    {"figure": "Fig. 5", "page": 5, "extracted": false, "reason": "DIC crack-path thresholding is described in text; the image is not needed for cross-paper reasoning."},
+    {"figure": "Fig. 6", "page": 6, "extracted": false, "reason": "CTOD geometry is fully represented by Eq. (4) and its assumptions."},
+    {"figure": "Fig. 7", "page": 7, "extracted": true, "reason": "Irreplaceable view of seven specimen R-curves, scatter, gaps and validity boundary."},
+    {"figure": "Fig. 8", "page": 8, "extracted": false, "reason": "The two fitted groups are summarized numerically and Fig. 7 retains the underlying specimen evidence."},
+    {"figure": "Fig. 9", "page": 8, "extracted": true, "reason": "Shows the stable-to-unstable CMOD/load transition used by the CTOD method."}
+  ],
+  "omitted_sections": [
+    "Acknowledgements",
+    "Full reference list",
+    "Routine camera and lighting details not affecting retained conclusions",
+    "Per-specimen fourth-order polynomial coefficients"
+  ],
+  "uncertain_items": [
+    "Eq. (2) is visually legible but its rendered cube-root index and factorization are unusual; it was deliberately not copied as a solver-ready formula.",
+    "Numerical Young's modulus E and yield stress sigma_ys used in Eq. (3) are not reported in the paper.",
+    "The proposed link between porous heterogeneity and rapid crack propagation is an author conjecture requiring further confirmation."
+  ],
+  "known_warnings": [
+    "R-curve values after a/W = 0.8 are declared unreliable by the authors.",
+    "Mode-I beam-scale values cannot be treated as local compression, shear, scratching or mixed-mode microspine thresholds.",
+    "BRK 2026 differs by 0.23 MPa sqrt(m) between the two K_IC methods.",
+    "DIC crack-tip tracking was manual and rapid propagation created unobserved intervals.",
+    "Fourth-order specimen fits are descriptive rather than constitutive."
+  ],
+  "evidence_card_character_count": 5329,
+  "status": "PASS_WITH_WARNINGS"
+}

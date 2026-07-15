@@ -1,0 +1,140 @@
+{
+  "paper_title": "Towards Penetration-based Clawed Climbing",
+  "source_file": "机理文献/条件备选/01_Towards penetration-based clawed climbing.pdf",
+  "authors": [
+    "William R. Provancher",
+    "Jonathan E. Clark",
+    "Bill Geisler",
+    "Mark R. Cutkosky"
+  ],
+  "year": 2005,
+  "publication_note": "The PDF header states that the paper was presented at CLAWAR 2004; the DOI-linked book chapter is dated 2005.",
+  "doi": "10.1007/3-540-29461-9_94",
+  "pdf_pages": 9,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "render_review": {
+    "all_pages": "All nine PDF pages were rendered to PNG at 150 dpi and visually checked in a contact sheet.",
+    "high_resolution_pages": [3, 4, 5, 6, 7, 8],
+    "high_resolution_dpi": 260,
+    "individual_pages_visually_rechecked": [3, 4, 5, 6, 7, 8],
+    "notes": "Geometry, Greek symbols, signs, table values, captions, rates and sample counts were checked on page images. The three retained crops were cut from 260 dpi renders and checked for complete axes, labels and captions. Poppler emitted display-font warnings for Symbol and ArialUnicode, but the visually inspected pages retained the required Greek symbols and numerical content."
+  },
+  "sections_checked": [
+    "Section 1 Introduction",
+    "Section 1.1 Climbing in Natural Environments",
+    "Section 1.2 Claw-based Climbing",
+    "Section 2 Experimental Setup and Testing",
+    "Section 2.1 Experimental Results",
+    "Section 3 Discussion and Application to Climbing Robots",
+    "Section 4 Conclusions",
+    "Acknowledgements and references checked for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "No numbered equations in the paper",
+      "page": "1-9",
+      "status": "verified",
+      "notes": "The paper is empirical and contains no numbered penetration, equilibrium or constitutive equations."
+    },
+    {
+      "equation": "Force normalization, F_A/P and F_S/P",
+      "page": "5-6",
+      "status": "verified",
+      "notes": "Retained as definition E1. Fig. 3 plots adhesion as negative whereas Tables 1-2 report positive magnitudes; the evidence card therefore uses |F_A|/P and preserves the sign warning. Means are means of per-trial normalized values, not ratios of aggregate means."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 6,
+      "status": "verified",
+      "notes": "All eight barb rows, d, phi, R, mean normalized adhesion/shear and one-standard-deviation values were visually checked. Geometry ranges and selected comparisons are retained; the full table is not duplicated."
+    },
+    {
+      "table": "Table 2",
+      "page": 6,
+      "status": "verified",
+      "notes": "The beta = 15, 30, 45 and 60 degree rows and the beta = 75 degree non-penetration note were visually checked. Sample counts were checked in the text immediately below the table."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 3,
+      "extracted": true,
+      "file": "figures/fig01_p03_test_geometry.png",
+      "reason": "Required to define d, R, phi, alpha, beta, gamma, force directions and the X/Y versus X-prime/Y-prime coordinate systems."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 4,
+      "extracted": false,
+      "reason": "The insertion-pause-retraction sequence and the 2.2 N preload, -0.26 N adhesion and 1.85 N shear values are fully retained in text; the complete curve is not needed for the current model."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig03_p05_normalized_force_and_threshold.png",
+      "reason": "The threshold behavior, blunt-tip adhesion reduction at higher preload and trial scatter cannot be reconstructed from Tables 1-2 alone."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 7,
+      "extracted": false,
+      "reason": "The preliminary foot/toe CAD is unvalidated and Fig. 5 more directly captures the retained variable-angle mechanism hypothesis."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig05_p08_passive_engagement_linkage.png",
+      "reason": "Shows the proposed passive rotation and inward motion under body shear loading; retained explicitly as an unvalidated concept."
+    }
+  ],
+  "omitted_sections": [
+    "General review of suction, magnetic, wet and dry adhesion",
+    "Biological anecdotes and prior robot survey not providing original evidence",
+    "Ordinary actuator, sensor-amplifier and data-acquisition hardware details beyond rates and force definitions",
+    "Acknowledgements and full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.3-6, Fig. 1 and Table 2",
+      "item": "Independent angle effects",
+      "detail": "Claw angle alpha was set equal to approach angle beta, and retraction angle gamma was fixed at -45 degrees. The experiment cannot identify independent alpha, beta or gamma effects."
+    },
+    {
+      "location": "PDF p.5-7, Fig. 3 and Tables 1-2",
+      "item": "Adhesion sign convention",
+      "detail": "Fig. 2-3 show adhesive force as negative under the plotted sensor/axis convention, while the summary tables report positive normalized values. Table values were treated as magnitudes rather than signed constitutive coefficients."
+    },
+    {
+      "location": "PDF p.5-6, Table 1",
+      "item": "Tip-radius versus cone-angle attribution",
+      "detail": "Within each equal-diameter pair, tip radius and cone angle both change. The author's statement that tip radius far outweighs cone angle is retained as a preliminary conclusion, not as a fully isolated causal estimate."
+    },
+    {
+      "location": "PDF p.4-5, Section 2.1",
+      "item": "Preload prescription",
+      "detail": "Preload was prescribed approximately through insertion displacement, and penetration depth was not reported. The 0.095-9.38 N range cannot be converted into a material-independent penetration law."
+    },
+    {
+      "location": "PDF p.7-8, Fig. 4-5",
+      "item": "Array and passive-linkage validation",
+      "detail": "Independent springs, multiple toes and the passive four-bar angle transition are design proposals only; no toe-level or array experiment was performed."
+    }
+  ],
+  "known_warnings": [
+    "All quantitative evidence is for quasi-static penetration into soft wood and must not be used as red-brick or hard-surface non-penetrating parameters.",
+    "Normalized adhesion/shear ratios are empirical comparison metrics, not friction coefficients or constitutive constants.",
+    "Alpha and beta were coupled and gamma was fixed, so the reported 45-60 degree window is conditional on the tested path.",
+    "The study contains no penetration mechanics model, material failure criterion, force-depth relation or measured penetration depth.",
+    "The recommendation to distribute preload over independently sprung claws is not supported by array load measurements.",
+    "No wear was observed within the reported tests, but long-term tip dulling was not characterized and is explicitly anticipated by the authors.",
+    "The paper notes that strain-rate effects may matter for materials other than soft wood, so its low-speed result is not a dynamic-impact validation."
+  ],
+  "evidence_card_character_count": 2147,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; within the requested 1500-2500 Chinese-character range.",
+  "status": "PASS_WITH_WARNINGS"
+}

@@ -1,0 +1,340 @@
+{
+  "paper_title": "SpinyHand: Contact Load Sharing for a Human-Scale Climbing Robot",
+  "source_file": "机理文献/核心文献/19_SpinyHand Contact load sharing for a human-scale climbing robot.pdf",
+  "doi": "10.1115/1.4043023",
+  "pdf_pages": 13,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "1.1 Spines for Climbing",
+    "1.2 Multifinger Grasping",
+    "2. Overall Design",
+    "3. Spined Fingers",
+    "3.1 Prismatic Phalanx",
+    "3.2 Fingernail and Finger Closing Sequences",
+    "4. Spined Palm",
+    "4.1 Load Sharing With Friction",
+    "4.2 Experiments and Results",
+    "5. Modeling Multifinger Grasping With Spines",
+    "5.1 Contact Forces",
+    "5.2 Finger Friction",
+    "5.3 Finger and Grasp Stiffness",
+    "5.4 Grasp Wrench and Wrist Motion",
+    "5.5 Grasp Failure",
+    "5.6 Grasp Wrench Space",
+    "5.7 Contact Breakage",
+    "6. Experiments",
+    "6.1 Spine Attachment Limit",
+    "6.2 Phalanx Contact Forces",
+    "6.3 Gripper Wrench Space",
+    "7. Results",
+    "7.1 Parameterized Studies",
+    "8. Conclusion",
+    "8.1 Future Work",
+    "Appendix: Design Details",
+    "Appendix: Palm Model Derivations",
+    "Appendix: Tendon Friction",
+    "Appendix: Simplified Spine Model",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Both F1 and F2 numerators, the common denominator, mu signs, kp terms and x multiplier were visually checked. Retained as E1."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 4,
+      "status": "verified",
+      "notes": "mu = 2(k1-k2)/(k1+k2) visually checked. Retained in E2 only under the stated two-tile force-limit matching condition."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 4,
+      "status": "verified",
+      "notes": "All k1, k2 and kp factors, denominator and x2 were visually checked. Retained in E2 as a two-tile limit, not a general array formula."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Joint torque balance signs and terms J(q,c)^T fc + ft r - Kr q - pr were visually checked. Retained in E3."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Prismatic phalanx balance Px fc + fp(c,ft) - Kp d - pp was visually checked. Retained in E3."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Compact linear system A fc = b visually checked. Retained in E3 with the square/invertible condition."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Block definitions A=[J^T; Px] and b=[Kr q+pr-ft r; Kp d+pp-fp(c,ft)] visually checked. Retained in E3."
+    },
+    {
+      "equation": "Eq. (8)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Both friction-matrix multipliers in b and M diagonal sequence 1,(1-mu),...,(1-mu)^(n-1) visually checked. Retained as E4 with the subsequent static-friction correction warning."
+    },
+    {
+      "equation": "Eq. (9)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Finger wrench mapping wf=Wf fc visually checked. Retained in E5."
+    },
+    {
+      "equation": "Eq. (10)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Whole-grasp wrench sum over finger wrenches visually checked. Retained in E5."
+    },
+    {
+      "equation": "Eq. (11)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Differential grasp-wrench relation and the sums over Kfi Jfi were visually checked. Omitted as a standalone formula because the inverse-search method is summarized without reproducing intermediate stiffness algebra."
+    },
+    {
+      "equation": "Eq. (12)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Twist transformation dx_fi=J_fi dx_g visually checked. Omitted separately; its role is preserved in the floating-wrist mechanism description."
+    },
+    {
+      "equation": "Eq. (13)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Direction-dependent failure force fs=s(v) visually checked. Retained in E6 and paired with Appendix Eq. (A4)."
+    },
+    {
+      "equation": "Eq. (14)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Both A^-1 block vectors, the minus sign on the tendon term and decomposition fc=csys+ft cact were visually checked. Retained as E7."
+    },
+    {
+      "equation": "Eq. (15)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Iterative fixed-wrist maximum-tendon-force expression, rotation matrix and normalized contact-force direction were visually checked. Omitted to avoid duplicating the Eq. (13)+(14) failure interface."
+    },
+    {
+      "equation": "Eq. (16)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Fixed-wrist wrench set, tendon-force bounds, origin vector o and actuation directions vi were visually checked. Retained as E8."
+    },
+    {
+      "equation": "Eq. (17)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Single-finger feasible wrench set Wf and fc<=fs condition were visually checked. Omitted as an independent formula; the floating-wrist feasible-set intersection and convex-hull procedure is retained in text."
+    },
+    {
+      "equation": "Eq. (A1)",
+      "page": 12,
+      "status": "verified",
+      "notes": "Two tile force-balance equations and all signs were visually checked. Omitted as derivation support for Eq. (1)."
+    },
+    {
+      "equation": "Eq. (A2)",
+      "page": 12,
+      "status": "verified",
+      "notes": "Both pulley friction balances with (1+mu/2) and (1-mu/2) were visually checked. Omitted as derivation support for Eq. (1)-(3)."
+    },
+    {
+      "equation": "Eq. (A3)",
+      "page": 12,
+      "status": "verified",
+      "notes": "delta f_ci=(delta x_ci+delta l_ci) k_ci visually checked. Omitted as an intermediate tendon-friction increment relation; its static-friction role is preserved in E4 limitations."
+    },
+    {
+      "equation": "Eq. (A4)",
+      "page": 12,
+      "status": "verified",
+      "notes": "Both linear force-angle fit relations, fsmax, fsmin, phi and phi_max were visually checked. Retained in E6 as an empirical tile-limit linearization."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Robot grasp photograph is contextual and adds no equation or quantitative validation."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": false,
+      "reason": "Grasp-mode renderings are summarized by the sloper/crimp/pinch design context."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 3,
+      "extracted": false,
+      "reason": "Tile hardware layout is represented by the closing-sequence mechanism and parameter table; Fig. 5 is required for the retained load-sharing variables."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 3,
+      "extracted": false,
+      "reason": "Finger hardware and tendon routing are adequately summarized in M2 and the parameter table."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 4,
+      "extracted": true,
+      "file": "figures/fig05_p04_two_tile_load_sharing_model.png",
+      "reason": "Irreplaceable k1, k2, kp, local tendon tension and displacement definitions for Eq. (1)-(3); direct PDF clip visually verified."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 5,
+      "extracted": false,
+      "reason": "Two-tile measured loads, five repeats, model agreement and at-least-14-percent gain are preserved textually without digitizing bars."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 5,
+      "extracted": false,
+      "reason": "Four-tile friction gains are summarized; the visible seven configurations versus the text's eight is recorded as a warning."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 5,
+      "extracted": false,
+      "reason": "Coordinate frames and contact locations are recoverable from E3/E5; the three retained figures cover otherwise irreducible model and validation evidence."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 7,
+      "extracted": false,
+      "reason": "Floating-wrist search and convex-hull workflow is preserved as a structured mechanism; omitted to stay within the three-figure limit."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 8,
+      "extracted": false,
+      "reason": "Seventy-trial tile-limit verification and linearization conclusion are preserved; no unreported numerical values were read from the plot."
+    },
+    {
+      "figure": "Fig. 11",
+      "page": 8,
+      "extracted": false,
+      "reason": "Experimental apparatus details are reduced to curvature, tendon preload, sensor range/accuracy and loading mode."
+    },
+    {
+      "figure": "Fig. 12",
+      "page": 9,
+      "extracted": true,
+      "file": "figures/fig12_p09_phalanx_force_validation.png",
+      "reason": "Direct model-versus-measurement evidence for proximal/middle/distal shear and normal force transfer; axes, legends and caption visually verified."
+    },
+    {
+      "figure": "Fig. 13",
+      "page": 9,
+      "extracted": true,
+      "file": "figures/fig13_p09_wrench_space_validation.png",
+      "reason": "Irreplaceable Fx-Fz-My wrench-space hull, mean test points and standard-deviation spheres; axes and full caption visually verified."
+    },
+    {
+      "figure": "Fig. 14",
+      "page": 10,
+      "extracted": false,
+      "reason": "Failure-mode and loading-ratio trends are preserved textually; exact unreported values were not digitized."
+    },
+    {
+      "figure": "Fig. 15",
+      "page": 10,
+      "extracted": false,
+      "reason": "Nonmonotonic tendon-force trend is preserved as simulation evidence, without reading new numerical optima from the curve."
+    },
+    {
+      "figure": "Fig. 16",
+      "page": 11,
+      "extracted": false,
+      "reason": "Pulley-radius design trend and failure/ejection regions are summarized without extracting heat-map values."
+    },
+    {
+      "figure": "Fig. 17",
+      "page": 11,
+      "extracted": false,
+      "reason": "Palm actuation and electronics packaging does not affect retained contact/load-sharing equations."
+    },
+    {
+      "figure": "Fig. 18",
+      "page": 12,
+      "extracted": false,
+      "reason": "Rotary finger-base hardware detail is outside the retained mechanics."
+    }
+  ],
+  "omitted_sections": [
+    "General climbing-robot history and broad multifinger grasping literature",
+    "Human rock-climbing posture background beyond the three grasp modes",
+    "Most motor, bearing, sensor-board and electronics packaging details",
+    "Acknowledgment",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.4, Eq. (2)",
+      "item": "Scope of optimal friction",
+      "detail": "The desired mu follows from a two-tile linear-stiffness and force-limit matching argument. It is not a general optimum for a multi-tile array with unknown pulley friction directions."
+    },
+    {
+      "location": "PDF p.5, Section 4.2 and Fig. 7",
+      "item": "Four-tile configuration count",
+      "detail": "The body text says all eight configurations improved by at least 24 percent, while Fig. 7 visibly presents seven labeled configurations. No missing configuration was inferred."
+    },
+    {
+      "location": "PDF p.6, Eq. (13)",
+      "item": "Vector failure shorthand",
+      "detail": "The text denotes failure concisely by fc>fs even though fc is a contact-force vector and fs is the direction-dependent magnitude. The evidence card treats this as magnitude along the current loading direction, not a componentwise vector inequality."
+    },
+    {
+      "location": "PDF p.8, Section 6",
+      "item": "Rock-versus-sandpaper force multiplier",
+      "detail": "The statement that rock forces are typically two to five times greater cites reference [17] and is not a direct measurement in this paper. It is not used as a solver parameter."
+    },
+    {
+      "location": "PDF p.8, Fig. 10",
+      "item": "Raw attachment-limit values",
+      "detail": "The plot supports the force-angle shape and linear approximation, but the paper does not tabulate raw trial data. No precise values were digitized."
+    },
+    {
+      "location": "PDF p.9, Fig. 13",
+      "item": "Mirrored wrench-space data",
+      "detail": "Measurements cover Fz<=0; points without uncertainty spheres are mirrored to display the full symmetric space and are not independent samples."
+    },
+    {
+      "location": "PDF p.10-11, Fig. 15-16",
+      "item": "Simulation-only parameter optima",
+      "detail": "Tendon-force and pulley-radius trends use the model with fine-concrete limits; they are not independently validated optimum values."
+    }
+  ],
+  "known_warnings": [
+    "All own experiments used coarse 36-grit sandpaper; natural rock and red-brick parameters were not measured in this paper.",
+    "The model prescribes contact locations and one resultant contact per phalanx; it does not solve surface search or individual-spine engagement.",
+    "The 6D formulation was validated only for a planar opposed two-finger Fx-Fz-My subspace, not the full four-finger hand or palm contact.",
+    "Matrix A was ill conditioned in all reported trials (cond(A)>270), so inverse contact-force estimates are sensitive to small pose errors.",
+    "Measured nonlinearity from tendon friction and backlash is not captured by the linear model; palm-base shifts reached up to 5 mm.",
+    "The first-contact-detachment failure criterion is conservative and conflicts conditionally with Section 5.7 cases where contact breakage permits continued grasping.",
+    "Two- and four-tile stiffness tests use artificial linear springs, so reported friction gains are trend evidence rather than red-brick capacity multipliers.",
+    "Poppler reported missing display fonts for Symbol and ArialUnicode, but the 13 rendered pages, all retained equations, labels and three direct PDF clips were visually legible and checked."
+  ],
+  "evidence_card_character_count": 3497,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains tile, phalanx and whole-hand wrench-space layers.",
+  "status": "PASS_WITH_WARNINGS"
+}

@@ -1,0 +1,190 @@
+{
+  "paper_title": "Grip and detachment of locusts on inverted sandpaper substrates",
+  "source_file": "机理文献/核心文献/02_Grip and detachment of locusts on inverted sandpaper substrates.pdf",
+  "doi": "10.1088/1748-3182/6/4/046005",
+  "pdf_pages": 11,
+  "article_pages": 10,
+  "page_numbering_note": "File PDF page 1 is a download cover; printed article pages 1-10 correspond to file PDF pages 2-11.",
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "2.1 Materials and equipment",
+    "2.2 Data processing",
+    "3.1 Critical angle of detachment and grasping force",
+    "3.2 Observation on claw tips and sandpaper texture",
+    "4.1 Adjusting body position on different slopes",
+    "4.2 Tarsal morphology",
+    "4.3 Model of contact between locusts and sloping substrates when detachment takes place",
+    "4.4 Model of contact between claws and particles when detachment takes place",
+    "5. Conclusions and outlook",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Unnumbered resultant-force definition",
+      "page": 4,
+      "article_page": 3,
+      "status": "verified",
+      "notes": "Retained as E1; all three squared force components and the square root were visually checked."
+    },
+    {
+      "equation": "Unnumbered critical-support-angle definition",
+      "page": 4,
+      "article_page": 3,
+      "status": "verified",
+      "notes": "Retained as E1; arctan(F_N^d/F_L^d) and the stated angle interval were visually checked."
+    },
+    {
+      "equation": "Eq. (1)",
+      "page": 8,
+      "article_page": 7,
+      "status": "verified",
+      "notes": "Retained within E4; normal gravity component and pi-theta angle were visually checked."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 8,
+      "article_page": 7,
+      "status": "verified",
+      "notes": "Retained within E4; factor of two, sin(beta), and gravity term were visually checked."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 8,
+      "article_page": 7,
+      "status": "verified",
+      "notes": "Retained within E4; normal force equals one half of the normal gravity component at detachment."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 9,
+      "article_page": 8,
+      "status": "verified",
+      "notes": "Retained as E2; cosine and negative sine terms were visually checked."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 9,
+      "article_page": 8,
+      "status": "verified",
+      "notes": "Retained as E2; limiting static-friction expression and both positive terms were visually checked."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 9,
+      "article_page": 8,
+      "status": "verified",
+      "notes": "Retained as E3; numerator f*tan(alpha)+1 and denominator f-tan(alpha) were visually checked. The adjacent prose states that stable grip uses the greater-than-or-equal inequality."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 9,
+      "article_page": 8,
+      "status": "omitted",
+      "notes": "Verified but omitted as the theta=pi ceiling special case of the retained two-support model."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 4,
+      "article_page": 3,
+      "status": "verified",
+      "notes": "All seven grit grades, mean particle diameters, and roughness values were checked; ranges retained in the parameter table."
+    },
+    {
+      "table": "Table 2",
+      "page": 5,
+      "article_page": 4,
+      "status": "verified",
+      "notes": "All seven F_L^d/F_N^d mean and standard-deviation values were checked. Only six p-values are printed, so the adjacent-comparison mapping remains uncertain and was not used quantitatively."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 4,
+      "article_page": 3,
+      "extracted": false,
+      "reason": "Apparatus layout is adequately summarized by the two independent three-axis sensors, rotating platform, and 215 fps video description."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 5,
+      "article_page": 4,
+      "extracted": true,
+      "file": "figures/fig02_p05_detachment_angle_and_force.png",
+      "reason": "Irreplaceable experimental chain linking particle size, critical angle, lateral-force evolution, force ratio, and support angle. Crop visually verified with all axes, units, labels, and legends."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 6,
+      "article_page": 5,
+      "extracted": true,
+      "file": "figures/fig03_p06_claw_particle_scale.png",
+      "reason": "Direct morphology evidence for finite claw-tip size versus three sandpaper scales and local contact angle. Crop visually verified with scale bars, axes, units, and labels."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 7,
+      "article_page": 6,
+      "extracted": false,
+      "reason": "Body posture and claw-plus-pad contact observations can be retained accurately in text; the full biological montage is not required for downstream modeling."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 8,
+      "article_page": 7,
+      "extracted": true,
+      "file": "figures/fig05_p08_force_and_contact_model.png",
+      "reason": "Irreplaceable combined definition of whole-body axes/support angle and local claw-particle r/R/alpha force geometry. Crop visually verified with all four panels and labels."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 10,
+      "article_page": 9,
+      "extracted": false,
+      "reason": "The alpha-friction-force-ratio relationship is completely represented by retained Eq. (6), its domain, and the P600 numerical comparison."
+    }
+  ],
+  "omitted_sections": [
+    "Most general insect-attachment background in the Introduction",
+    "Animal housing, sensor fabrication, and ordinary apparatus details not affecting interpretation",
+    "Detailed leg-angle ranges not needed for the passive engineering model",
+    "Acknowledgments",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "File PDF p.5, Fig. 2",
+      "item": "Sample-count reconciliation",
+      "detail": "Figure 2 states n=112 and N=11 locusts, while the method states 11 individuals and seven repeats. The paper does not explain how 112 observations were formed."
+    },
+    {
+      "location": "File PDF p.5, Table 2",
+      "item": "t-test column mapping",
+      "detail": "Seven force-ratio groups are printed but only six p-values are shown, apparently for adjacent comparisons; the exact mapping is not explicitly labeled."
+    },
+    {
+      "location": "File PDF p.5 and p.9",
+      "item": "P1200 uncertainty rounding",
+      "detail": "The P1200 critical angle is reported with a standard deviation of 5.0 degrees in the results continuation and 4.9 degrees in Section 4.4."
+    },
+    {
+      "location": "File PDF p.6 and p.9",
+      "item": "Contact-angle assignment",
+      "detail": "Fig. 3 shows representative local alpha values, while later numerical examples use different alpha values for the same grit families. Alpha cannot be treated as a unique function of mean particle diameter."
+    }
+  ],
+  "known_warnings": [
+    "Eq. (6) is meaningful as a stable threshold only for f > tan(alpha) and positive contact normal force.",
+    "Measured forces are active multi-leg whole-animal reactions and cannot be used as isolated single-spine capacities.",
+    "The local model assumes spherical tips and particles, one contact, no material damage, and no compliant pad contribution.",
+    "The model explicitly fails to explain P1000 and P1200; the authors infer a roughness window that is poor for both claw interlocking and pad adhesion.",
+    "All sandpaper thresholds and force values require remeasurement or recalculation for fired-clay brick and engineered spines."
+  ],
+  "evidence_card_character_count": 2731,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows, and image-link rows; within the allowed 3500-character extension because the paper contains both a local contact model and a whole-body detachment validation model.",
+  "status": "PASS_WITH_WARNINGS"
+}

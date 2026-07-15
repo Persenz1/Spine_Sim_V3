@@ -1,0 +1,204 @@
+{
+  "paper_title": "Stochastic models of compliant spine arrays for rough surface grasping",
+  "source_file": "机理文献/核心文献/09_Stochastic models of compliant spine arrays for rough surface grasping.pdf",
+  "doi": "10.1177/0278364918778350",
+  "pdf_pages": 19,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+  "sections_checked": [
+    "Abstract",
+    "1 Introduction",
+    "2.1 Compliantly supported micro-spines",
+    "2.2.1 Asperity spatial distribution",
+    "2.2.2 Asperity strength distribution",
+    "2.2.3 Practical methods for surface characterization",
+    "3.1.1 Simplified model",
+    "3.1.2 Recursive model",
+    "3.2 Two-dimensional loading evaluation",
+    "3.3 Design parameter tuning",
+    "4.1 Mechanism design",
+    "4.2.1 Simple two-spine model",
+    "4.2.2 Opposed spine tiles",
+    "4.3 Mechanism tuning",
+    "5 Applications",
+    "6 Conclusion",
+    "Appendix A. Derivation of a micro-spine's travel following an exponential distribution",
+    "Appendix B. Justification of sample size selection in asperity distribution characterizations",
+    "Appendix C. Single-tile two-dimensional adhesion modeling details",
+    "Appendix D. Design parameter tuning for three surface properties",
+    "Appendix E. Opposed spine mechanism two-dimensional adhesion modeling"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 2,
+      "status": "verified",
+      "notes": "Retained as E1. Fn/Fs = hmis/dunit = tan(theta_m) was visually checked together with the toe-heel geometry and the Fc -> 0 limiting condition."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Retained as E2 exactly as printed: alpha*lambda*exp(-lambda*x) + (1-alpha)*delta(x), x > 0. The prose clearly assigns a point mass at x=0, so downstream use must treat this as a mixed distribution on x>=0 rather than an ordinary density only on x>0."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 4,
+      "status": "omitted",
+      "notes": "Piecewise empirical survival probability was visually verified. Omitted as a displayed equation to remain within the eight-formula limit; the 0.5 N lower cutoff, 3 N censoring point and eta tails are retained in the parameter table."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E3. The integral limits, p(alpha,lambda;x), F(x), Pr(F(x)) and footprint denominator were checked against the rendered page."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E3. Linear flexure force and K=Fmax/dstroke relation were checked."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 11,
+      "status": "verified",
+      "notes": "Retained as E4. Opposed shear components subtract and normal components add."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 11,
+      "status": "omitted",
+      "notes": "Both left and right vector-magnitude limits were verified; preserved textually as the absolute-force constraint accompanying Eq. (6)."
+    },
+    {
+      "equation": "Eq. (8)",
+      "page": 11,
+      "status": "verified",
+      "notes": "Retained as E5. Both arctan(Fn/Fs) < theta_th inequalities were visually checked."
+    },
+    {
+      "equation": "Eq. (9)-(13)",
+      "page": 15,
+      "status": "omitted",
+      "notes": "Appendix A memoryless derivation was checked. It only derives that random-start travel to the next asperity has the same exponential law and is not needed once Eq. (2) and its assumption are retained."
+    },
+    {
+      "equation": "Eq. (14)-(18)",
+      "page": 16,
+      "status": "omitted",
+      "notes": "Single-tile shear-normal integral, geometry, angle and displacement-limit equations were visually checked. They are indexed in the route card but omitted from the compact card because Eq. (4)-(5), the stated re-engagement factor, Fig. 12 and full source location are sufficient for this extraction."
+    },
+    {
+      "equation": "Eq. (19)",
+      "page": 17,
+      "status": "verified",
+      "notes": "Retained as E6. Statistical tile preload equals middle-spring force Km*Lm+Finit."
+    },
+    {
+      "equation": "Eq. (20)-(21)",
+      "page": 17,
+      "status": "omitted",
+      "notes": "Left/right middle-spring shear forces were checked; omitted because Eq. (19), Eq. (26) and the route location preserve the required interface with less context."
+    },
+    {
+      "equation": "Eq. (22)-(25)",
+      "page": "17-18",
+      "status": "omitted",
+      "notes": "Left/right tile shear-normal integrals were checked, including the re-engagement term on the left tile. They repeat the single-tile structure with side-specific variables."
+    },
+    {
+      "equation": "Eq. (26)",
+      "page": 18,
+      "status": "verified",
+      "notes": "Retained as E7. Full opposed-array external-force composition matches Eq. (6)."
+    },
+    {
+      "equation": "Eq. (27)",
+      "page": 18,
+      "status": "omitted",
+      "notes": "Ltotal = L + Lm verified and stated under E6."
+    },
+    {
+      "equation": "Eq. (28)",
+      "page": 19,
+      "status": "omitted",
+      "notes": "Preload and side-specific spine force-length relations were visually checked and indexed for full-model reuse."
+    },
+    {
+      "equation": "Eq. (29)",
+      "page": 19,
+      "status": "uncertain",
+      "notes": "The PDF clearly prints tan(phi_1'(z)) = H/(D1+Lo-x). This conflicts with the z argument and with Eq. (17), which uses Lo+D-z. The intended variable cannot be corrected from the paper alone; do not implement Eq. (29) silently."
+    },
+    {
+      "equation": "Eq. (30)",
+      "page": 19,
+      "status": "verified",
+      "notes": "Full-stroke condition Dm=Dlimit or H=Hlimit was checked."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {"figure": "Fig. 1", "page": 2, "extracted": false, "reason": "Application photographs are not needed for the mechanism card."},
+    {"figure": "Fig. 2", "page": 3, "extracted": false, "reason": "Toe-heel geometry and safe-angle shrinkage are adequately preserved by Eq. (1) and text."},
+    {"figure": "Fig. 3", "page": 4, "extracted": false, "reason": "The fitted alpha/lambda values and the three surface conditions are retained numerically."},
+    {"figure": "Fig. 4", "page": 5, "extracted": false, "reason": "The 0.5-3 N censoring range and eta tails are retained; no exact values were estimated from the curves."},
+    {"figure": "Fig. 5", "page": 5, "extracted": false, "reason": "Tile footprint, stroke, hard stop and flexure variables are captured by Eq. (4)-(5)."},
+    {"figure": "Fig. 6", "page": 6, "extracted": false, "reason": "One-pass decision tree is replaced by the more complete recursive MDP figure."},
+    {"figure": "Fig. 7", "page": 6, "extracted": false, "reason": "Validation trend and trial counts are retained textually; precise curve values were not read from the graph."},
+    {"figure": "Fig. 8", "page": 7, "extracted": true, "file": "figures/fig08_p07_recursive_mdp.png", "reason": "Irreplaceable state-transition structure for hold, slip, no engagement and re-engagement; 300-dpi crop visually verified."},
+    {"figure": "Fig. 9", "page": 7, "extracted": false, "reason": "The weak-surface improvement and recursion-cost trend are preserved textually."},
+    {"figure": "Fig. 10", "page": 8, "extracted": false, "reason": "The high-density/weak-asperity error boundary is preserved qualitatively without reading grid values."},
+    {"figure": "Fig. 11", "page": 8, "extracted": false, "reason": "Preload/load trajectory and displacement limits are represented by the retained equations and parameters."},
+    {"figure": "Fig. 12", "page": 9, "extracted": true, "file": "figures/fig12_p09_single_tile_2d_validation.png", "reason": "Minimal single-tile model-experiment evidence including mean, standard deviation and constraint transitions; 300-dpi crop visually verified."},
+    {"figure": "Fig. 13", "page": 9, "extracted": false, "reason": "Unit-length tradeoff is retained as a conditional trend; graph points are not treated as transferable optima."},
+    {"figure": "Fig. 14", "page": 10, "extracted": false, "reason": "Stroke-density tradeoff is preserved in the mechanism and parameter text."},
+    {"figure": "Fig. 15", "page": 10, "extracted": false, "reason": "Maximum-force/asperity-strength trend is preserved textually."},
+    {"figure": "Fig. 16", "page": 11, "extracted": false, "reason": "Opposed mechanism states are sufficiently defined by Fig. 17, equations and text."},
+    {"figure": "Fig. 17", "page": 11, "extracted": true, "file": "figures/fig17_p11_opposed_spine_safe_regions.png", "reason": "Irreplaceable opposed-spine geometry and preload-dependent safe regions; 300-dpi crop visually verified."},
+    {"figure": "Fig. 18", "page": 12, "extracted": false, "reason": "Opposed model validation is retained textually with trial count, binning and mechanism parameters."},
+    {"figure": "Fig. 19", "page": 13, "extracted": false, "reason": "Preload normal-versus-shear tradeoff is compactly preserved as a mechanism conclusion."},
+    {"figure": "Fig. 20", "page": 13, "extracted": false, "reason": "Preferred stiff/soft-plus-bias spring cases are retained numerically."},
+    {"figure": "Fig. 21", "page": 14, "extracted": false, "reason": "Perching-gripper hardware details are not needed beyond retained parameters."},
+    {"figure": "Fig. 22", "page": 14, "extracted": false, "reason": "Flight sequence is an application demonstration and is summarized by success rate."},
+    {"figure": "Fig. 23", "page": 16, "extracted": false, "reason": "Random-start exponential memoryless result is stated textually."},
+    {"figure": "Fig. 24", "page": 17, "extracted": false, "reason": "Spatial-parameter convergence justifies 150 trials and is summarized textually."},
+    {"figure": "Fig. 25", "page": 17, "extracted": false, "reason": "Strength-distribution convergence is summarized textually."},
+    {"figure": "Fig. 26", "page": 18, "extracted": false, "reason": "Heatmap supports the retained trend that optimal stroke is controlled mainly by spatial parameters."},
+    {"figure": "Fig. 27", "page": 18, "extracted": false, "reason": "Heatmap supports the retained trend that optimal Fmax is controlled mainly by strength distribution."}
+  ],
+  "omitted_sections": [
+    "General robot-application history in the Introduction",
+    "Full reference list and administrative material",
+    "Detailed quadrotor truss/tendon implementation beyond mechanism-relevant parameters",
+    "Long Appendix A algebra after verifying the memoryless result"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.19, Eq. (29)",
+      "item": "Variable mismatch in opposed-tile re-engagement angle",
+      "detail": "phi_1' is written as a function of z but the denominator ends in -x. Eq. (17) and the corresponding force Eq. (28) use z. The intended correction requires author code or re-derivation."
+    },
+    {
+      "location": "PDF p.3-4, Eq. (2)",
+      "item": "Mixed-distribution domain notation",
+      "detail": "The printed condition x>0 accompanies a delta mass at x=0. The prose makes the point mass explicit; implement the model as a mixed measure on x>=0."
+    },
+    {
+      "location": "PDF p.8 and p.16, Section 3.2 and Appendix C",
+      "item": "Empirical normal re-engagement reduction",
+      "detail": "The linear factor based on average asperity height/depth and the tile-level angle limit are empirical closures, not geometry-resolved three-dimensional contact laws."
+    }
+  ],
+  "known_warnings": [
+    "The simplified and recursive array models assume independent spines and explicitly omit dynamic load redistribution after a spine fails.",
+    "The authors state that adding redistribution should increase failure probability, reduce total capacity and increase variation.",
+    "Spatial and strength distributions are assumed independent; opposed validation additionally assumes isotropic and nearly identical sides.",
+    "Contact strengths below 0.5 N are neglected and measurements above 3 N are right-censored into eta.",
+    "The tile does not support lateral y loading; row-engagement moments are ignored in the opposed mechanism model.",
+    "All equations, parameters, captions and retained crops were checked against 180-dpi full-page and 300-dpi selected-page renders."
+  ],
+  "evidence_card_character_count": 2963,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains independent surface, single-tile, recursive and opposed-array submodels.",
+  "status": "PASS_WITH_WARNINGS"
+}

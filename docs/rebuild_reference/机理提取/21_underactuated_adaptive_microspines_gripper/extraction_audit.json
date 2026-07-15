@@ -1,0 +1,161 @@
+{
+  "paper_title": "An Underactuated Adaptive Microspines Gripper for Rough Wall",
+  "source_file": "机理文献/核心文献/21_An Underactuated Adaptive Microspines Gripper for Rough Wall.pdf",
+  "doi": "10.3390/biomimetics8010039",
+  "pdf_pages": 14,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "2. Materials and Methods",
+    "2.1. Design of the Microspines Grippers",
+    "2.1.1. Overall Design of the Microspines Grippers",
+    "2.1.2. Spine Design",
+    "2.1.3. Compliant Structure Design",
+    "2.2. Rigid-Flexible Coupling Simulation Analysis",
+    "2.3. Test of Microspines Gripper",
+    "3. Results and Discussion",
+    "3.1. Results of Rigid-Flexible Coupling Analysys",
+    "3.2. Performance of Microspines Gripper",
+    "3.3. Grasping Demonstration of Microspines Gripper",
+    "4. Conclusions",
+    "Supplementary-material notice, author statements and references checked for document completeness"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "status": "verified",
+      "notes": "The 3x3 mapping [Fs, Fn, Mtheta]^T = K[delta_s, delta_n, delta_theta]^T and every subscript were visually checked. Retained as E1, with the incomplete sign/unit convention explicitly warned."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 5,
+      "status": "verified",
+      "notes": "All nine printed coefficients and units were visually checked. Retained exactly as printed; the paper's 'diagonal symmetric' wording conflicts with nonzero off-diagonal entries, and the third-row coupling units require clarification before implementation."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 3,
+      "extracted": false,
+      "reason": "Overall hardware topology and one-motor underactuated linkage are preserved textually; Fig. 8 retains the otherwise irreducible whole-gripper adaptation geometry."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 4,
+      "extracted": false,
+      "reason": "Before/after tip images are visually legible, but the after-wear radius label (20-40 um) conflicts with the body text (40-60 um); both values are recorded as an unresolved source conflict rather than choosing the figure."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig03_p05_flexure_stiffness_states.png",
+      "reason": "Irreplaceable flexure dimensions, x-y orientation, search and loaded force states, and stress concentration; direct PDF clip visually verified."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 6,
+      "extracted": false,
+      "reason": "Rigid-flexible model joints, spring-damper and boundary assumptions are preserved in structured text; Fig. 8 shows the geometry in the retained parameter sweep."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 7,
+      "extracted": false,
+      "reason": "Test stand and load-drag-retraction protocol are sufficiently represented by the experimental evidence entry."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 8,
+      "extracted": false,
+      "reason": "Actuation and loading sequence is retained textually; omitted to keep the three-figure limit."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 9,
+      "extracted": false,
+      "reason": "Simulation-only force histories are summarized without reading unreported numerical values from curves; Fig. 8 is the more complete geometry sweep."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig08_p10_surface_adaptation_force_space.png",
+      "reason": "Irreplaceable uneven/curved geometry, delta-y sweep, contact-force evolution and force-space boundary; full axes, legends and caption visually verified."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 11,
+      "extracted": true,
+      "file": "figures/fig09_p11_unit_force_validation.png",
+      "reason": "Direct unit-test evidence for load-drag-retraction, progressive detachment, slip-distance saturation and six-surface ranking; full axes, legends, error bars and caption visually verified."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 12,
+      "extracted": false,
+      "reason": "Demonstration photographs and labeled masses are preserved as lower-bound context; they do not supply force-displacement or repeatability data."
+    }
+  ],
+  "omitted_sections": [
+    "General biological-claw and climbing-robot history",
+    "Broad manufacturing-method literature review",
+    "Most apparatus construction details",
+    "Author contributions, funding and institutional statements",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.3-4, Section 2.1.2 and Fig. 2b",
+      "item": "Worn tip radius",
+      "detail": "Fig. 2b labels R=20-40 um, while the body text states about 40-60 um. Neither range was selected as authoritative."
+    },
+    {
+      "location": "PDF p.5, Eq. (2)",
+      "item": "Stiffness-matrix terminology and dimensions",
+      "detail": "The paper calls the matrix 'diagonal symmetric' despite nonzero off-diagonal terms. The third-row translational coupling entries are printed with N/rad, which is not directly compatible with Mtheta per translational displacement without an unstated generalized-coordinate convention."
+    },
+    {
+      "location": "PDF p.4-5, Eq. (1) and Fig. 3",
+      "item": "Force sign convention",
+      "detail": "The figure shows +x left and +y up, while the example Fn arrow is downward. The paper does not fully state whether Fn is signed along +y or reported by normal-load magnitude."
+    },
+    {
+      "location": "PDF p.7-8, Section 3.1",
+      "item": "Rough-peak spacing and prescribed slip",
+      "detail": "The statement that average rough-peak spacing generally does not exceed 2 mm is not backed by surface metrology in this paper; 0-2 mm slip is a model constraint, not measured terrain statistics."
+    },
+    {
+      "location": "PDF p.10-11, Fig. 9",
+      "item": "Statistics behind error bars",
+      "detail": "The figure contains error bars, but the paper does not state repeat count, error-bar definition or raw data. No exact values were digitized."
+    },
+    {
+      "location": "PDF p.11, Section 3.2",
+      "item": "Referenced previous probability model",
+      "detail": "The surface ranking discussion refers to a previous probability model but does not formulate or validate that model in this paper; it is not treated as a source equation."
+    },
+    {
+      "location": "PDF p.12, Fig. 10 and supplementary-material notice",
+      "item": "Dynamic demonstration evidence",
+      "detail": "The PDF references supplementary videos S1-S3, but those files are not present in the workspace. Static photographs and stated masses were checked; dynamic behavior was not independently reviewed."
+    }
+  ],
+  "known_warnings": [
+    "The PDF text layer contains duplicated peer-review/final-layout text on several pages; all retained equations, values, figures and captions were checked against rendered pages rather than trusted from extraction order.",
+    "The rigid-flexible model analyzes one symmetric prong and extrapolates to the eight-unit gripper; it does not solve nonuniform unit contact, internal preload or asymmetric surface load sharing.",
+    "Hinge friction is ignored and the spine-tip contact/slip boundary is prescribed; there is no local 3D normal, friction cone, asperity fracture or measured terrain model.",
+    "Eq. (2) must not be directly coded until generalized-coordinate units and force signs are reconciled.",
+    "The 5 mm towing distance is a paper-specific experimental recommendation without reported sample count or cross-surface universality.",
+    "Whole-gripper capacities (>60 N normal, >30 N tangential) are reported without repeatability statistics and must remain prototype lower-bound evidence.",
+    "Surface labels and qualitative morphology are not measurements of roughness, friction or material strength.",
+    "Poppler reported missing display fonts for Symbol and ArialUnicode, but all 14 rendered pages and the three direct PDF clips were visually legible."
+  ],
+  "evidence_card_character_count": 2634,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains independent single-flexure, ten-spine-unit and whole-gripper layers.",
+  "status": "PASS_WITH_WARNINGS"
+}

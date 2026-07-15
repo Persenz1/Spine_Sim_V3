@@ -1,0 +1,182 @@
+{
+  "paper_title": "Capability and probability of frictional engagement of spines on rough surfaces",
+  "source_file": "机理文献/核心文献/01_Capability and probability of frictional engagement of spines on rough surfaces.pdf",
+  "doi": "10.1016/j.triboint.2025.110533",
+  "pdf_pages": 12,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "2.1 Load ratio distribution on 2D curve",
+    "2.2 Load ratio distribution on 3D surface",
+    "2.3 Relationship between engagement capability and surface concavity and convexity",
+    "3.1 Theoretical derivation",
+    "3.2 Monte Carlo simulation verification",
+    "3.3 Experimental verification",
+    "3.4 Factors influencing pre-engagement displacement",
+    "4. Conclusion",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Retained as E2; symbols, inequality, angle and friction term visually checked against the rendered PDF."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 3,
+      "status": "omitted",
+      "notes": "Verified but omitted as a separate formula because it is the W > 0 branch of retained Eq. (5)."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 3,
+      "status": "omitted",
+      "notes": "Verified but omitted as a separate formula because it is the W < 0 branch of retained Eq. (5)."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Retained as E1; vector dot product, norms and minus 90 degrees visually checked."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Retained as E3; both load-sign branches visually checked."
+    },
+    {
+      "equation": "Eq. (6)-(9)",
+      "page": 7,
+      "status": "omitted",
+      "notes": "Poisson and exponential derivation checked; omitted as intermediate algebra, with assumptions preserved in M4/E5."
+    },
+    {
+      "equation": "Eq. (10)",
+      "page": 7,
+      "status": "omitted",
+      "notes": "Unmodified point-mass plus exponential model checked; omitted because retained Eq. (12) is the paper's corrected model."
+    },
+    {
+      "equation": "Eq. (11)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Retained as E4; exponential sign and p1 relation visually checked."
+    },
+    {
+      "equation": "Eq. (12)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Retained as E5; delta term and shifted exponential visually checked. Domain/normalization implementation warning recorded."
+    },
+    {
+      "equation": "Eq. (13)",
+      "page": 7,
+      "status": "omitted",
+      "notes": "Geometric engagement-area fraction definition checked and summarized in validation evidence."
+    },
+    {
+      "equation": "Eq. (14)",
+      "page": 7,
+      "status": "omitted",
+      "notes": "Relative error definition checked and summarized in V2."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Background/nature and application montage; the single-spine schematic is superseded by Fig. 3."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": false,
+      "reason": "Two-dimensional precursor; retained equations and the 3D Fig. 3 provide sufficient evidence."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 4,
+      "extracted": true,
+      "file": "figures/fig03_p04_3d_contact_angle_and_load_ratio.png",
+      "reason": "Irreplaceable force/angle geometry and 3D load-ratio zones. Crop visually verified with full labels, axes, legends and caption."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 5,
+      "extracted": false,
+      "reason": "Sandpaper morphology and load maps are summarized by the more direct mechanism-plus-experiment evidence in Fig. 5."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 6,
+      "extracted": true,
+      "file": "figures/fig05_p06_morphology_index_and_capacity.png",
+      "reason": "Minimal visual chain from concavity/MI to measured load-ratio capability. Crop visually verified."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 6,
+      "extracted": false,
+      "reason": "Simple probability geometry is fully represented by E4-E5 and the variable definitions."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 8,
+      "extracted": false,
+      "reason": "Monte Carlo result can be stated compactly by sample size, error direction and fitted lambda values."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 8,
+      "extracted": false,
+      "reason": "Experimental fits are preserved numerically in V3-V4 and the parameter table."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig09_p10_tip_radius_size_effect.png",
+      "reason": "Irreplaceable combined evidence for offset reachability, radius-to-size ratio and non-monotonic alpha/lambda. Crop visually verified."
+    }
+  ],
+  "omitted_sections": [
+    "Most general background and robot taxonomy in the Introduction",
+    "Experimental device assembly details not affecting interpretation",
+    "CRediT authorship contribution statement",
+    "Declaration of Competing Interest",
+    "Acknowledgement",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.5, Section 2.3",
+      "item": "Morphology-index sign rule",
+      "detail": "The text first states that phi1' > phi1 makes a concave point more stable, but later assigns MI = 1 (concave) when phi' < phi. The intended implementation cannot be determined reliably from this paper alone."
+    },
+    {
+      "location": "PDF p.9, Section 3.3",
+      "item": "Direction of theoretical-versus-experimental lambda comparison",
+      "detail": "The prose says experimental lambda is significantly larger, while the printed values 0.296/0.493 are smaller than 2.23/3.67. The reciprocal distances are larger experimentally."
+    },
+    {
+      "location": "PDF p.10, Section 3.4 and Fig. 9(F)",
+      "item": "r0 = 1.6 label",
+      "detail": "The horizontal axis and surrounding definition indicate a dimensionless radius-to-size ratio of about 1.6, not a tip radius r0 with length units."
+    }
+  ],
+  "known_warnings": [
+    "The symbol d is used for class-interval width in Eq. (11)-(12) and later again for mean distance 1/lambda; implementations must use distinct variable names.",
+    "Eq. (12) should be implemented explicitly as a point mass plus a conditional continuous tail with a stated domain and normalization.",
+    "All experimental parameters and rates are sandpaper- and rig-specific and require recalibration for fired-clay brick.",
+    "Single-spine Poisson independence is not evidence of independence among multiple spines in an array."
+  ],
+  "evidence_card_character_count": 2942,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains two independent core models plus a finite-tip reachability submodel.",
+  "status": "PASS_WITH_WARNINGS"
+}

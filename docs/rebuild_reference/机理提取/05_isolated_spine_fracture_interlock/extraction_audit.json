@@ -1,0 +1,234 @@
+{
+  "paper_title": "Simulation and Analysis of Microspines Interlocking Behavior on Rocky Surfaces: An In-Depth Study of the Isolated Spine",
+  "source_file": "机理文献/核心文献/05_Simulation and analysis of microspines interlocking behavior on rocky surfaces An in-depth study of.pdf",
+  "doi": "10.1115/1.4047725",
+  "pdf_pages": 9,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "sections_checked": [
+    "Abstract",
+    "1 Introduction",
+    "2 Interlocking Model",
+    "2.1 Hertz's Contact Approach",
+    "2.2 Fracture Model",
+    "3 Simulation Setup",
+    "3.1 Profile Generation",
+    "3.2 Spine Simulation Routine",
+    "3.3 Post-Processing",
+    "4 Single Spine Testing",
+    "4.1 Setup and Procedure",
+    "5 Simulation Result and Discussion",
+    "5.1 Anchoring Probability",
+    "5.2 Force Distribution Analysis",
+    "5.3 Mean Force Function",
+    "5.4 Influence of KIIc and R on the Mean Force Function",
+    "6 Experimental Results and Discussion",
+    "6.1 Rock Roughness Estimation and Tip Measurement Analysis",
+    "6.2 Results",
+    "6.3 Discussion",
+    "7 Conclusion",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 2,
+      "status": "verified",
+      "notes": "Retained as E1 exactly as printed: tau_cr = K_IIc sqrt(pi c). A 600-dpi visual recheck confirms multiplication, not division. The printed equation is dimensionally inconsistent with tau_cr as stress and K_IIc in MPa sqrt(m); it is therefore marked unusable pending erratum/code/re-derivation."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 2,
+      "status": "verified",
+      "notes": "Retained as E2; F = tau_cr A was visually checked. The surrounding text states that this is the force component parallel to the fracture plane."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Retained as E3; alpha = atan(1/mu_s) and the Fig. 2 angle geometry were visually checked."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E4; both exponential factors, Ra-t term and wd term were visually checked. The authors' d=0 and Ra<t caveats are preserved."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 6,
+      "status": "omitted",
+      "notes": "Visually verified as F = exp[-c(Ra)](a + b sqrt(d)); omitted as a separate retained formula because Eq. (6) is the paper's K_IIc-linearized final estimator."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Retained as E5; factor 10 K_IIc, exponential exp[-p(Ra)] and m+n sqrt(d) were visually checked. Parameter units are not reported, so the fit is not directly portable."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 3,
+      "status": "verified",
+      "notes": "Ra, R and K_IIc simulation ranges checked."
+    },
+    {
+      "table": "Table 2",
+      "page": 4,
+      "status": "verified",
+      "notes": "Fixed friction, elastic and strength inputs checked. The final traction-strength symbol is typographically unclear and was not retained."
+    },
+    {
+      "table": "Table 3",
+      "page": 5,
+      "status": "verified",
+      "notes": "v, w, t and r-square values for R=5/10/50 micrometers checked and retained."
+    },
+    {
+      "table": "Table 4",
+      "page": 6,
+      "status": "verified",
+      "notes": "Eq. (5) fit parameters checked; omitted from the evidence card because Eq. (6)/Table 5 is the final reduced estimator."
+    },
+    {
+      "table": "Table 5",
+      "page": 7,
+      "status": "verified",
+      "notes": "K-independent Eq. (6) fit parameters checked and reproduced only for exact-unit replication; their units are absent and direct transfer is rejected."
+    },
+    {
+      "table": "Table 6",
+      "page": 7,
+      "status": "verified",
+      "notes": "Unused and worn tip radii 13.2, 33.81 and 32.88 micrometers checked."
+    },
+    {
+      "table": "Table 7",
+      "page": 8,
+      "status": "verified",
+      "notes": "p_lock, measured mean force, simulated force and Hertz force columns checked. Rock A/C measured-versus-simulated values and Rock D/E coating contrast are retained."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Hertz stress trend is compactly preserved as negative evidence; its plotting inputs are not fully specified for reuse."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": true,
+      "file": "figures/fig02_p03_fracture_model.png",
+      "reason": "Irreplaceable 2D contact, fracture-angle, fracture-plane and fracture-length geometry; crop visually verified with labels and caption."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 4,
+      "extracted": false,
+      "reason": "Experimental rig details are adequately summarized by loading direction, compliance constraint and spine angle."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 5,
+      "extracted": false,
+      "reason": "Substrate photographs do not add quantitative evidence beyond the material/cover descriptions."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 5,
+      "extracted": false,
+      "reason": "The fitted probability surface is represented more precisely by Eq. (4), Table 3 and its domain warnings."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 5,
+      "extracted": false,
+      "reason": "Residual trend is noted through reported r-square range; no additional reusable parameter is visible."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 6,
+      "extracted": true,
+      "file": "figures/fig07_p06_simulated_force_distribution.png",
+      "reason": "Direct visual comparison of simulated force data, Log-Normal and Gaussian models; paired with Fig. 12 for the minimal simulation-experiment chain."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 6,
+      "extracted": false,
+      "reason": "Mean-force surface and residuals are adequately represented by Eq. (5)-(6), fit ranges and limitations."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 6,
+      "extracted": false,
+      "reason": "Tip-radius trend is retained textually; the plot is an empirical surface without portable coefficients beyond the tables."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 7,
+      "extracted": false,
+      "reason": "Approximate K_IIc proportionality is preserved with Eq. (6) and its limited-domain warning."
+    },
+    {
+      "figure": "Fig. 11",
+      "page": 7,
+      "extracted": false,
+      "reason": "The worn-tip image is replaced by the measured radii in Table 6."
+    },
+    {
+      "figure": "Fig. 12",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig12_p08_experimental_force_distribution.png",
+      "reason": "Minimal experimental evidence that the force distribution remains right-skewed and is represented by a Log-Normal curve; crop visually verified."
+    }
+  ],
+  "omitted_sections": [
+    "General application and robot-history background in the Introduction",
+    "Detailed rig hardware and sample photographs not affecting interpretation",
+    "Acknowledgment",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.2, Eq. (1)",
+      "item": "Dimensional inconsistency in the printed Mode-II critical-stress formula",
+      "detail": "The PDF clearly prints tau_cr = K_IIc sqrt(pi c), while K_IIc is later tabulated in MPa sqrt(m). The right-hand side is not a stress. The intended equation cannot be corrected from this paper alone."
+    },
+    {
+      "location": "PDF p.4, Table 2",
+      "item": "Traction-strength symbol",
+      "detail": "The last row appears with a nu-like symbol although the quantity is in MPa and the text discusses strength. It was omitted because it is not required by the retained mechanism."
+    },
+    {
+      "location": "PDF p.7, Eq. (6) and Table 5",
+      "item": "Fit-parameter units",
+      "detail": "The paper gives numerical m, n and p values but does not report their units; Eq. (6) is therefore not portable outside the exact unit convention and fit domain."
+    },
+    {
+      "location": "PDF p.7, Section 6.1",
+      "item": "Experimental surface parameters",
+      "detail": "Ra=30 micrometers and K_IIc values are estimated by analogy to prior literature rather than measured on the tested samples; only order-of-magnitude comparison is claimed."
+    },
+    {
+      "location": "PDF p.4-8, Sections 3.3, 5.2 and 6.3",
+      "item": "Zero/failure handling in force-distribution fits",
+      "detail": "The paper reports p_lock and force distributions separately but does not state clearly whether failed or near-zero trials were excluded before the Log-Normal fits. A Bernoulli-plus-positive-distribution interpretation is therefore a downstream modeling choice, not an explicit paper result."
+    }
+  ],
+  "known_warnings": [
+    "The fracture-plane model is two-dimensional and approximates area as squared fracture length; it is not a validated three-dimensional crack model.",
+    "Eq. (4) must be clipped for Ra<t and does not allow nonzero capture at zero nominal travel.",
+    "The simulated model overestimates measured forces for all quantitative Rock A/C comparisons in Table 7.",
+    "The experimental rig has nearly zero normal preload and near-zero horizontal compliance, unlike a compliant microspine module.",
+    "Single-spine Bernoulli and Log-Normal marginals are not evidence of independent array behavior or load sharing.",
+    "Rendered pages emitted Poppler font warnings for Symbol/ArialUnicode, but every page, equation, table and retained crop was visually inspected and all relevant glyphs were legible."
+  ],
+  "evidence_card_character_count": 2863,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains fracture, capture-probability and force-distribution submodels.",
+  "status": "PASS_WITH_WARNINGS"
+}

@@ -1,0 +1,200 @@
+{
+  "paper_title": "A mechanical adhesive gripper inspired by beetle claw for a rock climbing robot",
+  "source_file": "机理文献/核心文献/17_A mechanical adhesive gripper inspired by beetle claw for a rock climbing robot.pdf",
+  "doi": "10.1016/j.mechmachtheory.2022.105168",
+  "pdf_pages": 23,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+  "sections_checked": [
+    "Abstract",
+    "1 Introduction",
+    "2 Attachment of biological claws and bioinspired microspines",
+    "2.1 Claw of Coleoptera",
+    "2.2 Applicability and recommended layout of claws/microspines",
+    "3 Design of the mechanical adhesive gripper",
+    "3.1 Bioinspired mechanism of single branch",
+    "3.2 Mechanical design and drivetrain",
+    "4 Grasping analysis",
+    "4.1 Grasp sequence",
+    "4.2 Kinetostatic model",
+    "4.3 Grasp wrench workspace",
+    "5 Climbing robot system design",
+    "5.1 Configuration",
+    "5.2 Degrees of freedom analysis",
+    "5.3 Control system",
+    "6 Experiments",
+    "6.1 Setup and conditions",
+    "6.2 Results and discussion",
+    "7 Conclusion and future work",
+    "Funding; Declaration of Competing Interest; Data availability; Supplementary materials",
+    "Appendix: Kinematics of RockClimbo",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Retained as E1. The PDF visually confirms phi_min = phi_load + arccot(mu). It is explicitly attributed to the earlier Asbeck contact model and is not labeled as the paper's original criterion."
+    },
+    {
+      "equation": "Eq. (2)-(3)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Retained as E2. Rx and Ry are arithmetic means of contour-unit height Xi and length Yi. Figure 6(d) was checked for the geometric definitions."
+    },
+    {
+      "equation": "Eq. (4)-(9)",
+      "page": "8-9",
+      "status": "omitted",
+      "notes": "Visually checked as virtual-work setup, position vector, differential lever rho, force vector and work. They are intermediate steps; only the resulting Eq. (10)-(11) and their assumptions were retained."
+    },
+    {
+      "equation": "Eq. (10)-(11)",
+      "page": 9,
+      "status": "verified",
+      "notes": "Retained as E3. FT=M/rho and FN=(M-FT h)/||r_A1A3|| were checked together with the non-singular configuration and ignored inertia/compression-spring force assumptions."
+    },
+    {
+      "equation": "Eq. (12)",
+      "page": 10,
+      "status": "omitted",
+      "notes": "The constrained geometry optimization was visually checked. Only the optimized 60 mm, 31 mm and 15 degree result was considered; it was omitted from the card because it is device-specific and does not add a transferable mechanism."
+    },
+    {
+      "equation": "Eq. (13)",
+      "page": 12,
+      "status": "omitted",
+      "notes": "The full single-finger equilibrium vector was checked. Its physical content is compressed into M4; the downstream equivalent-force and reaction equations are retained instead."
+    },
+    {
+      "equation": "Eq. (14)-(18)",
+      "page": "12-13",
+      "status": "verified",
+      "notes": "Eq. (14), (16) and (18) are retained as E4. Eq. (15) was checked but left as a warning because rho-prime is differentiated with respect to alpha while the surrounding branch state is beta. Eq. (17) was checked but omitted from the card because it uses h whereas Eq. (19) uses h_C-prime without an explicit equivalence statement."
+    },
+    {
+      "equation": "Eq. (19)",
+      "page": 13,
+      "status": "verified",
+      "notes": "Retained as E5. Both base-reaction components, signs, beta factors, h_C-prime and s_C-prime denominators were visually checked."
+    },
+    {
+      "equation": "Eq. (20)",
+      "page": 13,
+      "status": "verified",
+      "notes": "Retained as E6. The opposed-finger planar wrench and its moment-arm signs were checked against the PDF and Figure 18(b)."
+    },
+    {
+      "equation": "Eq. (21)",
+      "page": 13,
+      "status": "verified",
+      "notes": "Verified as the six-component whole-gripper wrench definition. It is noted under E6 rather than repeated as a separate core formula."
+    },
+    {
+      "equation": "Eq. (22)-(28)",
+      "page": "15-16",
+      "status": "omitted",
+      "notes": "Robot screw-system and constrained-DOF equations were visually checked but omitted because they concern whole-robot mobility, not the requested contact/array/gripper mechanism chain."
+    },
+    {
+      "equation": "Eq. (29)-(39)",
+      "page": "21-22",
+      "status": "omitted",
+      "notes": "Appendix POE forward/inverse leg kinematics was checked for document completeness and omitted as out of scope."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 15,
+      "status": "omitted",
+      "notes": "RockClimbo body and leg link dimensions were visually checked. They do not parameterize the gripper contact, array or opposed-wrench models and were omitted."
+    }
+  ],
+  "figures_checked": [
+    {"figure": "Fig. 1", "page": 2, "extracted": false, "reason": "Prototype overview is not mechanism evidence."},
+    {"figure": "Fig. 2", "page": 3, "extracted": false, "reason": "Beetle specimen images are biomimetic background; the operational sequence is preserved in Figures 4 and 14."},
+    {"figure": "Fig. 3", "page": 4, "extracted": false, "reason": "The contact angles and directions were visually checked; Eq. (1) and the text preserve the small amount of transferable content."},
+    {"figure": "Fig. 4", "page": 4, "extracted": false, "reason": "Biological claw sequence is superseded by the engineered branch sequence in Figure 14."},
+    {"figure": "Fig. 5", "page": 5, "extracted": true, "file": "figures/fig05_06_p05_search_and_surface_geometry.png", "reason": "The finite-tip search state machine is irreducible to one formula; direct PDF crop visually verified."},
+    {"figure": "Fig. 6", "page": 5, "extracted": true, "file": "figures/fig05_06_p05_search_and_surface_geometry.png", "reason": "Preserves four distinct failure geometries and the Rx/Ry contour-unit definition in the same direct crop as Figure 5."},
+    {"figure": "Fig. 7", "page": 6, "extracted": false, "reason": "Generated-surface examples add no reproducible PSD or covariance beyond the stated Rx/Ry cases."},
+    {"figure": "Fig. 8", "page": 6, "extracted": false, "reason": "The travel-saturation trend and rt multiplier were checked and retained textually; the full heatmaps are not required by downstream reasoning."},
+    {"figure": "Fig. 9", "page": 7, "extracted": false, "reason": "Lateral-spacing heatmaps are summarized by the weak-spacing-effect result and recommended 2.5 mm value."},
+    {"figure": "Fig. 10", "page": 7, "extracted": false, "reason": "Longitudinal-spacing heatmaps are summarized by the weak-spacing-effect result and recommended 2.5 mm value."},
+    {"figure": "Fig. 11", "page": 7, "extracted": false, "reason": "The fixed-relative-position spine-count saturation is preserved textually with the N values and assumption."},
+    {"figure": "Fig. 12", "page": 7, "extracted": false, "reason": "The recommended layout is fully represented by smax=4.5 mm and 2.5 mm spacings."},
+    {"figure": "Fig. 13", "page": 8, "extracted": false, "reason": "Gripper and tile appearance is sufficiently described by the retained architecture and parameters."},
+    {"figure": "Fig. 14", "page": 9, "extracted": true, "file": "figures/fig14_15_p09_branch_sequence_and_force_model.png", "reason": "Shows spring states, normal accommodation, tangential search and reverse detachment in one direct PDF crop."},
+    {"figure": "Fig. 15", "page": 9, "extracted": true, "file": "figures/fig14_15_p09_branch_sequence_and_force_model.png", "reason": "Preserves alpha, h, FT/FN and torque directions needed to interpret Eq. (10)-(11)."},
+    {"figure": "Fig. 16", "page": 10, "extracted": false, "reason": "Winch routing was checked; hierarchical compliance and cable-pair function are adequately represented in text."},
+    {"figure": "Fig. 17", "page": 11, "extracted": false, "reason": "Attachment/detachment winch sequence is adequately summarized by M3 and adds no portable quantitative relation."},
+    {"figure": "Fig. 18", "page": 12, "extracted": true, "file": "figures/fig18_p12_branch_and_opposed_force_model.png", "reason": "Irreplaceable mapping among contact forces, pressure-center lever arms, beta and opposed-finger wrench geometry; direct crop verified."},
+    {"figure": "Fig. 19", "page": 14, "extracted": false, "reason": "The fitted wrench boundary is model-output specific and is represented by the retained constraints and coupled-boundary conclusion."},
+    {"figure": "Fig. 20", "page": 15, "extracted": false, "reason": "The normal monotonic and tangential unimodal beta trends are retained and experimentally compared with Figure 24."},
+    {"figure": "Fig. 21", "page": 15, "extracted": false, "reason": "Whole-robot configuration is outside the requested mechanism extraction."},
+    {"figure": "Fig. 22", "page": 16, "extracted": false, "reason": "Robot control architecture is outside the contact/array/gripper mechanism scope."},
+    {"figure": "Fig. 23", "page": 17, "extracted": false, "reason": "Test setup is fully captured by load direction, force gauge, basalt substrate and pull-to-slip description."},
+    {"figure": "Fig. 24", "page": 19, "extracted": false, "reason": "The beta trends, extrema and three-repeat condition are retained numerically/textually; no precise values were inferred from the plot."},
+    {"figure": "Fig. 25", "page": 19, "extracted": false, "reason": "Outdoor demonstration photos are replaced by the reported gravel, asphalt and shale loads."},
+    {"figure": "Fig. 26", "page": 20, "extracted": false, "reason": "Robot climbing time-lapse is application evidence only; speed, gravity condition and wall angle are retained textually."}
+  ],
+  "omitted_sections": [
+    "Broad climbing-robot and biological-attachment survey in the Introduction",
+    "Beetle taxonomy and specimen appearance beyond the claw sequence",
+    "Device fabrication materials that do not affect retained compliance parameters",
+    "RockClimbo leg configuration, screw-theory DOF derivation and ROS control architecture",
+    "Appendix product-of-exponentials leg kinematics",
+    "Funding, conflict statement, supplementary-material link and full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.5-7, Sections 2.2 and Figures 7-11",
+      "item": "Random-surface reproducibility",
+      "detail": "The paper mentions a two-dimensional Gaussian random roughness function and spectral density, then extension to three dimensions, but does not print the function, covariance/PSD parameters, grid spacing, random seed or convergence test."
+    },
+    {
+      "location": "PDF p.5, Section 2.2 versus Figure 7",
+      "item": "Generated-surface size notation",
+      "detail": "The text prints a minimum size of 1×10^4 square micrometres while Figure 7 axes span about 10,000 micrometres in both in-plane directions. The statement was not used as a solver parameter."
+    },
+    {
+      "location": "PDF p.6, Figure 8; p.10, Section 3.2",
+      "item": "Tip-radius mismatch",
+      "detail": "Figure 8 labels 150 micrometres as 10 times rt, implying rt=15 micrometres for the search maps; the fabricated acupuncture spine tip radius is 30 micrometres. No rescaling validation is reported."
+    },
+    {
+      "location": "PDF p.12, Eq. (14)-(15)",
+      "item": "Alpha/beta variable transition",
+      "detail": "The branch force is parameterized by beta, but rho-prime in Eq. (15) is still written as dr_A1C-prime/dalpha and contains alpha. The paper does not explicitly state the coordinate substitution."
+    },
+    {
+      "location": "PDF p.13, Eq. (17) and Eq. (19)",
+      "item": "h versus h_C-prime",
+      "detail": "Eq. (17) uses FT h while Eq. (19) uses FT h_C-prime. Figure 18 and Eq. (16) define h_C-prime; no separate h is redefined in this section."
+    },
+    {
+      "location": "PDF p.12-14, Section 4.2-4.3",
+      "item": "Per-spine shear capacity",
+      "detail": "Approximately 10 N per spine is attributed to SolidWorks FEA, but geometry, material, mesh, boundary conditions and failure criterion are not supplied. It is an upper-bound assumption, not a measured material constant."
+    },
+    {
+      "location": "PDF p.17-19, Section 6",
+      "item": "Experimental uncertainty and raw data",
+      "detail": "Each beta point was repeated three times at the same location and the paper reports that tests were limited because of damage. Surface replicates, test order and raw force traces are unavailable; the Data availability statement says no data were used."
+    }
+  ],
+  "known_warnings": [
+    "Eq. (1) is a reused two-dimensional hard-surface contact criterion and must not be represented as this paper's new three-dimensional theory.",
+    "Rx and Ry are directional contour descriptors, not complete three-dimensional roughness statistics and not material-strength parameters.",
+    "The recommended 4.5 mm travel and 2.5 mm spacings are conditioned on an incompletely specified random-surface family and a tip radius different from the prototype.",
+    "The wrench-space boundary assumes 10 attached spines per finger, whereas experiments indicate only 4-8 strong contacts per finger.",
+    "The normal/tangential beta validation is confounded by load eccentricity and deformation-induced extra engagement in the tangential test.",
+    "Repeated maximum-load tests permanently deform spines, so later results may not share the same tip geometry.",
+    "Hierarchical load sharing is inferred from compliant architecture and global behavior; no contact-level load distribution was measured.",
+    "The paper does not model substrate damage, red-brick behavior, progressive contact loss or post-failure load redistribution."
+  ],
+  "evidence_card_character_count": 3499,
+  "character_count_method": "Count of CJK Unified Ideographs and Extension A ideographs in evidence_card.md. The card uses the template's 3500-character extension because it preserves three independent reusable components: surface search, hierarchical branch mechanics and opposed-grasp wrench aggregation.",
+  "status": "PASS_WITH_WARNINGS"
+}
