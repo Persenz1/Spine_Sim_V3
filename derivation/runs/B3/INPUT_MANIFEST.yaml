@@ -1,0 +1,122 @@
+run:
+  id: "B3-r01"
+  module: "B3"
+  prepared_on: "2026-07-16"
+  run_directory: "derivation/runs/B3"
+  prompt_version: "1.0.0"
+  workflow_version: "1.3.4"
+  engineering_context_version: "1.0.0"
+  module_context_baseline: "0.2.0"
+  module_context_status: "accepted"
+  upstream_contract_version: "1.0.0"
+  upstream_contract_status: "accepted"
+  repository_commit: "f5e910fa72d6b9c26c7fee37b4beb9f3c05fb962"
+
+prompt_archive:
+  path: "derivation/runs/B3/PROMPT.md"
+  bytes: 35261
+  sha256: "761cdc6fb566bb62dc67aa943bb6cf94e99300fa838073faf9339ea3faf87498"
+  matches_uploaded_prompt: true
+
+prerequisite_acceptance:
+  prior_module_run: "B2-r01"
+  status: "accepted"
+  validation_report: "derivation/runs/B2/VALIDATION_REPORT.md"
+  validation_report_bytes: 6722
+  validation_report_sha256: "b12db0914f0b12886d6be699d6aa0be44f64f3dedbe7799a35af968cb6679d7c"
+  current_module_context: "derivation/modules/B/current/B_MODULE_CONTEXT.md"
+  current_module_context_version: "0.2.0"
+  current_module_context_stage: "B2"
+  current_module_context_status: "accepted"
+  current_module_context_bytes: 97054
+  current_module_context_sha256: "65aeb65e28887942b8eed9e95d7339d62604b52000f2b6133def7245513dae22"
+  history_snapshot: "derivation/modules/B/history/B_MODULE_CONTEXT_after_B2.md"
+  history_snapshot_bytes: 97054
+  history_snapshot_sha256: "65aeb65e28887942b8eed9e95d7339d62604b52000f2b6133def7245513dae22"
+  current_history_byte_identical: true
+  public_contract: "derivation/contracts/A_TO_B_CONTRACT.md"
+  public_contract_version: "1.0.0"
+  public_contract_status: "accepted"
+  public_contract_bytes: 26161
+  public_contract_sha256: "02d557c799973aad2347a255767c6b9283d9225a3c1a8e87ead91f6debc253df"
+  semantic_prerequisite_complete: true
+
+upload_contract:
+  expected_file_count: 12
+  verified_file_count: 12
+  all_expected_files_present: true
+  minimum_literature_package_complete: true
+  upstream_contract_included: true
+  existing_b_module_context_required: true
+  existing_b_module_context_included: true
+  full_a_integrated_model_required: false
+  prompt_manifest_actual_paths_identical: true
+  files:
+    - path: "engineering_fixed_context/engineering_fixed_context.md"
+      role: "最新完整工程事实正式基线，最高物理权威"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - path: "docs/extract/MECHANISM_MODULE_PLAN.md"
+      role: "B3 范围、九个必答问题、理论结果和能力输出"
+      bytes: 23613
+      sha256: "4d06612a56ea8a141aa2adc3dddb633c6c9fc11da728fd3eb45003841bed269a"
+    - path: "derivation/prompts/B/B3_PROMPT.md"
+      role: "B3-r01 正式网页端执行提示词"
+      bytes: 35261
+      sha256: "761cdc6fb566bb62dc67aa943bb6cf94e99300fa838073faf9339ea3faf87498"
+    - path: "docs/derivation_workflow/templates/MODULE_CONTEXT_TEMPLATE.md"
+      role: "融合 B1+B2+B3 的最新完整 B_MODULE_CONTEXT 最低内容合同"
+      bytes: 3709
+      sha256: "f211906d6cdb5ff05f63434f744b87b6b4e56a1f70e3610fcfa9ea40bb874f45"
+    - path: "docs/derivation_workflow/templates/ENGINEERING_FIXED_CONTEXT_CANDIDATE_TEMPLATE.md"
+      role: "完整工程事实候选输出合同"
+      bytes: 9670
+      sha256: "d37061617e1d684961adf034eaf6230c41a5eb52946d8bff8b7d77ff3d900db3"
+    - path: "docs/derivation_workflow/templates/RUN_UPDATE_SUMMARY_TEMPLATE.yaml"
+      role: "运行摘要、工程事实变化映射和自检合同"
+      bytes: 4061
+      sha256: "dc5e4902670f1f7dd06b7869f927b939732844d431521feb74faa5ae8553451d"
+    - path: "docs/derivation_workflow/templates/CITATION_BRIEF_TEMPLATE.md"
+      role: "仅本轮本地归档的引用说明合同"
+      bytes: 1952
+      sha256: "dfc16cbccdd5ff4baec0e00474d80fc7315a73a00d05e99091c92afd4bf40b67"
+    - path: "derivation/contracts/A_TO_B_CONTRACT.md"
+      role: "已接受 A→B 单刺调用、wrench、损伤事务和原子提交合同"
+      bytes: 26161
+      sha256: "02d557c799973aad2347a255767c6b9283d9225a3c1a8e87ead91f6debc253df"
+    - path: "derivation/modules/B/current/B_MODULE_CONTEXT.md"
+      role: "B1+B2 0.2.0 accepted 完整上下文；B3 必须无损继承并融合"
+      bytes: 97054
+      sha256: "65aeb65e28887942b8eed9e95d7339d62604b52000f2b6133def7245513dae22"
+    - path: "docs/extract/机理提取/03_compliant_directional_suspensions/03_compliant_directional_suspensions.zip"
+      role: "文献 03：动态载荷转移、级联风险、回壁再挂接和连续附着"
+      bytes: 567927
+      sha256: "1063d6b519189a20ea9a1cb6d863a5cb1732af7851c055db5deec715947836e5"
+    - path: "docs/extract/机理提取/09_stochastic_compliant_spine_arrays/09_stochastic_compliant_spine_arrays.zip"
+      role: "文献 09：递归保持/滑脱/未挂接/再挂接状态与剩余行程"
+      bytes: 586565
+      sha256: "1d8522627a4b1aee443c8111716d24d760852476ed744c3ddf91d6bda092dfdd"
+    - path: "docs/extract/机理提取/21_underactuated_adaptive_microspines_gripper/21_underactuated_adaptive_microspines_gripper.zip"
+      role: "文献 21：跳峰二次锚定和微刺单元渐进脱附实验"
+      bytes: 973950
+      sha256: "d2742ff906aed08b90d0f56ffb95800e5dfc3e251a4fdf4a7e06161b8f4e1e37"
+
+expected_outputs:
+  file_count: 4
+  files:
+    - "B_MODULE_CONTEXT.md"
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    - "RUN_UPDATE_SUMMARY.yaml"
+    - "CITATION_BRIEF.md"
+
+preparation_validation:
+  engineering_context_generator_check: "pass"
+  b2_input_validation: "pass"
+  b2_artifact_acceptance_validation: "pass"
+  upstream_contract_validation: "pass"
+  prompt_archive_byte_identical: true
+  git_snapshot_hashes_verified: true
+  upload_order_verified: true
+  literature_zip_crc_verified: true
+  output_contract_verified: true
+  no_run_directory_collision: true
