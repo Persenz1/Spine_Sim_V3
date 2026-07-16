@@ -1,0 +1,102 @@
+run:
+  id: "SYSTEM_INTEGRATION-r01"
+  task: "SYSTEM_INTEGRATION"
+  scope: "SYSTEM"
+  phase: "pre_web_preparation"
+  prepared_on: "2026-07-17"
+  run_directory: "derivation/runs/SYSTEM_INTEGRATION"
+  prompt_version: "1.0.0"
+  workflow_version: "1.3.4"
+  engineering_context_version: "1.0.0"
+  repository_commit: "204226fa48a953f3d0f681f9a0497b3f95095a04"
+
+prompt_archive:
+  path: "derivation/runs/SYSTEM_INTEGRATION/PROMPT.md"
+  bytes: 25334
+  sha256: "7f8644bb268969e9bd2d6138e6ba0e59f8fabbb820c49563f91e37daccf4e34f"
+  matches_uploaded_prompt: true
+
+module_acceptance:
+  all_modules_formally_integrated_and_accepted: true
+  models:
+    - module: "A"
+      path: "derivation/modules/A/final/A_INTEGRATED_MODEL.md"
+      model_version: "1.0.0"
+      status: "accepted"
+    - module: "B"
+      path: "derivation/modules/B/final/B_INTEGRATED_MODEL.md"
+      model_version: "1.0.0"
+      status: "accepted"
+    - module: "C"
+      path: "derivation/modules/C/final/C_INTEGRATED_MODEL.md"
+      model_version: "1.0.0"
+      status: "accepted"
+
+interface_embedding:
+  A_TO_B:
+    contract_version: "1.0.0"
+    standalone_path: "derivation/contracts/A_TO_B_CONTRACT.md"
+    standalone_bytes: 26161
+    standalone_sha256: "02d557c799973aad2347a255767c6b9283d9225a3c1a8e87ead91f6debc253df"
+    embedded_in: "derivation/modules/A/final/A_INTEGRATED_MODEL.md"
+    marker_block_byte_exact: true
+  B_TO_C:
+    contract_version: "1.0.0"
+    standalone_path: "derivation/contracts/B_TO_C_CONTRACT.md"
+    standalone_bytes: 39614
+    standalone_sha256: "fc9dd4504f1c6b0650361bbf289fdfdfc18ae1a01834887a3bf40bc09478c894"
+    embedded_in: "derivation/modules/B/final/B_INTEGRATED_MODEL.md"
+    marker_block_byte_exact: true
+
+upload_contract:
+  expected_file_count: 5
+  verified_file_count: 5
+  no_additional_evidence_required: true
+  files:
+    - upload_order: 1
+      role: "latest_formal_engineering_facts"
+      path: "engineering_fixed_context/engineering_fixed_context.md"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - upload_order: 2
+      role: "accepted_A_integrated_model"
+      path: "derivation/modules/A/final/A_INTEGRATED_MODEL.md"
+      bytes: 106019
+      sha256: "0679f5bfe71d2ff5b2521414a39b41c6b94f23f54227d19bd38a964960088ccc"
+    - upload_order: 3
+      role: "accepted_B_integrated_model"
+      path: "derivation/modules/B/final/B_INTEGRATED_MODEL.md"
+      bytes: 116518
+      sha256: "d64a387956b4d8b2317817c7429d1a57e594bab436fc5f1c9547126c95dd43ad"
+    - upload_order: 4
+      role: "accepted_C_integrated_model"
+      path: "derivation/modules/C/final/C_INTEGRATED_MODEL.md"
+      bytes: 110832
+      sha256: "8439835281ed61344de106082f8e6826c9a993d8767fb7845633510cdfe5b589"
+    - upload_order: 5
+      role: "formal_system_integration_prompt"
+      path: "derivation/prompts/SYSTEM_INTEGRATION_PROMPT.md"
+      bytes: 25334
+      sha256: "7f8644bb268969e9bd2d6138e6ba0e59f8fabbb820c49563f91e37daccf4e34f"
+
+expected_outputs:
+  file_count: 1
+  files:
+    - "SYSTEM_INTEGRATED_MODEL.md"
+  submodule_four_file_protocol_applies: false
+  require_engineering_fact_candidates: false
+  require_run_update_summary: false
+  require_citation_brief: false
+
+received_outputs: []
+
+preparation_validation:
+  engineering_context_generator_check: "pass"
+  prompt_archive_byte_identical: true
+  git_input_snapshot_hashes_verified: true
+  A_TO_B_contract_embedded: true
+  B_TO_C_contract_embedded: true
+  upload_order_and_count_verified: true
+  output_contract_verified: true
+  explicit_evidence_gap_found: false
+  unresolved_interface_gap_preserved_in_prompt: "B_TO_C 1.0 certifies local x/global Z translation only; unsupported nonzero +X/45deg eccentric loading must return C_CONTRACT_EXTENSION_REQUIRED with zero history advance."
