@@ -79,6 +79,37 @@ expected_outputs:
   public_upstream_downstream_experiment_interfaces_embedded: true
   submodule_four_file_protocol_forbidden: true
 
+received_outputs:
+  - name: "C_INTEGRATED_MODEL.md"
+    source_path: "C:/Users/23635/Downloads/C_INTEGRATED_MODEL.md"
+    archived_path: "derivation/runs/C_INTEGRATION/raw_downloads/C_INTEGRATED_MODEL.md"
+    normalized_candidate_path: "derivation/runs/C_INTEGRATION/C_INTEGRATED_MODEL_CANDIDATE.md"
+    bytes: 110864
+    sha256: "65fc8b40e9dfde0bcf47842bd37535b5f3a56cad6dd31d49510208642e832043"
+    byte_identical_candidate_copy: true
+
+raw_response:
+  path: "derivation/runs/C_INTEGRATION/RAW_RESPONSE.md"
+  attachment_only_marker: true
+  bytes: 7
+  sha256: "0871e777e5359cd18464698fdcc6982c6d14146444d170d477e33f28095a56f8"
+
+accepted_outputs:
+  status: "accepted"
+  accepted_on: "2026-07-17"
+  files:
+    - name: "C_INTEGRATED_MODEL.md"
+      path: "derivation/modules/C/final/C_INTEGRATED_MODEL.md"
+      bytes: 110832
+      sha256: "8439835281ed61344de106082f8e6826c9a993d8767fb7845633510cdfe5b589"
+  candidate_to_accepted_repairs_only: true
+  engineering_context_changed: false
+  upstream_contract_changed: false
+  engineering_or_physics_decision_required: false
+  separate_history_snapshot_required: false
+  snapshot_reason: "正式 1.0.0 文件本身是版本化接受快照；运行目录已同时冻结网页原件和候选副本，无需复制第三份相同集成模型。"
+  next_module_or_global_integration_started: false
+
 preparation_validation:
   engineering_context_generator_check: "pass"
   prompt_archive_byte_identical: true
@@ -86,4 +117,3 @@ preparation_validation:
   upload_order_verified: true
   output_contract_verified: true
   submodule_acceptance_verified: true
-
