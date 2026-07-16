@@ -1,0 +1,65 @@
+run:
+  id: "A2-r01"
+  module: "A2"
+  prepared_on: "2026-07-16"
+  run_directory: "derivation/runs/A2"
+  prompt_version: "1.0.0"
+  workflow_version: "1.3.4"
+  engineering_context_version: "1.0.0"
+  module_context_baseline: "0.1.0"
+  module_context_status: "accepted"
+  repository_commit: "9cd3a1f0943bcbd340fdb472d2a40c911978903b"
+
+prompt_archive:
+  path: "derivation/runs/A2/PROMPT.md"
+  bytes: 34247
+  sha256: "7d0852213458edb2303048555874fa3370485bde1e32d4d5848252ede67992e4"
+  matches_uploaded_prompt: true
+
+upload_contract:
+  expected_file_count: 10
+  verified_file_count: 10
+  all_expected_files_present: true
+  minimum_literature_package_complete: true
+  prompt_manifest_actual_paths_identical: true
+  files:
+    - path: "engineering_fixed_context/engineering_fixed_context.md"
+      role: "最新完整工程事实正式基线"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - path: "docs/extract/MECHANISM_MODULE_PLAN.md"
+      role: "A2 范围、必答问题、理论结果与完成判据"
+      bytes: 23613
+      sha256: "4d06612a56ea8a141aa2adc3dddb633c6c9fc11da728fd3eb45003841bed269a"
+    - path: "derivation/prompts/A/A2_PROMPT.md"
+      role: "A2-r01 正式网页端执行提示词"
+      bytes: 34247
+      sha256: "7d0852213458edb2303048555874fa3370485bde1e32d4d5848252ede67992e4"
+    - path: "docs/derivation_workflow/templates/MODULE_CONTEXT_TEMPLATE.md"
+      role: "最新完整 A_MODULE_CONTEXT 最低内容合同"
+      bytes: 3709
+      sha256: "f211906d6cdb5ff05f63434f744b87b6b4e56a1f70e3610fcfa9ea40bb874f45"
+    - path: "docs/derivation_workflow/templates/ENGINEERING_FIXED_CONTEXT_CANDIDATE_TEMPLATE.md"
+      role: "完整工程事实候选输出合同"
+      bytes: 9670
+      sha256: "d37061617e1d684961adf034eaf6230c41a5eb52946d8bff8b7d77ff3d900db3"
+    - path: "docs/derivation_workflow/templates/RUN_UPDATE_SUMMARY_TEMPLATE.yaml"
+      role: "运行摘要、变化映射与自检合同"
+      bytes: 4061
+      sha256: "dc5e4902670f1f7dd06b7869f927b939732844d431521feb74faa5ae8553451d"
+    - path: "docs/derivation_workflow/templates/CITATION_BRIEF_TEMPLATE.md"
+      role: "仅本轮本地归档的引用说明合同"
+      bytes: 1952
+      sha256: "dfc16cbccdd5ff4baec0e00474d80fc7315a73a00d05e99091c92afd4bf40b67"
+    - path: "derivation/modules/A/current/A_MODULE_CONTEXT.md"
+      role: "已接受 A1 完整上下文与 A2 低层几何合同"
+      bytes: 73544
+      sha256: "9a14d472e87bd9cb230abf1ad835cbf546771b38cdf5e797091dd02231821e9e"
+    - path: "docs/extract/机理提取/01_frictional_engagement/01_frictional_engagement.zip"
+      role: "文献 01：三维摩擦稳定域、接触角和载荷比分支"
+      bytes: 1600511
+      sha256: "cd5209b7257822ce89453b5704998114f0127e7e00d1f413c7252107dd44f4b7"
+    - path: "docs/extract/机理提取/07_linearly_constrained_spines/07_linearly_constrained_spines.zip"
+      role: "文献 07：线性移动副、单刺接触分支、柔顺和限位"
+      bytes: 925280
+      sha256: "dfd71db60b4f3373abf40002eb4c29916d86cf5a49b00221b8de845710612d84"
