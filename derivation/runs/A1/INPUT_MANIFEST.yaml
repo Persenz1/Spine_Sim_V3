@@ -1,0 +1,78 @@
+run:
+  id: "A1-r01"
+  module: "A1"
+  archived_on: "2026-07-16"
+  run_directory: "derivation/runs/A1"
+  prompt_version: "1.2.0"
+  workflow_version: "1.3.2"
+  engineering_context_version: "1.0.0"
+  module_context_baseline: null
+
+upload_contract:
+  expected_file_count: 11
+  verified_file_count: 11
+  all_expected_files_present: true
+  minimum_literature_package_complete: true
+  files:
+    - path: "engineering_fixed_context/engineering_fixed_context.md"
+      role: "工程事实正式基线"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - path: "docs/extract/MECHANISM_MODULE_PLAN.md"
+      role: "模块范围、理论结果与完成判据"
+      bytes: 23613
+      sha256: "4d06612a56ea8a141aa2adc3dddb633c6c9fc11da728fd3eb45003841bed269a"
+    - path: "derivation/prompts/A/A1_PROMPT.md"
+      role: "本轮执行提示词"
+      bytes: 21920
+      sha256: "2b01d6befbc54c58bb120e04f90a3252624aa8d9e39778c8f730f29f3b8c1629"
+    - path: "docs/derivation_workflow/templates/MODULE_CONTEXT_TEMPLATE.md"
+      role: "模块上下文最低内容合同"
+      bytes: 3709
+      sha256: "f211906d6cdb5ff05f63434f744b87b6b4e56a1f70e3610fcfa9ea40bb874f45"
+    - path: "docs/derivation_workflow/templates/ENGINEERING_FIXED_CONTEXT_CANDIDATE_TEMPLATE.md"
+      role: "工程事实候选输出合同"
+      bytes: 9648
+      sha256: "379093ecefb7073a7738724fe726df9173aa440d97ae4634e61442e33f838fb9"
+    - path: "docs/derivation_workflow/templates/RUN_UPDATE_SUMMARY_TEMPLATE.yaml"
+      role: "运行摘要输出合同"
+      bytes: 4031
+      sha256: "fb2a32d8f46df05fcebe44c955fa26173eed567d6d5e13ed452376ece8c33dca"
+    - path: "docs/derivation_workflow/templates/CITATION_BRIEF_TEMPLATE.md"
+      role: "本地引用说明输出合同"
+      bytes: 1952
+      sha256: "dfc16cbccdd5ff4baec0e00474d80fc7315a73a00d05e99091c92afd4bf40b67"
+    - path: "docs/extract/机理提取/01_frictional_engagement/01_frictional_engagement.zip"
+      role: "文献 01：有限球尖、方向几何与首次啮合"
+      bytes: 1600511
+      sha256: "cd5209b7257822ce89453b5704998114f0127e7e00d1f413c7252107dd44f4b7"
+    - path: "docs/extract/机理提取/11_randomly_rough_contact_mechanics/11_randomly_rough_contact_mechanics.zip"
+      role: "文献 11：PSD 地形生成与数值收敛"
+      bytes: 454813
+      sha256: "6454cdc356dd271b0a04ae5ae8735f2122c651668ca9b759501d6a75e5ba8dfe"
+    - path: "docs/extract/机理提取/12_red_ceramic_blocks_roughness/12_red_ceramic_blocks_roughness.zip"
+      role: "文献 12：红砖实测形貌与测量质控"
+      bytes: 264948
+      sha256: "586f0fa2bb822e1d91ac465db599204fdc63c3732260fa52a9479e38a7c38afa"
+    - path: "docs/extract/机理提取/16_grappling_claws_3d_wall/16_grappling_claws_3d_wall.zip"
+      role: "文献 16：完整三角网格可达性"
+      bytes: 1279126
+      sha256: "84b55b2d48a46dacd11c465ddd88b51991b5f5ea30619a18efa82d1e556ad86c"
+
+received_outputs:
+  - archived_path: "derivation/runs/A1/MODULE_CONTEXT_CANDIDATE.md"
+    source_path: "C:/Users/23635/Downloads/A_MODULE_CONTEXT.md"
+    bytes: 73520
+    sha256: "72b49dbed2d5218031ce3f43ecc9c738af457fba137b17fae9416d0028821a2a"
+  - archived_path: "derivation/runs/A1/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    source_path: "C:/Users/23635/Downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+  - archived_path: "derivation/runs/A1/RUN_UPDATE_SUMMARY.yaml"
+    source_path: "C:/Users/23635/Downloads/RUN_UPDATE_SUMMARY.yaml"
+    bytes: 4707
+    sha256: "69185fb90dfa85069d548a82ff0b9322fd22ae79ec16766e520541f48c22b16d"
+  - archived_path: "derivation/runs/A1/CITATION_BRIEF.md"
+    source_path: "C:/Users/23635/Downloads/CITATION_BRIEF.md"
+    bytes: 4566
+    sha256: "b2862a728bf50da1deb278f6c94173743684c74baeaf20e9d58f47ac1e153b59"

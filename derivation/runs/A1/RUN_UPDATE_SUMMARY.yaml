@@ -1,0 +1,71 @@
+run:
+  module: "A1"
+  prompt_version: "1.2.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "none"
+  run_directory: "derivation/runs/A1"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "建立 SurfaceConfig、HeightFieldData、TriangleMeshData、SurfaceRealization 及统一几何查询合同，区分物理分辨率、采样间距、数值网格和可信二维波数区域。"
+    - "建立有限波数窗二维方向 PSD 的连续/离散归一化、Hermitian 谱合成、生成后 PSD 回算、谱矩及参数非独立性处理。"
+    - "选择实测优先、二维方向 PSD 为通用合成主线、二维 IAAFT 为首个非高斯分支、标记孔洞/颗粒过程为待材料数据标定分支。"
+    - "分别规定红砖、混凝土和砂纸的数据路径、可选后端和禁止硬编码项；明确砂纸目数仅为磨粒粒度分布标签，不是唯一三维地形。"
+    - "建立实测表面只读原始数据、坐标注册、统一基准面、掩膜、噪声/MTF、可信波段、反混叠重采样和局部异质性质控流程。"
+    - "建立高度场完整球中心最低可达包络、支持点恢复、多点支撑和非光滑法向集合，并增加局部球冠合法性约束。"
+    - "建立闭合定向三角网格的有符号距离、球—三角形最近距离、BVH/AABB 局部查询和高度场—网格一致性合同。"
+    - "建立球冠、锥形过渡段、圆柱针杆和安装座参数化几何及共享禁止碰撞间隙；所有未固定结构尺寸和安全间隙保持显式参数。"
+    - "建立首次合法球尖接触、非承载部件先碰撞、方向几何候选和多点接触存在型/稳健型裕度定义，不引入摩擦或接触力。"
+    - "建立间隙事件、域/质量事件、保守推进、回退括区、二分/Brent 定位、并发事件优先级、步长恢复和空间缓存要求。"
+    - "给出地形预处理和单路径几何查询伪代码、A2/A3 完整候选字段、下游禁止重新定义项以及不确定性传播最低要求。"
+    - "建立平面、斜面、正弦面、沟槽/凹腔、随机场、球冠/体碰撞、高度场—网格一致性和事件不漏检的分级验证矩阵。"
+  modified:
+    - "none"
+  preserved:
+    - "none"
+  unresolved:
+    - "红砖、混凝土和具体砂纸批次的材料专属二维 PSD、高度边际、相关长度、各向异性、非高斯和局部非平稳参数。"
+    - "具体砂纸目数集合以及磨粒突出高度、形状、面密度、粘结层和磨损状态。"
+    - "目标测量系统的物理传递函数、噪声谱、可信最短/最长波长和是否覆盖 50/100 μm 针尖敏感尺度。"
+    - "球冠—锥段连接坐标、锥长/锥角、完整安装座外形及各非承载部件安全间隙。"
+    - "表面数值分辨率、随机样本数量、统计停止阈值、局部拟合尺度和所有几何/事件容差。"
+    - "材料专属模型族的最终选择及合成—实测交叉验证数据。"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与输入 engineering_fixed_context 1.0.0 逐字一致；SHA-256 为 6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb。"
+    - "四个本地文献压缩包中可访问内容为证据卡和配套图像，未包含论文 PDF；本轮结论没有补写未提供原文中的细节。"
+    - "外部来源只用于模块机理的测量、PSD 和粒度标准边界，没有新增或修改正式工程事实，也没有固定材料专属数值。"
+    - "A1 中的方向候选严格保持为 A2 力学判断前的必要几何筛选；摩擦、接触力、柔顺和材料失效未被提前定义。"
+    - "本轮完成的是可执行机理规范；代码实现、材料实测标定和数值测试运行仍需后续完成。"
