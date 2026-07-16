@@ -1,0 +1,75 @@
+run:
+  module: "C1"
+  run_id: "C1-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "none"
+  run_directory: "derivation/runs/C1"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "四个单元局部坐标、工程参考点 O_i、B 规范参考点 O_A 与全局参考点 C 之间的版本化静态变换，以及 wrench/twist 功不变运输。"
+    - "唯一共同径向坐标 s、同步位移约束、逐单元独立法向平衡，以及由虚功推导的 Q_s_contact 与 Q_s_drive。"
+    - "逐单元轴向阻力、X/Y 对置分支内部预紧与不平衡、完整 contact-only 合 wrench 和搜索支承反力诊断的分栏定义。"
+    - "B→C 合同继承映射：唯一 embedded_array_unit_trial 入口、UX_PZ_BALANCED/PRESCRIBED_XZ_RESIDUAL、CONTACT_ONLY_EXTERNAL_ASSEMBLY_V1、graph/切线有效域、事件、共享损伤和嵌套原子事务。"
+    - "四单元最早事件、跨单元同时事件、共享 DamageStore fixed point、同位置级联、prepare/commit/rollback 的完整单步流程。"
+    - "由能力平台、乐观边际收益、最弱分支、过预紧/损伤/强度/行程/碰撞/认证共同组成的参数化停止策略族。"
+    - "从 B 连续单元结果、相关四方向样本和未来实验反推停止阈值与 s_max 的离线标定、留出验证和在线信息边界。"
+    - "STOP_PRELOAD_ACCEPTED、STOP_AT_SEARCH_LIMIT_UNQUALIFIED、STOP_SAFETY_LIMIT、STOP_IRRECOVERABLE、STOP_UNCERTIFIED、STOP_NUMERICAL 的互斥主状态。"
+    - "C1PreloadState 的径向锁定、B/A opaque 历史与共享 DamageStore 继承、法向可演化边界以及 C2/C3 交接合同。"
+    - "覆盖坐标、同步、预紧、事件、损伤、停止、失败分类、rocking 防伪和确定性重放的验证矩阵。"
+  modified:
+    - "none"
+  preserved:
+    - "none"
+  unresolved:
+    - "UNRESOLVED.C1.STOP_THRESHOLD：平台比例、边际收益、最弱裕度、安全边界、保持窗口、滞回和统计置信阈值仍待 B 单元仿真及实验标定。"
+    - "UNRESOLVED.C1.MAX_SEARCH_DISTANCE：C1 搜索上限 s_max 仍待离线分布和实验反推，禁止直接取 B 层 100 mm。"
+    - "能力特征映射、聚合器、归一化尺度、graph 保守下界和方向代理的正式配置尚未验证。"
+    - "四方向表面相关性、随机样本数、留出方案和置信覆盖率尚未确定。"
+    - "搜索阶段 contact-only 残量、对置不平衡和理想支承反力的可接受边界尚未固定。"
+    - "真实法向执行器作用线、传动对象和 CAD wrench 尚未定义。"
+    - "rocking=on、局部 y 平移和完整 6D 单元运动仍不受 B_TO_C 1.0.0 认证。"
+    - "跨四单元 DamageStore 协调器、原子事务和故障注入尚未实现验证。"
+    - "材料、摩擦、表面、损伤、事件容差和数值收敛参数仍待文献、测量和实验标定。"
+    - "当前没有 C1 求解器实现和目标四单元实验，验证矩阵仅完成定义。"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "工程事实候选与 engineering_fixed_context 1.0.0 基线逐字一致。"
+    - "本轮没有 add/modify 工程事实；停止算法、数据结构、坐标运输和事务均保留在 C_MODULE_CONTEXT。"
+    - "P_i、contact-only wrench、径向控制和其他约束反力已分栏，未重复装配或除以针数。"
+    - "未把文献 09/20 的机构数值、岩石数据或独立刺假设提升为本项目固定参数。"
+    - "未提前求解 C2 偏心 wrench/rocking 或 C3 渐进失效和最大承载。"
+    - "CITATION_BRIEF 仅本地旁路归档，不作为工程事实 provenance。"

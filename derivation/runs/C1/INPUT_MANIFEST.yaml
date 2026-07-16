@@ -102,3 +102,64 @@ preparation_validation:
   upload_order_verified: true
   literature_zip_crc_verified: true
   output_contract_verified: true
+
+received_outputs:
+  - expected_name: "C_MODULE_CONTEXT.md"
+    received_name: "C_MODULE_CONTEXT.md"
+    archived_path: "derivation/runs/C1/raw_downloads/C_MODULE_CONTEXT.md"
+    bytes: 72252
+    sha256: "8a703edcb72905f290378dd36ccc9460fbceac7c4e9a4b040f978dcdb5fdbfa9"
+    normalized_candidate_path: "derivation/runs/C1/MODULE_CONTEXT_CANDIDATE.md"
+    normalized_bytes: 72252
+    normalized_sha256: "8a703edcb72905f290378dd36ccc9460fbceac7c4e9a4b040f978dcdb5fdbfa9"
+    byte_identical_to_raw: true
+  - expected_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    received_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE(6).md"
+    archived_path: "derivation/runs/C1/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(6).md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    normalized_candidate_path: "derivation/runs/C1/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    normalized_bytes: 37148
+    normalized_sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    byte_identical_to_raw: true
+  - expected_name: "RUN_UPDATE_SUMMARY.yaml"
+    received_name: "RUN_UPDATE_SUMMARY(6).yaml"
+    archived_path: "derivation/runs/C1/raw_downloads/RUN_UPDATE_SUMMARY(6).yaml"
+    bytes: 4554
+    sha256: "20e0e2a36d1dace1cffb7255c919aa07fd07bc9929f3a364fd265b9480d2169d"
+    normalized_candidate_path: "derivation/runs/C1/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    normalized_bytes: 4554
+    normalized_sha256: "20e0e2a36d1dace1cffb7255c919aa07fd07bc9929f3a364fd265b9480d2169d"
+    byte_identical_to_raw: true
+  - expected_name: "CITATION_BRIEF.md"
+    received_name: "CITATION_BRIEF(6).md"
+    archived_path: "derivation/runs/C1/raw_downloads/CITATION_BRIEF(6).md"
+    bytes: 3225
+    sha256: "4d63fc1005cacc6a3a8699b6febf8c6e2fffee58b43885ac62c937a2c8fb797a"
+    normalized_candidate_path: "derivation/runs/C1/CITATION_BRIEF.md"
+    normalized_bytes: 3225
+    normalized_sha256: "4d63fc1005cacc6a3a8699b6febf8c6e2fffee58b43885ac62c937a2c8fb797a"
+    byte_identical_to_raw: true
+
+raw_response:
+  path: "derivation/runs/C1/RAW_RESPONSE.md"
+  bytes: 805
+  sha256: "b2152106add248a91db86263f46b810a32c5c2354e069533cae45f3a497c1753"
+
+accepted_module_context:
+  path: "derivation/modules/C/current/C_MODULE_CONTEXT.md"
+  history_snapshot: "derivation/modules/C/history/C_MODULE_CONTEXT_after_C1.md"
+  version: "0.1.0"
+  stage: "C1"
+  status: "accepted"
+  bytes: 72251
+  sha256: "daa5702355fb56cf98cdd8194717fbe8e2b41311c9fd0ef29010484bd5f8654c"
+  current_history_byte_identical: true
+
+artifact_review:
+  status: "accepted"
+  engineering_context_delta: "none"
+  semantic_conflict: false
+  manual_decision_required: false
+  external_sources_checked: true
+  citation_brief_local_archive_only: true
