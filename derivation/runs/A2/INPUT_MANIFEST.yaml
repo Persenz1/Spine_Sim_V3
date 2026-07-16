@@ -63,3 +63,25 @@ upload_contract:
       role: "文献 07：线性移动副、单刺接触分支、柔顺和限位"
       bytes: 925280
       sha256: "dfd71db60b4f3373abf40002eb4c29916d86cf5a49b00221b8de845710612d84"
+
+received_outputs:
+  - archived_path: "derivation/runs/A2/raw_downloads/A_MODULE_CONTEXT(2).md"
+    source_path: "C:/Users/23635/Downloads/A_MODULE_CONTEXT(2).md"
+    normalized_candidate_path: "derivation/runs/A2/MODULE_CONTEXT_CANDIDATE.md"
+    bytes: 144142
+    sha256: "53262b8d2955c0e28e3620045d97856edf27e35033019e0ab2d093f27f725ea1"
+  - archived_path: "derivation/runs/A2/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(1).md"
+    source_path: "C:/Users/23635/Downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(1).md"
+    normalized_candidate_path: "derivation/runs/A2/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+  - archived_path: "derivation/runs/A2/raw_downloads/RUN_UPDATE_SUMMARY(1).yaml"
+    source_path: "C:/Users/23635/Downloads/RUN_UPDATE_SUMMARY(1).yaml"
+    normalized_candidate_path: "derivation/runs/A2/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    bytes: 4653
+    sha256: "39cb434cf6eeb34b7716e978a0a88ee039f399201c0af2c56180f10bba9259d1"
+  - archived_path: "derivation/runs/A2/raw_downloads/CITATION_BRIEF(1).md"
+    source_path: "C:/Users/23635/Downloads/CITATION_BRIEF(1).md"
+    normalized_candidate_path: "derivation/runs/A2/CITATION_BRIEF.md"
+    bytes: 5850
+    sha256: "7eab2f127620ea4f04816959f7efaa38699eebae2f5974875b3ab82f6ad01813"

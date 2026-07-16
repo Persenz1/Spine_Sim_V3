@@ -1,0 +1,76 @@
+run:
+  module: "A2"
+  run_id: "A2-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "0.1.0"
+  run_directory: "derivation/runs/A2"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "新增 A2 单刺自由度、功共轭符号、单位及刚性安装/梁针/轴向弹簧分支的最小未知量合同。"
+    - "新增变形后合法球冠查询、梁中心线重建、接触点速度雅可比、切向相对增量和体部碰撞硬约束。"
+    - "新增以标准二阶锥表示的三维 Signorini-Coulomb 最大耗散互补律及半光滑投影残量。"
+    - "新增几何卡合、摩擦自锁和稳定准静态平衡的严格区分，并在项目符号下重推文献 01 二维载荷比及奇异/拉离分支。"
+    - "新增圆截面三维 Euler-Bernoulli 梁柔顺矩阵、接触点力臂、储能、坐标变换、Timoshenko/几何非线性升级判据。"
+    - "新增无预压、无拉力轴向弹簧的原长端、压缩区、4 mm 硬限位和刚性安装锁定反力分支。"
+    - "新增恒 0.5 N 法向主动推力/切向位移混合边界、预载同伦、预载不可行和抓附反力输出。"
+    - "新增单支持线性柔顺解析力—位移斜率、摩擦临界位移、搜索位移与啮合后弹性位移分离机制。"
+    - "新增活动分支加半光滑 Newton 主算法、热启动、词典序非唯一选择、事件括区、回退及无解/未收敛区分。"
+    - "新增 A2 层次化状态、逐步输出数据合同、A3 材料/滑移钩子和 B 层单刺响应接口。"
+    - "新增材料、摩擦和局部接触柔顺候选范围的来源层级、实验标定、可辨识性与数值收敛定参方案。"
+  modified:
+    - "文件头由当前完成阶段 A1/版本 0.1.0/accepted 更新为 A2/候选版本 0.2.0/candidate，并更新执行提示词版本为 A2 1.0.0。"
+    - "首段说明更新为 A1 全量保留并融合 A2；A1 既有方程、证据边界、验证、未决项和交接内容未删改。"
+  preserved:
+    - "完整保留 A1 的表面配置、二维 PSD、非高斯/特征分支、实测预处理、可信尺度与随机样本合同。"
+    - "完整保留 A1 的有限球尖配置空间、合法球冠、支持点/法向、多支持非光滑处理和高度场—网格一致性。"
+    - "完整保留 A1 的复合针体禁止碰撞、首次合法接触、方向候选、事件括区、伪代码和数据质量状态。"
+    - "完整保留 A1 的证据边界、解析/数值验证、未决材料与几何参数、A2/A3 原始交接和附录。"
+  unresolved:
+    - "红砖、混凝土和砂纸的局部摩擦系数及其空间/工况变化。"
+    - "球尖—墙体局部接触刚度或非线性法向柔顺及其标定。"
+    - "高碳钢具体牌号、E、nu、屈服/断裂参数和 A3 强度域。"
+    - "Euler-Bernoulli 与 Timoshenko/几何非线性切换阈值及圆截面剪切修正系数。"
+    - "轴向移动副是否改变实际露出梁长的 CAD 拓扑确认。"
+    - "接触聚类、SOC 缩放、残量、事件、稳定性和步长容差。"
+    - "求解器实现后的多支持非唯一、预载不可行、事件并发和力—位移切线回归。"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与 engineering_fixed_context 1.0.0 基线逐字一致。"
+    - "本轮只修改 MODULE_CONTEXT 文件头并追加 A2；没有删除或静默重写 A1 机理。"
+    - "0.5 N 始终作为全局 -Z 法向执行器主动推力，未作为局部接触法向力。"
+    - "摩擦系数、接触刚度、材料参数、具体弹簧采样点和数值容差均保持参数化或未决。"
+    - "实际滑移迁移、材料失效、多刺共享和整爪平衡未在 A2 中定义。"

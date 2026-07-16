@@ -70,15 +70,14 @@ def main() -> int:
     if len(paths) != len(set(paths)):
         raise ValueError("上传清单存在重复路径")
 
+    current_mismatches: list[str] = []
     for record in records:
         path = ROOT / record["path"]
         if not path.is_file():
             raise FileNotFoundError(path)
         content = path.read_bytes()
-        if len(content) != record["bytes"]:
-            raise ValueError(f"字节数不一致：{record['path']}")
-        if sha256_bytes(content) != record["sha256"]:
-            raise ValueError(f"SHA-256 不一致：{record['path']}")
+        if len(content) != record["bytes"] or sha256_bytes(content) != record["sha256"]:
+            current_mismatches.append(record["path"])
 
     prompt_path = ROOT / "derivation/prompts/A/A2_PROMPT.md"
     prompt = prompt_path.read_text(encoding="utf-8")
@@ -133,9 +132,13 @@ def main() -> int:
             raise ValueError(f"提示词缺少固定输出章节：{output}")
 
     print("A2-r01 输入校验通过")
-    print("- 10 个上传文件的路径、顺序、字节数和 SHA-256 一致")
+    print("- 10 个上传文件的路径和顺序一致")
     print("- 正式提示词与运行归档副本一致")
     print("- 冻结 Git 提交中的全部上传输入与 manifest 一致")
+    if current_mismatches:
+        print(f"- 当前工作区已有 {len(current_mismatches)} 个滚动输入升级；旧运行从冻结提交复验")
+    else:
+        print("- 当前工作区上传输入的字节数和 SHA-256 仍与 manifest 一致")
     print("- 文献 01、07 压缩包结构和 CRC 通过")
     return 0
 
