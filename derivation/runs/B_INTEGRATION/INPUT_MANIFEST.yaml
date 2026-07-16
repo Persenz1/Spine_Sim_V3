@@ -78,6 +78,48 @@ expected_outputs:
   contract_embedded_in_integrated_model: true
   submodule_four_file_protocol_forbidden: true
 
+received_outputs:
+  - name: "B_INTEGRATED_MODEL.md"
+    source_path: "C:/Users/23635/Downloads/B_INTEGRATED_MODEL.md"
+    archived_path: "derivation/runs/B_INTEGRATION/raw_downloads/B_INTEGRATED_MODEL.md"
+    normalized_candidate_path: "derivation/runs/B_INTEGRATION/B_INTEGRATED_MODEL_CANDIDATE.md"
+    bytes: 116527
+    sha256: "5ba0e978cba199b99e4390bf4226b579f2e485468ce9a1b1cd29c70e13ecba3a"
+    byte_identical_candidate_copy: true
+  - name: "B_TO_C_CONTRACT.md"
+    source_path: "C:/Users/23635/Downloads/B_TO_C_CONTRACT.md"
+    archived_path: "derivation/runs/B_INTEGRATION/raw_downloads/B_TO_C_CONTRACT.md"
+    normalized_candidate_path: "derivation/runs/B_INTEGRATION/B_TO_C_CONTRACT_CANDIDATE.md"
+    bytes: 39631
+    sha256: "fbf20fd33128490ea59f0edfe0a835ccddf0024ed3ba92da5ff4e82af1b2b847"
+    byte_identical_candidate_copy: true
+raw_response:
+  path: "derivation/runs/B_INTEGRATION/RAW_RESPONSE.md"
+  bytes: 1438
+  sha256: "d86a8cfb8047b573bf852b9dc9478a7112ebd42ab734089ad91e8978d2df016c"
+
+candidate_public_contract_marked_block_sha256: "c4bfbdf2fbbf7ba5f9e827939d2e1023b23fb8a2a92be0fb5fe59cd0b289c823"
+
+accepted_outputs:
+  status: "accepted"
+  accepted_on: "2026-07-16"
+  files:
+    - name: "B_INTEGRATED_MODEL.md"
+      path: "derivation/modules/B/final/B_INTEGRATED_MODEL.md"
+      bytes: 116518
+      sha256: "d64a387956b4d8b2317817c7429d1a57e594bab436fc5f1c9547126c95dd43ad"
+    - name: "B_TO_C_CONTRACT.md"
+      path: "derivation/contracts/B_TO_C_CONTRACT.md"
+      bytes: 39614
+      sha256: "fc9dd4504f1c6b0650361bbf289fdfdfc18ae1a01834887a3bf40bc09478c894"
+  accepted_public_contract_marked_block_sha256: "caa451e79c890723ed1c7c7a969dd461c6273751bc2c8a533e8ccf90e6324201"
+  candidate_public_contract_verbatim: true
+  accepted_public_contract_verbatim: true
+  candidate_to_accepted_repairs_only: true
+  engineering_context_changed: false
+  engineering_or_physics_decision_required: false
+  next_module_started: false
+
 preparation_validation:
   engineering_context_generator_check: "pass"
   prompt_archive_byte_identical: true
