@@ -125,12 +125,15 @@ def validate_archive_and_acceptance() -> None:
     archived_prompt = RUN_DIR / "PROMPT.md"
     assert prompt.read_bytes() == archived_prompt.read_bytes()
 
-    current = ROOT / "derivation/modules/A/current/A_MODULE_CONTEXT.md"
     snapshot = ROOT / "derivation/modules/A/history/A_MODULE_CONTEXT_after_A1.md"
-    assert current.read_bytes() == snapshot.read_bytes()
-    accepted = current.read_text(encoding="utf-8")
+    current = ROOT / "derivation/modules/A/current/A_MODULE_CONTEXT.md"
+    assert sha256(snapshot) == "9a14d472e87bd9cb230abf1ad835cbf546771b38cdf5e797091dd02231821e9e"
+    accepted = snapshot.read_text(encoding="utf-8")
     assert "> 当前状态：`accepted`" in accepted
     assert "q_e(\\mathbf q)=\\sqrt{{\\mathbf q'}^\\mathsf T\\mathbf A\\mathbf q'}." in accepted
+    rolled = current.read_text(encoding="utf-8")
+    assert "> 当前状态：`accepted`" in rolled
+    assert "## 1. 范围、目标与不可越界边界" in rolled
 
 
 def main() -> None:

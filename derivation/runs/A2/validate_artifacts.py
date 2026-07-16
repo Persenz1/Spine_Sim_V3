@@ -149,30 +149,33 @@ def validate_engineering_context() -> None:
 
 def validate_module_context() -> None:
     candidate = (RUN_DIR / "MODULE_CONTEXT_CANDIDATE.md").read_text(encoding="utf-8")
+    accepted = SNAPSHOT.read_text(encoding="utf-8")
     current = CURRENT.read_text(encoding="utf-8")
     a1 = A1_SNAPSHOT.read_text(encoding="utf-8")
-    assert CURRENT.read_bytes() == SNAPSHOT.read_bytes()
-    assert "> 当前完成阶段：`A2`" in current
-    assert "> 上下文版本：`0.2.0`" in current
+    assert sha256(SNAPSHOT) == "09ca48fdd68779005ad504c722538bfce477b0b60cf4ee554295f4a85366ce6a"
+    assert "> 当前完成阶段：`A2`" in accepted
+    assert "> 上下文版本：`0.2.0`" in accepted
+    assert "> 当前状态：`accepted`" in accepted
     assert "> 当前状态：`accepted`" in current
     assert "> 当前状态：`candidate`" in candidate
 
     a1_lines = a1.splitlines()
     candidate_lines = candidate.splitlines()
-    current_lines = current.splitlines()
+    accepted_lines = accepted.splitlines()
     assert candidate_lines[13 : len(a1_lines)] == a1_lines[13:]
-    assert current_lines[13 : len(a1_lines)] == a1_lines[13:]
+    assert accepted_lines[13 : len(a1_lines)] == a1_lines[13:]
 
     for section in range(1, 26):
-        assert re.search(rf"^## {section}\.", current, flags=re.MULTILINE)
+        assert re.search(rf"^## {section}\.", accepted, flags=re.MULTILINE)
+    assert "# A2：单边接触、摩擦稳定与结构柔顺加载" in accepted
+    assert "\\boldsymbol\\chi_j\\in\\mathcal L_3" in accepted
+    assert "\\mathbf C_b=" in accepted
+    assert "`PRELOAD_INFEASIBLE`" in accepted
+    assert "\\frac{\\tan\\phi-\\mu}{1+\\mu\\tan\\phi}" in accepted
+    assert "它不表示任意较小 $F$ 都满足完整摩擦锥" in accepted
+    assert accepted.count("```") % 2 == 0
+    assert sum(line.strip() == "$$" for line in accepted.splitlines()) % 2 == 0
     assert "# A2：单边接触、摩擦稳定与结构柔顺加载" in current
-    assert "\\boldsymbol\\chi_j\\in\\mathcal L_3" in current
-    assert "\\mathbf C_b=" in current
-    assert "`PRELOAD_INFEASIBLE`" in current
-    assert "\\frac{\\tan\\phi-\\mu}{1+\\mu\\tan\\phi}" in current
-    assert "它不表示任意较小 $F$ 都满足完整摩擦锥" in current
-    assert current.count("```") % 2 == 0
-    assert sum(line.strip() == "$$" for line in current.splitlines()) % 2 == 0
 
 
 def validate_citations() -> None:
