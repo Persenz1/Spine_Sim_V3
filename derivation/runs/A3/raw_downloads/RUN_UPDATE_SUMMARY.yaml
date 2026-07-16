@@ -1,0 +1,79 @@
+run:
+  module: "A3"
+  run_id: "A3-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "0.2.0"
+  run_directory: "derivation/runs/A3"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "从 CRITICAL_SLIP 到真实滑移提交的全粘着一侧检查、滑移活动集、最大耗散接受条件和滚动/滑移区分"
+    - "光滑高度场及三角网格面—边—顶点图表上的三维球尖接触迁移、支持切换和非光滑峰顶处理"
+    - "法向力打开、合法球冠终止、运动学不可行、多支持消失和无平衡等接触释放条件"
+    - "释放后的梁/弹簧可逆零载投影、分离态受控搜索、再接触、A2 预载同伦和再挂接状态机"
+    - "有限控制体应力域与几何特征结果量容量域的候选比较，并选择前者作为首版材料主线"
+    - "方向性、压力敏感首次失效域、拉伸截断、可选压缩帽及有限控制体尺度桥接"
+    - "不可逆软化、断裂能/特征长度正则化、混合模态候选和独立空间损伤记忆层"
+    - "圆截面针体轴力、双轴弯矩、扭矩和剪力到屈服/断裂裕度的强度上限接口"
+    - "A2+A3 耦合残量、损伤投影残量、事务式试探/提交/回滚和可执行单步伪代码"
+    - "摩擦、材料、针体、释放、支持切换、弹簧限位和体碰撞的并发事件枚举与自适应减步"
+    - "连续 100 mm 多峰原始输出、峰记录和面向 B 层的事务式单刺 trial/commit/rollback 接口"
+  modified:
+    - "文件头从 A2/0.2.0/accepted 更新为 A3/0.3.0/candidate，并记录提示词版本 A3 1.0.0"
+    - "未修改已接受的 A1/A2 机理；第 25.6 节作为 A2 历史交接原样保留，并由第 26 节起完成 A3"
+  preserved:
+    - "第 1–12 节及附录 A–B 的 A1 表面、有限球尖、合法球冠、复合针体碰撞、几何事件、质量和统一查询合同"
+    - "第 13–25 节的 A2 接触力符号、Signorini–Coulomb 二阶锥、最大耗散、梁/弹簧柔顺、原长和硬限位"
+    - "A2 恒法向主动推力/切向位移混合边界、非光滑残量、功和耗散方向、失败分类及 A3/B 接口"
+    - "OUT_OF_DOMAIN、GEOMETRY_UNCERTAIN 和非承载体碰撞优先于纯球尖承载的既定优先级"
+    - "A1 原始表面不可由损伤层改写，以及多针载荷共享和整爪平衡不在 A3 定义的下游边界"
+  unresolved:
+    - "红砖、混凝土和砂纸的局部材料强度域、方向参数、混合模态断裂能、软化形状和残余容量"
+    - "损伤面片有效面积、控制深度、空间核半径及其与表面可信尺度的标定"
+    - "砂纸采用无损、经验结果量容量或专属损伤分支的选择"
+    - "高碳钢具体牌号、热处理、屈服/断裂参数以及针根应力集中修正"
+    - "分离态法向搜索控制路径及其与真实执行器行程/控制器的对应"
+    - "材料、摩擦和划伤耗散在局部试验中的可辨识性与分离方法"
+    - "事件初始/最小步长、并发容差、残量门槛、Jacobian 退化门槛和损伤投影数值尺度"
+    - "准静态首版无法表示失接后的惯性跳跃和冲击所造成的漏接风险"
+    - "完整 A 算子的代码集成、目标材料标定、网格/步长/损伤核收敛和多峰回归验证"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "engineering_context_delta 使用 operation: none；未提出 add、modify、delete 或 deprecate。"
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与正式 1.0.0 基线逐字节一致。"
+    - "A_MODULE_CONTEXT.md 为 A1+A2+A3 最新完整上下文，不是 A3 增量。"
+    - "材料、针体、损伤和数值参数均保留为参数、候选模型或待标定项。"
+    - "CITATION_BRIEF.md 仅本地归档，不作为工程事实 provenance 或后续默认输入。"

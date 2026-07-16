@@ -71,3 +71,25 @@ upload_contract:
       role: "文献 15：烧结砖方向性、压力敏感多轴起始域与尺度桥接"
       bytes: 646770
       sha256: "222a06136cfa1320ea1ad25b3596a50924d12b920defbbc1655c655f0bd43b1f"
+
+received_outputs:
+  - archived_path: "derivation/runs/A3/raw_downloads/A_MODULE_CONTEXT(4).md"
+    source_path: "C:/Users/23635/Downloads/A_MODULE_CONTEXT(4).md"
+    normalized_candidate_path: "derivation/runs/A3/MODULE_CONTEXT_CANDIDATE.md"
+    bytes: 220705
+    sha256: "a6d47ea5617464a15ddee09faa25ed039a6a13098391e2b35e021f493402630c"
+  - archived_path: "derivation/runs/A3/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(2).md"
+    source_path: "C:/Users/23635/Downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(2).md"
+    normalized_candidate_path: "derivation/runs/A3/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+  - archived_path: "derivation/runs/A3/raw_downloads/RUN_UPDATE_SUMMARY.yaml"
+    source_path: "C:/Users/23635/Downloads/RUN_UPDATE_SUMMARY.yaml"
+    normalized_candidate_path: "derivation/runs/A3/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    bytes: 4755
+    sha256: "d12c14dd83ac89512b29c56a09bf50eecc483bb4e532306aaaf6294cf8cf9a97"
+  - archived_path: "derivation/runs/A3/raw_downloads/CITATION_BRIEF(2).md"
+    source_path: "C:/Users/23635/Downloads/CITATION_BRIEF(2).md"
+    normalized_candidate_path: "derivation/runs/A3/CITATION_BRIEF.md"
+    bytes: 4033
+    sha256: "89805cec4ee13c47ec613c214fbef0e463975576141af761153b803cec71ee87"
