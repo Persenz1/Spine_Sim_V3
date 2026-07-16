@@ -1,0 +1,4 @@
+# Preserve web-produced run artifacts byte-for-byte across platforms.
+derivation/runs/**/raw_downloads/** -text
+derivation/runs/**/RAW_RESPONSE.md -text
+

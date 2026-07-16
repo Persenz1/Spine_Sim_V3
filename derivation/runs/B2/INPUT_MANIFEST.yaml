@@ -109,6 +109,47 @@ expected_outputs:
     - "RUN_UPDATE_SUMMARY.yaml"
     - "CITATION_BRIEF.md"
 
+received_outputs:
+  - expected_name: "B_MODULE_CONTEXT.md"
+    received_name: "B_MODULE_CONTEXT(2).md"
+    archived_path: "derivation/runs/B2/raw_downloads/B_MODULE_CONTEXT(2).md"
+    normalized_candidate_path: "derivation/runs/B2/MODULE_CONTEXT_CANDIDATE.md"
+    bytes: 97068
+    sha256: "a8028f70bc1b8055e3a13629f8883f0d33bc8a0a3963d0975caed96003744205"
+  - expected_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    received_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE(4).md"
+    archived_path: "derivation/runs/B2/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(4).md"
+    normalized_candidate_path: "derivation/runs/B2/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+  - expected_name: "RUN_UPDATE_SUMMARY.yaml"
+    received_name: "RUN_UPDATE_SUMMARY(4).yaml"
+    archived_path: "derivation/runs/B2/raw_downloads/RUN_UPDATE_SUMMARY(4).yaml"
+    normalized_candidate_path: "derivation/runs/B2/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    bytes: 4454
+    sha256: "c73da0de486b1662066cfb84033cab76689366e52411603da4b94b5c2b6e12ff"
+  - expected_name: "CITATION_BRIEF.md"
+    received_name: "CITATION_BRIEF(4).md"
+    archived_path: "derivation/runs/B2/raw_downloads/CITATION_BRIEF(4).md"
+    normalized_candidate_path: "derivation/runs/B2/CITATION_BRIEF.md"
+    bytes: 3296
+    sha256: "7d27c1441a0bff7a940478dead7b05663cbe7abaa68f826be5daf4bf0c8defaa"
+
+raw_response:
+  path: "derivation/runs/B2/RAW_RESPONSE.md"
+  bytes: 13
+  sha256: "e59dadf93caa7614bc6a093fc4c114a78374273afbbfc50317faa6d97155826c"
+
+accepted_module_context:
+  path: "derivation/modules/B/current/B_MODULE_CONTEXT.md"
+  history_snapshot: "derivation/modules/B/history/B_MODULE_CONTEXT_after_B2.md"
+  version: "0.2.0"
+  stage: "B2"
+  status: "accepted"
+  bytes: 97054
+  sha256: "65aeb65e28887942b8eed9e95d7339d62604b52000f2b6133def7245513dae22"
+  current_history_byte_identical: true
+
 preparation_validation:
   engineering_context_generator_check: "pass"
   b1_acceptance_validation: "pass"

@@ -1,0 +1,75 @@
+run:
+  module: "B2"
+  run_id: "B2-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "0.1.0 accepted after B1"
+  run_directory: "derivation/runs/B2"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "给定共同切向位置或增量与每单元主动法向推力时，以 u_z 为外层未知量的唯一/集合值准静态平衡。"
+    - "主动推力、A_on_B 接触 wrench、x 位移控制反力和 y/转动约束反力的分离记账与功共轭。"
+    - "几何接触、实际承载、粘滑、弹簧、材料事件、质量和唯一性六类正交针级状态及外层集合。"
+    - "刚性安装和独立轴向弹簧安装的统一 wrench graph/残量框架，含无拉力、4 mm 硬限位和刚性集合值语义。"
+    - "逐针 wrench、算法切线/一侧切线/割线/图到单元原始线性化和恒 Pz 凝聚切线的装配。"
+    - "全阵列无副作用重调、半光滑/广义 Newton、保护、共同事件减步、同时事件和失败分类算法。"
+    - "针级/单元级原始输出、载荷不均候选指标、四个核心现象的可计算解释及 18 项验证矩阵。"
+    - "不执行提交的 B2EquilibriumTrial 与 B3_REBALANCE_REQUIRED 正式交接。"
+  modified:
+    - "大模块 B 文件头、范围和完成判据由 B1 0.1.0 accepted 更新为 B2 0.2.0 candidate，同时保留 B1 冻结技术正文和审计记录。"
+    - "B1 对 B2 的未来交接要求被落实为当前 B2 规范；B3/C 边界继续有效。"
+  preserved:
+    - "B1 的规则格点、r/c 索引、角度/长度补偿、安装座出口反算、实际针长绑定和复合针体碰撞边界。"
+    - "B1 的共同 x/Z 平移、A_on_B wrench、共同参考点 O_A、力矩运输、功方向和非零 y/转动拒绝。"
+    - "B1 的刚性/轴向弹簧安装记录、柔顺去重、针级身份/哈希、邻接/相关性和任意针级扩展接口。"
+    - "A_TO_B 1.0.0 的 embedded 调用、状态所有权、切线/图、事件、错误、无副作用试探和事务边界。"
+    - "全部工程事实、扫描范围、未决材料/表面/制造/数值参数和首版排除项。"
+  unresolved:
+    - "A 刚性 admissible wrench graph 的具体查询与联合相容装配实现。"
+    - "非单调 normal graph 的全局延续/括区间策略和全部 B2 数值容差。"
+    - "弹簧刚度与主动推力的正式离散扫描点。"
+    - "真实 CAD、制造误差、表面相关性、高碳钢、摩擦、接触和局部强度参数。"
+    - "B3 的失效重分配、共享损伤冲突、连续再挂接、原子提交和完整单元历史。"
+    - "载荷不均与能力指标用于论文排序的最终定义及实现/实验验收。"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "已完整阅读 12 个要求输入及三个压缩包内全部证据卡和 9 张关键图片。"
+    - "B_MODULE_CONTEXT 是 B1+B2 最新完整候选；B1 接受内容、A_TO_B 合同和工程事实已无损继承。"
+    - "每单元 P_z 只在 B2 外层施加一次；未使用每针 0.5 N、平均分载或有效刺数乘平均峰值。"
+    - "唯一/集合值法向平衡、正交活动状态、切线/图、共同事件、失败分类和 B3 交接均已闭合。"
+    - "未越过 B2 执行失效后级联、共享损伤提交、连续再挂接、B 集成或 C 层任务。"
+    - "文献06/07/10 仅用于证据边界内的趋势和验证；其具体数值未迁移为工程事实。"
+    - "本轮无工程事实变化；ENGINEERING_FIXED_CONTEXT_CANDIDATE 与正式基线逐字一致。"

@@ -81,6 +81,27 @@ def verify_record(path: Path, expected_bytes: int, expected_sha256: str, label: 
     return content
 
 
+def verify_frozen_record(
+    commit: str,
+    relative_path: str,
+    expected_bytes: int,
+    expected_sha256: str,
+    label: str,
+) -> bytes:
+    path = ROOT / relative_path
+    if path.is_file():
+        content = path.read_bytes()
+        if len(content) == expected_bytes and sha256_bytes(content) == expected_sha256:
+            return content
+    content = git_blob(commit, relative_path)
+    if len(content) != expected_bytes:
+        raise ValueError(f"{label} 冻结字节数不一致：{len(content)} != {expected_bytes}")
+    digest = sha256_bytes(content)
+    if digest != expected_sha256:
+        raise ValueError(f"{label} 冻结 SHA-256 不一致：{digest} != {expected_sha256}")
+    return content
+
+
 def run_python_check(relative_script: str, *args: str) -> str:
     result = subprocess.run(
         [sys.executable, "-X", "utf8", str(ROOT / relative_script), *args],
@@ -102,6 +123,7 @@ def main() -> int:
     records = contract["files"]
     outputs = manifest["expected_outputs"]
     preparation = manifest["preparation_validation"]
+    commit = run["repository_commit"]
 
     assert run["id"] == "B2-r01"
     assert run["module"] == "B2"
@@ -147,8 +169,9 @@ def main() -> int:
         raise ValueError("B2 默认上传清单不得包含完整 A 集成模型")
 
     for record in records:
-        verify_record(
-            ROOT / record["path"],
+        verify_frozen_record(
+            commit,
+            record["path"],
             record["bytes"],
             record["sha256"],
             f"上传输入 {record['path']}",
@@ -184,7 +207,6 @@ def main() -> int:
     if archive_content != prompt_bytes:
         raise ValueError("PROMPT.md 与正式 B2_PROMPT.md 不是逐字节一致")
 
-    commit = run["repository_commit"]
     subprocess.run(
         ["git", "rev-parse", "--verify", f"{commit}^{{commit}}"],
         cwd=ROOT,
@@ -208,11 +230,12 @@ def main() -> int:
     if "pass / accepted" not in validation_report:
         raise ValueError("B1 验证报告未确认 pass / accepted")
 
-    current_context = verify_record(
-        ROOT / prerequisite["current_module_context"],
+    current_context = verify_frozen_record(
+        commit,
+        prerequisite["current_module_context"],
         prerequisite["current_module_context_bytes"],
         prerequisite["current_module_context_sha256"],
-        "B 当前上下文",
+        "B2 上传时的 B1 接受上下文",
     )
     history_context = verify_record(
         ROOT / prerequisite["history_snapshot"],
@@ -221,7 +244,7 @@ def main() -> int:
         "B1 历史快照",
     )
     if current_context != history_context:
-        raise ValueError("B 当前上下文与 B1 接受快照不一致")
+        raise ValueError("B2 上传时的 B1 接受上下文与 B1 历史快照不一致")
     current_text = current_context.decode("utf-8")
     for marker in (
         "当前完成阶段",
@@ -291,7 +314,6 @@ def main() -> int:
         "engineering_fixed_context/internal/build_context.py", "--check"
     )
     b1_input_output = run_python_check("derivation/runs/B1/validate_inputs.py")
-    b1_artifact_output = run_python_check("derivation/runs/B1/validate_artifacts.py")
 
     print("B2-r01 输入准备校验通过")
     print("- B1-r01、B_MODULE_CONTEXT 0.1.0 和 A_TO_B_CONTRACT 1.0.0 已接受且哈希一致")
@@ -302,7 +324,7 @@ def main() -> int:
     print("- 网页输出严格为 B_MODULE_CONTEXT、工程事实候选、运行摘要和引用说明")
     print(f"- {build_output}")
     print(f"- B1 输入复验：{b1_input_output.splitlines()[-1]}")
-    print(f"- B1 产物复验：{b1_artifact_output.splitlines()[-1]}")
+    print("- B1 接受复验：验证报告、B1 历史快照和 B2 冻结提交中的输入哈希一致")
     return 0
 
 
