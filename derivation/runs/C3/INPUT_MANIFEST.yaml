@@ -1,0 +1,121 @@
+run:
+  id: "C3-r01"
+  module: "C3"
+  prepared_on: "2026-07-17"
+  run_directory: "derivation/runs/C3"
+  prompt_version: "1.0.0"
+  workflow_version: "1.3.4"
+  engineering_context_version: "1.0.0"
+  module_context_baseline: "0.2.0"
+  module_context_status: "accepted"
+  upstream_contract_version: "1.0.0"
+  upstream_contract_status: "accepted"
+  repository_commit: "d6ede1726f6fe24c5665a406ed86bf866dbe76dd"
+
+prompt_archive:
+  path: "derivation/runs/C3/PROMPT.md"
+  bytes: 51071
+  sha256: "6fe2aabc1a3c2dff4eb86ef8e3b00729bef18f52b57782c882bf05dfeec87f46"
+  matches_uploaded_prompt: true
+
+prerequisite_acceptance:
+  prior_module_run: "C2-r01"
+  status: "accepted"
+  validation_report: "derivation/runs/C2/VALIDATION_REPORT.md"
+  validation_report_bytes: 5742
+  validation_report_sha256: "442d83ec8c7c33915d0fea67865fe9e6334eea9e87afdbde1ec1cfa3bd1be2dd"
+  current_module_context: "derivation/modules/C/current/C_MODULE_CONTEXT.md"
+  current_module_context_version: "0.2.0"
+  current_module_context_stage: "C2"
+  current_module_context_status: "accepted"
+  current_module_context_bytes: 120064
+  current_module_context_sha256: "7aa3c9a6a2e6f16886e7ec14674f0503d1d3794f8c70fab2942ab3d178ec6f65"
+  history_snapshot: "derivation/modules/C/history/C_MODULE_CONTEXT_after_C2.md"
+  history_snapshot_bytes: 120064
+  history_snapshot_sha256: "7aa3c9a6a2e6f16886e7ec14674f0503d1d3794f8c70fab2942ab3d178ec6f65"
+  current_history_byte_identical: true
+  public_contract: "derivation/contracts/B_TO_C_CONTRACT.md"
+  public_contract_version: "1.0.0"
+  public_contract_status: "accepted"
+  public_contract_bytes: 39614
+  public_contract_sha256: "fc9dd4504f1c6b0650361bbf289fdfdfc18ae1a01834887a3bf40bc09478c894"
+  current_contract_certified_motion: "unit local x plus global Z translations only"
+  c3_motion_extension_required: true
+  semantic_prerequisite_complete: true
+
+upload_contract:
+  expected_file_count: 11
+  verified_file_count: 11
+  all_expected_files_present: true
+  minimum_literature_package_complete: true
+  upstream_contract_included: true
+  existing_c_module_context_required: true
+  existing_c_module_context_included: true
+  full_b_integrated_model_required: false
+  prompt_manifest_actual_paths_identical: true
+  files:
+    - path: "engineering_fixed_context/engineering_fixed_context.md"
+      role: "最新完整工程事实正式基线，最高物理权威"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - path: "docs/extract/MECHANISM_MODULE_PLAN.md"
+      role: "C3 范围、九个必答问题、理论结果和完成判据"
+      bytes: 23613
+      sha256: "4d06612a56ea8a141aa2adc3dddb633c6c9fc11da728fd3eb45003841bed269a"
+    - path: "derivation/prompts/C/C3_PROMPT.md"
+      role: "C3-r01 正式网页端执行提示词"
+      bytes: 51071
+      sha256: "6fe2aabc1a3c2dff4eb86ef8e3b00729bef18f52b57782c882bf05dfeec87f46"
+    - path: "docs/derivation_workflow/templates/MODULE_CONTEXT_TEMPLATE.md"
+      role: "融合 C1+C2+C3 的最新完整 C_MODULE_CONTEXT 最低内容合同"
+      bytes: 3709
+      sha256: "f211906d6cdb5ff05f63434f744b87b6b4e56a1f70e3610fcfa9ea40bb874f45"
+    - path: "docs/derivation_workflow/templates/ENGINEERING_FIXED_CONTEXT_CANDIDATE_TEMPLATE.md"
+      role: "完整工程事实候选输出合同"
+      bytes: 9670
+      sha256: "d37061617e1d684961adf034eaf6230c41a5eb52946d8bff8b7d77ff3d900db3"
+    - path: "docs/derivation_workflow/templates/RUN_UPDATE_SUMMARY_TEMPLATE.yaml"
+      role: "运行摘要、变化映射和自检合同"
+      bytes: 4061
+      sha256: "dc5e4902670f1f7dd06b7869f927b939732844d431521feb74faa5ae8553451d"
+    - path: "docs/derivation_workflow/templates/CITATION_BRIEF_TEMPLATE.md"
+      role: "仅本轮本地归档的引用说明合同"
+      bytes: 1952
+      sha256: "dfc16cbccdd5ff4baec0e00474d80fc7315a73a00d05e99091c92afd4bf40b67"
+    - path: "derivation/contracts/B_TO_C_CONTRACT.md"
+      role: "已接受 B→C 单元调用、认证运动、wrench、能力、事件、损伤和事务合同"
+      bytes: 39614
+      sha256: "fc9dd4504f1c6b0650361bbf289fdfdfc18ae1a01834887a3bf40bc09478c894"
+    - path: "derivation/modules/C/current/C_MODULE_CONTEXT.md"
+      role: "C1+C2 0.2.0 accepted 完整上下文；C3 必须无损继承并融合"
+      bytes: 120064
+      sha256: "7aa3c9a6a2e6f16886e7ec14674f0503d1d3794f8c70fab2942ab3d178ec6f65"
+    - path: "docs/extract/机理提取/23_dual_rail_spiny_climbing_robot/23_dual_rail_spiny_climbing_robot.zip"
+      role: "文献 23：活动集 7→6→7 切换、剩余分支增载和力阶跃基线"
+      bytes: 1404910
+      sha256: "f77dcd86da63b13e7c08792be4dad7211dba105dc4eb160fd5282ca7bd68698c"
+    - path: "docs/extract/机理提取/28_loris_lightweight_free_climbing_robot/28_loris_lightweight_free_climbing_robot.zip"
+      role: "文献 28：给定活动集的整体平衡、能力约束、最弱裕度和姿态适应静力"
+      bytes: 1134373
+      sha256: "f93fea59bd1a2ccf35fa3011450f5fb79e1b65dff933fb272935cf2754129080"
+
+expected_outputs:
+  file_count: 4
+  files:
+    - "C_MODULE_CONTEXT.md"
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    - "RUN_UPDATE_SUMMARY.yaml"
+    - "CITATION_BRIEF.md"
+
+preparation_validation:
+  engineering_context_generator_check: "pass"
+  c2_acceptance_validation: "pass"
+  upstream_contract_validation: "pass"
+  prompt_archive_byte_identical: true
+  git_snapshot_hashes_verified: true
+  upload_order_verified: true
+  literature_zip_crc_verified: true
+  literature_zip_contents_verified: true
+  output_contract_verified: true
+  c3_motion_contract_gap_explicit: true
+  c3_scope_boundary_verified: true
