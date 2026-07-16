@@ -30,7 +30,7 @@ Codex 必须完整阅读：
 3. 每个任务首次执行 `r01` 使用 `derivation/runs/<TASK>/`，例如 `A1-r01 → derivation/runs/A1/`。
 4. 同一任务第二次及以后执行使用 `derivation/runs/<RUN_ID>/`，例如 `A1-r02 → derivation/runs/A1-r02/`。
 5. 已存在的运行目录和 `RAW_RESPONSE.md` 永不覆盖；若目标目录已存在，先核对其运行编号并自动选择下一可用编号。
-6. `INPUT_MANIFEST.yaml` 与 `RUN_UPDATE_SUMMARY.yaml` 必须同时记录 `run_id` 和实际 `run_directory`。
+6. `INPUT_MANIFEST.yaml` 始终记录 `run_id` 和实际 `run_directory`；正式提示词要求输出 `RUN_UPDATE_SUMMARY.yaml` 的任务，该摘要也必须记录二者。大模块或全局集成未要求运行摘要时不得为满足本条而虚构文件。
 
 ## 3. 执行前由 Codex 完成
 
@@ -51,13 +51,18 @@ Codex 必须完整阅读：
 
 ## 4. 执行后由 Codex 自动拆分和归档
 
+所有任务共同执行：
+
 1. 原样保存完整回答为 `RAW_RESPONSE.md`；
-2. 提取并保存本轮主结果；
-3. 保存完整工程事实候选；
-4. 解析并保存 `RUN_UPDATE_SUMMARY.yaml`；
-5. 单独保存 `CITATION_BRIEF.md`；
-6. 保存通过审查的当前上下文和历史快照；
-7. 记录所有无歧义的机械修复。
+2. 提取并保存当前正式提示词规定的全部主结果；
+3. 保存通过审查的正式结果、必要快照和全部无歧义机械修复记录；
+4. 保留输入清单、验证记录以及候选—接受版关系，不覆盖任何既有运行。
+
+按任务类型追加：
+
+- **A1–C3 子模块**：保存最新完整 `MODULE_CONTEXT`、完整工程事实候选、`RUN_UPDATE_SUMMARY.yaml` 和仅本轮本地归档的 `CITATION_BRIEF.md`；通过后更新当前模块上下文并保存阶段快照。
+- **A/B/C 大模块集成**：保存对应 `INTEGRATED_MODEL`；A、B 另保存下游合同。除非正式集成提示词明确要求，不虚构子模块式工程事实候选、运行摘要或引用说明。
+- **全局集成**：保存 `SYSTEM_INTEGRATED_MODEL.md`。除非正式全局集成提示词明确要求，不虚构其他输出文件。
 
 `RAW_RESPONSE.md` 永远保留原样；机械修复作用于拆分后的候选文件，不回写伪装成原始回答。
 
@@ -81,7 +86,7 @@ Codex 必须完整阅读：
 
 ## 6. 必须自行完成的检查
 
-### 6.1 运行摘要
+### 6.1 运行摘要（仅适用于正式提示词要求该输出的任务）
 
 - YAML 能解析；
 - `run_id`、模块编号和实际运行目录一致且不覆盖历史；

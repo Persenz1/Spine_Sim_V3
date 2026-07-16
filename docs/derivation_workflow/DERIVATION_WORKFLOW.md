@@ -1,6 +1,6 @@
 # 机理推导文档架构与网页端工作流
 
-> 版本：`1.3.3`
+> 版本：`1.3.4`
 >
 > 用途：规定 A1–C3 机理推导过程中需要维护、滚动、冻结和归档的文件，以及每类网页端 Pro 任务应上传哪些输入、输出哪些结果。
 >
@@ -368,3 +368,15 @@ Pro 输出完整候选和语义变化说明
 - 已经被下游合同压缩的上游完整推导。
 
 该规则的目的不是删除信息，而是避免无关历史占用当前 Pro 任务的上下文。
+
+## 12. 单任务 Codex 窗口启动提示词
+
+为了让人工只负责网页端上传和下载，每个新 Codex 窗口只处理一个任务，并使用以下对应启动提示词：
+
+1. A1–C3 子模块：`docs/derivation_workflow/window_prompts/SUBMODULE_WINDOW_PROMPT.md`；
+2. A/B/C 大模块集成：`docs/derivation_workflow/window_prompts/MODULE_INTEGRATION_WINDOW_PROMPT.md`；
+3. A/B/C 全局集成：`docs/derivation_workflow/window_prompts/SYSTEM_INTEGRATION_WINDOW_PROMPT.md`。
+
+使用时只修改启动提示词第一行的 `TASK_ID`。同一窗口分为网页执行前准备和网页产物回收两个阶段：Codex 先生成正式网页端提示词与精确上传清单，人工执行网页任务并回传下载文件，Codex 再完成审查、修复、归档、快照、提交和推送。任务完成后必须停止，不得在同一窗口自动开始下一任务。
+
+三份启动提示词是本地人机协作入口，不上传给网页端 Pro；正式网页端提示词仍保存在 `derivation/prompts/`，并遵守本工作流及两份指导。
