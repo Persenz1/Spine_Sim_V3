@@ -1,0 +1,85 @@
+run:
+  module: "B3"
+  run_id: "B3-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "0.2.0"
+  run_directory: "derivation/runs/B3"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实；B3 新增内容均属于阵列层机理、事件事务、历史数据和候选接口。"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "B3 连续阵列单元算子、累计路径坐标和 1 mm/s 时间映射。"
+    - "从同一接受快照出发的事件定位、事件前/事件点/事件后一侧/最终提交四相位事务。"
+    - "失效后重新调用全部针并重解 B2 恒 Pz 平衡的正式重分配规则及逐针审计量。"
+    - "规范同时事件组、同位置级联循环、依赖偏序、稳定/终止条件和 Zeno 防护。"
+    - "DamageStore 冲突图、受影响闭包、A 损伤协调器联合试探和确定性原子提交。"
+    - "释放、结构回弹、弹簧剩余行程、硬限位离开、继续搜索与再挂接状态链。"
+    - "最大 100 mm 的事件驱动接受历史、确定性重放、能量/功账本和终止分类。"
+    - "单元/逐针/事件原始能力数据、搜索距离候选特征和历史相关 UnitCapabilityState 候选接口。"
+    - "B3 状态分类、十五项可复现验证和 B 集成/C 层完整针级回调边界。"
+  modified:
+    - "文件头更新为 B_MODULE_CONTEXT 0.3.0 candidate、完成阶段 B3、运行 B3-r01。"
+    - "第 1 节更新为 B1+B2+B3 的当前完整范围、权威顺序和工程事实约束。"
+    - "第 31–33 节显式标为 B2 历史基线，避免与当前 B3 状态混淆。"
+  preserved:
+    - "B1 的坐标、格点、角度/长度、身份/哈希、共同运动、安装拓扑、相关性和 A 请求语义。"
+    - "B2 的恒 Pz 共同平衡、正交针级状态、刚性 graph、弹簧单边/硬限位、事件减步、切线和失败分类。"
+    - "A_TO_B 1.0.0 的 embedded 调用、A_on_B wrench、状态所有权、DamageStore 和原子提交语义。"
+    - "工程事实 1.0.0 的几何、工况、输出、损伤边界、首版排除项和全部未决登记。"
+  unresolved:
+    - "A 刚性 admissible graph 和损伤协调器的具体实现与联合查询数据结构。"
+    - "材料、摩擦、表面统计、损伤核、高碳钢强度、真实 CAD 和制造误差参数。"
+    - "弹簧刚度与主动推力具体离散点。"
+    - "步长、事件/同时/级联容差、进入/离开数值带、最大迭代和确定性并行归约配置。"
+    - "能量接口 convention、低维 trust region、峰值持续比例、特征窗口、平台阈值和统计置信要求。"
+    - "实现级自动测试、长程 100 mm 回归、故障注入、真实表面求解和实验趋势验证。"
+    - "B 大模块集成、正式 B_TO_C_CONTRACT 和 C1 搜索停止准则。"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "B3 九个必答问题和九类理论结果均已在 B_MODULE_CONTEXT 第 34–49 节形成，并在第 48 节逐项映射。"
+    - "输出是 B1+B2+B3 最新完整 B_MODULE_CONTEXT 0.3.0 candidate；第 2–30 节除一处历史自检交叉引用外与 0.2.0 基线一致，第 31–33 节保留为历史审计。"
+    - "工程事实、A 本征机理、B2 共同平衡、B3 调度和未来 C 职责已分层；未执行 B 集成、未生成 B_INTEGRATED_MODEL/B_TO_C_CONTRACT、未开始 C1。"
+    - "A_on_B wrench、G/O_A 参考点、N/N·mm/mm 单位、力矩运输、主动推力和功方向保持一致；Pz 未平均到各针或在 embedded A 中重复施加。"
+    - "失效后全阵列重调并重求共同 u_z；未使用平均单刺、失效针旧载荷包、固定邻居权重或 G4/G8 载荷转移。"
+    - "同时事件、级联、DamageStore 冲突图、A 联合损伤协调、陈旧检查、幂等性、回滚、prepare/commit 和全局原子提交闭合且不依赖针调用顺序。"
+    - "弹簧保持 0<=delta_s<=4 mm，剩余行程、硬限位进入/离开、释放、回弹、继续搜索、损伤记忆和再挂接状态链完整。"
+    - "100 mm 路径、1 mm/s 时间映射、接受/拒绝试探、事件落点、版本链和确定性重放要求一致。"
+    - "低维 UnitCapabilityState 明确历史依赖、切线/graph 有效域、trust region、质量和完整针级回调条件；未假装成无记忆极限面。"
+    - "物理无解、物理失稳、不可恢复脱附、退化、数值未收敛、参数/模型缺失、域外、体碰撞和损伤事务冲突分别定义。"
+    - "文献03/09/21只用于状态结构、趋势和验证；未硬编码论文刚度、预载、力界、0–2 mm 或约 5 mm。"
+    - "SUNDIALS、PETSc 和 PostgreSQL 官方资料只作事件定位、非光滑求解和两阶段事务的实现参考。"
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与 engineering_fixed_context 1.0.0 基线逐字一致，SHA-256 均为 6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb。"
+    - "四个固定输出文件名、运行编号、版本和目录已核对；YAML 可解析。"
+    - "本轮未运行真实求解器、CAD 检查、材料标定或实验，因此理论合同完成不等于实现/实验验证完成。"

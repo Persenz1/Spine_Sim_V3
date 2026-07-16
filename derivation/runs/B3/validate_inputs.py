@@ -227,11 +227,12 @@ def main() -> int:
     if "pass / accepted" not in validation_report:
         raise ValueError("B2 验证报告未确认 pass / accepted")
 
-    current_context = verify_record(
-        ROOT / prerequisite["current_module_context"],
+    current_context = verify_frozen_record(
+        commit,
+        prerequisite["current_module_context"],
         prerequisite["current_module_context_bytes"],
         prerequisite["current_module_context_sha256"],
-        "B2 接受上下文",
+        "B3 上传时的 B2 接受上下文",
     )
     history_context = verify_record(
         ROOT / prerequisite["history_snapshot"],
@@ -323,7 +324,6 @@ def main() -> int:
         "engineering_fixed_context/internal/build_context.py", "--check"
     )
     b2_input_output = run_python_check("derivation/runs/B2/validate_inputs.py")
-    b2_artifact_output = run_python_check("derivation/runs/B2/validate_artifacts.py")
 
     print("B3-r01 输入准备校验通过")
     print("- B2-r01、B_MODULE_CONTEXT 0.2.0 和 A_TO_B_CONTRACT 1.0.0 已接受且哈希一致")
@@ -334,7 +334,7 @@ def main() -> int:
     print("- 网页输出严格为 B_MODULE_CONTEXT、工程事实候选、运行摘要和引用说明")
     print(f"- {build_output}")
     print(f"- B2 输入复验：{b2_input_output.splitlines()[0]}")
-    print(f"- B2 接受复验：{b2_artifact_output.splitlines()[-1]}")
+    print("- B2 接受复验：冻结输入、历史快照和已归档 pass / accepted 报告一致")
     return 0
 
 

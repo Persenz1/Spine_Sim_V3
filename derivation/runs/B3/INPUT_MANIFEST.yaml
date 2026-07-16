@@ -120,3 +120,65 @@ preparation_validation:
   literature_zip_crc_verified: true
   output_contract_verified: true
   no_run_directory_collision: true
+
+received_outputs:
+  - expected_name: "B_MODULE_CONTEXT.md"
+    received_name: "B_MODULE_CONTEXT(4).md"
+    archived_path: "derivation/runs/B3/raw_downloads/B_MODULE_CONTEXT(4).md"
+    bytes: 164224
+    sha256: "4082880404fe0fa681accae2482b809363be3ce31f692b4be26068d260b97941"
+    normalized_candidate_path: "derivation/runs/B3/MODULE_CONTEXT_CANDIDATE.md"
+    normalized_bytes: 164225
+    normalized_sha256: "d126f12ace3840347d3d46e8d890b689e1fe8581b698a49f48b907c8deb2674a"
+    byte_identical_to_raw: false
+    mechanical_fix: "将低维局部关系中的制表符 ext{branch/history} 恢复为唯一可确定的 LaTeX \\text{branch/history}。"
+  - expected_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    received_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE(5).md"
+    archived_path: "derivation/runs/B3/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(5).md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    normalized_candidate_path: "derivation/runs/B3/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    normalized_bytes: 37148
+    normalized_sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    byte_identical_to_raw: true
+  - expected_name: "RUN_UPDATE_SUMMARY.yaml"
+    received_name: "RUN_UPDATE_SUMMARY(5).yaml"
+    archived_path: "derivation/runs/B3/raw_downloads/RUN_UPDATE_SUMMARY(5).yaml"
+    bytes: 6027
+    sha256: "fde0af47b5f93501fa8c4005c4dc119c91731ba8c6152068a4485f0766590bb3"
+    normalized_candidate_path: "derivation/runs/B3/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    normalized_bytes: 6027
+    normalized_sha256: "fde0af47b5f93501fa8c4005c4dc119c91731ba8c6152068a4485f0766590bb3"
+    byte_identical_to_raw: true
+  - expected_name: "CITATION_BRIEF.md"
+    received_name: "CITATION_BRIEF(5).md"
+    archived_path: "derivation/runs/B3/raw_downloads/CITATION_BRIEF(5).md"
+    bytes: 5056
+    sha256: "15b0033cacdee1c8c2c2cb5948eb73765671164827d997d3a92e5176d59ec899"
+    normalized_candidate_path: "derivation/runs/B3/CITATION_BRIEF.md"
+    normalized_bytes: 5056
+    normalized_sha256: "15b0033cacdee1c8c2c2cb5948eb73765671164827d997d3a92e5176d59ec899"
+    byte_identical_to_raw: true
+
+raw_response:
+  path: "derivation/runs/B3/RAW_RESPONSE.md"
+  bytes: 2161
+  sha256: "7a83a005eb224e2787565eace8624349375077a758497c5a7dd6a873c669d0fb"
+
+accepted_module_context:
+  path: "derivation/modules/B/current/B_MODULE_CONTEXT.md"
+  history_snapshot: "derivation/modules/B/history/B_MODULE_CONTEXT_after_B3.md"
+  version: "0.3.0"
+  stage: "B3"
+  status: "accepted"
+  bytes: 164222
+  sha256: "35e072fc730e2e74edc1d2c3cdc392382566b0b9ee2a2edd4947585038c4bc21"
+  current_history_byte_identical: true
+
+artifact_review:
+  status: "accepted"
+  engineering_context_delta: "none"
+  semantic_conflict: false
+  manual_decision_required: false
+  external_sources_checked: true
+  citation_brief_local_archive_only: true
