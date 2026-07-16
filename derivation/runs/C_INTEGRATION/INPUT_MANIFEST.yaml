@@ -1,0 +1,89 @@
+run:
+  id: "C_INTEGRATION-r01"
+  task: "C_INTEGRATION"
+  module: "C"
+  prepared_on: "2026-07-17"
+  run_directory: "derivation/runs/C_INTEGRATION"
+  prompt_version: "1.0.0"
+  workflow_version: "1.3.4"
+  engineering_context_version: "1.0.0"
+  upstream_contract_version: "B_TO_C 1.0.0 accepted"
+  module_context_baseline: "0.3.0"
+  module_context_status: "accepted"
+  repository_commit: "0c66baa71a6f14380e9cb3e6cbbbade33c77d5db"
+
+prompt_archive:
+  path: "derivation/runs/C_INTEGRATION/PROMPT.md"
+  bytes: 34643
+  sha256: "21b7722090921ad08185ff0fe23a37e9ac60a117ddc6b7bda2dbd756b34ef3f1"
+  matches_uploaded_prompt: true
+
+submodule_acceptance:
+  all_three_submodules_accepted: true
+  latest_context_contains_C1_C2_C3: true
+  latest_context_matches_after_C3_snapshot: true
+  upstream_B_TO_C_inherited: true
+  upstream_motion_coverage_gap_preserved: true
+  stages:
+    - task: "C1"
+      run_id: "C1-r01"
+      status: "accepted"
+      snapshot: "derivation/modules/C/history/C_MODULE_CONTEXT_after_C1.md"
+      validation_report: "derivation/runs/C1/VALIDATION_REPORT.md"
+      accepted_sha256: "daa5702355fb56cf98cdd8194717fbe8e2b41311c9fd0ef29010484bd5f8654c"
+    - task: "C2"
+      run_id: "C2-r01"
+      status: "accepted"
+      snapshot: "derivation/modules/C/history/C_MODULE_CONTEXT_after_C2.md"
+      validation_report: "derivation/runs/C2/VALIDATION_REPORT.md"
+      accepted_sha256: "7aa3c9a6a2e6f16886e7ec14674f0503d1d3794f8c70fab2942ab3d178ec6f65"
+    - task: "C3"
+      run_id: "C3-r01"
+      status: "accepted"
+      snapshot: "derivation/modules/C/history/C_MODULE_CONTEXT_after_C3.md"
+      validation_report: "derivation/runs/C3/VALIDATION_REPORT.md"
+      accepted_sha256: "810fc26972652086403181f97221503e08e267485c6bd31fe1ea44b5af9a8f66"
+
+upload_contract:
+  expected_file_count: 3
+  verified_file_count: 3
+  all_expected_files_present: true
+  default_module_integration_inputs_complete: true
+  prompt_manifest_actual_paths_identical: true
+  additional_audit_inputs_required: false
+  historical_snapshots_uploaded: false
+  upstream_contract_uploaded_separately: false
+  upstream_integrated_model_uploaded: false
+  literature_packages_uploaded: false
+  citation_briefs_uploaded: false
+  no_additional_inputs_reason: "最新 accepted C_MODULE_CONTEXT 已完整保留 B_TO_C 1.0.0 accepted 语义、C1+C2+C3、B 运动覆盖缺口、证据边界、验证风险和未决问题；未发现信息丢失、证据冲突或模型假设失效的明确审计缺口。"
+  files:
+    - path: "engineering_fixed_context/engineering_fixed_context.md"
+      role: "最新正式工程事实基线，最高权威"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - path: "derivation/modules/C/current/C_MODULE_CONTEXT.md"
+      role: "已接受 C1+C2+C3、继承 B_TO_C 并保留覆盖缺口的最新完整 C 模块上下文"
+      bytes: 200666
+      sha256: "810fc26972652086403181f97221503e08e267485c6bd31fe1ea44b5af9a8f66"
+    - path: "derivation/prompts/C/C_INTEGRATION_PROMPT.md"
+      role: "C_INTEGRATION-r01 正式网页端集成提示词"
+      bytes: 34643
+      sha256: "21b7722090921ad08185ff0fe23a37e9ac60a117ddc6b7bda2dbd756b34ef3f1"
+
+expected_outputs:
+  file_count: 1
+  files:
+    - "C_INTEGRATED_MODEL.md"
+  separate_downstream_contract_required: false
+  public_upstream_downstream_experiment_interfaces_embedded: true
+  submodule_four_file_protocol_forbidden: true
+
+preparation_validation:
+  engineering_context_generator_check: "pass"
+  prompt_archive_byte_identical: true
+  git_snapshot_hashes_verified: true
+  upload_order_verified: true
+  output_contract_verified: true
+  submodule_acceptance_verified: true
+
