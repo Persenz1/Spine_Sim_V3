@@ -1,0 +1,73 @@
+run:
+  module: "B1"
+  run_id: "B1-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "none"
+  run_directory: "derivation/runs/B1"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "定义 r=0 为根部排、r=n_x-1 为头部排、c 随局部 +y 增加的规则矩形阵列索引与球心格点。"
+    - "定义固定角和 80°→50°、80°→60° 梯度的统一按排插值，以及梯度实际露出长度和球心共面闭合。"
+    - "定义由球心、针轴和实际长度反算安装座出口，并显式保留梯度引起的基座 x/y 偏置。"
+    - "定义共同 q_U=[u_x,u_z]^T 到全部针基座位姿和同一 A 规定增量的唯一映射，并拒绝 y 平移和背板转动。"
+    - "定义 RIGID_MOUNT 与 AXIAL_SPRING_MOUNT 的统一针级外部接口、A 状态所有权、无拉力和 4 mm 硬限位语义。"
+    - "定义实际 L_rc 对几何、力臂、碰撞包络、梁参数和配置哈希的单一版本绑定，防止梯度阵列梁长误用 4 mm。"
+    - "定义 edge/corner/interior、G4/G8 邻接、有向分离向量直方图和方向性表面相关性查询接口。"
+    - "定义标量、按 x 排和完整 n_x×n_y 针级数组的规范化、正式扫描边界、校验顺序和配置错误类。"
+    - "定义逐针 EmbeddedSingleSpineTrialRequest 骨架、A 响应无损保存结构、共同最小事件分数归约和 B2/B3 交接。"
+    - "上游合同继承：完整保留 A_TO_B 1.0.0 accepted 的 embedded 调用、A_on_B wrench、单位、状态所有权、无副作用试探、共享损伤和原子提交边界。"
+  modified:
+    - "none"
+  preserved:
+    - "none"
+  unresolved:
+    - "梯度阵列反算安装座出口与真实安装孔、导向滑块和装配公差 CAD 的闭合。"
+    - "锥段、针杆、安装座的完整复合几何参数和查询包络中的梁变形有效域。"
+    - "制造回差、安装位置误差和角度误差的实测分布或批准模型。"
+    - "红砖、混凝土和砂纸的方向协方差、二维 PSD、相关长度、非平稳性和 A1 质量参数。"
+    - "高碳钢具体牌号、弹性模量、屈服和断裂参数。"
+    - "弹簧刚度与每单元法向主动推力的具体离散扫描点。"
+    - "B2 的活动接触集、共同法向平衡、载荷共享和求解残量。"
+    - "B3 的失效重分配、共享损伤冲突、级联、再挂接和原子提交事件循环。"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与 engineering_fixed_context 1.0.0 基线逐字一致。"
+    - "engineering_context_delta 严格使用 operation: none 合同，证据列表为空且 proposed_fact 为 null。"
+    - "B1 未定义每针法向载荷、活动集、载荷共享、失效重分配或整爪平衡。"
+    - "A 请求仅允许 embedded_constitutive_trial，并保留 A_on_B wrench、事件、质量、非唯一性和事务字段。"
+    - "本轮纯几何检查覆盖 75 个 n_x/n_y/s 组合；数值残差仅作审查结果，不固定实现容差。"
+    - "CITATION_BRIEF.md 仅本地旁路归档，不进入后续默认上传或工程事实审批。"

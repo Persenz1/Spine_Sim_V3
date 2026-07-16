@@ -94,6 +94,32 @@ expected_outputs:
     - "RUN_UPDATE_SUMMARY.yaml"
     - "CITATION_BRIEF.md"
 
+received_outputs:
+  - expected_name: "B_MODULE_CONTEXT.md"
+    received_name: "B_MODULE_CONTEXT.md"
+    archived_path: "derivation/runs/B1/raw_downloads/B_MODULE_CONTEXT.md"
+    normalized_candidate_path: "derivation/runs/B1/MODULE_CONTEXT_CANDIDATE.md"
+    bytes: 46964
+    sha256: "0c92e20b5635496c7336daa91db4d41f306e5bd4d57ca3bc7b2d2a49deccf292"
+  - expected_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    received_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE(3).md"
+    archived_path: "derivation/runs/B1/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(3).md"
+    normalized_candidate_path: "derivation/runs/B1/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+  - expected_name: "RUN_UPDATE_SUMMARY.yaml"
+    received_name: "RUN_UPDATE_SUMMARY(3).yaml"
+    archived_path: "derivation/runs/B1/raw_downloads/RUN_UPDATE_SUMMARY(3).yaml"
+    normalized_candidate_path: "derivation/runs/B1/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    bytes: 4055
+    sha256: "b4faddcb30a1b37325764ed8bbda142140a645bc690cd0cc4c2ce5beb8d2350b"
+  - expected_name: "CITATION_BRIEF.md"
+    received_name: "CITATION_BRIEF(3).md"
+    archived_path: "derivation/runs/B1/raw_downloads/CITATION_BRIEF(3).md"
+    normalized_candidate_path: "derivation/runs/B1/CITATION_BRIEF.md"
+    bytes: 5236
+    sha256: "a3f7a6dabf6e60e8137ca49e129e1258a6b9ba3c479edf33fcbb7285cf56504d"
+
 preparation_validation:
   engineering_context_generator_check: "pass"
   upstream_a_integration_validation: "pass"
