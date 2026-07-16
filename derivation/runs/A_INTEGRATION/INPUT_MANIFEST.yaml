@@ -80,3 +80,31 @@ preparation_validation:
   git_snapshot_hashes_verified: true
   upload_order_verified: true
   output_contract_verified: true
+
+received_outputs:
+  - name: "A_INTEGRATED_MODEL.md"
+    archived_path: "derivation/runs/A_INTEGRATION/raw_downloads/A_INTEGRATED_MODEL.md"
+    normalized_candidate_path: "derivation/runs/A_INTEGRATION/A_INTEGRATED_MODEL_CANDIDATE.md"
+    bytes: 102793
+    sha256: "7d68d493f06187b78ac529c6fdb966e22131c99153fef8487890d1d56198b423"
+    byte_identical_candidate_copy: true
+  - name: "A_TO_B_CONTRACT.md"
+    archived_path: "derivation/runs/A_INTEGRATION/raw_downloads/A_TO_B_CONTRACT.md"
+    normalized_candidate_path: "derivation/runs/A_INTEGRATION/A_TO_B_CONTRACT_CANDIDATE.md"
+    bytes: 26117
+    sha256: "34a4b87e9d09dd251ee489b60038d3f3479d47fe2e385d5678bdae86b1f0ed38"
+    byte_identical_candidate_copy: true
+
+accepted_outputs:
+  status: "accepted"
+  accepted_on: "2026-07-16"
+  files:
+    - path: "derivation/modules/A/final/A_INTEGRATED_MODEL.md"
+      bytes: 106019
+      sha256: "0679f5bfe71d2ff5b2521414a39b41c6b94f23f54227d19bd38a964960088ccc"
+    - path: "derivation/contracts/A_TO_B_CONTRACT.md"
+      bytes: 26161
+      sha256: "02d557c799973aad2347a255767c6b9283d9225a3c1a8e87ead91f6debc253df"
+  public_contract_body_verbatim: true
+  engineering_context_changed: false
+  engineering_or_physics_decision_required: false
