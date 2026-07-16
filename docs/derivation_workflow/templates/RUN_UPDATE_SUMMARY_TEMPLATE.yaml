@@ -20,10 +20,11 @@
 
 run:
   module: "{A1}"
+  run_id: "{A1-r01}"
   prompt_version: "{version}"
   engineering_context_baseline: "{version}"
   module_context_baseline: "none | {version}"
-  run_directory: "derivation/runs/{A1}"
+  run_directory: "derivation/runs/{A1 | A1-r02}"
 
 engineering_context_delta:
   - id: "{FACT.ID}"

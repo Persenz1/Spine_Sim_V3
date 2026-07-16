@@ -75,7 +75,7 @@ scopes: [solver, experiment]
 summary: 示例工程事实摘要
 provenance:
   type: run_candidate
-  source: derivation/runs/A1/RUN_UPDATE_SUMMARY.yaml
+  source: derivation/runs/{A1 | A1-r02}/RUN_UPDATE_SUMMARY.yaml
   section: engineering_context_delta.SURFACE.EXAMPLE.ID
 ```
 
@@ -164,7 +164,7 @@ registry:
    ```yaml
    provenance:
      type: run_candidate
-     source: derivation/runs/A1/RUN_UPDATE_SUMMARY.yaml
+     source: derivation/runs/{A1 | A1-r02}/RUN_UPDATE_SUMMARY.yaml
      section: engineering_context_delta.SURFACE.EXAMPLE.ID
    ```
 

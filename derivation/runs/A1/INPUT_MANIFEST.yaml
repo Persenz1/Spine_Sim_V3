@@ -7,6 +7,7 @@ run:
   workflow_version: "1.3.2"
   engineering_context_version: "1.0.0"
   module_context_baseline: null
+  repository_commit: "f88114d356c203f2b0fb25b68e4da74878e6d05b"
 
 upload_contract:
   expected_file_count: 11

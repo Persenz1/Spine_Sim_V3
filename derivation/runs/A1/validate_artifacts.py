@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+import subprocess
 from pathlib import Path
 
 import yaml
@@ -13,6 +14,16 @@ RUN_DIR = ROOT / "derivation/runs/A1"
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def bytes_at_commit(commit: str, relative_path: str) -> bytes:
+    result = subprocess.run(
+        ["git", "show", f"{commit}:{relative_path}"],
+        cwd=ROOT,
+        check=True,
+        stdout=subprocess.PIPE,
+    )
+    return result.stdout
 
 
 def validate_run_summary() -> None:
@@ -57,11 +68,16 @@ def validate_manifest() -> None:
     assert len(contract["files"]) == 11
     assert contract["all_expected_files_present"] is True
     assert contract["minimum_literature_package_complete"] is True
+    repository_commit = manifest["run"]["repository_commit"]
     for item in contract["files"]:
         path = ROOT / item["path"]
         assert path.is_file(), path
-        assert path.stat().st_size == item["bytes"], path
-        assert sha256(path) == item["sha256"], path
+        current_bytes = path.read_bytes()
+        if len(current_bytes) == item["bytes"] and hashlib.sha256(current_bytes).hexdigest() == item["sha256"]:
+            continue
+        historical_bytes = bytes_at_commit(repository_commit, item["path"])
+        assert len(historical_bytes) == item["bytes"], path
+        assert hashlib.sha256(historical_bytes).hexdigest() == item["sha256"], path
 
     for item in manifest["received_outputs"]:
         path = ROOT / item["archived_path"]

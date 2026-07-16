@@ -11,25 +11,45 @@ Codex 必须完整阅读：
 1. `docs/derivation_workflow/DERIVATION_WORKFLOW.md`；
 2. 当前任务提示词；
 3. 当前任务适用的输出合同或模板；
-4. `engineering_fixed_context/internal/README.md`；
-5. `engineering_fixed_context/internal/schema.yaml`；
-6. `engineering_fixed_context/internal/manifest.yaml`；
-7. `engineering_fixed_context/internal/build_context.py`；
-8. `engineering_fixed_context/internal/CHANGELOG.md`；
-9. 本轮实际输入文件和已有运行目录。
+4. 最新正式 `engineering_fixed_context/engineering_fixed_context.md`；
+5. 当前提示词列出的全部实际上传输入，包括模块规划、当前模块上下文或上游合同以及最小文献包；
+6. `engineering_fixed_context/internal/README.md`；
+7. `engineering_fixed_context/internal/schema.yaml`；
+8. `engineering_fixed_context/internal/manifest.yaml`；
+9. `engineering_fixed_context/internal/build_context.py`；
+10. `engineering_fixed_context/internal/CHANGELOG.md`；
+11. 同一任务已有的运行目录、当前模块上下文和历史快照；
+12. 本轮收到的原始回答与全部输出文件。
 
-## 2. 执行前由 Codex 完成
+`PROMPT_AUTHORING_GUIDE.md` 不是回收产物时的重复必读入口；当前提示词已经冻结其执行要求。只有发现提示词本身的输入清单或任务边界不合规时，才回到提示词编写流程修订下一轮提示词。
 
-1. 建立正确的 `derivation/runs/<TASK>/` 目录；
+## 2. 运行编号与目录
+
+1. 运行编号格式固定为 `<TASK>-rNN`，例如 `A1-r01`、`A1-r02`。
+2. 用户给出轮次时直接使用；未给出时由 Codex 扫描已有 `INPUT_MANIFEST.yaml` 后取下一编号，不为机械编号询问用户。
+3. 每个任务首次执行 `r01` 使用 `derivation/runs/<TASK>/`，例如 `A1-r01 → derivation/runs/A1/`。
+4. 同一任务第二次及以后执行使用 `derivation/runs/<RUN_ID>/`，例如 `A1-r02 → derivation/runs/A1-r02/`。
+5. 已存在的运行目录和 `RAW_RESPONSE.md` 永不覆盖；若目标目录已存在，先核对其运行编号并自动选择下一可用编号。
+6. `INPUT_MANIFEST.yaml` 与 `RUN_UPDATE_SUMMARY.yaml` 必须同时记录 `run_id` 和实际 `run_directory`。
+
+## 3. 执行前由 Codex 完成
+
+1. 按运行编号规则建立不会覆盖历史的运行目录；
 2. 保存最终提示词为 `PROMPT.md`；
-3. 根据提示词中的显式输入清单生成 `INPUT_MANIFEST.yaml`；
+3. 根据提示词中的显式输入清单生成 `INPUT_MANIFEST.yaml`，写明 `run_id`、实际目录、版本、文件哈希和输入所属的 Git 提交；
 4. 核对文件存在、版本、路径和最小文献包；
 5. 运行工程事实基线校验；
 6. 确保提示词、输入清单和实际上传文件一致。
 
 这些步骤不向人工提问，除非缺失的输入涉及无法推断的物理选择或权限边界。
 
-## 3. 执行后由 Codex 自动拆分和归档
+运行输入必须可复现：
+
+- 已提交的仓库输入用 `repository_commit` 与逐文件 SHA-256 共同冻结；后续模板或正式上下文升级时，复验旧运行应从该提交读取旧文件，不要求当前工作区继续保持旧哈希。
+- 若网页端实际上传了尚未提交的文件，必须把其原件复制到本轮运行目录的 `inputs/` 并在清单中记录归档路径；不能只记录一个未来无法恢复的工作区哈希。
+- `PROMPT.md` 始终单独保存本轮最终提示词，即使仓库中同名提示词后来升级。
+
+## 4. 执行后由 Codex 自动拆分和归档
 
 1. 原样保存完整回答为 `RAW_RESPONSE.md`；
 2. 提取并保存本轮主结果；
@@ -41,7 +61,7 @@ Codex 必须完整阅读：
 
 `RAW_RESPONSE.md` 永远保留原样；机械修复作用于拆分后的候选文件，不回写伪装成原始回答。
 
-## 4. Codex 可自主修复的机械问题
+## 5. Codex 可自主修复的机械问题
 
 无需人工确认即可处理：
 
@@ -59,11 +79,12 @@ Codex 必须完整阅读：
 
 所有修复必须不改变物理含义。若一种机械错误存在两个以上语义不同的修复方向，则停止自动修复，转入语义审查。
 
-## 5. 必须自行完成的检查
+## 6. 必须自行完成的检查
 
-### 5.1 运行摘要
+### 6.1 运行摘要
 
 - YAML 能解析；
+- `run_id`、模块编号和实际运行目录一致且不覆盖历史；
 - 必需字段完整；
 - 未使用的可选字段已删除；
 - ID、order、status、scopes 合法；
@@ -71,7 +92,7 @@ Codex 必须完整阅读：
 - 修改既有事实时保留基线 provenance；
 - 没有生成器不渲染的隐藏字段。
 
-### 5.2 工程事实候选
+### 6.2 工程事实候选
 
 - 与正式基线做完整 diff；
 - 未变化内容保持一致；
@@ -80,20 +101,20 @@ Codex 必须完整阅读：
 - 外部网址没有直接写成正式本地 provenance；
 - 接受变化前后均能通过生成器校验。
 
-### 5.3 模块结果
+### 6.3 模块结果
 
 - 是最新完整上下文而非本轮增量；
 - 范围、符号、方程、事件、接口、证据、验证和交接齐全；
 - 没有因格式修复丢失公式、表格或未决问题。
 
-### 5.4 引用说明
+### 6.4 引用说明
 
 - 本地文献只按编号列出；
 - 外部来源使用可直接访问的网址；
 - GPT 自身知识有简短内容和边界说明；
 - 文件只做本地归档，不进入后续交互链。
 
-## 6. 不得要求人工参与的事项
+## 7. 不得要求人工参与的事项
 
 不得让人工：
 
@@ -108,7 +129,7 @@ Codex 必须完整阅读：
 
 如果机械检查失败，Codex 应先读取错误、定位原因、修复并重新验证，不把错误原样转交人工。
 
-## 7. 只有这些语义问题提交人工
+## 8. 只有这些语义问题提交人工
 
 - 是否接受新增或修改的工程事实；
 - 是否改变已固定数值、扫描集合、坐标、边界、模型开关或首版范围；
@@ -119,7 +140,7 @@ Codex 必须完整阅读：
 
 提交时只用自然语言说明：当前事实、候选变化、证据、影响和可选决定。除非人工主动要求，不展示 YAML 排障过程。
 
-## 8. 验证命令基线
+## 9. 验证命令基线
 
 Python 项目命令使用既有 Conda 环境：
 
