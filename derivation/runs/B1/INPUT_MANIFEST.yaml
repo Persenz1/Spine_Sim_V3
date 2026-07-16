@@ -1,0 +1,104 @@
+run:
+  id: "B1-r01"
+  module: "B1"
+  prepared_on: "2026-07-16"
+  run_directory: "derivation/runs/B1"
+  prompt_version: "1.0.0"
+  workflow_version: "1.3.4"
+  engineering_context_version: "1.0.0"
+  module_context_baseline: "none"
+  module_context_status: "none"
+  upstream_contract_version: "1.0.0"
+  upstream_contract_status: "accepted"
+  repository_commit: "7274c26dd7d8db72f565046d8cb8032b172b8db0"
+
+prompt_archive:
+  path: "derivation/runs/B1/PROMPT.md"
+  bytes: 39982
+  sha256: "b754d985dc59d7840988589f5543159e2f759eee27426fd8e49809617154511c"
+  matches_uploaded_prompt: true
+
+upstream_acceptance:
+  module_integration_run: "A_INTEGRATION-r01"
+  status: "accepted"
+  validation_report: "derivation/runs/A_INTEGRATION/VALIDATION_REPORT.md"
+  validation_report_bytes: 6175
+  validation_report_sha256: "cf07f477b3484e1317488dfab6ed2944e311198d67f9501336a3f4a572b1ca2b"
+  integrated_model: "derivation/modules/A/final/A_INTEGRATED_MODEL.md"
+  integrated_model_version: "1.0.0"
+  integrated_model_bytes: 106019
+  integrated_model_sha256: "0679f5bfe71d2ff5b2521414a39b41c6b94f23f54227d19bd38a964960088ccc"
+  public_contract: "derivation/contracts/A_TO_B_CONTRACT.md"
+  public_contract_version: "1.0.0"
+  public_contract_status: "accepted"
+  public_contract_bytes: 26161
+  public_contract_sha256: "02d557c799973aad2347a255767c6b9283d9225a3c1a8e87ead91f6debc253df"
+  semantic_prerequisite_complete: true
+
+upload_contract:
+  expected_file_count: 10
+  verified_file_count: 10
+  all_expected_files_present: true
+  minimum_literature_package_complete: true
+  upstream_contract_included: true
+  existing_b_module_context_required: false
+  full_a_integrated_model_required: false
+  prompt_manifest_actual_paths_identical: true
+  files:
+    - path: "engineering_fixed_context/engineering_fixed_context.md"
+      role: "最新完整工程事实正式基线，最高权威"
+      bytes: 37148
+      sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - path: "docs/extract/MECHANISM_MODULE_PLAN.md"
+      role: "B1 范围、必答问题、理论结果与完成判据"
+      bytes: 23613
+      sha256: "4d06612a56ea8a141aa2adc3dddb633c6c9fc11da728fd3eb45003841bed269a"
+    - path: "derivation/prompts/B/B1_PROMPT.md"
+      role: "B1-r01 正式网页端执行提示词"
+      bytes: 39982
+      sha256: "b754d985dc59d7840988589f5543159e2f759eee27426fd8e49809617154511c"
+    - path: "docs/derivation_workflow/templates/MODULE_CONTEXT_TEMPLATE.md"
+      role: "首版完整 B_MODULE_CONTEXT 最低内容合同"
+      bytes: 3709
+      sha256: "f211906d6cdb5ff05f63434f744b87b6b4e56a1f70e3610fcfa9ea40bb874f45"
+    - path: "docs/derivation_workflow/templates/ENGINEERING_FIXED_CONTEXT_CANDIDATE_TEMPLATE.md"
+      role: "完整工程事实候选输出合同"
+      bytes: 9670
+      sha256: "d37061617e1d684961adf034eaf6230c41a5eb52946d8bff8b7d77ff3d900db3"
+    - path: "docs/derivation_workflow/templates/RUN_UPDATE_SUMMARY_TEMPLATE.yaml"
+      role: "运行摘要、变化映射与自检合同"
+      bytes: 4061
+      sha256: "dc5e4902670f1f7dd06b7869f927b939732844d431521feb74faa5ae8553451d"
+    - path: "docs/derivation_workflow/templates/CITATION_BRIEF_TEMPLATE.md"
+      role: "仅本轮本地归档的引用说明合同"
+      bytes: 1952
+      sha256: "dfc16cbccdd5ff4baec0e00474d80fc7315a73a00d05e99091c92afd4bf40b67"
+    - path: "derivation/contracts/A_TO_B_CONTRACT.md"
+      role: "已接受 A→B 单刺调用、wrench、状态所有权与事务合同"
+      bytes: 26161
+      sha256: "02d557c799973aad2347a255767c6b9283d9225a3c1a8e87ead91f6debc253df"
+    - path: "docs/extract/机理提取/04_orientation_dependent_engagement/04_orientation_dependent_engagement.zip"
+      role: "文献 04：俯仰/偏航、方向性阵列与命中率—横向刚度边界"
+      bytes: 2173126
+      sha256: "7c3591e6fec72b5b2edc1173d62475e57e2032336008c07588d72c091374b833"
+    - path: "docs/extract/机理提取/07_linearly_constrained_spines/07_linearly_constrained_spines.zip"
+      role: "文献 07：共同背板、线性移动副/限位、回差与阵列扩展边界"
+      bytes: 925280
+      sha256: "dfd71db60b4f3373abf40002eb4c29916d86cf5a49b00221b8de845710612d84"
+
+expected_outputs:
+  file_count: 4
+  files:
+    - "B_MODULE_CONTEXT.md"
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    - "RUN_UPDATE_SUMMARY.yaml"
+    - "CITATION_BRIEF.md"
+
+preparation_validation:
+  engineering_context_generator_check: "pass"
+  upstream_a_integration_validation: "pass"
+  prompt_archive_byte_identical: true
+  git_snapshot_hashes_verified: true
+  upload_order_verified: true
+  literature_zip_crc_verified: true
+  output_contract_verified: true
