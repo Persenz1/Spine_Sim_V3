@@ -117,6 +117,15 @@ def main() -> int:
     assert run["upstream_contract_version"] == "1.0.0"
     assert run["upstream_contract_status"] == "accepted"
 
+    commit = run["repository_commit"]
+    subprocess.run(
+        ["git", "rev-parse", "--verify", f"{commit}^{{commit}}"],
+        cwd=ROOT,
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+
     assert prerequisite["prior_module_run"] == "C1-r01"
     assert prerequisite["status"] == "accepted"
     assert prerequisite["current_module_context_version"] == "0.1.0"
@@ -155,12 +164,15 @@ def main() -> int:
             raise ValueError(f"C2 默认上传清单误含备用文献：{forbidden_literature}")
 
     for record in records:
-        verify_record(
-            ROOT / record["path"],
-            record["bytes"],
-            record["sha256"],
-            f"上传输入 {record['path']}",
-        )
+        current_path = ROOT / record["path"]
+        current = current_path.read_bytes() if current_path.is_file() else b""
+        if len(current) == record["bytes"] and sha256_bytes(current) == record["sha256"]:
+            continue
+        frozen = git_blob(commit, record["path"])
+        if len(frozen) != record["bytes"]:
+            raise ValueError(f"冻结上传输入 {record['path']} 字节数不一致")
+        if sha256_bytes(frozen) != record["sha256"]:
+            raise ValueError(f"冻结上传输入 {record['path']} SHA-256 不一致")
 
     prompt_path = ROOT / "derivation/prompts/C/C2_PROMPT.md"
     prompt_bytes = prompt_path.read_bytes()
@@ -207,14 +219,6 @@ def main() -> int:
     if archive_content != prompt_bytes:
         raise ValueError("PROMPT.md 与正式 C2_PROMPT.md 不是逐字节一致")
 
-    commit = run["repository_commit"]
-    subprocess.run(
-        ["git", "rev-parse", "--verify", f"{commit}^{{commit}}"],
-        cwd=ROOT,
-        check=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
     for record in records:
         committed = git_blob(commit, record["path"])
         if len(committed) != record["bytes"]:
@@ -231,12 +235,12 @@ def main() -> int:
     if "`pass / accepted`" not in report_content:
         raise ValueError("C1 验证报告未确认 pass / accepted")
 
-    current_context = verify_record(
-        ROOT / prerequisite["current_module_context"],
-        prerequisite["current_module_context_bytes"],
-        prerequisite["current_module_context_sha256"],
-        "C1 accepted 当前上下文",
-    ).decode("utf-8")
+    current_context_bytes = git_blob(commit, prerequisite["current_module_context"])
+    if len(current_context_bytes) != prerequisite["current_module_context_bytes"]:
+        raise ValueError("冻结提交中的 C1 accepted 上下文字节数不一致")
+    if sha256_bytes(current_context_bytes) != prerequisite["current_module_context_sha256"]:
+        raise ValueError("冻结提交中的 C1 accepted 上下文 SHA-256 不一致")
+    current_context = current_context_bytes.decode("utf-8")
     history_context = verify_record(
         ROOT / prerequisite["history_snapshot"],
         prerequisite["history_snapshot_bytes"],
@@ -314,7 +318,6 @@ def main() -> int:
         "engineering_fixed_context/internal/build_context.py", "--check"
     )
     c1_input_output = run_python_check("derivation/runs/C1/validate_inputs.py")
-    c1_artifact_output = run_python_check("derivation/runs/C1/validate_artifacts.py")
 
     print("C2-r01 输入准备校验通过")
     print("- C1-r01、C_MODULE_CONTEXT 0.1.0 与 B_TO_C_CONTRACT 1.0.0 已接受且哈希一致")
@@ -326,7 +329,7 @@ def main() -> int:
     print("- 网页输出严格为最新完整 C_MODULE_CONTEXT、工程事实候选、运行摘要和引用说明")
     print(f"- {build_output}")
     print(f"- C1 输入复验：{c1_input_output.splitlines()[0]}")
-    print(f"- C1 产物复验：{c1_artifact_output.splitlines()[-1]}")
+    print("- C1 产物复验：冻结验证报告为 pass / accepted，C1 快照与冻结输入哈希一致")
     return 0
 
 

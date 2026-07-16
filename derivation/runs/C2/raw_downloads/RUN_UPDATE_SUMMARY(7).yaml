@@ -1,0 +1,72 @@
+run:
+  module: C2
+  run_id: C2-r01
+  prompt_version: 1.0.0
+  engineering_context_baseline: 1.0.0
+  module_context_baseline: 0.1.0
+  run_directory: derivation/runs/C2
+engineering_context_delta:
+- id: none
+  operation: none
+  target: null
+  reason: 未发现需要修改的工程事实
+  affected_modules: []
+  changed_fields: []
+  evidence:
+    local_literature: []
+    external_urls: []
+    gpt_knowledge: []
+    derivation_locations: []
+  proposed_fact: null
+  approval_required: false
+module_context_delta:
+  added:
+  - 从 C1PreloadState 到 C2AcceptedState 的无损继承、内部 s_stop 与整体刚体运动分解。
+  - C、加载点 P 与四个 O_A 的完整小位移 twist Jacobian、wrench 对偶运输和功不变检查。
+  - 全局 +X 与 45° 两个正式方向的 50 mm 偏心外部 wrench 和加载点位移约束。
+  - 四单元 contact-only 六维装配、80 mm 力臂、自由力偶/作用点存在性和无隐藏支承残量。
+  - rocking=off/on 的统一完整坐标、模式约束、KKT 乘子所有权和 theta_X/theta_Y 四单元法向位移公式。
+  - P_i、执行器端点/系统边界、内部锁定、加载执行器与真实试验架约束的分栏。
+  - 位移控制平衡/graph、局部切线、一侧增量稳定性、事件/损伤 fixed point 和原子提交算法。
+  - B_TO_C 1.0.0 对正式 C2 运动的覆盖证明，以及 B_TO_C 2.x 最小扩展和安全拒绝路径。
+  - C2LoadRequest、C2LoadTrialResponse、C2AcceptedState 和 C2ContractExtensionRequirement。
+  - C2 主状态、30 项验证矩阵、方向对称性边界和 C3 交接。
+  modified:
+  - 模块文件头从 C1/0.1.0 accepted 更新为 C2/0.2.0 candidate，并明确理论完成但现有 B 合同不认证正式加载路径。
+  - C1 的 C2 交接清单被保留为历史基线，并由第 16–30 节闭合；C1 物理和事务语义未反向修改。
+  preserved:
+  - 四单元静态安装基、O_i、O_A 偏置、contact-only wrench 方向和功语义。
+  - 唯一共同 s、C1 预紧/停止策略、C1PreloadState 和径向锁定。
+  - B 唯一无副作用入口、graph 非唯一、事件缩步、共享 DamageStore、同位置级联和全局原子提交。
+  - 未认证状态不能改写为零承载，数值不收敛不能改写为物理无解。
+  - C1 阈值和最大搜索距离继续保持未决，不沿用 B 的 100 mm。
+  unresolved:
+  - B_TO_C 2.x 的完整基座 twist/姿态运动、动态几何/碰撞/表面查询和 6D tangent/graph 尚未实现或接受。
+  - 法向执行器两个端点、真实作用线、系统边界及 eta_i 是否为自由行程尚未固定。
+  - rocking 小角度有效域、稳定性容差、残量/事件/损伤 fixed-point 数值配置尚未标定。
+  - 真实试验架允许的正交位移/姿态约束及其反力所有权尚未定义。
+  - 材料、表面、摩擦、损伤参数、代码实现、数值收敛和目标实验仍未完成。
+  - C3 的渐进失效、整体峰值和峰后终止仍待后续阶段。
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+self_check:
+  engineering_mechanism_separation: pass
+  no_silent_hardcoding: pass
+  schema_required_fields_complete: pass
+  ids_orders_unique: pass
+  statuses_scopes_allowed: pass
+  provenance_local_and_complete: pass
+  baseline_provenance_preserved_for_modified_facts: pass
+  no_unrendered_dependencies: pass
+  downstream_boundary_respected: pass
+  notes:
+  - ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与 engineering_fixed_context 1.0.0 基线逐字节一致。
+  - 未提出工程事实 add/modify；engineering_context_delta 使用 operation:none 合同。
+  - C2 明确返回当前 B 合同扩展要求，没有以旧 wrench 旋转或 x/z 投影伪装 rocking。
+  - C3 的渐进失效、整体峰值和峰后终止未在本轮提前完成。
+  - 文献 17/28 只用于结构证据；其参数和整机实验数值未迁移为项目常数。
+  - 当前验证矩阵为测试定义，未声称代码或实验通过。
