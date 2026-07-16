@@ -138,14 +138,11 @@ def check_files_and_git_snapshot(manifest: dict) -> None:
         path = ROOT / relative
         if not path.is_file():
             fail(f"缺少上传文件：{relative}")
-        data = path.read_bytes()
-        if len(data) != row["bytes"]:
-            fail(f"字节数不一致：{relative}")
-        if sha256_bytes(data) != row["sha256"]:
-            fail(f"SHA-256 不一致：{relative}")
         frozen = git_blob(commit, relative)
-        if frozen != data:
-            fail(f"工作区输入与冻结提交不一致：{relative}")
+        if len(frozen) != row["bytes"]:
+            fail(f"冻结提交中的字节数不一致：{relative}")
+        if sha256_bytes(frozen) != row["sha256"]:
+            fail(f"冻结提交中的 SHA-256 不一致：{relative}")
 
 
 def check_prompt_and_archive(manifest: dict) -> None:
@@ -200,9 +197,12 @@ def check_prerequisites(manifest: dict) -> None:
     if "pass / accepted" not in report_text or "没有工程事实变化" not in report_text:
         fail("C2 验证报告未冻结为 pass / accepted 或存在未处理工程事实变化")
 
+    repository_commit = manifest["run"]["repository_commit"]
     current = ROOT / prereq["current_module_context"]
     history = ROOT / prereq["history_snapshot"]
-    current_data = current.read_bytes()
+    if not current.is_file():
+        fail("当前 C_MODULE_CONTEXT 文件不存在")
+    current_data = git_blob(repository_commit, prereq["current_module_context"])
     history_data = history.read_bytes()
     if current_data != history_data:
         fail("C2 current 与 history 快照不逐字节一致")

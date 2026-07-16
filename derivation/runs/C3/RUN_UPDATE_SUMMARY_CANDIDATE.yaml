@@ -1,0 +1,76 @@
+run:
+  module: "C3"
+  run_id: "C3-r01"
+  prompt_version: "1.0.0"
+  engineering_context_baseline: "1.0.0"
+  module_context_baseline: "0.2.0"
+  run_directory: "derivation/runs/C3"
+
+engineering_context_delta:
+  - id: "none"
+    operation: "none"
+    target: null
+    reason: "未发现需要修改的工程事实；C3 新增内容均属于历史相关机理、状态机、数据合同、事件与峰值算法或待标定配置"
+    affected_modules: []
+    changed_fields: []
+    evidence:
+      local_literature: []
+      external_urls: []
+      gpt_knowledge: []
+      derivation_locations: []
+    proposed_fact: null
+    approval_required: false
+
+module_context_delta:
+  added:
+    - "定义 C3 历史相关单元状态压缩接口，保留原始 B/A 状态、contact-only wrench/graph、事件、DamageStore 依赖、trust region 与强制完整回调条件"
+    - "定义针级滑移、材料/强度、硬限位、释放、脱离和再挂接向单元能力退化传播的事件链，并严格分离首个针失效与单元/整体失败"
+    - "定义任一事件后的四单元完整 B 回调、共享 DamageStore fixed point、六维重平衡、同位置级联和全局原子提交；禁止均分、邻接权重、固定矩阵和旧峰值缩放"
+    - "定义当前活动集上的历史相关局部整体能力对象与最弱裕度；文献 28 型优化只作局部审计骨架，事件后立即失效并重建"
+    - "定义稳定可达分支、原始反力曲线、非光滑峰/平台/多峰、峰后稳定路径、F_crit 的上确界/最大值语义及候选峰与最终确认的分离"
+    - "定义物理无平衡、物理失稳、可恢复/不可恢复脱附、合同/模型/参数/域/数值/事务失败的独立状态和终止政策"
+    - "定义 +X 与 45° 的四分支作用、D4 对称性与配对样本比较协议，不未经求解固定优劣"
+    - "定义 C3LoadRequest、C3UnitContinuationCapsule、C3LoadTrialResponse、C3EventRecord、C3AcceptedState 和 C3MaximumCapacityResult"
+    - "定义面向未来偏心拉力实验的连续输出、事件、姿态、损伤、功、版本、重放和仿真—实验对齐合同"
+    - "定义 26 项 C3 最低验证矩阵和大模块 C 集成交接边界"
+  modified:
+    - "将滚动上下文文件头从 C2/0.2.0 accepted 更新为 C3/0.3.0 candidate，并将基线更新为 C_MODULE_CONTEXT 0.2.0 accepted"
+    - "更新第 0 节权威顺序和当前认证结论：C3 理论完整，但 B_TO_C 1.0.0 未认证正式 +X/45° 所需局部 y 与姿态运动"
+    - "将 C2 第 29 节的 C3 交接清单标记为历史交接，并由新增第 31–48 节逐项闭合"
+  preserved:
+    - "完整保留 C1 的共同径向搜索、内部预紧、停止策略、C1PreloadState、跨单元事件、共享损伤和原子事务语义"
+    - "完整保留 C2 的刚体运动学、O_A 到 C 的 wrench 运输、50 mm 偏心外载、+X/45° 方向、六维平衡、rocking、稳定性和无隐藏支承原则"
+    - "完整保留 CONTACT_ONLY_EXTERNAL_ASSEMBLY_V1、P_i/加载器/约束反力所有权分栏、graph 非唯一性和 B 唯一无副作用入口"
+    - "完整保留 C2 已识别的 B 2.x 最小扩展要求和未认证运动安全拒绝路径"
+    - "完整保留 C1/C2 的 B/A opaque 历史、DamageStore、事件、功、哈希、提交收据和确定性重放要求"
+  unresolved:
+    - "B_TO_C 2.x 完整 twist、局部 y 平移、动态姿态、针轴/碰撞/表面更新及六维切线尚未实现和接受"
+    - "单元显著退化通道、阈值、归一化尺度和置信规则尚未标定"
+    - "峰值位移/反力容差、平台定义、分支探索政策和稳定性尺度尚未固定"
+    - "真实法向执行器端点/作用线、eta_i 自由度、试验架约束和 C3 偏心加载速度尚未确定"
+    - "材料、表面、摩擦、损伤、事件容差和验证误差范围仍为工程未决参数"
+    - "C3 求解器、B 2.x、数值收敛、故障注入和偏心拉力实验均未完成"
+    - "大模块 C 集成必须作为后续独立任务执行，本轮未生成 C_INTEGRATED_MODEL.md"
+
+outputs:
+  module_context_complete: true
+  engineering_context_candidate_complete: true
+  engineering_context_candidate_renderer_compatible: true
+  citation_brief_created: true
+  citation_brief_local_archive_only: true
+
+self_check:
+  engineering_mechanism_separation: "pass"
+  no_silent_hardcoding: "pass"
+  schema_required_fields_complete: "pass"
+  ids_orders_unique: "pass"
+  statuses_scopes_allowed: "pass"
+  provenance_local_and_complete: "pass"
+  baseline_provenance_preserved_for_modified_facts: "pass"
+  no_unrendered_dependencies: "pass"
+  downstream_boundary_respected: "pass"
+  notes:
+    - "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md 与 engineering_fixed_context 1.0.0 输入基线逐字一致，SHA-256 均为 6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    - "文献 23 仅用于活动集切换与等刚度换载特殊基准；文献 28 仅用于当前活动集整体平衡与最弱裕度骨架，论文数值未迁移为项目参数"
+    - "正式非零 C3 加载在 B 1.0 下必须返回 C3_CONTRACT_EXTENSION_REQUIRED，不推进历史或确认 F_crit"
+    - "验证矩阵为理论测试定义；当前未声称代码、B 2.x 或实验已经通过"

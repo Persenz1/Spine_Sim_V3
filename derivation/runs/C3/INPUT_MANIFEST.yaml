@@ -119,3 +119,64 @@ preparation_validation:
   output_contract_verified: true
   c3_motion_contract_gap_explicit: true
   c3_scope_boundary_verified: true
+
+received_outputs:
+  - expected_name: "C_MODULE_CONTEXT.md"
+    received_name: "C_MODULE_CONTEXT(4).md"
+    archived_path: "derivation/runs/C3/raw_downloads/C_MODULE_CONTEXT(4).md"
+    normalized_candidate_path: "derivation/runs/C3/MODULE_CONTEXT_CANDIDATE.md"
+    bytes: 200670
+    sha256: "e004000b7bc41ae9d93297a4aeeab8c0106b4bfd7cc5f83956a638470a09cbb7"
+    normalized_bytes: 200670
+    normalized_sha256: "e004000b7bc41ae9d93297a4aeeab8c0106b4bfd7cc5f83956a638470a09cbb7"
+    byte_identical_to_raw: true
+  - expected_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    received_name: "ENGINEERING_FIXED_CONTEXT_CANDIDATE(8).md"
+    archived_path: "derivation/runs/C3/raw_downloads/ENGINEERING_FIXED_CONTEXT_CANDIDATE(8).md"
+    normalized_candidate_path: "derivation/runs/C3/ENGINEERING_FIXED_CONTEXT_CANDIDATE.md"
+    bytes: 37148
+    sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    normalized_bytes: 37148
+    normalized_sha256: "6c1225d3137f8095673b78e1dc8a76acdb0ae73247ec7c49e720cfcc56bb03cb"
+    byte_identical_to_raw: true
+  - expected_name: "RUN_UPDATE_SUMMARY.yaml"
+    received_name: "RUN_UPDATE_SUMMARY.yaml"
+    archived_path: "derivation/runs/C3/raw_downloads/RUN_UPDATE_SUMMARY.yaml"
+    normalized_candidate_path: "derivation/runs/C3/RUN_UPDATE_SUMMARY_CANDIDATE.yaml"
+    bytes: 5272
+    sha256: "65c7bc74d4de8900e660c69b5ce2fd930cacfe827bfb6191b4e18b6b24d94f27"
+    normalized_bytes: 5272
+    normalized_sha256: "65c7bc74d4de8900e660c69b5ce2fd930cacfe827bfb6191b4e18b6b24d94f27"
+    byte_identical_to_raw: true
+  - expected_name: "CITATION_BRIEF.md"
+    received_name: "CITATION_BRIEF.md"
+    archived_path: "derivation/runs/C3/raw_downloads/CITATION_BRIEF.md"
+    normalized_candidate_path: "derivation/runs/C3/CITATION_BRIEF.md"
+    bytes: 4367
+    sha256: "760a49a0916a6e4489391bdc6bcd7427e26d73f55a45486deada723067cab6b8"
+    normalized_bytes: 4367
+    normalized_sha256: "760a49a0916a6e4489391bdc6bcd7427e26d73f55a45486deada723067cab6b8"
+    byte_identical_to_raw: true
+
+raw_response:
+  path: "derivation/runs/C3/RAW_RESPONSE.md"
+  bytes: 564
+  sha256: "37342fa0b431e68b680626c23b27070c80e25e15f5c799b27af2ab6a659560aa"
+
+accepted_module_context:
+  path: "derivation/modules/C/current/C_MODULE_CONTEXT.md"
+  history_snapshot: "derivation/modules/C/history/C_MODULE_CONTEXT_after_C3.md"
+  version: "0.3.0"
+  stage: "C3"
+  status: "accepted"
+  bytes: 200666
+  sha256: "810fc26972652086403181f97221503e08e267485c6bd31fe1ea44b5af9a8f66"
+  current_history_byte_identical: true
+
+artifact_review:
+  status: "accepted"
+  engineering_context_delta: "none"
+  semantic_conflict: false
+  manual_decision_required: false
+  external_sources_checked: true
+  citation_brief_local_archive_only: true
