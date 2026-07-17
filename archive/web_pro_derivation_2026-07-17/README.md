@@ -10,14 +10,16 @@
 
 归档文件中出现的 `docs/...`、`engineering_fixed_context/...` 和 `derivation/...` 路径是运行当时的历史路径，应保留用于输入哈希和审计。需要在原路径下逐字复现实验时，应在独立 worktree 中检出提交 `891d14c`，不要批量改写归档清单。
 
-当前有效正式理论文件已迁移：
+当前有效正式理论文件及理论工作副本的位置：
 
-| 原位置 | 当前位置 |
-|---|---|
-| `derivation/system/SYSTEM_INTEGRATED_MODEL.md` | `theory/system/SYSTEM_INTEGRATED_MODEL.md` |
-| `derivation/modules/*/final/*_INTEGRATED_MODEL.md` | `theory/modules/` |
-| `derivation/contracts/*.md` | `theory/interfaces/` |
-| `derivation/modules/*/current/*_MODULE_CONTEXT.md` | `theory/supplements/` |
+| 归档/原位置 | 当前使用位置 | 关系 |
+|---|---|---|
+| `derivation/system/SYSTEM_INTEGRATED_MODEL.md` | `theory/system/SYSTEM_INTEGRATED_MODEL.md` | accepted 正式文件已迁出归档 |
+| `derivation/modules/*/final/*_INTEGRATED_MODEL.md` | `theory/modules/` | accepted 正式文件已迁出归档 |
+| `derivation/contracts/*.md` | `theory/interfaces/` | accepted 独立合同已迁出归档 |
+| `derivation/modules/*/current/*_MODULE_CONTEXT.md` | `derivation/modules/*/history/*_after_A3/B3/C3.md` | 最终上下文只作历史快照，不再保留 theory 重复副本 |
+| `engineering_fixed_context/engineering_fixed_context.md` | `theory/evidence_reassessment/engineering_fixed_context.md` | 归档源保留，theory 为字节级工作副本 |
+| `docs/extract/机理提取/*/{evidence_card.md,extraction_audit.json,figures/}` | `theory/evidence_reassessment/literature/` | 归档源保留，theory 为非 ZIP 工作副本 |
 
 ## 2. 目录与职责
 
@@ -34,7 +36,7 @@ web_pro_derivation_2026-07-17/
 │       ├── ENGINEERING_FIXED_CONTEXT.md
 │       ├── MECHANISM_MODULE_PLAN.md
 │       ├── LITERATURE_MODULE_ROUTING.md
-│       └── 机理提取/               # 29 篇文献证据卡、图片、审计 JSON 与 zip
+│       └── 机理提取/               # 29 组 ZIP、证据卡、审计 JSON 和图片完整源
 ├── engineering_fixed_context/
 │   ├── engineering_fixed_context.md
 │   └── internal/                   # YAML 事实源、manifest、schema、生成器、变更记录
@@ -70,11 +72,11 @@ web_pro_derivation_2026-07-17/
 
 | 运行 | 主结果 | 当前正式去向 |
 |---|---|---|
-| `A1`、`A2`、`A3` | 逐步滚动的完整 A 上下文 | `theory/supplements/A_MODULE_CONTEXT.md`；正式层内规范为 A 集成模型 |
+| `A1`、`A2`、`A3` | 逐步滚动的完整 A 上下文 | `derivation/modules/A/history/A_MODULE_CONTEXT_after_A3.md`；正式层内规范为 A 集成模型 |
 | `A_INTEGRATION` | A 集成模型、A→B 合同 | `theory/modules/A_INTEGRATED_MODEL.md`、`theory/interfaces/A_TO_B_CONTRACT.md` |
-| `B1`、`B2`、`B3` | 逐步滚动的完整 B 上下文 | `theory/supplements/B_MODULE_CONTEXT.md`；正式层内规范为 B 集成模型 |
+| `B1`、`B2`、`B3` | 逐步滚动的完整 B 上下文 | `derivation/modules/B/history/B_MODULE_CONTEXT_after_B3.md`；正式层内规范为 B 集成模型 |
 | `B_INTEGRATION` | B 集成模型、B→C 合同 | `theory/modules/B_INTEGRATED_MODEL.md`、`theory/interfaces/B_TO_C_CONTRACT.md` |
-| `C1`、`C2`、`C3` | 逐步滚动的完整 C 上下文 | `theory/supplements/C_MODULE_CONTEXT.md`；正式层内规范为 C 集成模型 |
+| `C1`、`C2`、`C3` | 逐步滚动的完整 C 上下文 | `derivation/modules/C/history/C_MODULE_CONTEXT_after_C3.md`；正式层内规范为 C 集成模型 |
 | `C_INTEGRATION` | C 集成模型 | `theory/modules/C_INTEGRATED_MODEL.md` |
 | `SYSTEM_INTEGRATION` | A/B/C 全局集成模型 | `theory/system/SYSTEM_INTEGRATED_MODEL.md` |
 

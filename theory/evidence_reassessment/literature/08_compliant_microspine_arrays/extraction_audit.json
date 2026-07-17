@@ -1,0 +1,204 @@
+{
+  "paper_title": "Scaling Hard Vertical Surfaces with Compliant Microspine Arrays",
+  "source_file": "机理文献/核心文献/08_Scaling hard vertical surfaces with compliant microspine arrays.pdf",
+  "bibliographic_record": {
+    "authors": [
+      "Alan T. Asbeck",
+      "Sangbae Kim",
+      "M. R. Cutkosky",
+      "William R. Provancher",
+      "Michele Lanzetta"
+    ],
+    "source_pdf_creation_year": 2005,
+    "published_year": 2006,
+    "doi": "10.1177/0278364906072511",
+    "published_extent": "The International Journal of Robotics Research 25(12), 1165-1179",
+    "published_record_url": "https://journals.sagepub.com/doi/10.1177/0278364906072511",
+    "version_status": "The supplied PDF has 8 pages and no DOI/publication header. The official record is a 15-page 2006 journal article. Evidence locations in this audit apply only to the supplied PDF."
+  },
+  "pdf_pages": 8,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8],
+  "rendering": {
+    "all_pages_rendered_dpi": 160,
+    "formula_pages_rechecked_dpi": 400,
+    "formula_pages_rechecked": [7, 8],
+    "figure_source_pages_rendered_dpi": 400,
+    "figure_source_pages": [2, 5, 7],
+    "visual_status": "All eight pages were inspected for column order, figures, tables, equations and glyph legibility. Retained crops were inspected after final cropping."
+  },
+  "sections_checked": [
+    "Abstract",
+    "I Introduction",
+    "II Spine and Surface Scaling",
+    "III Spine/Surface Modelling",
+    "III.A Simulation Results",
+    "III.B Correlation with Climbing Robot Performance",
+    "III.C Discussion",
+    "IV Spine/Asperity Contact Strength",
+    "V SpinyBotII: Climbing with Compliant Microspines",
+    "V.A Body Design: Promoting Load Sharing and Stability",
+    "V.B Toe and Foot Design: Promoting Spine Attachment and Load Sharing",
+    "VI.A Conclusions",
+    "VI.B Future Work",
+    "VII Appendix: Spine Failure Modes",
+    "Acknowledgment",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 2,
+      "status": "verified",
+      "retained_as": "E1",
+      "notes": "The exponential density f_X(x)=lambda exp(-lambda x), x>=0, and the stated mean 1/lambda and variance 1/lambda^2 were checked against the rendered page. The paper applies the approximation to both asperity spacing and asperity length."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 4,
+      "status": "verified",
+      "retained_as": "E2",
+      "notes": "theta_min = theta_load + arccot(mu) was checked together with the 3.5-8 degree load angle, mu=0.15-0.25 and theta_min=81-86.5 degree text."
+    },
+    {
+      "equation": "Unnumbered curved-beam base-stress equation",
+      "page": 7,
+      "status": "verified",
+      "retained_as": "E3",
+      "notes": "sigma_max = Mc/I = 32 f l d/(pi d^4), with proportionality 1/d^2 for constant l/d and force, was visually checked at 400 dpi. The downstream f_max proportional to d^2 interpretation is explicitly conditional on fixed allowable stress."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 7,
+      "status": "verified",
+      "retained_as": "E4",
+      "notes": "The Castigliano end-rotation expression, both trigonometric terms, the R^2/(2EI) factor and the stated 1/d^2 scaling condition were visually checked at 400 dpi. Figure 8 is retained to preserve the geometry and sign convention."
+    },
+    {
+      "equation": "Unnumbered Hertz maximum-pressure/contact-radius chain",
+      "page": 7,
+      "status": "uncertain",
+      "retained_as": "E5 with warning",
+      "notes": "p_max=3f/(2 pi a^2)=(6 f E^2/(pi^3 R^2))^(1/3), a=(3 f R/(4E))^(1/3), and 1/R=1/r_s+1/r_a were visually verified. However, the same page prints E=(1-mu_s^2)/E_s+(1-mu_a^2)/E_a, which has compliance units while adjacent equations use E as an effective modulus. The missing reciprocal cannot be silently repaired."
+    },
+    {
+      "equation": "Unnumbered peripheral tensile-stress and f_max equations",
+      "page": 8,
+      "status": "uncertain",
+      "retained_as": "omitted except for the r^2 conclusion",
+      "notes": "The PDF clearly prints sigma_T=((1-2 mu_2)p_max)/3 and an f_max expression containing sigma_max and mu_2. mu_2 is not defined and sigma_max is not reconciled with sigma_T or a material failure stress. Exact coefficients were therefore omitted; only the author's conditional square-radius conclusion is retained."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table I",
+      "page": 3,
+      "status": "verified",
+      "notes": "All 12 surface rows, Ra/Rq columns, approach-angle groups, theta_min subcolumns, maximum tip-radius entries and the NaN definition were checked. The evidence card retains ranges and representative interpretation rather than reproducing the full table."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "The photograph's key geometry (270 micrometer shaft and 10 micrometer tip) is not needed after the more general model geometry and parameter table are retained."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 2,
+      "extracted": true,
+      "file": "figures/fig02_p02_spine_surface_trace.png",
+      "reason": "Irreplaceable swept-volume, traced-surface, approach-angle, tip-radius and usable-normal-region geometry. The final crop preserves every relevant label without page text."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 3,
+      "extracted": false,
+      "reason": "The surface-specific curves are summarized by the retained ranges, finite-scale warning and Table I audit; exact curve digitization would exceed the paper's reported precision."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 3,
+      "extracted": false,
+      "reason": "The monotonic theta_min effect and approximate Gaussian normal-angle distribution are captured textually; no reusable coefficients are reported."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig05_p05_scaling_tradeoff.png",
+      "reason": "Minimal visual evidence combining the decreasing asperity-density trend, increasing contact-strength trend, surface data and representative usable length-scale ranges. All axes, units and legend are preserved."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 5,
+      "extracted": false,
+      "reason": "Whole-body layout is adequately represented by the contact-polygon, tail and inward-pull descriptions; it is not a paired-claw model."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 6,
+      "extracted": false,
+      "reason": "The photograph qualitatively shows simultaneous engagement but does not expose toe stiffness, travel or individual loads. The independent-toe mechanism is captured more precisely in text."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 7,
+      "extracted": true,
+      "file": "figures/fig08_p07_spine_failure_geometry.png",
+      "reason": "Required to interpret the curved-beam coordinates, radius, section diameter, force direction, end rotation and deflections used by E3-E4. All labels are preserved."
+    }
+  ],
+  "omitted_sections": [
+    "General climbing-robot and biological-adhesion background in Sections I-II",
+    "Manufacturing-process history not affecting the retained compliance mechanism",
+    "Video URL and proposed sensing/speed improvements not needed for the mechanism card",
+    "Acknowledgment",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "Document-level bibliographic record",
+      "item": "Source-version mismatch",
+      "detail": "The supplied source is an 8-page PDF created in 2005 with no journal header or DOI. The official SAGE record is a 2006 journal article spanning pages 1165-1179. It is not safe to assume identical pagination, equations, figures or content."
+    },
+    {
+      "location": "PDF p.7, Appendix Hertz chain",
+      "item": "Effective-modulus definition",
+      "detail": "The printed E definition is a sum of elastic compliances but the adjacent Hertz equations use E as a modulus. This is dimensionally inconsistent unless a reciprocal is missing; the intended correction is not inferred in the evidence card."
+    },
+    {
+      "location": "PDF p.8, Appendix",
+      "item": "Undefined mu_2 and inconsistent sigma notation",
+      "detail": "mu_2 is not defined, and sigma_max in the final f_max relation is not reconciled with sigma_T or a material failure threshold. The coefficient is omitted."
+    },
+    {
+      "location": "PDF p.4-5, Sections III.B and IV",
+      "item": "Validation statistics",
+      "detail": "Surface ordering, contact-strength points and 1-2 N contact capacity are given without sample counts, uncertainty or full curves. They are retained only as trend or order-of-magnitude evidence."
+    },
+    {
+      "location": "PDF p.5-7, Sections V-VI",
+      "item": "Array load sharing",
+      "detail": "The paper motivates load sharing and shows independent toe mechanisms but does not report toe stiffness, damping, travel, preload or individual-spine force distributions. Uniform sharing is a design objective, not a measured equality."
+    }
+  ],
+  "known_warnings": [
+    "The source model is two-dimensional and quasi-static; it cannot represent 3D bypass, overhangs, lateral guidance or trajectory competition.",
+    "The paper itself reports pseudo-asperity catches, load-induced slip, airborne skipping and alternating static/dynamic friction that are absent from the traced-surface model.",
+    "A 65 micrometer laser spot low-pass filters concrete profiles and changes simulated asperity-density ordering.",
+    "The 1/r^2 asperity-density and r^2 contact-capacity balance is conditional on a sufficiently small fractal scale and uniform geometric scaling; processed surfaces and sandpaper deviate.",
+    "The paper does not support opposed-array preload or paired-claw compatibility and is only B-level for M4.",
+    "Poppler emitted missing-display-font warnings for Symbol and ArialUnicode. All equations, tables, figures and retained glyphs were nevertheless inspected on rendered pages; no relevant glyph was unreadable."
+  ],
+  "evidence_card_character_count": 3395,
+  "character_count_method": "Count of CJK Unified Ideographs in the Markdown source. The card uses the allowed extension to 3500 because the source contains separable surface-geometry, friction/search, failure-scaling, compliant-array and system-validation mechanisms.",
+  "routing_card": "机理文献/归档/literature_routing/03_by_paper/P08_routing.md",
+  "routing_ratings": {
+    "M1": "A",
+    "M2": "A",
+    "M3": "A",
+    "M4": "B"
+  },
+  "status": "PASS_WITH_WARNINGS"
+}

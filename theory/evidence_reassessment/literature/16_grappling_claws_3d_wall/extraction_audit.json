@@ -1,0 +1,217 @@
+{
+  "paper_title": "Grappling claws for a robot to climb rough wall surfaces: Mechanical design, grasping algorithm, and experiments",
+  "source_file": "机理文献/核心文献/16_Grappling claws for a robot to climb rough wall surfaces Mechanical design, grasping algorithm, and.pdf",
+  "authors": [
+    "Fengyu Xu",
+    "Fanchang Meng",
+    "Quansheng Jiang",
+    "Gaoliang Peng"
+  ],
+  "year": 2020,
+  "doi": "10.1016/j.robot.2020.103501",
+  "pdf_pages": 15,
+  "pages_checked": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+  ],
+  "render_review": {
+    "all_pages": "Rendered to PNG at 130 dpi and visually checked in three contact sheets.",
+    "high_resolution_pages": [4, 5, 6, 8, 9, 10, 11, 12, 13, 14],
+    "high_resolution_dpi": 260,
+    "extracted_figure_dpi": 300,
+    "notes": "Retained equations, parameter values, figure captions, axes, legends and all three extracted crops were checked against page renders. PyMuPDF was used because the bundled Poppler wrapper was unavailable in this workspace."
+  },
+  "sections_checked": [
+    "Abstract",
+    "1.1-1.3 Background and wall-climbing robots",
+    "2.1 Mechanical structure of the grappling-hook-like claws",
+    "2.2 Rough-wall surface measurement and point-cloud extraction",
+    "2.3 Friction self-locking discriminant condition",
+    "3.1 2D hook-profile contact and discrimination algorithm",
+    "3.2.1 3D contactable-triangle constraints",
+    "3.2.2 Procedural steps and algorithm",
+    "3.2.3 Simulations",
+    "4.1 Prototype and vibrating-wall platform",
+    "4.2 Vibration experiments and marker-trajectory analysis",
+    "5 Conclusions",
+    "Appendix A notice, references and author biographies checked for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Retained as E1. Alpha, theta, beta and mu definitions, both force-balance inequalities and the final strict inequality were visually checked against Fig. 5 and the text."
+    },
+    {
+      "equation": "Eq. (2)-(3)",
+      "page": 6,
+      "status": "verified",
+      "notes": "2D circle-center equations were visually checked. They are omitted as separate formulas because the current task requires the 3D algorithm; their role is retained in M3 and P16-M2-E02."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E2. All three side-length constraints are less than or equal to 2r."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E2. Heron's formula, semiperimeter definition and the 3 sqrt(3) r^2 / 4 upper bound were visually checked."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E2. A, B and C are exactly radius r from O and every other sampled point P must be at least r from O."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E3. The normalized AB cross AC direction and the subsequent sign correction toward the sphere center were checked."
+    },
+    {
+      "equation": "Unnumbered 2D and 3D grasp-angle conditions",
+      "page": "5-6, 9",
+      "status": "verified",
+      "notes": "The 2D text uses theta_b >= theta_min; 3D Step 4 uses pi/2 - theta > theta_min. Theta is also used for a different grasp-force angle in Eq. (1), so the evidence card explicitly warns that the mapping to mu is not derived."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 4,
+      "status": "verified",
+      "notes": "Partial TYScan point coordinates and millimeter units were checked. Individual coordinates are omitted because the complete point cloud is not supplied and the rows do not support a reusable surface."
+    },
+    {
+      "table": "Table 2",
+      "page": 12,
+      "status": "verified",
+      "notes": "Vibrator load, acceleration, amplitude, frequency, direction, power and precision were checked. Only experimental interpretation-relevant frequency/amplitude results are retained."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 3,
+      "extracted": false,
+      "reason": "Cross layout, longitudinal/transverse roles, pneumatic actuation and elastic-sheet compliance are preserved textually; the general assembly image is not needed by the reasoning model."
+    },
+    {
+      "figure": "Fig. 2-4",
+      "page": "3-4",
+      "extracted": false,
+      "reason": "Measurement workflow, scanner setup and point-cloud/profile output are compactly represented by P16-M1-E01 and the parameter table."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig05_p05_self_locking_geometry.png",
+      "reason": "Irreplaceable joint definition of A/B/C wall profiles, upper/lower hook accessibility and alpha/beta/theta force geometry; the crop preserves all panels, labels and caption."
+    },
+    {
+      "figure": "Fig. 6-9",
+      "page": "5-7",
+      "extracted": false,
+      "reason": "The 2D center-path and interpolation algorithm was checked but is secondary to the retained 3D empty-sphere constraints."
+    },
+    {
+      "figure": "Fig. 10-11",
+      "page": "7-8",
+      "extracted": false,
+      "reason": "The point-cloud triangle and sphere-center geometry is fully represented by retained Eqs. (4)-(7) and their conditions."
+    },
+    {
+      "figure": "Fig. 12",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig12_p10_graspability_map.png",
+      "reason": "Minimal direct result showing candidate locations on the same 3D point cloud for two radii and two minimum graspable angles; axes, units, legends, all panels and caption are preserved."
+    },
+    {
+      "figure": "Fig. 13-14",
+      "page": "10-11",
+      "extracted": false,
+      "reason": "They repeat the same radius/angle trend on two additional point clouds; exact candidate counts are retained in the parameter table."
+    },
+    {
+      "figure": "Fig. 15-18",
+      "page": "11-12",
+      "extracted": false,
+      "reason": "Prototype, platform and test workflow are adequately represented by the apparatus parameters and experimental boundary conditions."
+    },
+    {
+      "figure": "Fig. 19",
+      "page": 13,
+      "extracted": false,
+      "reason": "Two-marker trajectory evidence is superseded by Fig. 20, which more directly displays non-synchronous motion across five module markers."
+    },
+    {
+      "figure": "Fig. 20",
+      "page": 14,
+      "extracted": true,
+      "file": "figures/fig20_p14_sequential_detachment.png",
+      "reason": "Minimal whole-claw evidence that marker displacements grow non-synchronously after drive removal; crop preserves axes, units, legend and caption."
+    }
+  ],
+  "omitted_sections": [
+    "General climbing-robot and adhesion-method literature survey",
+    "Detailed scanner operation and partial raw coordinate rows beyond what establishes provenance",
+    "Full 2D interpolation flowchart and intermediate circle-center algebra after visual verification",
+    "Vibrator hardware specifications that do not alter interpretation",
+    "Acknowledgments, full bibliography and author biographies"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.3 and p.9",
+      "item": "Measurement-to-simulation scale consistency",
+      "detail": "Reported reprojection/alignment errors are about 58.8/19.2 micrometers, while the simulations use 4 micrometer interpolation and hook radii as small as 10 micrometers. The paper does not establish that the interpolated microscale topography is physically resolved."
+    },
+    {
+      "location": "PDF p.4-9",
+      "item": "Angle notation and threshold mapping",
+      "detail": "Theta denotes grasp-force angle in Eq. (1) but contact angle in Sections 3.1-3.2. The paper does not explicitly derive theta_min from friction coefficient and loading direction; the 2D and 3D inequalities also differ at equality."
+    },
+    {
+      "location": "PDF p.9-11",
+      "item": "Meaning of graspable-point count",
+      "detail": "The paper rejects graspable area because adjacent triangles overlap and uses counts from M24 instead. It is not demonstrated that this count is unique, probabilistic or proportional to load capacity."
+    },
+    {
+      "location": "PDF p.9-14",
+      "item": "Algorithm validation scope",
+      "detail": "The 3D discriminant algorithm is checked by simulations. The vibration tests begin by manually exploring stable regions and do not report predicted-versus-observed point-level accuracy."
+    },
+    {
+      "location": "PDF p.11",
+      "item": "Ra/Rq attachment threshold",
+      "detail": "Values Ra about 93 micrometers and Rq about 130 micrometers characterize one laboratory wiper-stone wall. No controlled roughness series supports their use as universal minimum attachment thresholds."
+    },
+    {
+      "location": "Abstract, PDF p.1-3 and Sections 4-5",
+      "item": "Random outdoor wall evidence",
+      "detail": "The abstract and roadmap mention tests on a random outdoor wall, but the main results provide no reproducible quantitative outdoor-wall condition, metric or result."
+    },
+    {
+      "location": "PDF p.14, Appendix A",
+      "item": "Supplementary material",
+      "detail": "Online supplementary material is referenced but absent from the workspace. No claim in the evidence card depends on it."
+    }
+  ],
+  "known_warnings": [
+    "Interpolation cannot recover sub-resolution surface features; absolute candidate locations from the 4 micrometer grid are not treated as validated measurements.",
+    "The geometric candidate count is not a success probability, unique contact count, contact area or load-capacity map.",
+    "Friction self-locking is two-dimensional and must be re-derived in a three-dimensional local frame before implementation.",
+    "The point-cloud model excludes material damage, wear, contact compliance, spine bending, force capacity, array load sharing and progressive redistribution.",
+    "The vibration experiment supports an active-clamping trend but has no reported repeats, uncertainty band, contact-force measurement or transferable dynamic model.",
+    "The measured sand/stone wall, simulated point-cloud subsets and laboratory wiper-stone wall do not form a single controlled red-brick validation chain.",
+    "The paper's Ra/Rq statement and outdoor-wall claim must not be promoted to universal thresholds or quantitative validation."
+  ],
+  "evidence_card_character_count": 2987,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; target is at most 3500 because the paper contains independent surface, single-hook and whole-claw mechanisms.",
+  "status": "PASS_WITH_WARNINGS"
+}

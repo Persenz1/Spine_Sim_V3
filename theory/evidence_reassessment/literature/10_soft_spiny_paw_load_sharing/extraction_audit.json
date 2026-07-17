@@ -1,0 +1,204 @@
+{
+  "paper_title": "Load-Sharing in Soft and Spiny Paws for a Large Climbing Robot",
+  "source_file": "机理文献/核心文献/10_ Load-sharing in soft and spiny paws for a large climbing robot.pdf",
+  "doi": "10.1109/LRA.2019.2897002",
+  "pdf_pages": 8,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8],
+  "sections_checked": [
+    "Abstract",
+    "I. Introduction",
+    "I-A. Contributions",
+    "II. Related Work",
+    "II-A. Linearly-Constrained Spines",
+    "II-B. Under-Actuated Hands",
+    "II-C. Soft Robotics",
+    "III. Design",
+    "III-A. Particle Jamming Palm",
+    "III-B. Fingers With Spines",
+    "III-C. Finger Actuation and Load Sharing",
+    "IV. Validation",
+    "IV-A. Phalange Load Sharing",
+    "IV-B. Palm Testing",
+    "V. Conclusions and Future Work",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Visually checked all three expectation terms, the d_travel - d_asperity difference and K_e multiplier. Retained as E1. The paper does not state clipping/conditioning when travel is smaller than asperity spacing."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Visually checked the (1-alpha) Dirac mass at d=0 and alpha*lambda*exp(-lambda*d) tail. Retained in E2. Units of lambda are not printed in this passage."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Visually checked L*sin(phi) - alpha/lambda and K_e. Retained in E2 with the paper-specific roofing-shingle parameters and transfer warning."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Distal phalange tangential balance visually checked. Omitted as an independent retained formula because Eq. (7) is the combined full force-difference equation."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Proximal phalange balance, factor 2*T_p and all K_lin displacement terms visually checked. Omitted separately in favor of Eq. (7)."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Capstan relation T_d = T_p*exp(mu*(theta_tp1+theta_tp2)) visually checked. Direction reversal during initial actuation is preserved in E3 conditions."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E3; signs, exponent, both cosine groups and three K_lin terms were visually checked against the rendered PDF."
+    },
+    {
+      "equation": "Eq. (8)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E4; factor 2*T_p*cos(theta_t), 1-exp(2*mu*theta_t), and x*K_lin*cos(theta_k) visually checked. All equality assumptions are preserved."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 1,
+      "extracted": false,
+      "reason": "Robot overview and prototype photograph do not add quantitative load-sharing evidence."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": false,
+      "reason": "System component map is adequately represented by the palm/finger architecture and is not needed to reproduce the retained equations."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 3,
+      "extracted": false,
+      "reason": "Embedded-spine geometry and parameters are preserved in M1-M2, E1-E2 and the parameter table; the three retained figures cover otherwise irreducible force definitions and validations."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 4,
+      "extracted": false,
+      "reason": "Finger photograph shows conformity but provides no quantitative relationship beyond the text."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 4,
+      "extracted": false,
+      "reason": "Pneumatic spine array structure is summarized by spine counts and 0.34 bar extension pressure."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 4,
+      "extracted": false,
+      "reason": "Whiffle-tree topology is recoverable from the equal-tendon-force description; Fig. 7 is required for unambiguous force notation."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 4,
+      "extracted": true,
+      "file": "figures/fig07_p04_phalange_force_diagram.png",
+      "reason": "Irreplaceable phalange force, angle, displacement and flexure-stiffness definitions for Eq. (4)-(8); direct PDF crop visually verified."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 5,
+      "extracted": false,
+      "reason": "Test angles, surfaces and sensor layout are preserved numerically in V1."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 6,
+      "extracted": true,
+      "file": "figures/fig09_p06_phalange_load_sharing_validation.png",
+      "reason": "Direct comparison of one-tendon imbalance, two-tendon sharing, flexure effects and Eq. (8) predictions; full axes, legends and caption visually verified."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 6,
+      "extracted": false,
+      "reason": "Single-spine fit slope, R-squared and slip displacement are reproduced numerically in the evidence card."
+    },
+    {
+      "figure": "Fig. 11",
+      "page": 7,
+      "extracted": true,
+      "file": "figures/fig11_p07_palm_area_load_sharing.png",
+      "reason": "Irreplaceable comparison of perfect, zero and measured regional load sharing; full axes, legend, fit and caption visually verified."
+    }
+  ],
+  "omitted_sections": [
+    "General climbing-robot history and biological tongue inspiration",
+    "Most under-actuated-hand and soft-robotics background",
+    "General hardware descriptions not affecting retained mechanics",
+    "Acknowledgment",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.3, Eq. (1)",
+      "item": "Negative effective travel",
+      "detail": "The expectation is printed using d_travel - d_asperity without stating whether non-engaged cases are clipped, conditioned out or assigned zero force. A downstream solver must make this state explicit."
+    },
+    {
+      "location": "PDF p.3, Eq. (2)-(3)",
+      "item": "Asperity-rate units and provenance",
+      "detail": "The passage gives E[D_asperity] = alpha/lambda = 0.73/0.33 for roofing shingle but does not print lambda units; the distribution is taken from reference [30], not re-estimated in this paper."
+    },
+    {
+      "location": "PDF p.3 and p.6, FEA versus single-unit test",
+      "item": "Finite-element model reproducibility",
+      "detail": "The SimScale prediction K_e = 2.12 N/mm is reported without mesh, constitutive law or boundary-condition detail; only the experimental comparison can be reused quantitatively."
+    },
+    {
+      "location": "PDF p.7, Fig. 11 and Section IV-B",
+      "item": "Full-palm extrapolation",
+      "detail": "The text uses the measured slope (about 0.54) to anticipate 140 N, but it does not provide a complete spatial scaling derivation. Fig. 11 was measured only at 10-20 N applied shear."
+    },
+    {
+      "location": "PDF p.7, Section V",
+      "item": "Greater-than-250-N system result",
+      "detail": "The combined hand is said to overload a 250 N sensor on doubly curved rock, but no exact peak, force trace, uncertainty or failure mode is reported. It is retained only as a lower bound."
+    },
+    {
+      "location": "PDF p.5, Section IV-A and Fig. 8 caption",
+      "item": "Phalange test-surface description",
+      "detail": "The body text says the instrumented panels had roofing-shingle surfaces, while the Fig. 8 caption says the square sensor tiles were coated with sandpaper. The load-sharing result is retained without assigning a unique surface material."
+    },
+    {
+      "location": "PDF p.6, Fig. 10",
+      "item": "Nonzero force-displacement fit intercept",
+      "detail": "The plotted fit is y = 2.4125x + 1.4134 (R^2 = 0.9614), while the text uses only the slope as K_e about 2.4 N/mm. The intercept should not be silently treated as elastic force at zero displacement."
+    }
+  ],
+  "known_warnings": [
+    "Direct destructive pull-out tests on rocky surfaces were not performed; the instrumented sharing tests used roofing shingle and coarse 60-grit sandpaper.",
+    "The phalange equations are planar quasi-static balances and do not model whole-paw moment equilibrium, dynamics, normal-force evolution or contact switching.",
+    "The palm sharing experiment measures regional forces rather than individual-spine loads, so it cannot identify spine-to-spine correlations or progressive failure.",
+    "The 259 N value assumes all 71 spines are equally and independently loaded; it is an ideal upper bound, not a measured capacity.",
+    "The 140 N value is an extrapolation from low-load regional data; the directly measured curved-palm failure is 115.3 +/- 18.6 N.",
+    "The curved hold and roofing shingle have different asperity densities, confounding surface and mechanism effects.",
+    "Section IV-A and the Fig. 8 caption conflict on whether the phalange sensor surface was roofing shingle or sandpaper.",
+    "Poppler emitted Symbol/ArialUnicode display-font warnings, but all eight rendered pages, equations, labels and retained crops were visually legible and individually inspected."
+  ],
+  "evidence_card_character_count": 2735,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains embedded-spine, phalange and palm load-sharing layers.",
+  "status": "PASS_WITH_WARNINGS"
+}

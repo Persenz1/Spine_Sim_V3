@@ -1,0 +1,296 @@
+{
+  "paper_title": "Multiscale Material Modeling of Fired Clay Bricks: Experimental Characterization of Microstructural Morphometry and Continuum Mechanical Prediction of Thermal Conductivity, Elastic Stiffness, and Strength Properties",
+  "source_file": "机理文献/核心文献/15_Multiscale material modeling of fired clay bricks Experimental characterization of microstructural.pdf",
+  "author": "Thomas Buchner",
+  "year": 2022,
+  "doi": null,
+  "chapter_5_article_doi": "10.1016/j.mechmat.2022.104334",
+  "pdf_pages": 144,
+  "pages_checked": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+    25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+    37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+    49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+    61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72,
+    73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84,
+    85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96,
+    97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108,
+    109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120,
+    121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132,
+    133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144
+  ],
+  "render_review": {
+    "all_pages": "Rendered to PNG at 110 dpi and visually checked in nine 16-page contact sheets.",
+    "high_resolution_pages": [75, 82, 85, 86, 100, 101, 102, 103, 104, 105, 111, 112, 113, 114, 115, 116, 117],
+    "high_resolution_dpi": 260,
+    "notes": "Retained equations, parameter tables, captions, axes, units and all three extracted figure crops were rechecked against high-resolution page renders."
+  },
+  "sections_checked": [
+    "Abstract and German abstract",
+    "Chapter 1: Introduction, Sections 1.1-1.4",
+    "Chapter 2: A multitechnique quantitative characterization of the pore space, Sections 2.1-2.6",
+    "Chapter 3: Automated morphometrical characterization of material phases, Sections 3.1-3.5 and Appendix A",
+    "Chapter 4: Continuum micromechanics model for elastic stiffness and thermal conductivity, Sections 4.1-4.4 and Appendix A",
+    "Chapter 5: Validated multiscale model for multiaxial strength, Sections 5.1-5.5",
+    "Chapter 6: Summary, conclusions and outlook, Sections 6.1-6.4",
+    "Bibliography, curriculum vitae and dissemination pages for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (2.1)-(2.15)",
+      "page": "18-32",
+      "status": "omitted",
+      "notes": "Porosity, true-density, micro-CT intravoxel and 2D/3D pore-morphometry relations were inspected. They support measurement provenance but are not needed in the minimal contact-failure card."
+    },
+    {
+      "equation": "Eq. (3.1)-(3.5)",
+      "page": "49-55",
+      "status": "omitted",
+      "notes": "Phase chemistry, mass-to-volume conversion and ellipse-to-spheroid morphometry relations were inspected; retained outputs are represented by Table 3.5 and the phase-parameter ranges."
+    },
+    {
+      "equation": "Eq. (4.1)",
+      "page": 75,
+      "status": "verified",
+      "notes": "Retained as E1. The cosh numerator, sinh denominator, kappa parameter and theta-domain/azimuth assumptions were visually checked."
+    },
+    {
+      "equation": "Eq. (4.2)",
+      "page": 75,
+      "status": "verified",
+      "notes": "Retained as E2. Phase fraction, double orientation integral, stiffness-strain-concentration contraction and sin(theta)/(4 pi) measure were visually checked."
+    },
+    {
+      "equation": "Eq. (4.3)",
+      "page": 75,
+      "status": "verified",
+      "notes": "Visually checked as the phase strain-concentration tensor used by E2/E5; omitted as a separate full formula to keep the evidence card compact."
+    },
+    {
+      "equation": "Eq. (4.6)-(4.8)",
+      "page": "77-80",
+      "status": "omitted",
+      "notes": "Scale-specific fractions, transversely isotropic phase compliance and shear-modulus approximation were checked. Numerical phase inputs are retained in the parameter table."
+    },
+    {
+      "equation": "Eq. (4.11)",
+      "page": 82,
+      "status": "omitted",
+      "notes": "Binding-matrix Ez = 32.79 + 1.18 m_CaO+MgO GPa was verified but omitted because it is a two-material linear fit and is unsafe for direct transfer."
+    },
+    {
+      "equation": "Eq. (4.14)-(4.15)",
+      "page": 84,
+      "status": "omitted",
+      "notes": "Ultrasound stiffness and wavelength scale-separation checks were inspected; exact validated stiffness ranges and errors are retained instead."
+    },
+    {
+      "equation": "Eq. (5.1)",
+      "page": 100,
+      "status": "verified",
+      "notes": "Micro/meso/macroscale size hierarchy was visually checked and retained as explicit parameter rows and applicability conditions."
+    },
+    {
+      "equation": "Eq. (5.2)",
+      "page": 101,
+      "status": "verified",
+      "notes": "Retained as E3. Maximum and minimum principal stresses, both trigonometric factors, denominator 2 c cos(phi), final minus one and f_MC=0 condition were visually checked. Compression is negative according to Section 5.3.3."
+    },
+    {
+      "equation": "Eq. (5.3)",
+      "page": 101,
+      "status": "verified",
+      "notes": "Retained as E4; binding-matrix spatial-average stress equals the fourth-order stress concentration tensor contracted with macrostress."
+    },
+    {
+      "equation": "Eq. (5.4)",
+      "page": 102,
+      "status": "verified",
+      "notes": "Retained as E5; the ordered contractions C_bm:A_bm:A_fm:(C_brick)^-1 were visually checked."
+    },
+    {
+      "equation": "Eq. (5.5)-(5.6)",
+      "page": 102,
+      "status": "verified",
+      "notes": "Verified as the Chapter 5 restatement of the two-scale Mori-Tanaka homogenization and strain-concentration equations. Eq. (5.5) is represented by E2; Eq. (5.6) is referenced but not repeated."
+    },
+    {
+      "equation": "Eq. (5.7)",
+      "page": 103,
+      "status": "omitted",
+      "notes": "Transversely isotropic phase-compliance matrix inspected; key directional moduli and assumptions are retained in the parameter table."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 2.5-2.6",
+      "page": "29, 39",
+      "status": "verified",
+      "notes": "True-density comparison and method-scope/bias table inspected. Only measurement limitations needed for V1 are retained."
+    },
+    {
+      "table": "Table 3.5",
+      "page": 66,
+      "status": "verified",
+      "notes": "Volume and mass fractions of matrix, pores and mineral phases for bricks A-E checked; condensed ranges are retained instead of all specimens."
+    },
+    {
+      "table": "Table 4.1",
+      "page": 79,
+      "status": "verified",
+      "notes": "Aspect ratios, measured orientation scatter and ODF kappa values checked. The apparent degree sign on one kappa entry is a table typo/formatting artifact and that entry is not reproduced."
+    },
+    {
+      "table": "Table 4.2",
+      "page": 81,
+      "status": "verified",
+      "notes": "Phase-specific directional moduli, Poisson ratios and conductivity values checked. Relevant stiffness values and their provenance are retained."
+    },
+    {
+      "table": "Table 4.3",
+      "page": 85,
+      "status": "verified",
+      "notes": "Brick densities, ultrasound stiffness components and thermal conductivity values checked. Only stiffness ranges relevant to local material response are retained."
+    },
+    {
+      "table": "Table 5.1",
+      "page": 103,
+      "status": "verified",
+      "notes": "Reference-brick phase fractions, aspect ratios, ODF parameters and directional elastic constants checked; condensed phase fraction vector and key moduli are retained."
+    },
+    {
+      "table": "Table 5.2",
+      "page": 109,
+      "status": "verified",
+      "notes": "Equivalent isotropic x- and z-direction FE bounds for binding, foam and brick matrices checked; not reproduced because they are validation-model surrogates rather than material constants."
+    },
+    {
+      "table": "Table 5.3",
+      "page": 113,
+      "status": "verified",
+      "notes": "Triaxial loading paths A/B and failure stresses checked. The normalized validation result is retained in V4 and Fig. 5.12."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 2.2, 2.4 and 2.8-2.12",
+      "page": "26, 28, 34-36",
+      "extracted": false,
+      "reason": "Porosity gradients, method comparison and pore-size distributions support measurement-method limitations that are compactly preserved in V1."
+    },
+    {
+      "figure": "Fig. 4.3",
+      "page": 74,
+      "extracted": false,
+      "reason": "Its multiscale geometry is superseded by Fig. 5.1, which also locates the binding-matrix failure criterion."
+    },
+    {
+      "figure": "Fig. 4.7",
+      "page": 86,
+      "extracted": false,
+      "reason": "Stiffness validation is more compactly and precisely represented by reported component-wise mean prediction errors."
+    },
+    {
+      "figure": "Fig. 4.8",
+      "page": 88,
+      "extracted": false,
+      "reason": "Large-quartz intact/cracked bounds and the 10 micrometer threshold are preserved textually with their empirical limitation."
+    },
+    {
+      "figure": "Fig. 5.1",
+      "page": 100,
+      "extracted": true,
+      "file": "figures/fig05_1_p100_multiscale_rve.png",
+      "reason": "Irreplaceable joint definition of micro/meso/macroscales, phase hierarchy, spheroid axes, coordinates and orientation distribution; crop includes all labels and legend."
+    },
+    {
+      "figure": "Fig. 5.2 and 5.5",
+      "page": "105, 108",
+      "extracted": false,
+      "reason": "Macroscopic test dimensions and nanoindentation FE geometry are adequately represented by the parameter table and scale warnings."
+    },
+    {
+      "figure": "Fig. 5.7",
+      "page": 111,
+      "extracted": true,
+      "file": "figures/fig05_7_p111_nanoindentation_validation.png",
+      "reason": "Minimal direct microscale validation of both direction-dependent unloading curves against the FE bounds; crop preserves axes, units, legend and all panels."
+    },
+    {
+      "figure": "Fig. 5.8",
+      "page": 112,
+      "extracted": false,
+      "reason": "Sensitivity to cohesion and friction angle is stated qualitatively because the plot does not provide an independently reusable calibration dataset."
+    },
+    {
+      "figure": "Fig. 5.9-5.11",
+      "page": "114-115",
+      "extracted": false,
+      "reason": "Failure-surface shape and directional tensile/compressive/shear strengths are retained numerically; these plots are model outputs rather than independent validation."
+    },
+    {
+      "figure": "Fig. 5.12",
+      "page": 116,
+      "extracted": true,
+      "file": "figures/fig05_12_p116_multiaxial_validation.png",
+      "reason": "Minimal direct macroscale comparison of two normalized triaxial loading paths with predicted meridians; crop preserves axes, units, legend and data points."
+    },
+    {
+      "figure": "Fig. 5.13",
+      "page": 117,
+      "extracted": false,
+      "reason": "Biaxial-to-uniaxial ratios are more precisely retained as 0.80, 1.01, 1.14 versus the modeled 0.88."
+    }
+  ],
+  "omitted_sections": [
+    "General brick history, construction motivation and literature-history narrative",
+    "Detailed sample preparation, instrument operation and chemical/mineralogical tables not affecting the retained mechanical mechanisms",
+    "Thermal-conductivity homogenization, heat-flow testing and cross-property analysis except where needed to establish model scope",
+    "Appendix phase-image plates after checking their layout and phase-label consistency",
+    "Acknowledgments, full bibliography, curriculum vitae and scientific dissemination lists"
+  ],
+  "uncertain_items": [
+    {
+      "location": "Thesis metadata and PDF p.97",
+      "item": "Document DOI",
+      "detail": "The doctoral thesis itself does not report a DOI. Chapter 5 is a published article with DOI 10.1016/j.mechmat.2022.104334, which is recorded separately and not attributed to the entire thesis."
+    },
+    {
+      "location": "PDF p.79, Table 4.1",
+      "item": "Kappa entry formatting",
+      "detail": "One muscovite kappa entry is rendered with a degree sign although kappa is dimensionless. That individual entry is not reproduced."
+    },
+    {
+      "location": "PDF p.100, Eq. (5.1)",
+      "item": "Marginal mesoscopic scale separation",
+      "detail": "The largest mesophase size is at most 150 micrometers while the mesoscopic RVE is 300 micrometers; the paper explicitly accepts factors of only 2-3 for its larger-than relation. Applicability is weaker for a sharp contact zone."
+    },
+    {
+      "location": "PDF p.104-105, Section 5.3.3",
+      "item": "Microscale strength provenance",
+      "detail": "Cohesion and friction angle are back-identified from nominal macroscopic bending/compression strengths, not directly measured on the binding matrix."
+    },
+    {
+      "location": "PDF p.112-117, Section 5.4.2",
+      "item": "Independent multiaxial validation scope",
+      "detail": "Published test bricks lack microstructural inputs. Test and model stresses are normalized by their own uniaxial compressive strengths, validating failure-surface shape but not absolute cross-brick strength transfer."
+    },
+    {
+      "location": "PDF p.101-102, Eq. (5.2)-(5.4)",
+      "item": "Contact-scale use",
+      "detail": "The model uses spatial-average binding-matrix stress in an RVE. The thesis does not define how a micrometer-scale spine contact field should be averaged or how local pore-edge peaks alter initiation."
+    }
+  ],
+  "known_warnings": [
+    "Internal pore/mineral morphometry is not external rough-surface topography and is routed only to the material-failure part of M2.",
+    "Strength modeling is calibrated to one calcareous brick fired at 880 C; seven-brick coverage applies to stiffness, not to identified failure constants.",
+    "The 10 micrometer large-quartz zero-stiffness rule is an empirical hard threshold rather than an interface-debonding law.",
+    "Ordinary Mori-Tanaka homogenization yields a non-symmetric tensor for anisotropic non-spherical phases; the thesis applies post-symmetrization as an approximation.",
+    "The failure model predicts first attainment only and excludes post-peak softening, fracture energy, crack path, crushing, scratching, cyclic damage and rate effects.",
+    "Macroscopic stiffness and strength values must not be used directly as micrometer-scale spine-contact parameters without a local-to-RVE bridge and target-brick calibration."
+  ],
+  "evidence_card_character_count": 3230,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; within the allowed 3500-character extension because the thesis contains separate morphology, elastic-homogenization and multiaxial-strength submodels.",
+  "status": "PASS_WITH_WARNINGS"
+}

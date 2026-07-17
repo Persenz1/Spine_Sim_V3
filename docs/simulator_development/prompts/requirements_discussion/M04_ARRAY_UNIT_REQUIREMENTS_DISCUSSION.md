@@ -12,10 +12,10 @@ TASK_ID: M04_ARRAY_UNIT_REQUIREMENTS
 本模块是第一版参数选型的核心。它必须调用 M03/A embedded kernel，通过共同背板平衡产生部分接触、载荷不均、事件后重平衡和再挂接；不得用 Neffective×单刺平均力或人为均分载荷替代。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M03 requirements 和 M03 输出合同；
-4. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 5. theory/modules/B_INTEGRATED_MODEL.md；
 6. theory/interfaces/A_TO_B_CONTRACT.md 与 B_TO_C_CONTRACT.md；
 7. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；

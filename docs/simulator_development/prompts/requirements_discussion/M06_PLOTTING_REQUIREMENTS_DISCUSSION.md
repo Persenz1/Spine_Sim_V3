@@ -17,7 +17,7 @@ TASK_ID: M06_PLOTTING_REQUIREMENTS
 - 绘图模块不得成为仿真依赖图的一部分。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M05 requirements，重点读取所有 canonical output 和 plotting needs；
 4. theory/system/SYSTEM_INTEGRATED_MODEL.md 第 25–30 节；

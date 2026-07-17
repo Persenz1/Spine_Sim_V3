@@ -1,0 +1,166 @@
+{
+  "paper_title": "Time-dependent fiber bundles with local load sharing",
+  "source_file": "机理文献/条件备选/02_Time-dependent fiber bundles with local load sharing.pdf",
+  "paper_id": "P25",
+  "doi": "10.1103/PhysRevE.63.021507",
+  "pdf_pages": 20,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  "visual_review": {
+    "rendered_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "contact_sheet_reviewed": true,
+    "key_pages_reviewed_at_full_resolution": [4, 5, 6, 8, 13, 17],
+    "layout_notes": "Two-column reading order, equations, Greek symbols, subscripts, inequalities, captions and page numbering were checked against rendered PDF pages."
+  },
+  "sections_checked": [
+    "Abstract",
+    "I.A Background",
+    "I.B Overview of paper and main results",
+    "II.A Bundle geometry and load sharing rules",
+    "II.B Stochastic fiber lifetime model",
+    "III.A Mean and variance of ELS bundle lifetime",
+    "III.B ELS bundle lifetime distributions",
+    "III.C Fiber failure rates under ELS for small rho",
+    "IV.A LLS bundle lifetime behavior for rho > 1",
+    "IV.B LLS bundle lifetime behavior for 0 < rho <= 1",
+    "IV.C Fiber failure rates under LLS for small rho",
+    "IV.D Lifetime behavior for 0 <= rho << 1",
+    "V.A Bundle lifetime behavior for rho > 1",
+    "V.B Bundle lifetime behavior for 1/2 <= rho <= 1",
+    "V.C Bundle lifetime behavior for 0 <= rho < 1/2",
+    "VI Discussion",
+    "Appendix: Merge-sort algorithm for megafiber bundle simulation",
+    "Acknowledgments and references checked for document completeness; not used as primary evidence"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (2.1)-(2.3)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Interior LLS factor Kr=1+r/2, boundary factor Kr,b=1+r/2+b/2 and ELS factor N/(N-j) were visually checked. Eq. (2.1) was retained as E1; the other two remain route-card context."
+    },
+    {
+      "equation": "Eq. (2.4)-(2.9)",
+      "page": "4-5",
+      "status": "verified",
+      "notes": "Load-history lifetime distribution, kappa(x)=x^rho, Psi(x)=x^beta, fixed-load Weibull form and cumulative-hazard failure condition were checked. Eq. (2.4)-(2.6) and (2.9) were retained as E2."
+    },
+    {
+      "equation": "Eq. (3.1)-(3.12)",
+      "page": 5,
+      "status": "verified",
+      "notes": "ELS failure rates, inter-failure exponential law, mean, variance regimes and Gaussian limit were checked. They are used only as comparison theory and were omitted from the compact formula list."
+    },
+    {
+      "equation": "Eq. (3.13)-(3.16)",
+      "page": 6,
+      "status": "verified",
+      "notes": "The exact rho=1 gamma CDF, its mean and variance, Gaussian limit and reverse weakest-link transform were checked. Eq. (3.13) was retained as E7."
+    },
+    {
+      "equation": "Eq. (3.17)-(3.18)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Small-rho ELS rate expansions were checked and retained only as support for the low-rho comparison."
+    },
+    {
+      "equation": "Eq. (4.1)-(4.8)",
+      "page": 6,
+      "status": "verified",
+      "notes": "k-cluster formation distribution, coefficient recursion, power-law scaling and intersection time were checked. Eq. (4.1)-(4.2) were retained as E4."
+    },
+    {
+      "equation": "Eq. (4.9)-(4.24)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Critical-cluster asymptotics, Stirling approximation, k(t), W*(t), critical size, FY propagation approximation and LLS hazard sequence were checked. Omitted to avoid carrying a long derivation; route locations preserve them."
+    },
+    {
+      "equation": "Eq. (4.25)-(4.34)",
+      "page": 8,
+      "status": "verified",
+      "notes": "W-hat approximation, constants, propagation-time correction, characteristic failure time and rho=1 cluster recursion were visually checked. Eq. (4.32) was retained as E6; the compact card does not reproduce W-hat because its asymptotic preconditions are restrictive."
+    },
+    {
+      "equation": "Eq. (4.35)-(4.48)",
+      "page": 9,
+      "status": "verified",
+      "notes": "Small-rho LLS failure-rate expansions and their ELS comparison were checked and summarized qualitatively in M5."
+    },
+    {
+      "equation": "Eq. (4.49)-(4.53)",
+      "page": 10,
+      "status": "verified",
+      "notes": "rho=0 maximum-lifetime extreme-value distribution, median, spread and small-rho conjecture were checked. Omitted as a displayed equation because this is not a target-system calibrated regime."
+    },
+    {
+      "equation": "Eq. (A1)",
+      "page": 17,
+      "status": "verified",
+      "notes": "Projected lifetime contraction after a load change was visually checked, including the ratio ell_i/ell_i' raised to rho. Retained as E3."
+    },
+    {
+      "equation": "Eq. (A2)-(A8)",
+      "page": "17-19",
+      "status": "verified",
+      "notes": "Forward/backward pointer definitions, pointer updates, terminal cases and hierarchical minimum/state recursions were checked. Omitted from the compact formula list because they are implementation details rather than physical equations."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1-4",
+      "page": 10,
+      "extracted": false,
+      "reason": "Lifetime CDF families for rho=2,4,10,20 are summarized by V1 and the weakest-link formula; exact curve reading is not required for downstream modeling."
+    },
+    {
+      "figure": "Fig. 5-8",
+      "page": "11-12",
+      "extracted": false,
+      "reason": "Reverse weakest-link transforms and the two asymptotic approximations are adequately indexed by Eq. (4.6), Sections IV.A/V.A and V1."
+    },
+    {
+      "figure": "Fig. 9-11",
+      "page": "12-13",
+      "extracted": false,
+      "reason": "Mean, standard deviation and coefficient-of-variation size trends are compactly described in the mechanisms and parameter table."
+    },
+    {
+      "figure": "Fig. 12",
+      "page": 13,
+      "extracted": false,
+      "reason": "The rho=2 collapse after roughly one-quarter of fibers fail is preserved as a qualified single-realization trend; the plot is replaceable by text."
+    },
+    {
+      "figure": "Fig. 13-20",
+      "page": "13-16",
+      "extracted": false,
+      "reason": "Gaussian and extreme-value regime comparisons are summarized by V2-V3 without estimating values from plotted curves."
+    },
+    {
+      "figure": "Fig. 21-22",
+      "page": 18,
+      "extracted": false,
+      "reason": "Pointer arrays and binary-tree data structures are implementation diagrams that can be fully specified by the Appendix and do not carry unique physical evidence."
+    }
+  ],
+  "omitted_sections": [
+    "Broad historical review of composite, fuse-network, percolation and earthquake models in Section I.A",
+    "Detailed ELS derivations not needed beyond the comparison and rho=1 benchmark",
+    "Acknowledgments",
+    "Complete reference list"
+  ],
+  "uncertain_items": [],
+  "known_warnings": [
+    "The model is a one-dimensional fiber abstraction, not a microspine-array geometry or a material calibration experiment.",
+    "The nearest-left/right equal LLS rule and open-boundary transfer rule must not be identified with the target array without a mechanical adjacency and stiffness mapping.",
+    "All primary simulations use beta=1 and fixed total bundle load; memory effects, displacement control, compliance, re-engagement and multiple failure modes are absent.",
+    "Closed-form rho>1 approximations are developed mainly from rho much greater than one and require large N; finite-array use needs direct simulation and sensitivity analysis.",
+    "The Mode-I rock exponent range 10-170 appears only as a cited background value on PDF p.3 and is not a parameter measured or validated by this paper.",
+    "Monte Carlo agreement verifies the implementation and asymptotics inside the assumed model; it is not physical validation on fibers, rock, brick or microspines.",
+    "No figures were extracted because every model-relevant visual was replaceable by equations and qualified text without loss of traceability."
+  ],
+  "evidence_card_character_count": 2824,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; equations, Latin identifiers and Markdown syntax excluded from this count.",
+  "status": "PASS_WITH_WARNINGS"
+}

@@ -20,4 +20,6 @@
 - 讨论窗口不得编码；
 - 实现提示词由对应讨论窗口根据冻结需求生成；
 - 每个窗口结束后停止，不自动开始下一个模块；
-- M08 不阻塞 M07。
+- M08 不阻塞 M07；
+- 当前理论和工程事实从 `theory/README.md` 与 `theory/evidence_reassessment/` 工作副本读取，不修改归档源；
+- `theory/interfaces/` 是模块内嵌公共合同的独立镜像，不得与 `theory/modules/` 形成第二套物理。

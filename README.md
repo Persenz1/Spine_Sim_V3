@@ -12,7 +12,7 @@
 2. 论文写作：proposed 严格推导 → 复核报告 → accepted 系统/模块模型作版本追溯；
 3. 求解器编码或参数工作：复核报告 → 开发策略 → 机器配置 → accepted 系统/模块模型；
 4. 审计 accepted 1.0：系统模型 → 对应 A/B/C 模块 → 必要接口；
-5. 查证据与历史：补充上下文 → `archive/` 中的原始回答、哈希、文献卡和验证记录。
+5. 论文反向证据复核：`theory/evidence_reassessment/` 工作副本；查历史推导和原始运行时再进入 `archive/`。
 
 proposed 严格稿不会自动覆盖 accepted 文件。遇到复核报告中的 P0 未闭合项时，只能采用已明确闭合的 M0 开发分支或返回不可用，不能直接把歧义公式写进求解器。
 
@@ -22,6 +22,8 @@ proposed 严格稿不会自动覆盖 accepted 文件。遇到复核报告中的 
 Spine_Sim_V3/
 ├── README.md
 ├── AGENTS.md
+├── docs/
+│   └── simulator_development/       # M00–M08 规划、工作流和需求讨论提示词
 ├── theory/                         # 当前有效、供复核和论文化的机理文件
 │   ├── README.md                   # 理论阅读地图与权威顺序
 │   ├── paper/
@@ -41,16 +43,16 @@ Spine_Sim_V3/
 │   ├── interfaces/
 │   │   ├── A_TO_B_CONTRACT.md
 │   │   └── B_TO_C_CONTRACT.md
-│   └── supplements/
-│       ├── A_MODULE_CONTEXT.md
-│       ├── B_MODULE_CONTEXT.md
-│       └── C_MODULE_CONTEXT.md
+│   └── evidence_reassessment/         # 论文反向工程事实/文献证据复核输入
+│       ├── README.md
+│       ├── engineering_fixed_context.md
+│       └── literature/                # 29 组证据卡、审计 JSON 和关键图片
 └── archive/
     └── web_pro_derivation_2026-07-17/  # 网页推导的完整审计与复现归档
         ├── README.md
         ├── docs/derivation_workflow/   # 指南、模板、窗口提示词
-        ├── docs/extract/               # 模块规划、文献路由、证据包
-        ├── engineering_fixed_context/  # 工程事实、YAML、生成器
+        ├── docs/extract/               # 模块规划、文献路由和 29 组完整提取源
+        ├── engineering_fixed_context/  # 工程事实生成视图、YAML 源、schema 和生成器
         └── derivation/
             ├── prompts/                # 13 份正式网页执行提示词
             ├── runs/                   # 13 个运行目录及全部原始/验证产物
@@ -67,9 +69,10 @@ Spine_Sim_V3/
 | `theory/system/` | A→B→C 全局集成规范 | 全局状态、变量、坐标、接口、事件、事务、统一算法、验证和实现交接 | 是 |
 | `theory/modules/` | A/B/C 各层正式集成模型 | 单刺、阵列单元、十字对爪的层内方程与可执行细节 | 按需 |
 | `theory/interfaces/` | 独立 A→B、B→C 合同 | 数据结构、作用方向、事务和禁止越界项的实现审计 | 按需 |
-| `theory/supplements/` | A3/B3/C3 后的最终完整滚动上下文 | 查找阶段证据、推导分支、迁移边界和被集成时压缩的说明 | 最后按需 |
+| `theory/evidence_reassessment/` | 工程事实汇总与 29 组文献提取材料 | 后续从论文和模型反向检查可补充内容 | 专项复核时 |
+| `docs/simulator_development/` | M00–M08 模块规划与需求冻结流程 | 仿真器需求讨论、实现窗口生成和首版集成 | 开发任务入口 |
 
-两份独立合同的正文已分别嵌入 A、B 集成模型；没有接口审计需求时，不必重复阅读。三个补充上下文虽然也是 `accepted`，但已经被对应的 `INTEGRATED_MODEL 1.0.0` 取代，不能与正式集成模型并列为当前规范。
+两份独立合同的正文已分别嵌入 A、B 集成模型；独立文件作为下游实现和审计入口保留。A3/B3/C3 最终滚动上下文已经被对应的 `INTEGRATED_MODEL 1.0.0` 取代，字节级相同的最终快照只保留在归档，不再与正式集成模型并列。
 
 ## 4. 归档产物的意义
 
@@ -86,8 +89,8 @@ Spine_Sim_V3/
 | `MECHANICAL_FIXES.md` | 无歧义格式、路径、状态和数学修复记录 | 否 |
 | `VALIDATION_REPORT.md`、`validate_*.py` | 接受判定、回归检查和可复现验证脚本 | 否 |
 | `modules/*/history/` | A1–C3 每阶段完整上下文快照 | 历史机理，不是当前规范 |
-| `engineering_fixed_context/` | 坐标、尺寸、工况、开关、范围和未决参数的工程事实源 | 支撑权威，不是机理正文 |
-| `docs/extract/` | 模块计划、29 篇文献路由、证据卡、图片和压缩包 | 证据支撑，不是机理正文 |
+| `engineering_fixed_context/` | 工程事实生成视图、结构化 YAML 源、schema、manifest 和生成器 | 归档源保留；生成视图另复制到 `theory/evidence_reassessment/` 供反向复核 |
+| `docs/extract/` | 模块计划、29 篇文献路由、ZIP、证据卡、审计 JSON 和图片 | 完整归档源保留；非 ZIP 材料另复制到 `theory/evidence_reassessment/literature/` |
 
 ## 5. 当前审查结论与关键限制
 

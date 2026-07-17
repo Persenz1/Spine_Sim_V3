@@ -1,0 +1,198 @@
+{
+  "paper_title": "Advances in Knowledge of the Fracture Properties of Cohesive Materials: Fired-Clay and Tuff Bricks",
+  "source_file": "机理文献/核心文献/14_ Advances in knowledge of the fracture properties of cohesive materials Fired-clay and tuff bricks.pdf",
+  "doi": "10.1061/(ASCE)EM.1943-7889.0001815",
+  "pdf_pages": 11,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  "sections_checked": [
+    "Abstract",
+    "Introduction",
+    "Materials and Methods",
+    "Materials",
+    "Methods",
+    "Experimental Results: P-CMOD and P-delta Responses",
+    "Fracture Properties",
+    "Fracture Energy",
+    "Strain Profiles along the Ligament",
+    "Softening Function",
+    "Displacement Profiles along the Ligament",
+    "New Approach to Determine wc",
+    "Conclusions",
+    "Data Availability Statement",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 3,
+      "status": "omitted",
+      "notes": "Visually verified as the LEFM CMOD expression used only to back-calculate elastic modulus. It was omitted because it is specimen-geometry specific and does not define the retained fracture mechanism."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 4,
+      "status": "omitted",
+      "notes": "Visually verified as the V1(alpha) geometry function paired with Eq. (1). Omitted with Eq. (1); the paper notes that the expression was derived for D/S=0.25."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Retained as E1: epsilon_t^E=f_bt/E. The accompanying assumption that tensile and compressive elastic moduli are equal is preserved."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained within E2: wc=3.6 GF/f_bt. The neighboring Petersson bilinear nodes sigma(0)=f_bt, wbar=0.8 GF/f_bt and sigma(wbar)=f_bt/3 were visually checked and retained as text-defined conditions, not invented equations."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained as E4: Delta u_x,e=epsilon_t^E xi. xi=13 mm belongs to the DIC measurement geometry and is explicitly marked nonportable."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained as E5: Delta u_x,max=Delta u_x,e+wc. The physical-separation interpretation sigma(wc)=0 is preserved."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained as E3: wc=5.6 GF/f_bt. It is correctly labeled a concrete literature comparator rather than a brick law."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 2,
+      "status": "verified",
+      "notes": "Compressive strength, splitting tensile strength, direct elastic modulus and CMOD-derived modulus for series S/A/M/P/N/R were visually checked. Retained series values use the direct E column."
+    },
+    {
+      "table": "Table 2",
+      "page": 3,
+      "status": "verified",
+      "notes": "All specimen geometry, density and peak-load columns were checked. Only the span, depth and notch-length ranges needed to expose the macro-scale test boundary were retained."
+    },
+    {
+      "table": "Table 3",
+      "page": 5,
+      "status": "verified",
+      "notes": "Specimen and series fracture energies from LVDT and DIC load-deflection responses were checked. Retained means and CoVs match the GF columns."
+    },
+    {
+      "table": "Table 4",
+      "page": 7,
+      "status": "verified",
+      "notes": "Delta u thresholds, R-prime, Rc values and wc^(d epsilon/dt)/(GF/f_bt) coefficients were visually checked. Missing intersections for M2 and N3 remain recorded as missing rather than imputed."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "The three-point-bending rig is sufficiently represented by the loading mode, span, notch and CMOD/DIC measurements."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 4,
+      "extracted": false,
+      "reason": "P-CMOD curve families support the work-of-fracture calculation, but the retained Table 3 values provide the smaller quantitative evidence."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 5,
+      "extracted": false,
+      "reason": "The LVDT-versus-DIC comparison is preserved textually and through Table 3; no additional reusable material parameter is visible."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 6,
+      "extracted": false,
+      "reason": "The DIC strip, rectangles and xi=13 mm geometry are fully described by the retained formulas and method limits."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 6,
+      "extracted": false,
+      "reason": "The strain-threshold onset mechanism is represented by Eq. (3); Fig. 8 preserves the more complete multi-state displacement evidence."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 7,
+      "extracted": false,
+      "reason": "Displacement and strain contours are qualitative and do not add a portable parameter beyond the profile analysis."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig07_p08_softening_function.png",
+      "reason": "Shows the material-conditioned stress-opening curves and the effect of GF/f_bt on softening extent; the direct PDF crop was visually verified with axes, units, legend and caption intact."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig08_p08_displacement_profiles.png",
+      "reason": "Irreplaceable mapping among loading stages, elastic threshold, two candidate wc thresholds and FPZ distances; the direct PDF crop was visually verified."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 9,
+      "extracted": true,
+      "file": "figures/fig09_p09_crack_opening_criterion.png",
+      "reason": "Displays the proposed strain-rate plateau criterion and its timing relative to the two concrete comparator lines; the direct PDF crop was visually verified."
+    }
+  ],
+  "omitted_sections": [
+    "General masonry finite-element motivation and broad fracture-literature history",
+    "Detailed LVDT mounting and DIC file-size discussion that does not affect retained conclusions",
+    "Complete specimen-by-specimen geometry, density and peak loads beyond the scale boundary",
+    "Data Availability Statement details",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.9-10, New Approach to Determine wc",
+      "item": "Physical-separation time from strain-rate plateau",
+      "detail": "The authors postulate that the transition from an initially increasing derivative to an approximately constant branch marks physical separation. They explicitly state that an objective sigmoid fitting procedure requires further investigation and more DIC data."
+    },
+    {
+      "location": "PDF p.7-10, Fig. 7 and Table 4",
+      "item": "Complete brick softening-function shape",
+      "detail": "The paper identifies a material-dependent critical opening but does not independently invert the full traction-opening curve for brick. Fig. 7 still uses the Petersson concrete bilinear shape."
+    },
+    {
+      "location": "PDF p.9, specimen P3",
+      "item": "Sensitivity to series-average versus specimen-specific GF",
+      "detail": "Using the P-series average GF gives Rc values 35.7 and 51.1 mm, whereas using P3 GF=50.1 N/m gives 50.6 and 66.8 mm. No unique pooling rule is established."
+    },
+    {
+      "location": "PDF p.7-9, Table 4",
+      "item": "Missing threshold intersections",
+      "detail": "For M2 and N3, one or both concrete-based displacement thresholds do not intersect the experimental profile. Missing Rc values are not estimated."
+    },
+    {
+      "location": "Transfer to the current microspine problem",
+      "item": "Mode and scale conversion",
+      "detail": "The paper supplies macro-scale Mode-I properties only. It does not provide a validated conversion to tip-scale compression, Mode-II or mixed-mode fracture under a finite-radius spine."
+    }
+  ],
+  "known_warnings": [
+    "The 3.6 and 5.6 coefficients are concrete calibrations and are explicitly rejected as universal brick relations.",
+    "The experimental cb range 1.7-5.5 is material- and specimen-dependent and is not a target-brick prior distribution by itself.",
+    "The FPZ onset criterion assumes the same elastic modulus in tension and compression.",
+    "The reported R-prime and Rc values are centimeter-scale apparent lengths from a notched beam and are not microspine damage regularization lengths.",
+    "Only three fracture specimens were tested per series, with DIC on at least one specimen per brick type.",
+    "Poppler reported missing display fonts for Symbol and ArialUnicode during rendering, but all 11 pages, retained equations, tables and direct crops were visually inspected and all relevant glyphs were legible."
+  ],
+  "evidence_card_character_count": 2641,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md. The card exceeds the default 2500-character target slightly but remains below the 3500-character extension because it preserves three independent reusable components: cohesive softening, FPZ/displacement-state identification, and material-specific transfer limits.",
+  "status": "PASS_WITH_WARNINGS"
+}

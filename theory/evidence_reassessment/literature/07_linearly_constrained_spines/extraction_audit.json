@@ -1,0 +1,278 @@
+{
+  "paper_title": "Design and modeling of linearly-constrained compliant spines for human-scale locomotion on rocky surfaces",
+  "source_file": "机理文献/核心文献/07_ Design and modeling of linearly-constrained compliant spines for human-scale locomotion on rocky sur.pdf",
+  "doi": "10.1177/0278364917720019",
+  "pdf_pages": 15,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  "sections_checked": [
+    "Abstract",
+    "1 Introduction",
+    "2.1 Spine mechanism",
+    "2.2 Spine model and design parameters",
+    "2.2.1 Spine strength",
+    "2.2.2 Spine-asperity interaction",
+    "2.2.3 Spine-channel interaction",
+    "2.2.4 Spine load sharing and conformability",
+    "2.3 Spine design guidelines",
+    "2.4 Modeling the surface",
+    "3.1 Spine array adhesion with varying loading angle",
+    "3.2 3D limit surface",
+    "3.3 Experiments and results",
+    "3.4 Extended limit surface with friction",
+    "4.1 Mechanism design",
+    "4.2 Modeling",
+    "4.3 Experiments",
+    "5.1 Enhanced locomotion with SupraPed",
+    "5.2 Rock climbing palm",
+    "6 Conclusion",
+    "Appendix A Spine model definition",
+    "Appendix B Spine strength derivations",
+    "Appendix C Spine-channel interaction constraints",
+    "Appendix D Opposed gripper model derivations",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Visually verified and retained as E1. Numerator mu*cos(psi), denominator cos(psi)-mu*sin(psi), multiplied by F_P. Interpreted only for the friction-limited, pure-shear case shown in Fig. 5; asperity strength truncates the divergence near the friction cone."
+    },
+    {
+      "equation": "Eq. (2)-(3)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Visually verified and retained in E2. The threshold is psi <= beta + pi/2 - alpha/2. The coefficient c_i is not numerically reported in this paper and is intended to be fitted from angular data."
+    },
+    {
+      "equation": "Eq. (4) and Eq. (19)-(20)",
+      "page": "4, 14",
+      "status": "verified",
+      "notes": "Visually verified and retained in E2. The paper sets C_c=1 inside beta-atan(mu_s) <= phi <= beta+atan(mu_s) and prints one multiplicative slip expression outside. Separate upper/lower out-of-cone branches are described but not fully written as a complete piecewise function."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Visually verified and retained as E3: s = l/(l-l_e) times epsilon. The reported backlash-induced inclination change is within 2 degrees in most cases and is ignored by the paper."
+    },
+    {
+      "equation": "Eq. (6)-(8)",
+      "page": "5-6",
+      "status": "verified",
+      "notes": "Visually verified and retained as E4. Eq. (6) uses the minimum over Phi_{M_i}/k+S_i; Eq. (7) uses k*max(X-S_i,0); Eq. (8) integrates over failure mode, maximum-force and backlash distributions. The distribution parameters are not fully listed in this paper."
+    },
+    {
+      "equation": "Eq. (9)-(12)",
+      "page": "6-7",
+      "status": "verified",
+      "notes": "Visually verified and retained as E5. The usable-slope density is linear over delta psi; Eq. (10) normalizes the angular integral by the phi=0 value; Eq. (11) defines the usable slope bounds; Eq. (12) gives beta'=asin(sin(beta)cos(theta)). Isotropy and the high-slope linear-density approximation are preserved as warnings."
+    },
+    {
+      "equation": "Eq. (13)-(14)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Visually verified and retained as E6. The denominator cos|phi|-mu_t*sin|phi| must be positive. The small spine-extension spring force is explicitly omitted."
+    },
+    {
+      "equation": "Eq. (15)",
+      "page": 10,
+      "status": "omitted",
+      "notes": "Visually verified as the sum of four tile limit surfaces after coordinate rotations. Omitted from the compact formula set because it is specific to the four-tile SupraPed staff geometry and does not add a new local contact or paired-array law."
+    },
+    {
+      "equation": "Eq. (16)-(18)",
+      "page": 14,
+      "status": "uncertain",
+      "notes": "The printed symbols and coefficients were visually verified. Eq. (17)-(18) are retained as E7 only to preserve the taper-angle and worn-diameter trend. The printed circular-section factors in Eq. (16)-(17) do not match the usual second moment of area for a solid circular beam, so direct numerical use is rejected pending re-derivation."
+    },
+    {
+      "equation": "Eq. (21)-(24)",
+      "page": "14-15",
+      "status": "omitted",
+      "notes": "Visually verified as the trapped-particle force balance and friction requirement. Omitted because particle-jamming material coefficients and particle-size distributions are not sufficiently characterized for the current solver; the qualitative anti-jamming requirement is summarized textually."
+    },
+    {
+      "equation": "Eq. (25)-(28)",
+      "page": 15,
+      "status": "verified",
+      "notes": "Visually verified and retained as E8. The two mirrored tile limits are evaluated at f_y/2 and shifted by f_p through f_x1=f_p+f_x and f_x2=f_p-f_x; either negative/zero tile capacity collapses the mechanism limit to zero. Outer and inner hard-stop branches were checked exactly as printed."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Humanoid/staff application context; no irreducible mechanism or quantitative evidence."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 2,
+      "extracted": false,
+      "reason": "The comparison of long-flexure and linearly constrained spines is adequately preserved by the compact mechanism description and parameter table."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 3,
+      "extracted": false,
+      "reason": "Spine-strength failure locations are preserved textually and through Eq. (16)-(18); the numerical formulas carry an explicit coefficient warning."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 3,
+      "extracted": true,
+      "file": "figures/fig04_p03_single_spine_contact_regimes.png",
+      "reason": "Irreplaceable geometry for the slip, tip-contact, shaft-contact and channel-slip regimes and for the alpha/beta/phi/psi angle definitions. Cropped from a 300-dpi page render and visually verified."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 4,
+      "extracted": false,
+      "reason": "The three experimental regimes, parameters and five trials per slope are fully represented in V1; the plot adds no reusable exact parameter."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 5,
+      "extracted": false,
+      "reason": "The 150-trial empirical distribution and truncated-Gaussian asperity-failure portion are summarized; the paper does not supply enough fitted parameters for direct reuse."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 7,
+      "extracted": true,
+      "file": "figures/fig07_p07_array_scaling_backlash.png",
+      "reason": "Minimal combined simulation-experiment evidence for spine-count saturation, 0.1/0.5 mm backlash and fine/coarse concrete variability. Cropped from a 300-dpi page render and visually verified."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 7,
+      "extracted": false,
+      "reason": "The 300-load 3D limit-surface validation is retained as V3; Fig. 7 and Fig. 12 were prioritized to cover the independent array-scaling and opposed-array mechanisms within the three-image limit."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 8,
+      "extracted": false,
+      "reason": "The effective-friction trend is represented exactly by Eq. (14) and its positivity condition."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 8,
+      "extracted": false,
+      "reason": "Opposed rails, preload springs and hard stops are compactly described and modeled more precisely by Eq. (25)-(28)."
+    },
+    {
+      "figure": "Fig. 11",
+      "page": 9,
+      "extracted": false,
+      "reason": "The opposed 3D surface is a computed visualization; the experimentally validated cross-section in Fig. 12 is stronger minimal evidence."
+    },
+    {
+      "figure": "Fig. 12",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig12_p10_opposed_limit_validation.png",
+      "reason": "Direct model-experiment comparison showing both the single-tile adhesion-limit branch and outer-hard-stop branch. Cropped from a 300-dpi page render and visually verified with complete axes, units and legend."
+    },
+    {
+      "figure": "Fig. 13",
+      "page": 10,
+      "extracted": false,
+      "reason": "Humanoid support-region application result; not required for the contact/array/paired-grasp model."
+    },
+    {
+      "figure": "Fig. 14",
+      "page": 10,
+      "extracted": false,
+      "reason": "Four-tile smart-staff geometry is application-specific and Eq. (15) was omitted from the compact core."
+    },
+    {
+      "figure": "Fig. 15",
+      "page": 11,
+      "extracted": false,
+      "reason": "Application-specific effective-friction curves are summarized by Eq. (14) and selected parameter examples."
+    },
+    {
+      "figure": "Fig. 16",
+      "page": 11,
+      "extracted": false,
+      "reason": "Floating-tile tendon-pulley architecture is described in M6/V5; the mechanism photograph is not needed for solver input."
+    },
+    {
+      "figure": "Fig. 17",
+      "page": 11,
+      "extracted": false,
+      "reason": "The perfect-inter-tile-load-sharing calculation and diminishing tile-count benefit are retained as a trend only; no portable closed-form parameters are given."
+    },
+    {
+      "figure": "Fig. 18",
+      "page": 14,
+      "extracted": false,
+      "reason": "Coordinate and parameter definitions are distributed across Fig. 4 and the formula-variable entries; retaining both would be redundant."
+    },
+    {
+      "figure": "Fig. 19",
+      "page": 15,
+      "extracted": false,
+      "reason": "Particle-jamming force balance is omitted from the compact solver evidence because its material/particle statistics are unavailable."
+    },
+    {
+      "figure": "Fig. 20",
+      "page": 15,
+      "extracted": false,
+      "reason": "The mirrored-limit offset construction is preserved algebraically by Eq. (25)-(26); Fig. 12 supplies the experimental counterpart."
+    },
+    {
+      "figure": "Fig. 21",
+      "page": 15,
+      "extracted": false,
+      "reason": "Preload trend is summarized with its 5/10/15/20 N comparison and non-monotonic warning; Eq. (25)-(26) is more reusable."
+    }
+  ],
+  "omitted_sections": [
+    "General humanoid, climbing-technology and robot-history background in the Introduction",
+    "Detailed SupraPed support-region application geometry",
+    "Acknowledgements and funding",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.14, Eq. (16)-(18)",
+      "item": "Circular-section bending-stress coefficients",
+      "detail": "The equations were transcribed exactly as printed, but their section coefficients do not match the usual second moment of area for a solid circular beam. Trend use is retained; numerical use requires re-derivation from the actual spine cross-section."
+    },
+    {
+      "location": "PDF p.4 and p.14, Eq. (4), (19)-(20)",
+      "item": "Complete channel-slip piecewise law",
+      "detail": "The friction-cone interval and one reduction expression are printed, while distinct expressions for both upper and lower out-of-cone directions are not fully enumerated. A robust implementation must re-derive both branches."
+    },
+    {
+      "location": "PDF p.5-6, Eq. (6)-(10), Fig. 6",
+      "item": "Monte Carlo input distributions and c_i",
+      "detail": "The paper gives the solver structure but not a complete numerical specification of the failure-mode mixture, maximum-force distributions or fitted c_i. It explicitly refers to Wang et al. (2016) for further distribution details."
+    },
+    {
+      "location": "PDF p.4, Section 2.2.3 and Appendix C",
+      "item": "Particle-friction notation and direct transfer",
+      "detail": "The narrative switches among spine-particle, channel-particle and prototype material friction values. Because particle size/distribution is also missing, the numerical jamming relation was not retained as a solver formula."
+    },
+    {
+      "location": "PDF p.7, Fig. 8",
+      "item": "Mirrored experimental region",
+      "detail": "Part of the 3D limit-surface display is mirrored under an isotropy/symmetry assumption. The evidence card treats the figure as an average directional validation, not a complete independently sampled surface."
+    }
+  ],
+  "known_warnings": [
+    "Linearly constrained spines have negligible tangential search travel and are not mechanically equivalent to independently spring-supported spines with long search strokes.",
+    "The surface model uses an isotropic, high-slope linear probability density and does not provide a measured three-dimensional roughness field.",
+    "The array model assumes equal contact stiffness, uniform random backlash and a common travel stopped by the first spine reaching its random limit; dynamic redistribution is absent.",
+    "The paired-gripper model assumes symmetric tiles, equal lateral-force sharing and rotational constraint parallel to the surface; force/moment balance for an asymmetric free gripper is not solved.",
+    "Experimental standard deviation for the opposed limit is about 30 percent, so the mean limit surface is not a safety boundary.",
+    "The source PDF has a valid 15-page layout and all pages/equations/captions were visually inspected; no OCR-only formula was accepted."
+  ],
+  "evidence_card_character_count": 3373,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains four independent single-spine, array, 3D-limit and opposed-gripper submodels.",
+  "status": "PASS_WITH_WARNINGS"
+}

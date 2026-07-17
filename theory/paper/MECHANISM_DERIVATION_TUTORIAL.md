@@ -1097,22 +1097,22 @@ H,\quad S_q/R_t,\quad \ell_c/R_t,\quad
 
 ## 参考文献与项目证据入口
 
-[1] Xiang et al., frictional engagement of microspines, *Tribology International*, 2025, DOI: 10.1016/j.triboint.2025.110533. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/01_frictional_engagement/evidence_card.md)
+[1] Xiang et al., frictional engagement of microspines, *Tribology International*, 2025, DOI: 10.1016/j.triboint.2025.110533. [证据卡](../evidence_reassessment/literature/01_frictional_engagement/evidence_card.md)
 
-[2] A. T. Asbeck, *Compliant Directional Suspensions for Climbing with Microspines*, Stanford University dissertation, 2010. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/03_compliant_directional_suspensions/evidence_card.md)
+[2] A. T. Asbeck, *Compliant Directional Suspensions for Climbing with Microspines*, Stanford University dissertation, 2010. [证据卡](../evidence_reassessment/literature/03_compliant_directional_suspensions/evidence_card.md)
 
-[3] Iacoponi et al., isolated spine interlock and fracture analysis, 2020, DOI: 10.1115/1.4047725. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/05_isolated_spine_fracture_interlock/evidence_card.md)
+[3] Iacoponi et al., isolated spine interlock and fracture analysis, 2020, DOI: 10.1115/1.4047725. [证据卡](../evidence_reassessment/literature/05_isolated_spine_fracture_interlock/evidence_card.md)
 
-[4] Wang, Jiang and Cutkosky, linearly constrained spines, *The International Journal of Robotics Research*, 2017, DOI: 10.1177/0278364917720019. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/07_linearly_constrained_spines/evidence_card.md)
+[4] Wang, Jiang and Cutkosky, linearly constrained spines, *The International Journal of Robotics Research*, 2017, DOI: 10.1177/0278364917720019. [证据卡](../evidence_reassessment/literature/07_linearly_constrained_spines/evidence_card.md)
 
-[5] Jiang, Wang and Cutkosky, stochastic compliant arrays, *The International Journal of Robotics Research*, 2018, DOI: 10.1177/0278364918778350. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/09_stochastic_compliant_spine_arrays/evidence_card.md)
+[5] Jiang, Wang and Cutkosky, stochastic compliant arrays, *The International Journal of Robotics Research*, 2018, DOI: 10.1177/0278364918778350. [证据卡](../evidence_reassessment/literature/09_stochastic_compliant_spine_arrays/evidence_card.md)
 
-[6] Ruotolo, Roig and Cutkosky, soft-paw load sharing, *IEEE Robotics and Automation Letters*, 2019, DOI: 10.1109/LRA.2019.2897002. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/10_soft_spiny_paw_load_sharing/evidence_card.md)
+[6] Ruotolo, Roig and Cutkosky, soft-paw load sharing, *IEEE Robotics and Automation Letters*, 2019, DOI: 10.1109/LRA.2019.2897002. [证据卡](../evidence_reassessment/literature/10_soft_spiny_paw_load_sharing/evidence_card.md)
 
-[7] B. N. J. Persson, random rough contact mechanics, *Surface Science Reports*, 2006, DOI: 10.1016/j.surfrep.2006.04.001. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/11_randomly_rough_contact_mechanics/evidence_card.md)
+[7] B. N. J. Persson, random rough contact mechanics, *Surface Science Reports*, 2006, DOI: 10.1016/j.surfrep.2006.04.001. [证据卡](../evidence_reassessment/literature/11_randomly_rough_contact_mechanics/evidence_card.md)
 
-[8] Arnold et al., roughness measurement of red ceramic surfaces, *Remote Sensing*, 2021, DOI: 10.3390/rs13040789. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/12_red_ceramic_blocks_roughness/evidence_card.md)
+[8] Arnold et al., roughness measurement of red ceramic surfaces, *Remote Sensing*, 2021, DOI: 10.3390/rs13040789. [证据卡](../evidence_reassessment/literature/12_red_ceramic_blocks_roughness/evidence_card.md)
 
-[9] D'Antino, Santandrea and Carloni, fracture parameters of brick and tuff, *Journal of Engineering Mechanics*, 2020, DOI: 10.1061/(ASCE)EM.1943-7889.0001815. [证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/14_fired_clay_tuff_fracture_properties/evidence_card.md)
+[9] D'Antino, Santandrea and Carloni, fracture parameters of brick and tuff, *Journal of Engineering Mechanics*, 2020, DOI: 10.1061/(ASCE)EM.1943-7889.0001815. [证据卡](../evidence_reassessment/literature/14_fired_clay_tuff_fracture_properties/evidence_card.md)
 
 正式投稿前还需要补充 SE(3)/虚功、变分不等式、非光滑接触、准静态分支延拓和稳定性的一手学术文献；当前 C1–C3 中若干通用数学陈述仅来自模型知识，不能作为正式参考文献。

@@ -12,10 +12,10 @@ TASK_ID: M05_EXPERIMENT_RUNNER_REQUIREMENTS
 第一版没有任何实测数据。这里的“实验”是可重放的计算实验：以宽先验和公共随机数比较设计趋势。M05 只组织 case 和读取模块结果，不拥有表面生成、接触、单刺或阵列本构。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M04 requirements；
-4. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 5. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
 6. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；
 7. theory/system/SYSTEM_INTEGRATED_MODEL.md 第 25–30、36–37、43–45 节；

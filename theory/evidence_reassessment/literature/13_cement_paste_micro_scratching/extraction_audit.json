@@ -1,0 +1,232 @@
+{
+  "paper_title": "Fracture toughness of cement paste constituents assessed by micro-scratching correlated with acoustic emission",
+  "source_file": "机理文献/核心文献/13_Fracture toughness of cement paste constituents assessed by micro-scratching correlated with acousti.pdf",
+  "doi": "10.1016/j.cemconres.2024.107623",
+  "pdf_pages": 22,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+  "sections_checked": [
+    "Abstract",
+    "1 Introduction",
+    "2 Experiments and methods",
+    "2.1 Material and sample preparation",
+    "2.2 Porosity characterization",
+    "2.3 Grid indentation",
+    "2.4 Acoustic emission",
+    "2.5.1 Scratch test parameters",
+    "2.5.2 Contact properties and fracture toughness evaluation from scratch tests",
+    "3.1 Porosity results",
+    "3.2.1 Indentation hardness and Young's modulus",
+    "3.2.2 Observation of cracks and indentation events",
+    "3.2.3 Observations from acoustic emission signal recording",
+    "3.3 Partial summary based on grid indentation and AE",
+    "3.4 Results from scratch testing",
+    "3.4.1 The effect of horizontal tip velocity on fracture toughness evaluation",
+    "3.4.2 The effect of vertical force on fracture toughness evaluation",
+    "3.4.3 The effect of hydration time on fracture toughness",
+    "3.4.4 Results of friction coefficient",
+    "3.5 Comparison to other microscale experimental techniques",
+    "3.6 Partial summary of scratch testing",
+    "4 Numerical modeling",
+    "4.1 Material model for compressive and tensile failure",
+    "4.2 Finite element model",
+    "4.3 Modeling deformation mechanisms",
+    "4.4 Modeling increasing trends in COF and tensile strength for compacted paste",
+    "4.5 Comparison of compacted cement paste tensile strength to other microscale techniques",
+    "4.6 Partial summary based on numerical modeling",
+    "5 Conclusions",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 3,
+      "status": "omitted",
+      "notes": "Reduced-modulus definition was visually checked at 300 dpi; omitted because elastic-property extraction is not a core mechanism for the present routing task."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 3,
+      "status": "omitted",
+      "notes": "Indentation-hardness definition was visually checked and omitted as standard background."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 4,
+      "status": "omitted",
+      "notes": "Reduced-to-Young's-modulus relation and diamond properties were checked; not retained because the evidence card focuses on fracture and damage."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Retained as E1. COF = FT/FV and force directions were checked against Fig. 5."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained as E2. Numerator FT and denominator sqrt(2 p(d) A(d)) were visually checked. The homogeneous-material and horizontal-crack assumptions are preserved."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained in E3 as fs(d) = 2 p(d) A(d)."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 5,
+      "status": "omitted",
+      "notes": "Ideal spherical-probe shape function was visually checked; omitted because the authors show that the actual R10 requires the general calibrated Eq. (8)."
+    },
+    {
+      "equation": "Eq. (8)",
+      "page": 5,
+      "status": "verified",
+      "notes": "Retained in E3. R^3 multiplier, cubic/quadratic/linear terms and nonnegative coefficient constraints were checked. Fitted alpha=298.1, delta=0, gamma=0 and R2=0.99 were checked in text and Fig. 6."
+    },
+    {
+      "equation": "Eq. (9)",
+      "page": 14,
+      "status": "verified",
+      "notes": "Retained in E4. Negative sign, squared principal-stress difference and k(sigma1+sigma3) denominator were visually checked at 300 dpi."
+    },
+    {
+      "equation": "Eq. (10)",
+      "page": 14,
+      "status": "verified",
+      "notes": "Retained in E4 as maximum of tensile Rankine strain and compression-dominant equivalent strain."
+    },
+    {
+      "equation": "Eq. (11)",
+      "page": 14,
+      "status": "verified",
+      "notes": "Retained in E5 as the linear traction-opening softening law."
+    },
+    {
+      "equation": "Eq. (12)",
+      "page": 14,
+      "status": "verified",
+      "notes": "Retained in E5 as isotropic-damage stress relation sigma=(1-omega)E epsilon_tilde."
+    },
+    {
+      "equation": "Eq. (13)",
+      "page": 14,
+      "status": "verified",
+      "notes": "Retained in E5. Both multiplicative factors and exponent -1 were visually checked; h is the crack-band element length and Gf is Mode-I fracture energy."
+    },
+    {
+      "equation": "Unnumbered Kc-to-Gf conversion",
+      "page": 15,
+      "status": "uncertain",
+      "notes": "Retained as E6 exactly in printed order: Gf = Kc^2/E/(1-nu^2) for plane strain. The expression is visually legible but its operation order conflicts with the usual plane-strain effective-modulus form; it is marked unusable pending source-data or author confirmation."
+    },
+    {
+      "equation": "Eq. (14)",
+      "page": 17,
+      "status": "omitted",
+      "notes": "Contact-pressure correction for fitted compacted tensile strength was checked; omitted because it is an empirical normalization tied to the first load level, not a transferable material law."
+    },
+    {
+      "equation": "Eq. (15)",
+      "page": 17,
+      "status": "omitted",
+      "notes": "Normalized compacted tensile-strength definition was checked and omitted; its non-portability is retained as a warning."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table 1",
+      "page": 11,
+      "status": "verified",
+      "notes": "C-4m groove widths and phase-resolved Kc values at 25, 50 and 100 mN were checked."
+    },
+    {
+      "table": "Table 2",
+      "page": 12,
+      "status": "verified",
+      "notes": "C-6y groove widths, phase-resolved Kc values at 5-100 mN and homogenized Kc at 200-500 mN were checked; the final 0.64 +/- 0.14 MPa sqrt(m) value was verified."
+    },
+    {
+      "table": "Table 3",
+      "page": 15,
+      "status": "verified",
+      "notes": "C-4m FE inputs and outputs were checked, including E, Gf, d, FT, fitted compacted tensile strength, crack depth and normalized strength."
+    },
+    {
+      "table": "Table 4",
+      "page": 16,
+      "status": "verified",
+      "notes": "C-6y FE inputs and outputs across 5-500 mN were checked. The 39-289 MPa fitted-strength and 0.62-11.6 micrometer crack-depth ranges were verified."
+    }
+  ],
+  "figures_checked": [
+    {"figure": "Fig. 1", "page": 2, "extracted": false, "reason": "Phase morphology is background and is adequately summarized by the material description."},
+    {"figure": "Fig. 2", "page": 3, "extracted": false, "reason": "Experimental timeline is not needed for mechanism transfer."},
+    {"figure": "Fig. 3", "page": 4, "extracted": false, "reason": "AE holder hardware is not a core transferable mechanism."},
+    {"figure": "Fig. 4", "page": 4, "extracted": false, "reason": "The three-segment load function is summarized textually."},
+    {"figure": "Fig. 5", "page": 5, "extracted": true, "file": "figures/fig05_p05_scratch_geometry.png", "reason": "Irreplaceable force, coordinate, penetration, contact-perimeter and load-bearing-area geometry; crop was rendered directly from the source PDF and visually verified."},
+    {"figure": "Fig. 6", "page": 6, "extracted": false, "reason": "Calibration improvement and coefficients are preserved more compactly as numerical evidence."},
+    {"figure": "Fig. 7", "page": 6, "extracted": false, "reason": "Pore-size trend is summarized without using the cement-specific curve as a target parameter."},
+    {"figure": "Fig. 8", "page": 7, "extracted": false, "reason": "Elastic-modulus and hardness trends are secondary to fracture mechanisms."},
+    {"figure": "Fig. 9", "page": 8, "extracted": false, "reason": "SEM crack presence is retained as part of the AE false-negative evidence; Fig. 14 is the stronger mode-transition image."},
+    {"figure": "Fig. 10", "page": 8, "extracted": false, "reason": "CH pop-in/AE synchronization and OP/IP non-detection are adequately summarized."},
+    {"figure": "Fig. 11", "page": 9, "extracted": false, "reason": "First-cycle-only CH AE behavior is secondary validation."},
+    {"figure": "Fig. 12", "page": 10, "extracted": false, "reason": "Phase selection and AE overlay are summarized; image budget is reserved for geometry and damage evolution."},
+    {"figure": "Fig. 13", "page": 11, "extracted": false, "reason": "The lack of a significant 1-25 micrometer/s speed trend is represented textually and in the parameter table."},
+    {"figure": "Fig. 14", "page": 13, "extracted": true, "file": "figures/fig14_p13_damage_mode_transition.png", "reason": "Direct SEM evidence of the load-dependent transition from groove tension cracking to distributed ripped material; crop was rendered directly from the source PDF and visually verified."},
+    {"figure": "Fig. 15", "page": 13, "extracted": false, "reason": "COF values and peak-then-decline trend are preserved numerically."},
+    {"figure": "Fig. 16", "page": 14, "extracted": false, "reason": "Cross-study cement-phase comparison is not direct red-brick evidence and is summarized only as method validation."},
+    {"figure": "Fig. 17", "page": 15, "extracted": false, "reason": "FE domain, symmetry and rigid-contact boundary conditions are fully recorded in text and warnings."},
+    {"figure": "Fig. 18", "page": 15, "extracted": false, "reason": "Force fitting is summarized as validation; the damage-state panels contain more transferable mechanism content."},
+    {"figure": "Fig. 19", "page": 17, "extracted": true, "file": "figures/fig19_20_p17_damage_evolution.png", "reason": "Combined with Fig. 20 in one same-page crop to preserve low-load tension-crack, compression-damage and full-damage sequence."},
+    {"figure": "Fig. 20", "page": 17, "extracted": true, "file": "figures/fig19_20_p17_damage_evolution.png", "reason": "Combined with Fig. 19 to show the additional high-load lateral/diagonal damage branch; crop was rendered directly from the source PDF and visually verified."},
+    {"figure": "Fig. 21", "page": 18, "extracted": false, "reason": "Pressure-dependent fitted strength and normalization trends are summarized as non-transferable outputs."}
+  ],
+  "omitted_sections": [
+    "General concrete and nanoindentation history in the Introduction",
+    "Detailed sample grinding and instrument hardware not affecting retained conclusions",
+    "Standard elastic-modulus and hardness results outside the fracture mechanism",
+    "Full cross-literature numerical catalogue in Section 3.5",
+    "CRediT statement, declaration, data-availability statement and acknowledgments",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.15, Section 4.2",
+      "item": "Plane-strain Kc-to-Gf conversion",
+      "detail": "The PDF clearly prints Gf = Kc^2/E/(1-nu^2). This is visually legible but differs in operation order from the common effective-modulus expression. Rounded table values do not uniquely resolve the intended calculation."
+    },
+    {
+      "location": "PDF p.5 and p.14-17",
+      "item": "Analytical versus simulated crack path",
+      "detail": "The scratch-toughness estimator assumes horizontal crack propagation, whereas the three-dimensional model and SEM interpretation show downward/slanted and later lateral cracks. Calibration absorbs part of this discrepancy, but transfer to red brick is not established."
+    },
+    {
+      "location": "PDF p.9-13, Sections 3.4-3.6",
+      "item": "Phase interaction above approximately 50 mN",
+      "detail": "The authors report phase-resolved Kc as nearly force-independent to 100 mN despite acknowledging increasing phase interaction; the apparent robustness is specific to careful posterior SEM selection and should not be generalized."
+    },
+    {
+      "location": "PDF p.15-19, Sections 4.2-4.6",
+      "item": "Fitted compacted tensile strength",
+      "detail": "ft is fitted to peak horizontal force and varies with contact pressure/compaction. The 39-289 MPa range is a conditional model output, not an independently measured tensile material property."
+    },
+    {
+      "location": "PDF p.7-10, Sections 3.2.3-3.4",
+      "item": "AE false negatives",
+      "detail": "No AE hits were recorded for several phases despite SEM-visible cracks. AE detectability depends on phase brittleness, scattering, damping and threshold, so absence of hits cannot be treated as absence of damage."
+    }
+  ],
+  "known_warnings": [
+    "Cement-paste phase properties and load thresholds are not direct parameters for fired-clay brick.",
+    "The finite-element model assumes a homogeneous phase, infinitely rigid indenter, full rigid contact in the scratch direction and prescribed displacement.",
+    "The numerical model stops at first-crack initiation and early propagation and does not simulate complete debris detachment or re-contact.",
+    "Damage-zone width depends on the maximum element size even though crack-band regularization is used for energy objectivity.",
+    "The extracted figures were visually checked at high resolution; labels, units, scales and captions are legible and no key semantic element is clipped.",
+    "All 22 pages were visually reviewed through rendered page sheets; retained equations and critical tables were additionally checked on 300-dpi page renders."
+  ],
+  "evidence_card_character_count": 2693,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; within the allowed 3500-character extension because the paper contains independent scratch-calibration and three-dimensional damage submodels.",
+  "status": "PASS_WITH_WARNINGS"
+}

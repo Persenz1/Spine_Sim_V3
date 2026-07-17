@@ -94,7 +94,7 @@ y(x)=F_x(x).
 | 各向异性比 | 1、2 | 只测试方向敏感性 |
 | 随机种子 | 公共随机数，逐级加样 | 保证方案比较方差较小 |
 
-这些值来自工程数量级、文献覆盖与计算需要，不是“隐含的真实材料参数”。文献也明确提示随机粗糙表面参数需要对目标表面重新标定：[随机粗糙接触证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/11_randomly_rough_contact_mechanics/evidence_card.md)、[红色陶瓷粗糙度证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/12_red_ceramic_blocks_roughness/evidence_card.md)。
+这些值来自工程数量级、文献覆盖与计算需要，不是“隐含的真实材料参数”。文献也明确提示随机粗糙表面参数需要对目标表面重新标定：[随机粗糙接触证据卡](../evidence_reassessment/literature/11_randomly_rough_contact_mechanics/evidence_card.md)、[红色陶瓷粗糙度证据卡](../evidence_reassessment/literature/12_red_ceramic_blocks_roughness/evidence_card.md)。
 
 ### 3.3 红灯：当前不得编造物理单值
 
@@ -110,7 +110,7 @@ y(x)=F_x(x).
 | C 的 local-y、转动、6D tangent | contract unavailable | 是理论/软件接口问题，不是标定问题 |
 | rocking 稳定性与正式 \(F_{crit}\) | unavailable | 需要 B 2.x 和六维验证 |
 
-宏观砖材 Mode-I 强度/断裂能可以用作数量级警戒或独立材料回归，但不能直接代入针尖压碎/剪裂：[砖/凝灰岩断裂证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/14_fired_clay_tuff_fracture_properties/evidence_card.md)、[多尺度砖材证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/15_fired_clay_multiscale/evidence_card.md)。
+宏观砖材 Mode-I 强度/断裂能可以用作数量级警戒或独立材料回归，但不能直接代入针尖压碎/剪裂：[砖/凝灰岩断裂证据卡](../evidence_reassessment/literature/14_fired_clay_tuff_fracture_properties/evidence_card.md)、[多尺度砖材证据卡](../evidence_reassessment/literature/15_fired_clay_multiscale/evidence_card.md)。
 
 ## 4. 不等白光轮廓仪的表面方案
 
@@ -279,7 +279,7 @@ g_n\ge0,\quad \lambda_n\ge0,\quad g_n\lambda_n=0,
    P(X>x)=(1-p_0)e^{-\lambda x}.
    \]
 
-   文献中的 \(p_0,\lambda\) 只能做回归 fixture，目标壁面仍需重估：[随机柔顺阵列证据卡](../../archive/web_pro_derivation_2026-07-17/docs/extract/机理提取/09_stochastic_compliant_spine_arrays/evidence_card.md)。
+   文献中的 \(p_0,\lambda\) 只能做回归 fixture，目标壁面仍需重估：[随机柔顺阵列证据卡](../evidence_reassessment/literature/09_stochastic_compliant_spine_arrays/evidence_card.md)。
 
 2. **有效加载链刚度**
 

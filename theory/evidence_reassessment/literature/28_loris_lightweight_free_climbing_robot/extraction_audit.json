@@ -1,0 +1,170 @@
+{
+  "paper_title": "LORIS: A Lightweight Free-Climbing Robot for Extreme Terrain Exploration",
+  "source_file": "机理文献/条件备选/05_ LORIS A Lightweight Free-Climbing Robot for Extreme Terrain Exploration.pdf",
+  "authors": [
+    "Paul Nadan",
+    "Spencer Backus",
+    "Aaron M. Johnson"
+  ],
+  "year": 2024,
+  "doi": "10.1109/ICRA57147.2024.10611653",
+  "pdf_pages": 7,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7],
+  "render_review": {
+    "toolchain": "Poppler pdfinfo/pdftoppm executables from the bundled runtime; pdfplumber for per-page text extraction.",
+    "all_pages": "All seven pages were rendered at 150 dpi and visually checked in a contact sheet.",
+    "individual_pages_visually_rechecked": [2, 3, 4, 5, 6],
+    "high_resolution_pages_rendered": [2, 3, 4, 5],
+    "high_resolution_dpi": 300,
+    "retained_crops_visually_checked": [
+      "figures/fig02_p02_splayed_gripper_loading.png",
+      "figures/fig03_p03_passive_wrist_pivot.png",
+      "figures/fig05_p05_dig_force_margin.png"
+    ],
+    "notes": "The bundled wrapper scripts pointed to a missing bin path, so the underlying Poppler executables were called directly. Poppler reported missing display-font mappings for Symbol and ArialUnicode, but visual review confirmed that all retained Greek symbols, superscripts, subscripts, axes, legends, units and numerical labels rendered legibly."
+  },
+  "sections_checked": [
+    "Abstract",
+    "Section I Introduction",
+    "Section II Robot Design",
+    "Section II.A Splayed Microspine Gripper",
+    "Section II.B Passive Wrist Joint",
+    "Section II.C Robot Prototype",
+    "Section III Controller Design",
+    "Section III.A Force Optimization",
+    "Section III.B Force Control",
+    "Section III.C Climbing Behaviors",
+    "Section IV Experiments",
+    "Section V Discussion",
+    "Section VI Conclusion",
+    "References checked for document completeness and cited-origin boundaries only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eqs. (1)-(2), carriage tangential force and net x-z force",
+      "page": 2,
+      "status": "verified",
+      "notes": "The cosine projection, leading minus sign in the external-force sum, column-vector order [cos(alpha_i), sin(alpha_i)], beta bounds and cos(beta-alpha_i)<0 disengagement condition were checked on the rendered page. Retained as E1."
+    },
+    {
+      "equation": "Eqs. (3)-(10), passive-wrist force/moment balance and disengagement constraints",
+      "page": 3,
+      "status": "verified",
+      "notes": "All x/y/z subscripts, signs, w/2 term, pivot coordinates, pull-off inequalities and nonnegative base-contact force were checked against the page image. The paper cites phi_slip from prior work and does not provide a numerical value. Retained as E2."
+    },
+    {
+      "equation": "Eqs. (11)-(17), maximum adhesion-margin linear program",
+      "page": 4,
+      "status": "verified",
+      "notes": "Objective, 3D force and moment equilibrium, tangential bounds, binormal angle bounds, pull-off-margin constraint and nonnegative tail force were checked. The meaning and sign of c were verified from the adjacent prose. Retained as E3."
+    },
+    {
+      "equation": "Unnumbered force estimate and Eq. (18), grasp-map null-space force control",
+      "page": 5,
+      "status": "verified",
+      "notes": "The mappings f_hat_i=J_i^{-T} tau_hat_i and A=I-G^T pinv(G^T), the leading negative sign, k_p placement and GA delta X=0 property were checked visually. Retained as E4."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table I",
+      "page": 2,
+      "status": "verified",
+      "notes": "LORIS terrain class, 3 DoF per limb, 3.2 kg mass, 0.20 m/min speed and 1 g entry were checked. Only the LORIS row is used as a scale reference."
+    },
+    {
+      "table": "Table II",
+      "page": 6,
+      "status": "verified",
+      "notes": "All five rows, DIG state, payload, total mass, failures/steps and speed were checked. The 9/141, 4/177, 6/94 and 3/86 ratios agree with the printed percentages. The evidence card retains only the comparisons needed for the mechanism claims."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 1,
+      "extracted": false,
+      "reason": "Outdoor robot appearance is not needed once the tufa field-test boundary is recorded in text."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 2,
+      "extracted": true,
+      "file": "figures/fig02_p02_splayed_gripper_loading.png",
+      "reason": "Defines the carriage geometry, force/displacement angles, load-direction bounds, carriage-count tradeoff and embedded spine flexure in one non-redundant figure."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 3,
+      "extracted": true,
+      "file": "figures/fig03_p03_passive_wrist_pivot.png",
+      "reason": "Defines the three contacts, pivot coordinates and normalized pivot-location map used by the passive-wrist equations."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 4,
+      "extracted": false,
+      "reason": "The robot hardware overview is adequately represented by the retained topology and parameter table; it does not add a separate mechanism result."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig05_p05_dig_force_margin.png",
+      "reason": "Directly compares optimized force directions and the 1.88/1.89/2.65/5.53 N margins for axial versus splayed and vertical versus inward grippers."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 6,
+      "extracted": false,
+      "reason": "Terrain photographs are not quantitative morphology evidence; the relevant conditions and outcomes are retained from Table II and the text."
+    }
+  ],
+  "omitted_sections": [
+    "General planetary-science motivation and broad prior-robot comparison",
+    "Ordinary manufacturing, actuator, battery, computer and camera details not affecting the retained mechanics",
+    "Teleoperation and future path-planning discussion beyond the stated experimental limitation",
+    "Speculative dynamic-climbing applications",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.2, Section II.A and Fig. 2c",
+      "item": "Carriage-level versus spine-level interpretation",
+      "detail": "Each carriage is a lumped linear spring and any reverse carriage displacement is treated as grasp failure. The analysis does not identify how 13 spines within a carriage share load or survive partial disengagement."
+    },
+    {
+      "location": "PDF p.3, Section II.B, Eqs. (8)-(10)",
+      "item": "Pull-off-angle calibration",
+      "detail": "phi_slip is attributed to prior work and is not numerically specified for the LORIS gripper. The pivot map is therefore verified as a model result but not reproducible from this paper alone."
+    },
+    {
+      "location": "PDF p.4-5, Section III.A, Eqs. (14)-(16) and Fig. 5",
+      "item": "Force-domain parameters",
+      "detail": "The paper does not report the complete numerical values or calibration procedures for f_min, f_max, theta_max and phi_max. The printed margins are retained as scenario-specific outputs, not universal capacities."
+    },
+    {
+      "location": "PDF p.5, Section III.B",
+      "item": "Contact-force estimate accuracy",
+      "detail": "Motor-current torque estimates are moving-average filtered, but the paper gives no independent force-sensor calibration, error distribution, delay or saturation study."
+    },
+    {
+      "location": "PDF p.5-6, Section IV and Table II",
+      "item": "Failure-rate definition and comparability",
+      "detail": "Failure rate is falls divided by counted travel steps; recoverable slips and recovery steps are excluded. A teleoperator selected footholds and freed the robot when necessary, and different irregular-surface rows use different hardware, payload and DIG conditions."
+    }
+  ],
+  "known_warnings": [
+    "The two-carriage advantage is conditional on the equal-stiffness directional-spring model and must not be generalized to fewer microspines being universally better.",
+    "The passive-wrist model assumes a frictionless base contact and at least three contacts; highly convex footholds can violate this contact set.",
+    "Passive yaw alignment requires a significant in-plane gravity component and is explicitly not generalized to fully inverted or microgravity climbing.",
+    "Figure 5 adhesion margins are linear-program outputs under undisclosed full parameter calibration, not measured gripper capacities.",
+    "The null-space controller assumes accurate grasp and limb mappings and does not include actuator saturation, contact switching or state-dependent compliance.",
+    "Only the two cinderblock rows provide a near-controlled DIG comparison; basalt, slag and tufa rows must not be compared as an isolated DIG experiment.",
+    "The cinderblock sample is small and assisted, and no statistical significance test is reported.",
+    "A single gripper loss is often irrecoverable in the three-support phase; the paper does not model dynamic redistribution or fall recovery."
+  ],
+  "evidence_card_character_count": 3480,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; within the explicitly stated 3500-character extension for four independent evidence chains.",
+  "status": "PASS_WITH_WARNINGS"
+}

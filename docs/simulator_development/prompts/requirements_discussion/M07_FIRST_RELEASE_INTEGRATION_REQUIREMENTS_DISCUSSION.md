@@ -12,11 +12,11 @@ TASK_ID: M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS
 首版完成含义是：M00–M05 能从配置独立生成 A/B 合成实验结果，M06 能在另一个只读进程中消费结果并出图。正式 C 偏心加载不是本任务范围。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M06 requirements 和全部 output contracts；
 4. 所有已生成的 output change requests 及其处理状态；
-5. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+5. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 6. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
 7. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
 8. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；

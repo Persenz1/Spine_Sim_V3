@@ -12,10 +12,10 @@ TASK_ID: M03_SINGLE_SPINE_REQUIREMENTS
 本模块服务趋势和参数选型。第一版必须能够在解析/合成表面上，用 no_damage、刚性 Signorini/Coulomb、Euler–Bernoulli 梁和权威安装分支完成预载及 100 mm 连续拖曳；不能声称预测真实砖面破坏。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00、M01、M02 requirements；
-4. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 5. theory/modules/A_INTEGRATED_MODEL.md；
 6. theory/interfaces/A_TO_B_CONTRACT.md；
 7. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；

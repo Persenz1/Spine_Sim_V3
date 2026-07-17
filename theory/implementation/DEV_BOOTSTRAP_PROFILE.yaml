@@ -217,4 +217,4 @@ provenance:
   theory_verification: "../review/DERIVATION_VERIFICATION_2026-07-17.md"
   policy: "BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md"
   authoritative_system_model: "../system/SYSTEM_INTEGRATED_MODEL.md"
-  authoritative_engineering_context: "../../archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md"
+  authoritative_engineering_context: "../evidence_reassessment/engineering_fixed_context.md"

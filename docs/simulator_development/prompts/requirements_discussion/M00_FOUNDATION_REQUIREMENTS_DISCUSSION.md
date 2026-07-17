@@ -17,7 +17,7 @@ TASK_ID: M00_FOUNDATION_REQUIREMENTS
 3. docs/simulator_development/README.md；
 4. docs/simulator_development/SIMULATOR_MODULE_PLAN.md；
 5. docs/simulator_development/REQUIREMENTS_DISCUSSION_WORKFLOW.md；
-6. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+6. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 7. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
 8. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
 9. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；

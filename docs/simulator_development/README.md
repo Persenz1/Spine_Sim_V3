@@ -1,6 +1,6 @@
 # 仿真器开发任务入口
 
-**版本：** 0.1.0
+**版本：** 0.1.1
 **状态：** requirements-planning
 **适用范围：** 第一版无实验数据的 A/B 趋势选型仿真器，以及后续受限 C 层诊断
 
@@ -13,6 +13,8 @@
 `配置解析 → 解析/合成表面 → 单刺 A-M0 → 阵列 B-M0 → 参数/种子实验矩阵 → 原始结果与摘要落盘 → 绘图模块离线读取并出图`。
 
 结果只服务参数选型、趋势判断和方案排序，统一标记为 `DEV_PRIOR / synthetic_surface / no_damage / not_certifiable`。不要求拟合真实壁面绝对承载，也不把正式 C 偏心承载作为首版完成条件。
+
+理论与工程事实入口统一从 [`theory/README.md`](../../theory/README.md) 进入。层内实现以 `theory/modules/` 为权威，`theory/interfaces/` 是嵌入合同的独立镜像；工程事实与文献反向复核使用 `theory/evidence_reassessment/` 工作副本。归档保留完整源和历史运行，不作为普通开发任务的默认输入。
 
 ## 2. 文件导航
 

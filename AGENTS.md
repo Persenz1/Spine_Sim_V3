@@ -11,6 +11,9 @@
 
 - Start current theory, paper, solver, and parameter tasks at `theory/README.md`; do not traverse `archive/` by default.
 - The accepted 1.0 system/modules remain the formal authority. `theory/paper/MECHANISM_DERIVATION_FORMAL.md` is a proposed, closure-corrected derivation and must not be silently treated as accepted.
+- A/B/C low-level authority remains in `theory/modules/`. The standalone files in `theory/interfaces/` are exact public-contract mirrors embedded in the A/B modules and are retained as implementation/audit entry points.
+- Final A3/B3/C3 rolling contexts are historical only and live under `archive/web_pro_derivation_2026-07-17/derivation/modules/*/history/`; do not treat them as current peers of the integrated modules.
+- `theory/evidence_reassessment/` contains working copies for future paper-to-evidence reverse review. The archive retains the complete source copies, including ZIPs, evidence cards, extraction audits, figures, and the generated engineering-context view. Evidence working copies are non-normative and must not silently modify accepted theory.
 - Before solver implementation or parameter work, fully read `theory/review/DERIVATION_VERIFICATION_2026-07-17.md`, `theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md`, and `theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml`.
 - Where the review marks a P0 issue, use the explicitly closed M0 branch or return unavailable until a versioned amendment is accepted; do not implement an ambiguous formula.
 - Nonzero `+X`, `45°`, and rocking C-layer execution remains blocked by `B_TO_C 1.0.0`. Do not bypass that contract boundary with projections, rotated legacy wrenches, or empirical capability domains.

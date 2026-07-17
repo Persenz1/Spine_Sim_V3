@@ -1,0 +1,256 @@
+{
+  "paper_title": "Biologically Inspired Climbing with a Hexapedal Robot",
+  "source_file": "机理文献/核心文献/22_Biologically inspired climbing with a hexapedal robot.pdf",
+  "authors": [
+    "M. J. Spenko",
+    "G. C. Haynes",
+    "J. A. Saunders",
+    "M. R. Cutkosky",
+    "A. A. Rizzi",
+    "R. J. Full",
+    "D. E. Koditschek"
+  ],
+  "year": 2008,
+  "doi": "10.1002/rob.20238",
+  "pdf_pages": 20,
+  "printed_pages": "223-242",
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  "render_review": {
+    "all_pages": "All 20 PDF pages were rendered to PNG at 150 dpi and visually checked in a single contact sheet. The double-column reading order, section transitions, figures, equations and Table I were also checked against per-page text extraction.",
+    "high_resolution_pages": [9, 12, 14],
+    "high_resolution_dpi": 260,
+    "individual_pages_visually_rechecked": [3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19],
+    "notes": "Retained equations, thresholds and Table I values were read from individual page renders. The three retained image files were cropped from 260 dpi renders; all axes, legends, labels and captions needed for interpretation remain visible. Poppler emitted missing-display-font warnings for Symbol/ArialUnicode during rendering, but visual review found the retained mathematical symbols and labels readable."
+  },
+  "sections_checked": [
+    "Abstract and Section 1 Introduction",
+    "Section 2 Climbing Robot Design, Sections 2.1-2.4",
+    "Section 3 Spiny Feet for Climbing, Sections 3.1-3.2",
+    "Section 4 Behavioral Control, Sections 4.1-4.4",
+    "Section 5 Results, Sections 5.1-5.3",
+    "Section 6 Conclusion and Future Work",
+    "Acknowledgments and full references checked for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 4,
+      "printed_page": 226,
+      "status": "omitted",
+      "notes": "Per-leg climbing power sizing P_l = mgv/(eta N_l) was visually checked. It sizes robot actuation and does not constrain the requested spine contact, array load sharing or paired-claw mechanism."
+    },
+    {
+      "equation": "Eqs. (2)-(4)",
+      "page": 10,
+      "printed_page": 232,
+      "status": "omitted",
+      "notes": "The periodic gait embedding and parallel/sequential decomposition were inspected. They are controller architecture notation; the transferable attachment-state sequence is retained through Fig. 13 instead."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 13,
+      "printed_page": 235,
+      "status": "verified",
+      "notes": "Retained as E1. The average traction a_t, summation over f_t,i, divisor n, and n <= 6 condition were visually checked."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 13,
+      "printed_page": 235,
+      "status": "verified",
+      "notes": "Retained as E2. b_t,i = k_p(a_t - f_t,i) was visually checked. The paper does not report the units or numerical value of b_t,i/k_p, so the evidence card explicitly marks them as unspecified and requiring calibration."
+    },
+    {
+      "equation": "Unnumbered pawing position-offset relation",
+      "page": 15,
+      "printed_page": 237,
+      "status": "omitted",
+      "notes": "The relation g_i(phi_p) - g_i(phi_d) was inspected. It maintains joint-command continuity during the robot-specific recovery maneuver and is not required to preserve the transferable retry-state mechanism."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table I",
+      "page": 17,
+      "printed_page": 239,
+      "status": "verified",
+      "notes": "All six controller rows and SC, LC, SF, velocity and distance-to-failure columns were visually checked. The evidence card retains the exact 960, 293 and 78.7 cm comparison and the 35.1-81.1 cm range for the remaining schemes. The unequal trial counts and Load Count definition are retained as warnings."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 3,
+      "printed_page": 225,
+      "extracted": false,
+      "reason": "Robot overview and foot location were inspected; the photograph does not add a transferable contact or load-sharing definition."
+    },
+    {
+      "figure": "Figs. 2-3",
+      "page": 4,
+      "printed_page": 226,
+      "extracted": false,
+      "reason": "Modular body and wing range-of-motion images support body morphology but are adequately represented by the force/moment and redundancy notes."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 5,
+      "printed_page": 227,
+      "extracted": false,
+      "reason": "Four-bar leg and crank foot path were inspected; Fig. 13 provides the more direct, labeled attachment trajectory used in the evidence card."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 6,
+      "printed_page": 228,
+      "extracted": false,
+      "reason": "Opposed shock absorbers and extension/compression roles were inspected. The essential low/high radial-compliance tradeoff is retained textually; no numerical spring data are present."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 7,
+      "printed_page": 229,
+      "extracted": false,
+      "reason": "Two-axis strain-gauge directions were inspected; the sensor accuracies and force directions are sufficiently captured in text and the parameter table."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 8,
+      "printed_page": 230,
+      "extracted": false,
+      "reason": "Tree, brick and ground photographs are qualitative surface demonstrations and do not define roughness, contact geometry or a reusable parameter."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 9,
+      "printed_page": 231,
+      "extracted": false,
+      "reason": "Biological inspiration photographs were inspected; the directional-spine concept is captured textually and does not require the image."
+    },
+    {
+      "figure": "Figs. 9-10",
+      "page": 9,
+      "printed_page": 231,
+      "extracted": true,
+      "file": "figures/fig09_10_p09_toe_ankle_compliance.png",
+      "reason": "Irreplaceable joint definition of the soft/hard polyurethane toe regions, rows of spines, and the roll/pitch/yaw compliance hardware."
+    },
+    {
+      "figure": "Fig. 11",
+      "page": 11,
+      "printed_page": 233,
+      "extracted": false,
+      "reason": "Generic gait decomposition and PD tracking diagram were inspected; it is not needed for the retained mechanism after Eqs. (2)-(4) are omitted."
+    },
+    {
+      "figure": "Fig. 12",
+      "page": 11,
+      "printed_page": 233,
+      "extracted": false,
+      "reason": "Leg workspace was inspected. Fig. 13 contains the same workspace with the actual four-stage attachment trajectory and is the more compact sufficient evidence."
+    },
+    {
+      "figure": "Fig. 13",
+      "page": 12,
+      "printed_page": 234,
+      "extracted": true,
+      "file": "figures/fig13_p12_attachment_trajectory.png",
+      "reason": "Required to preserve the four-stage presentation, drag-to-engage, stance/load and reverse/unload trajectory in joint and body coordinates."
+    },
+    {
+      "figure": "Fig. 14",
+      "page": 12,
+      "printed_page": 234,
+      "extracted": false,
+      "reason": "Five-of-six wave-gait timing was visually checked. The exact 5/6 duty factor and 1/6 phase offset are more compactly retained as parameters."
+    },
+    {
+      "figure": "Fig. 15",
+      "page": 14,
+      "printed_page": 236,
+      "extracted": true,
+      "file": "figures/fig15_p14_traction_controller.png",
+      "reason": "Directly links measured foot traction, average traction/deadband and the speed-up/slow-down controller state that implements Eqs. (5)-(6)."
+    },
+    {
+      "figure": "Fig. 16",
+      "page": 15,
+      "printed_page": 237,
+      "extracted": false,
+      "reason": "The pawing shortcut from failed attachment to early lift/retry was inspected; the state transition is compactly and unambiguously retained in text."
+    },
+    {
+      "figure": "Fig. 17",
+      "page": 16,
+      "printed_page": 238,
+      "extracted": false,
+      "reason": "Integrated control block diagram was inspected. It is controller architecture rather than a needed contact/load-sharing geometry."
+    },
+    {
+      "figure": "Figs. 18-19",
+      "page": 18,
+      "printed_page": 240,
+      "extracted": false,
+      "reason": "Open-loop and full-feedback force profiles were visually compared. The paper supplies no raw dataset; the smoother/tighter-bounds conclusion is preserved as trend evidence."
+    },
+    {
+      "figure": "Fig. 20",
+      "page": 18,
+      "printed_page": 240,
+      "extracted": false,
+      "reason": "The approximately 12 m building climb photograph is a system demonstration; the distance and speed limitation are fully retained textually."
+    }
+  ],
+  "omitted_sections": [
+    "General wall-climbing background and literature review",
+    "Electronics, communications, processor and battery implementation not affecting contact/load sharing",
+    "Motor power and gearbox sizing details",
+    "Generic oscillator/gait notation beyond the retained attachment-state sequence",
+    "Turning-control implementation not required for grasp-force or failure-recovery modeling",
+    "Acknowledgments and full references"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.8-9, Sections 3-3.1",
+      "item": "Tip-radius to surface-scale relationship",
+      "detail": "The 25 and 15 micrometer tip radii and the stated brick/stone/cinder-block performance were verified, but no topography, friction, strength, sample count or success probability is reported. The relationship is retained only as a scale/trend observation."
+    },
+    {
+      "location": "PDF p.8, Section 3",
+      "item": "Single-spine capacity",
+      "detail": "The paper states 'a few newtons at most' without a table, test setup, material or dispersion. It is retained only as a qualitative order-of-magnitude upper bound."
+    },
+    {
+      "location": "PDF p.9-10, Sections 3.1-3.2",
+      "item": "Compliance parameters",
+      "detail": "Material Shore hardness and directional qualitative stiffness are given, but no effective stiffness, travel, damping or toe geometry-to-stiffness relation is reported."
+    },
+    {
+      "location": "PDF p.13-14, Eq. (6)",
+      "item": "Controller gain and units",
+      "detail": "The equation and direction of action are clear, but k_p, b_t,i units, sampling interval and stability limits are absent."
+    },
+    {
+      "location": "PDF p.17, Table I",
+      "item": "Unequal controller trial counts",
+      "detail": "Most configurations used three successive 1 m climbs, whereas full feedback used ten runs accumulated to failure. Distance-to-failure comparisons are retained as reported trends, not equal-sample inferential statistics."
+    },
+    {
+      "location": "PDF p.17, Load Count definition",
+      "item": "Meaning of adhesion force",
+      "detail": "In this paper the term is a signed normal pull-in force at the foot, not an adhesive material force. The route card explicitly prevents that terminology from being transferred incorrectly."
+    }
+  ],
+  "known_warnings": [
+    "Foot-level contact thresholds and recovery logic must not be treated as single-spine thresholds or probabilities.",
+    "The robot-level average traction controller is not a complete paired-claw force/moment balance and ignores heterogeneous contact capacity.",
+    "Shore hardness values do not directly supply equivalent toe, ankle or leg spring constants.",
+    "Surface-class observations do not provide a numerical roughness-to-capacity law.",
+    "Table I compares unequal sample counts and does not report confidence intervals or raw runs.",
+    "The long building climb validates integrated system feasibility but not controlled failure transfer, 6D wrench capacity or red-brick single-contact mechanics.",
+    "Poppler emitted missing Symbol/ArialUnicode display-font warnings; retained symbols and labels were visually checked and found legible."
+  ],
+  "evidence_card_character_count": 3397,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; within the allowed 3500-character extension because the paper contains separate single-foot attachment, hierarchical compliance, active inter-foot load-sharing and whole-robot validation evidence.",
+  "status": "PASS_WITH_WARNINGS"
+}

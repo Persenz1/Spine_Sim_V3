@@ -1,0 +1,178 @@
+{
+  "paper_title": "Why \"more is better\" fails: Contrasting scaling laws of bio-inspired spine arrays on soft and hard substrates",
+  "source_file": "机理文献/核心文献/06_Why more is better fails Contrasting scaling laws of bio-inspired spine arrays on soft and hard s.pdf",
+  "doi": "10.1016/j.triboint.2025.111627",
+  "pdf_pages": 13,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  "sections_checked": [
+    "Abstract",
+    "1 Introduction",
+    "2 Method",
+    "3 Results",
+    "4.1 Mechanism of soft-substrate engagement",
+    "4.2 Mechanism of hard-substrate engagement",
+    "4.3 Mechanisms of array-quantity effects on soft substrates",
+    "4.4 Mechanisms of array-quantity effects on hard substrates",
+    "5 Conclusion",
+    "Data Availability",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained as E1. Kappa=F_f/W=tan(phi+atan(f_s)); phi is measured from the vertical. The self-locking condition is stated separately for a total angle above 90 degrees."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E2. The added micro-damage angle theta appears inside the tangent. The formula is singular at 90 degrees and should not be numerically continued into the self-locking domain."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 8,
+      "status": "verified",
+      "notes": "Retained in E2. Theta=arccos((R-h)/R) was visually verified; Fig. 8B gives h/R=0.15 as about 30 degrees and the text maps this to approximately 3.8 micrometers for R=25 micrometers."
+    },
+    {
+      "equation": "Eq. (4)-(6)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Retained in grouped model E3. h_i=f(x_i,y_i), Z_s(0)=h_3, and Z_s=h_3-Delta Z(t) were visually checked. The paper does not define how h_3 is selected or ordered."
+    },
+    {
+      "equation": "Eq. (7)-(8)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Retained in E3. Delta_i=max(0,h_i-Z_s(t)); N_contact is the indicator sum over 9 or 25 spines."
+    },
+    {
+      "equation": "Eq. (9)-(10)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Retained in E3. W=sum(K_s delta_i) and W_average=W/N_contact were visually checked. K_s and its units are not reported, and plots label W in grams rather than force units."
+    }
+  ],
+  "tables_checked": [],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Biological and robot examples are background and do not establish a reusable mechanism."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": false,
+      "reason": "Rig, material and qualitative soft/hard contact modes are adequately retained in text and parameter rows."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 5,
+      "extracted": false,
+      "reason": "The distinct soft/hard peak-processing rules and raw-force character are preserved textually; the curves are not needed for model transfer."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 5,
+      "extracted": false,
+      "reason": "Sequence stabilization is summarized by the first-three-strokes exclusion and the visible 20-sequence versus stated 50-set warning."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 6,
+      "extracted": true,
+      "file": "figures/fig05_06_p06_soft_hard_scaling.png",
+      "reason": "Combined with Fig. 6 to retain the irreducible soft inverted-U versus hard less-is-more experimental contrast; axes, legends, subpanels and captions were visually verified."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 6,
+      "extracted": true,
+      "file": "figures/fig05_06_p06_soft_hard_scaling.png",
+      "reason": "Combined with Fig. 5 as the minimum direct evidence for opposite substrate-dependent array scaling laws."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 7,
+      "extracted": false,
+      "reason": "The soft-substrate state sequence and explicit 5 g/50 g onset times are compactly represented in mechanism M1 and validation V4."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 9,
+      "extracted": true,
+      "file": "figures/fig08_p09_hard_microdamage_self_locking.png",
+      "reason": "Irreplaceable geometry linking damage depth to angle and showing spatial expansion of self-locking regions; crop includes all labels, color bars and caption and was visually verified."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 11,
+      "extracted": true,
+      "file": "figures/fig09_p11_array_contact_number.png",
+      "reason": "Irreplaceable distinction between nominal count, real contact count, average load, and the evolving hard-substrate active set; crop includes all labels and caption and was visually verified."
+    }
+  ],
+  "omitted_sections": [
+    "General biological examples and robot survey in the Introduction",
+    "Detailed instrument vendor information not affecting interpretation",
+    "CRediT authorship statement",
+    "Declaration of competing interest",
+    "Acknowledgements",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.4, Section 2",
+      "item": "Spine dimension wording",
+      "detail": "The paper prints 'diameter of 0.63 x 5 mm', which is not a valid single diameter specification. The evidence card reproduces 0.63 x 5 mm without guessing which dimension is diameter or exposed length."
+    },
+    {
+      "location": "PDF p.4 and p.8-9, Sections 2 and 4.2",
+      "item": "Unreported material and friction parameters",
+      "detail": "Young's moduli, substrate strength or damage threshold, and the static friction coefficient f_s used in Fig. 8 are not reported. The soft-hard transition cannot be parameterized from this paper."
+    },
+    {
+      "location": "PDF p.8-9, Eq. (2)-(3) and Fig. 8",
+      "item": "Micro-damage state is not measured",
+      "detail": "No direct damage imaging, depth measurement, or load-to-depth evolution is supplied. Theta and h are explanatory variables, not experimentally identified state variables."
+    },
+    {
+      "location": "PDF p.10, Eq. (5)-(6)",
+      "item": "Undefined h_3",
+      "detail": "The initial spine-plane height is set to h_3, but the text does not define the ordering or geometric selection of h_3. It must not be silently interpreted as the third-highest point."
+    },
+    {
+      "location": "PDF p.10-11, Eq. (9)-(10) and Fig. 9",
+      "item": "Soft-substrate stiffness and load units",
+      "detail": "K_s is not numerically defined and no units are given; W is a force symbol in the equations but the associated plots label W in grams. The model is structural, not quantitatively reproducible."
+    },
+    {
+      "location": "PDF p.4-5, Sections 2-3 and Fig. 4",
+      "item": "Displayed versus stated repetitions",
+      "detail": "The method states 50 test sets per condition, but Fig. 4 displays sequence numbers only through 20 and the paper does not explain the subset. The first three strokes are discarded, but uncertainty bars or raw data are unavailable."
+    },
+    {
+      "location": "PDF p.4 and p.6-8, Section 3, Fig. 5B and Section 4.1",
+      "item": "S-3/S-5 rapid-growth slope assignment",
+      "detail": "Fig. 5B labels k3=0.198 and k5=0.452, and Section 4.1 calls S-3 the slowest condition. The Section 3 prose instead assigns 0.452 to S-3 and 0.198 to S-5. No slope value is used as a transferable parameter in the evidence card."
+    }
+  ],
+  "known_warnings": [
+    "Array quantity, footprint, and average load per spine are confounded because total load is fixed and spacing stays at 5 mm.",
+    "Only one hard epoxy and one soft silicone are tested; there is no stiffness sweep or transition criterion.",
+    "The hard-substrate micro-damage model is a plausible explanation rather than a directly observed and calibrated damage law.",
+    "The tangent engagement equations require a separate self-locking state at the 90-degree singularity.",
+    "The soft contact-number model assumes a rigid horizontal plane, identical linear point stiffness, and excludes penetration despite being used to explain penetration experiments.",
+    "Soft and hard representative forces use different peak statistics, so absolute cross-material force values are not directly comparable.",
+    "The rigid common-base array does not represent independently compliant microspines, spring travel saturation, or post-failure load redistribution.",
+    "The synthetic fractal surface is under-specified by H=0.7 alone and is not a red-brick topography.",
+    "Fig. 5B/Section 4.1 and the Section 3 prose conflict on whether the S-3 or S-5 rapid-growth slope equals 0.198 versus 0.452 N/g."
+  ],
+  "evidence_card_character_count": 2723,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; updated during final validation.",
+  "status": "PASS_WITH_WARNINGS"
+}

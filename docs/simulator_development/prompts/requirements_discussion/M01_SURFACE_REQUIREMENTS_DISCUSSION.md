@@ -12,10 +12,10 @@ TASK_ID: M01_SURFACE_REQUIREMENTS
 第一版不使用白光轮廓仪数据，也不声称重建真实红砖。M01 的任务是为公式回归、事件构造和宽先验趋势筛选提供确定性、可重放的表面查询；它是软件服务模块，不是独立的材料真实性模型。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00_FOUNDATION_REQUIREMENTS.md；若尚未冻结则停止并说明前置缺失；
-4. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 5. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
 6. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
 7. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；

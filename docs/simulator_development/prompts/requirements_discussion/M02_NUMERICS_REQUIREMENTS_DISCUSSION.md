@@ -12,7 +12,7 @@ TASK_ID: M02_NUMERICS_REQUIREMENTS
 第一版必须能在无实验数据下可靠推进 A/B 的非光滑准静态路径。M02 是数值与状态协调服务：它可以求残量、定位事件、管理 trial/commit，但不能拥有摩擦、梁、弹簧或阵列载荷共享规律。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00_FOUNDATION_REQUIREMENTS.md；
 4. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；

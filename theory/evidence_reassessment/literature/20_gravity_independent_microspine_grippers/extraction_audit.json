@@ -1,0 +1,195 @@
+{
+  "paper_title": "Gravity-independent Rock-climbing Robot and a Sample Acquisition Tool with Microspine Grippers",
+  "source_file": "机理文献/核心文献/20_Gravity-independent Rock-climbing Robot and a Sample Acquisition Tool with Microspine Grippers.pdf",
+  "authors": [
+    "Aaron Parness",
+    "Mathew Frost",
+    "Nitish Thatte",
+    "Jonathan P. King",
+    "Kevin Witkoe",
+    "Moises Nevarez",
+    "Michael Garrett",
+    "Hrand Aghazarian",
+    "Brett Kennedy"
+  ],
+  "year": 2013,
+  "doi": "10.1002/rob.21476",
+  "pdf_pages": 19,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+  "render_review": {
+    "all_pages": "All 19 PDF pages were rendered to PNG at 150 dpi and visually checked in five contact sheets; retained text, equations, captions and table values were then checked on individual page renders.",
+    "high_resolution_pages": [5, 7, 15],
+    "high_resolution_dpi": 260,
+    "individual_pages_visually_rechecked": [5, 6, 7, 11, 13, 15, 17],
+    "notes": "The three retained figure crops were cut from 260 dpi renders and checked for complete labels, force directions, dimensions and captions. Equations and Table I were verified against the page images rather than text extraction alone."
+  },
+  "sections_checked": [
+    "Abstract and Section 1 Introduction",
+    "Section 2 Mission Scenarios, Sections 2.1-2.4",
+    "Section 3 Microspine Gripper Design",
+    "Section 4 Climbing Robot Kinematics and Control",
+    "Section 5 Mobility Experiments",
+    "Section 6 Single-Gripper Experiments",
+    "Section 7 Sensor Integration and Testing",
+    "Section 8 Sample Acquisition Tool Design and Experiments",
+    "Section 9 Conclusions and Future Work",
+    "Acknowledgments, multimedia note and references checked for document completeness only"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Retained as E1. The summation sign, M-plus subscript, spring moment Mk, cable tension T, reaction components Rx/Ry, signs, and moment arms d1-d3 were visually checked against Eq. (1) and Fig. 7. The paper does not append an explicit '= 0', so none was added."
+    },
+    {
+      "equation": "Eq. (2)-(3)",
+      "page": 13,
+      "status": "verified",
+      "notes": "Retained together as E2. R_drill = R_y1 + R_y2 and R_x1 = R_x2 were visually checked; directions and the symmetric two-carriage boundary were cross-checked against Fig. 19 on PDF p.15."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 14,
+      "status": "omitted",
+      "notes": "Motor-torque sizing for the ball-screw engagement actuator was inspected. It is an implementation sizing equation for the drill mechanism and does not constrain the requested spine/contact or array mechanism."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table I",
+      "page": 11,
+      "status": "verified",
+      "notes": "All eight materials and the normal, 45-degree and tangent mean pull-off forces were visually checked. The four consolidated-rock rows and the loose-material range are retained. Each cell is the mean of five trials; no standard deviation or raw curve is reported."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1-2",
+      "page": "2, 4",
+      "extracted": false,
+      "reason": "Robot and asteroid application images are context only and do not define the retained mechanism."
+    },
+    {
+      "figure": "Fig. 3-4",
+      "page": "4-5",
+      "extracted": false,
+      "reason": "Single-spine construction and multiscale conformation were inspected; their essential hierarchy and qualitative load-sharing role are retained textually and Fig. 5 provides the more complete mechanism interface."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig05_p05_radial_hierarchical_gripper.png",
+      "reason": "Irreplaceable definition of the radial carriages, serial compliance, torsion springs, prismatic slides, engage/disengage mechanisms and yaw bearing."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 6,
+      "extracted": false,
+      "reason": "Assembled hardware photograph does not add a model variable beyond Fig. 5."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 7,
+      "extracted": true,
+      "file": "figures/fig07_p07_carriage_force_balance.png",
+      "reason": "Required to define Eq. (1) force directions, moment arms and cable angle without guessing the coordinate system."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 7,
+      "extracted": false,
+      "reason": "The three lower-bound force readings and their directions are more compactly retained as explicit parameter values; the photographs do not provide uncertainty or curves."
+    },
+    {
+      "figure": "Fig. 9-12",
+      "page": "9-10",
+      "extracted": false,
+      "reason": "Mobility images and sag sequence were checked. The test angles, gravity offload and sag limitation are fully represented textually."
+    },
+    {
+      "figure": "Fig. 13-14",
+      "page": 11,
+      "extracted": false,
+      "reason": "The center-pivot pull rig and material photographs were inspected; Table I and the stated material-failure modes preserve the minimal quantitative evidence."
+    },
+    {
+      "figure": "Fig. 15-16",
+      "page": "12-13",
+      "extracted": false,
+      "reason": "Sensor architecture and representative force traces were inspected. The reported less-than-5-percent error and non-correlation result are preserved; the plot has no reusable numerical dataset."
+    },
+    {
+      "figure": "Fig. 17-18",
+      "page": 14,
+      "extracted": false,
+      "reason": "Drilling photographs document configurations but are replaceable by the force/moment boundary notes."
+    },
+    {
+      "figure": "Fig. 19",
+      "page": 15,
+      "extracted": true,
+      "file": "figures/fig19_p15_anchor_drill_force_balance.png",
+      "reason": "Required to define the two-sided reaction forces, internal cable tension and the strict 2D symmetric boundary of Eq. (2)-(3)."
+    },
+    {
+      "figure": "Fig. 20-22",
+      "page": "16-17",
+      "extracted": false,
+      "reason": "Actuator CAD, hand tool and core photographs were checked; they do not add a transferable contact or load-sharing relation."
+    }
+  ],
+  "omitted_sections": [
+    "Mission motivation and planetary-science narrative not affecting the gripper mechanism",
+    "PC104 electronics, VxWorks software architecture and ordinary teleoperation details",
+    "Flight-material manufacturing narrative except for the 80-point/one-level performance comparison",
+    "Sensor cost comparison and unprototyped sensor alternatives",
+    "Detailed ball-screw, gearbox, battery, drill-bit and astronaut-glove implementation",
+    "Acknowledgments, multimedia link and full references"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.10-11, Section 6 and Table I",
+      "item": "Surface roughness attribution",
+      "detail": "The paper states that holding capacity trended with sample roughness, but it reports no 2D/3D roughness metric, friction coefficient or material-strength measurement. Roughness, friability and rock identity cannot be separated quantitatively."
+    },
+    {
+      "location": "PDF p.7, Fig. 8",
+      "item": "Flightlike-gripper lower bounds",
+      "detail": "The values are displayed as greater-than readings and the text gives no trial count or dispersion. They are retained only as direction-specific lower bounds, not calibration means."
+    },
+    {
+      "location": "PDF p.6-7, Eq. (1) and Fig. 7",
+      "item": "Carriage reaction-force closure",
+      "detail": "One moment equation contains two rock-reaction components and represents a carriage/hook resultant. It cannot identify the internal distribution among 16 microspines without additional equilibrium and contact equations."
+    },
+    {
+      "location": "PDF p.13, Section 7",
+      "item": "Individual-carriage load relation",
+      "detail": "The paper reports that individual carriage load is not strongly correlated with external gripper load, but gives no correlation coefficient, per-carriage dataset or load-sharing probability model."
+    },
+    {
+      "location": "PDF p.9 and p.17, Sections 5 and 9",
+      "item": "Inverted climbing validation",
+      "detail": "Fully inverted mobility used 30-60 percent gravity offload depending on robot position; it is not a full-weight inverted free-climbing validation."
+    },
+    {
+      "location": "PDF p.14-16, Fig. 18",
+      "item": "Moment capacity during horizontal drilling",
+      "detail": "A fishing line reacted the moment caused by the offset drill center of mass. The gripper reacted drilling forces, but single-gripper moment capacity was not established."
+    }
+  ],
+  "known_warnings": [
+    "Qualitative rock roughness and friability must not be converted into a numerical topography-to-capacity law.",
+    "Table I values are five-trial means without reported dispersion and are not red-brick parameters.",
+    "The radial gripper is not equivalent to a two-sided paired claw with a fully specified internal preload and 6D equilibrium.",
+    "Eq. (1) is a 2D carriage moment relation, not a closed single-spine or multi-spine load-sharing model.",
+    "The three-carriage sensor prototype does not establish the distribution of loads across all 16 carriages or 256 spines.",
+    "Compliance improves conformation, load sharing and vibration damping but also causes sag and hole-start wander; retaining only its beneficial role would contradict the paper.",
+    "Robot tests are open-loop and kinematically constrained; inverted mobility used partial gravity offload and full 6D climbing remained future work."
+  ],
+  "evidence_card_character_count": 3179,
+  "character_count_method": "Count of CJK Unified Ideographs in evidence_card.md; within the allowed 3500-character extension because the paper contains separate hierarchical-mechanism, carriage-statics and whole-gripper validation evidence.",
+  "status": "PASS_WITH_WARNINGS"
+}

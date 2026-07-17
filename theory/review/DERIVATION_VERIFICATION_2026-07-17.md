@@ -23,7 +23,7 @@
 
 复核按以下顺序读取和比对：
 
-1. [正式工程事实](../../archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md)；
+1. [正式工程事实](../evidence_reassessment/engineering_fixed_context.md)；
 2. [系统集成模型](../system/SYSTEM_INTEGRATED_MODEL.md)；
 3. [A 单刺模型](../modules/A_INTEGRATED_MODEL.md)、[B 阵列单元模型](../modules/B_INTEGRATED_MODEL.md)、[C 十字系统模型](../modules/C_INTEGRATED_MODEL.md)；
 4. [A→B](../interfaces/A_TO_B_CONTRACT.md) 与 [B→C](../interfaces/B_TO_C_CONTRACT.md) 合同；

@@ -1,0 +1,270 @@
+{
+  "paper_title": "A climbing robot with paired claws inspired by gecko locomotion",
+  "source_file": "机理文献/核心文献/18_A climbing robot with paired claws inspired by gecko locomotion.pdf",
+  "doi": "10.1017/S0263574722000492",
+  "pdf_pages": 13,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "2. Mechanism model of paired claws",
+    "2.1. Biomimetic mechanism",
+    "2.2. Opposed gripping model",
+    "3. Grasping force of opposed gripping claws",
+    "3.1. Experimental setup",
+    "3.2. Processes of grasping and claw detachment",
+    "3.3. Effect of number of spiny feet on grasping performance",
+    "4. Hexapod climbing robot",
+    "4.1. Opposed gripping feet",
+    "4.2. Robot structure",
+    "4.3. Wall-climbing experiments",
+    "5. Conclusion",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Right-claw moment balance M1-Fx1*h+Fy1*l1=0 was visually checked. It is retained through the reduced symmetric relation in E1."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Left-claw moment balance -M2+Fx2*h-Fy2*l1=0 was visually checked. It is omitted as a standalone formula because E1 retains the symmetric reduction."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Horizontal resultant Fx=Fx1-Fx2 was visually checked and retained as a condition for E1."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Vertical resultant Fy=Fy1+Fy2 was visually checked and retained through E1."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 3,
+      "status": "verified",
+      "notes": "Whole-pair moment balance Fy1*2l+Fx*h-Fy*l=0 was visually checked. It is omitted as an independent formula because E1 retains the Fx=0 symmetric result."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Fy1=Fy2=Fy/2 was visually checked and retained in E1."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Fx1=Fx2=(2M1+Fy*l1)/(2h) was visually checked and retained in E1."
+    },
+    {
+      "equation": "Eq. (8)",
+      "page": 4,
+      "status": "verified",
+      "notes": "The printed arctangent relation was visually checked and retained in E1. The following prose says increasing M reduces theta, whereas the printed fixed-positive-sign equation increases theta; this is flagged as an unresolved sign-convention conflict."
+    },
+    {
+      "equation": "Eq. (9)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Local force balance F+mu*N1*sin(alpha1)=N1*cos(alpha1) was visually checked. It is omitted separately because E2 retains the resulting force ratio."
+    },
+    {
+      "equation": "Eq. (10)",
+      "page": 4,
+      "status": "verified",
+      "notes": "Local force balance mu*N1*cos(alpha1)+N1*sin(alpha1)=W was visually checked. It is omitted separately because E2 retains the resulting force ratio."
+    },
+    {
+      "equation": "Eq. (11)",
+      "page": 4,
+      "status": "verified",
+      "notes": "F/W=(cos(alpha1)-mu*sin(alpha1))/(mu*cos(alpha1)+sin(alpha1)) was visually checked and retained in E2."
+    },
+    {
+      "equation": "Eq. (12)",
+      "page": 4,
+      "status": "verified",
+      "notes": "tan(theta1)=F/W=(1-mu*tan(alpha1))/(mu+tan(alpha1)) was visually checked. It is represented by the equivalent E2 force-ratio and angle forms."
+    },
+    {
+      "equation": "Eq. (13)",
+      "page": 4,
+      "status": "verified",
+      "notes": "theta1=arctan(1/mu)-alpha1 was visually checked and retained in E2."
+    },
+    {
+      "equation": "Eq. (14)",
+      "page": 4,
+      "status": "verified",
+      "notes": "theta2=arctan(1/mu)+alpha2 was visually checked and retained in E2. The prose first defines alpha2 as the negative of alpha1 but then discusses increasing alpha2; the signed-angle convention is flagged as uncertain."
+    },
+    {
+      "equation": "Eq. (15)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Vertical-crawling force balance G=Fx1+Fx2+Fx3 was visually checked and retained in E3."
+    },
+    {
+      "equation": "Eq. (16)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Vertical-crawling moment balance G*H=Fy1*2L+Fy2*L was visually checked and retained in E3."
+    },
+    {
+      "equation": "Eq. (17)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Horizontal-crawling force balance G=Fx4+2Fx5 was visually checked and retained in E3."
+    },
+    {
+      "equation": "Eq. (18)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Horizontal-crawling moment balance G*H=Fy4*S was visually checked and retained in E3."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Table I",
+      "page": 11,
+      "status": "verified",
+      "notes": "Transverse and longitudinal static limit loads of 700 g and 900 g were visually checked. The test used 100 g increments and stopped at overturn or failed attachment, so the values are system limits rather than isolated contact capacities."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 3,
+      "extracted": false,
+      "reason": "Gecko multilevel-locking photographs and conceptual opposed model are background; the retained Fig. 2 gives the quantitative force and angle definitions."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": true,
+      "file": "figures/fig02_p03_opposed_contact_model.png",
+      "reason": "Irreplaceable paired-claw force, torque, lever-arm and local spherical-contact definitions for Eqs. (1)-(14); direct PDF crop and caption were visually verified."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 6,
+      "extracted": false,
+      "reason": "Test platform and control hardware are adequately represented by the surface, speed and loading parameters."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 6,
+      "extracted": false,
+      "reason": "The attachment, stable-grip, increasing-load and release stages are preserved in M3/V1 without estimating unreported exact values from the curve."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 7,
+      "extracted": false,
+      "reason": "Two-to-six-foot arrangements are summarized in the parameter table and routing card; Fig. 6 is the direct performance evidence."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig06_p08_feet_count_roughness.png",
+      "reason": "Direct evidence that preload and grasping force vary nonlinearly with both foot count and quartz-sand mesh; complete axes, legends and caption were visually verified."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 8,
+      "extracted": false,
+      "reason": "Opposed-foot construction and load-test photographs are reducible to two rubber feet, ten 45-degree hook needles per foot and reported 400/400/200 g loads."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 9,
+      "extracted": false,
+      "reason": "Robot frame topology and hardware are not needed to reproduce the retained contact and equilibrium equations."
+    },
+    {
+      "figure": "Fig. 9",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig09_p10_robot_equilibrium.png",
+      "reason": "Irreplaceable vertical/horizontal robot force directions and lever arms for Eqs. (15)-(18); direct PDF crop and caption were visually verified."
+    },
+    {
+      "figure": "Fig. 10",
+      "page": 10,
+      "extracted": false,
+      "reason": "Robot snapshots demonstrate direction coverage but add no quantitative relation beyond the reported 0-180 degree range, 7.45 mm/s speed and 200 g load."
+    }
+  ],
+  "omitted_sections": [
+    "General wall-climbing robot history and application background",
+    "Most biological gecko-foot morphology beyond opposed-claw inspiration",
+    "Detailed control electronics and battery description not affecting retained mechanics",
+    "Step-by-step gait narration beyond the alternating attached-frame assumption",
+    "Acknowledgments, author contributions and competing-interest declaration",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.4, Eq. (8) and following paragraph",
+      "item": "Driving-torque sign",
+      "detail": "With the printed positive sign, increasing M1 increases the arctangent argument and theta, but the prose states that increasing driving torque reduces theta. The actual torque direction must be re-derived from Fig. 2 before reuse."
+    },
+    {
+      "location": "PDF p.4-5, Eq. (14)",
+      "item": "Lower-side contact-angle sign",
+      "detail": "The text calls alpha2 the negative value of alpha1 and then describes theta2 as increasing with increasing alpha2. A downstream model must define one signed angle convention and re-derive the branch."
+    },
+    {
+      "location": "PDF p.3-5 versus p.10-11, Fig. 2 versus Fig. 9",
+      "item": "Reused x/y symbols",
+      "detail": "Section 2 describes Fx/Fy as horizontal/vertical tangential components, whereas Fig. 9 uses Fx along the wall to support gravity and Fy as the moment-producing normal component. Cross-section equations cannot be combined by symbol name alone."
+    },
+    {
+      "location": "PDF p.7-8, Fig. 6",
+      "item": "Missing raw data and uncertainty",
+      "detail": "Each foot-count/surface case was repeated five times, but the paper reports only bars without error bars or raw values. Exact values were not estimated from the plot."
+    },
+    {
+      "location": "PDF p.7, Section 3.3",
+      "item": "Foot-count/layout confounding",
+      "detail": "The five-foot case is asymmetric while the two-, three-, four- and six-foot cases are symmetric, so foot count and arrangement are not fully separated."
+    },
+    {
+      "location": "PDF p.5-8, Sections 3.1 and 3.3",
+      "item": "Surface roughness definition",
+      "detail": "The paper gives 0.425-2 mm quartz particles and mesh categories 10/18/25/35/40 but no Ra, Rq, PSD, correlation length or measured 3D topography."
+    },
+    {
+      "location": "PDF p.8, Section 4.1",
+      "item": "Single-pair load-test repeatability",
+      "detail": "The 400/400/200 g vertical/horizontal/inverted values are stated without sample count, uncertainty, loading protocol or exact failure mode."
+    },
+    {
+      "location": "PDF p.11, Table I and Section 4.3",
+      "item": "System-limit failure definition",
+      "detail": "The static test stops when the robot overturns or a foot cannot attach, and higher dynamic load is servo-limited. These outcomes do not isolate claw-contact capacity."
+    }
+  ],
+  "known_warnings": [
+    "The local contact model assumes a spherical claw tip, hemispherical asperity, smooth support, 2D quasi-static equilibrium and Coulomb friction; it does not represent finite-tip contact on measured 3D brick topography.",
+    "Equation (8) has an unresolved torque-sign conflict between the printed formula and prose.",
+    "Equation (14) has an ambiguous signed convention for the lower-side contact angle.",
+    "Section 2 and Section 4 reuse Fx/Fy with different physical directions.",
+    "Figure 6 provides no raw values or uncertainty and the five-foot arrangement is asymmetric.",
+    "All reported g-valued capacities are retained as mass loads exactly as printed; they were not silently converted to forces.",
+    "The paper does not measure individual-spine contact, load sharing, travel saturation, local damage or post-failure redistribution.",
+    "Whole-robot static and dynamic limits mix attachment, overturning and servo-torque constraints."
+  ],
+  "evidence_card_character_count": 2378,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows.",
+  "status": "PASS_WITH_WARNINGS"
+}

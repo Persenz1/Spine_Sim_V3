@@ -12,10 +12,10 @@ TASK_ID: M08_C_DIAGNOSTIC_REQUIREMENTS
 当前 B_TO_C 1.0 不支持 nonzero global +X、45°、local-y 或 rocking。M08 的目标不是算正式临界承载，而是实现请求/响应、合同覆盖、prescribed-s 诊断和安全拒绝，确保以后升级 B 2.x 时有清楚基线。
 
 开始前完整读取：
-1. AGENTS.md；
+1. AGENTS.md、README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00、M02、M04、M05、M06、M07 requirements；
-4. archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md；
+4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
 5. theory/modules/C_INTEGRATED_MODEL.md；
 6. theory/interfaces/B_TO_C_CONTRACT.md；
 7. theory/system/SYSTEM_INTEGRATED_MODEL.md；

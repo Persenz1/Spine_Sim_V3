@@ -1,0 +1,195 @@
+{
+  "paper_title": "Orientation-dependent bio-inspired spine engagement mechanics",
+  "source_file": "机理文献/核心文献/04_Orientation-dependent bio-inspired spine engagement mechanics.pdf",
+  "doi": "10.1016/j.ijmecsci.2026.111532",
+  "pdf_pages": 13,
+  "pages_checked": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  "sections_checked": [
+    "Abstract",
+    "1. Introduction",
+    "2. Pitch angle dependence",
+    "2.1. Pitch angle analysis and experimental setup",
+    "2.2. Experimental results",
+    "2.3. Failure analysis",
+    "2.3.1. Slip failure",
+    "2.3.2. Fracture failure",
+    "2.4. Prediction for optimal pitch angle",
+    "2.5. Multi-materials validation",
+    "2.6. Limitations and generalizability",
+    "3. Yaw angle dependence",
+    "3.1. Engagement direction analysis",
+    "3.2. Stability analysis",
+    "4. Conclusions",
+    "References"
+  ],
+  "equations_checked": [
+    {
+      "equation": "Eq. (1)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Critical slip force balance visually checked; retained through the solved form Eq. (2)."
+    },
+    {
+      "equation": "Eq. (2)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Retained as E1; tangent argument and force symbols visually checked."
+    },
+    {
+      "equation": "Eq. (3)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Retained as E2; engagement-ratio definition and self-locking singularity checked."
+    },
+    {
+      "equation": "Eq. (4)",
+      "page": 6,
+      "status": "verified",
+      "notes": "Retained as E3; max clamp, arctangent numerator and denominator checked."
+    },
+    {
+      "equation": "Eq. (5)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Retained as E4; PDF-times-powered-EI form checked."
+    },
+    {
+      "equation": "Eq. (6)",
+      "page": 7,
+      "status": "verified",
+      "notes": "Retained as E5; minus-phi and plus-theta sign checked."
+    },
+    {
+      "equation": "Eq. (7)",
+      "page": 9,
+      "status": "verified",
+      "notes": "Retained as E6; both absolute-angle conditions and max operator checked. The paper does not state circular angle wrapping."
+    },
+    {
+      "equation": "Eq. (8)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Retained as E7; negative restoring sign and sin-squared factor checked."
+    },
+    {
+      "equation": "Eq. (9)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Retained in E8; directional sums over engaged spines checked."
+    },
+    {
+      "equation": "Eq. (10)",
+      "page": 10,
+      "status": "verified",
+      "notes": "Retained in E8; root-sum-square definition checked. The surrounding text/Fig. 8 alternates Ky and Ktotal notation."
+    }
+  ],
+  "tables_checked": [
+    {
+      "table": "Supplementary Table S1",
+      "page": 0,
+      "status": "uncertain",
+      "notes": "Referenced for p = 1-3 sensitivity but not included in the workspace PDF."
+    },
+    {
+      "table": "Supplementary Table S2",
+      "page": 0,
+      "status": "uncertain",
+      "notes": "Referenced for multi-material Gaussian-fit details but not included in the workspace PDF."
+    }
+  ],
+  "figures_checked": [
+    {
+      "figure": "Fig. 1",
+      "page": 2,
+      "extracted": false,
+      "reason": "Biological examples and angle definitions are recoverable from text and later mechanics figures."
+    },
+    {
+      "figure": "Fig. 2",
+      "page": 3,
+      "extracted": false,
+      "reason": "Talon morphology and apparatus details are summarized numerically; not required for model implementation."
+    },
+    {
+      "figure": "Fig. 3",
+      "page": 4,
+      "extracted": false,
+      "reason": "The measured 60-degree optimum, filtering method and significance test are preserved in V1 and the parameter table."
+    },
+    {
+      "figure": "Fig. 4",
+      "page": 5,
+      "extracted": true,
+      "file": "figures/fig04_p05_slip_fracture_balance.png",
+      "reason": "Irreplaceable combined geometry, anti-slip and fracture-path mechanism. Crop made directly from the PDF and visually verified with full axes, legends and caption."
+    },
+    {
+      "figure": "Fig. 5",
+      "page": 7,
+      "extracted": false,
+      "reason": "The ELS chain is fully represented by E2-E5 and definitions; Fig. 6 is more directly relevant to target brick transfer."
+    },
+    {
+      "figure": "Fig. 6",
+      "page": 8,
+      "extracted": true,
+      "file": "figures/fig06_p08_multimaterial_pitch_prediction.png",
+      "reason": "Direct visual evidence for the fine-grained-brick morphology, slope distribution and 57.9-degree prediction. Crop made directly from the PDF and visually verified."
+    },
+    {
+      "figure": "Fig. 7",
+      "page": 9,
+      "extracted": false,
+      "reason": "The direction criterion is preserved exactly as Eq. (7); Fig. 8 contains the more consequential array trade-off."
+    },
+    {
+      "figure": "Fig. 8",
+      "page": 10,
+      "extracted": true,
+      "file": "figures/fig08_p10_yaw_stiffness_tradeoff.png",
+      "reason": "Irreplaceable force schematic plus engagement-rate and normalized-stiffness trends. Crop made directly from the PDF and visually verified with full axes, legends and caption."
+    }
+  ],
+  "omitted_sections": [
+    "Most biological examples and robot taxonomy in the Introduction",
+    "Detailed apparatus component list beyond parameters affecting interpretation",
+    "CRediT authorship contribution statement",
+    "Declaration of competing interest",
+    "Acknowledgements",
+    "Full reference list"
+  ],
+  "uncertain_items": [
+    {
+      "location": "PDF p.5-6, Section 2.3 and Fig. 4",
+      "item": "Meaning of the approximately 10-degree optimum",
+      "detail": "The abstract calls approximately 10 degrees the maximum anti-slip orientation, whereas Section 2.3.1 states that anti-slip resistance is strongest at 0 degrees. The body uses 10 degrees as a compromise between decreasing anti-slip resistance and increasing fracture path."
+    },
+    {
+      "location": "PDF p.5, Fig. 4(h)-(i)",
+      "item": "Fracture-path unit",
+      "detail": "Panel (h) labels Lf in mm while panel (i) labels a comparable numerical range in micrometres. No reliable quantitative unit can be assigned across the panels."
+    },
+    {
+      "location": "PDF p.7-8, Supplementary Notes 1-2 and Tables S1-S2",
+      "item": "Unavailable supplementary verification",
+      "detail": "The workspace contains only the 13-page main PDF. Sensitivity and fit details cited in the supplementary material could not be visually checked."
+    },
+    {
+      "location": "PDF p.10, Eq. (10) and Fig. 8(d)",
+      "item": "Tangential-stiffness notation",
+      "detail": "Eq. (10) defines Ky, while the text and legend also use Ktotal for the composite normalized stiffness. The physical construction is clear, but variable names should be unified in implementation."
+    }
+  ],
+  "known_warnings": [
+    "Fig. 6 is a morphology-driven theoretical prediction across materials, not force-angle experimental validation on rock or brick.",
+    "Fracture path length is only a geometric proxy; the paper provides no material strength, fracture energy or calibrated fracture-load law.",
+    "The pitch-angle input is a directional profile/slope distribution and must not be treated as a complete three-dimensional surface-normal model without reconstruction.",
+    "Eq. (7) requires an explicit principal-angle and wrap convention before coding.",
+    "Yaw results assume an isotropic Gaussian surface, zero-mean normal yaw distribution, linear axial stiffness and infinitesimal disturbances; no yaw-array experiment is reported.",
+    "The proposed pitch-yaw coupling in Section 3.2 is explicitly a hypothesis rather than a solved or validated coupled model."
+  ],
+  "evidence_card_character_count": 3047,
+  "character_count_method": "Count of CJK Unified Ideographs after excluding display-formula blocks, Markdown table rows and image-link rows; up to 3500 allowed because the paper contains independent pitch and yaw models.",
+  "status": "PASS_WITH_WARNINGS"
+}

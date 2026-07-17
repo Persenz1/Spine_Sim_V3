@@ -1,6 +1,6 @@
 # Theory 阅读与复核指南
 
-本目录是当前唯一的理论工作区。后续“重新过目”和论文式重写应从这里开始；`archive/` 只承担追溯、复现和证据补查，不作为默认上下文。
+本目录是当前唯一的理论工作区。后续“重新过目”、论文式重写、仿真器理论交接和论文反向证据复核应从这里开始；`archive/` 保留完整源文件、历史推导和运行审计，不作为普通任务的默认上下文。
 
 ## 0. 本轮复核与开发入口（2026-07-17）
 
@@ -8,7 +8,8 @@
 - [`paper/MECHANISM_DERIVATION_TUTORIAL.md`](paper/MECHANISM_DERIVATION_TUTORIAL.md)：教学解释稿，从牛顿平衡开始解释 wrench、残量、算子、互补接触、A/B/C 装配、事件和可辨识性；
 - [`review/DERIVATION_VERIFICATION_2026-07-17.md`](review/DERIVATION_VERIFICATION_2026-07-17.md)：独立代数/物理复核；其中 P0/P1 是编码安全边界，不能因 accepted 标签而跳过；
 - [`implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md`](implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md)：无白光轮廓仪、仅有直线拖曳实验时的开发期参数替代、实验辨识和分阶段决策；
-- [`implementation/DEV_BOOTSTRAP_PROFILE.yaml`](implementation/DEV_BOOTSTRAP_PROFILE.yaml)：上述 M0 开发基线的机器可读配置，不代表真实壁面标定值。
+- [`implementation/DEV_BOOTSTRAP_PROFILE.yaml`](implementation/DEV_BOOTSTRAP_PROFILE.yaml)：上述 M0 开发基线的机器可读配置，不代表真实壁面标定值；
+- [`evidence_reassessment/`](evidence_reassessment/README.md)：工程事实汇总与 29 组文献提取材料，供后续从论文和模型反向检查可补充内容，不属于 accepted 理论正文。
 
 这些新增文件不覆盖下文列出的正式权威模型。严格稿提出闭合修订，教程负责解释，复核报告记录问题，implementation 文件只负责开发期决策；只有经过版本化修订、审查和迁移后，accepted 模型本身才随之改变。
 
@@ -20,9 +21,9 @@
 2. [`system/SYSTEM_INTEGRATED_MODEL.md`](system/SYSTEM_INTEGRATED_MODEL.md) 是全局协调、状态、接口、事件、事务和实现交接的最高层规范；
 3. A、B、C 的低层机理由各自 `INTEGRATED_MODEL 1.0.0 accepted` 拥有，系统层不得重新推导；
 4. A→B、B→C 分别以 A、B 集成模型中的嵌入合同正文为权威；`interfaces/` 是便于单独实现和审计的等价副本；
-5. `supplements/` 中的 `MODULE_CONTEXT 0.3.0 accepted` 是集成前详细基线，只用于补充追溯，不覆盖集成模型。
+5. A3/B3/C3 的最终 `MODULE_CONTEXT 0.3.0 accepted` 是集成前历史基线，只保留在归档，不覆盖集成模型。
 
-正式工程事实按需从 [`archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md`](../archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md) 查询。不要为了普通理论阅读预先加载整个事实库。
+正式工程事实汇总按需从 [`evidence_reassessment/engineering_fixed_context.md`](evidence_reassessment/engineering_fixed_context.md) 查询；结构化 YAML 源、schema、manifest 和生成器仍保留在归档的 `engineering_fixed_context/internal/`。不要为了普通理论阅读预先加载整个事实库。
 
 本轮 proposed 文件不在上述 accepted 权威链内；一旦与 accepted 1.0 冲突，必须明确标记“现行规范”和“建议修订”，不能混合拼接。实现任务也不能忽略已确认的 P0：在正式修订合入前，应采用复核报告和开发策略中已经闭合的 M0 分支，或对超出合同的功能返回不可用。
 
@@ -79,19 +80,20 @@
 
 ### 证据或历史补查
 
-- [`supplements/A_MODULE_CONTEXT.md`](supplements/A_MODULE_CONTEXT.md)
-- [`supplements/B_MODULE_CONTEXT.md`](supplements/B_MODULE_CONTEXT.md)
-- [`supplements/C_MODULE_CONTEXT.md`](supplements/C_MODULE_CONTEXT.md)
+- [`evidence_reassessment/README.md`](evidence_reassessment/README.md)：工程事实与 29 组文献证据的反向复核入口。
+- [`A3 最终上下文`](../archive/web_pro_derivation_2026-07-17/derivation/modules/A/history/A_MODULE_CONTEXT_after_A3.md)
+- [`B3 最终上下文`](../archive/web_pro_derivation_2026-07-17/derivation/modules/B/history/B_MODULE_CONTEXT_after_B3.md)
+- [`C3 最终上下文`](../archive/web_pro_derivation_2026-07-17/derivation/modules/C/history/C_MODULE_CONTEXT_after_C3.md)
 
-这些文件完整保留 A1–A3、B1–B3、C1–C3 的阶段推导、证据边界、备选分支、未决问题和交接记录。只有正式集成模型缺少所需细节时才读取相应章节；不要把整份补充上下文默认加入后续写作上下文。
+归档的三个最终上下文完整保留 A1–A3、B1–B3、C1–C3 的阶段推导、证据边界、备选分支、未决问题和交接记录；`evidence_reassessment/` 则提供工程事实和文献提取的理论工作副本。只有正式集成模型缺少所需细节或启动专项反向复核时才读取相应材料；不要把整份历史上下文或全部证据包默认加入后续写作上下文。
 
 ## 3. 面向论文式重写的建议来源映射
 
 | 拟写章节 | 首要来源 | 必要时追加 |
 |---|---|---|
 | 研究对象、范围、层级和假设 | proposed 严格推导 | 系统模型的规范身份、依赖链与边界章节 |
-| 表面与单刺连续啮合模型 | proposed 严格推导的 A 层 | A accepted 集成模型与补充上下文 |
-| 多刺阵列共同平衡与重分配 | proposed 严格推导的 B 层 | B accepted 集成模型与补充上下文 |
+| 表面与单刺连续啮合模型 | proposed 严格推导的 A 层 | A accepted 集成模型与归档 A3 最终上下文 |
+| 多刺阵列共同平衡与重分配 | proposed 严格推导的 B 层 | B accepted 集成模型与归档 B3 最终上下文 |
 | 十字对爪预紧与偏心承载 | proposed 严格推导的 C-R/C-I 边界 | C accepted 集成模型与合同覆盖证明 |
 | 全局数值流程和状态机 | proposed 严格推导与复核报告 | 系统模型的统一算法、事件和事务章节 |
 | 参数、标定与证据边界 | 开发期标定策略 | 系统未决问题、归档 `CITATION_BRIEF`、文献路由和证据卡 |
