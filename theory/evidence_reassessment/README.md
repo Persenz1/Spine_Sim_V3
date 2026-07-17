@@ -23,6 +23,14 @@ evidence_reassessment/
 - `extraction_audit.json`：提取过程和完整性审计；
 - `figures/`：从原文筛出的关键图片（若该文献有图片）。
 
+## 本轮反向审查输出（2026-07-17）
+
+- [`reverse_audit_2026-07-17/MECHANISM_EVIDENCE_REASSESSMENT_REPORT.md`](reverse_audit_2026-07-17/MECHANISM_EVIDENCE_REASSESSMENT_REPORT.md)：29 组文献卡对 `FORMAL 0.1.0-proposed`、accepted A/B/C/System 与独立复核边界的总审查；
+- [`reverse_audit_2026-07-17/REVIEW_PROTOCOL.md`](reverse_audit_2026-07-17/REVIEW_PROTOCOL.md)：统一分类、适用域和报告要求；
+- [`reverse_audit_2026-07-17/individual/`](reverse_audit_2026-07-17/individual/)：29 份逐卡独立报告。
+
+上述输出均为 non-normative review material，不直接修改 accepted 1.0，也不把文献公式或数值提升为项目参数。
+
 归档的每个文献目录继续完整保留 `.zip`、`evidence_card.md`、`extraction_audit.json` 和 `figures/`。本目录只复制非 ZIP 材料，避免把原始压缩包加入理论工作区。
 
 ## 权威边界
