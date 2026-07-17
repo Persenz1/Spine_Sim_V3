@@ -126,3 +126,9 @@ Spine_Sim_V3/
 `DEV_PRIOR` 参数只能用于宽范围扫描、灵敏度分析和代码回归，不能宣称为真实砖墙参数。现有拖曳实验优先辨识整机等效摩擦/阻力、峰值、稳态段、波动统计和速度依赖；单条总拉力曲线不能唯一反演表面 PSD、局部摩擦、针尖强度和损伤参数。
 
 具体参数分级、可辨识性和升级门槛见 [`开发期标定与参数策略`](theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md)，机器可读默认值见 [`DEV_BOOTSTRAP_PROFILE.yaml`](theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml)。
+
+## 8. 仿真器开发工作流
+
+第一版仿真器的模块分配、无实验数据完整运行边界、需求讨论流程和逐模块窗口提示词见 [`docs/simulator_development/README.md`](docs/simulator_development/README.md)。
+
+开发采用“一个模块需求讨论窗口 → 冻结需求和输出合同 → 另开实现窗口”的顺序。绘图模块是只读结果消费者，不参与仿真，也不能反向调用求解器；缺失的原始数据通过版本化数据缺口请求交回源模块处理。

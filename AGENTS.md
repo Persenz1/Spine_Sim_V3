@@ -21,3 +21,11 @@
 - Before receiving, checking, repairing, accepting, or archiving any web-produced derivation artifacts, fully read `archive/web_pro_derivation_2026-07-17/docs/derivation_workflow/guides/RUN_ARTIFACT_HANDLING_GUIDE.md` and every file it marks as required.
 - When a task is started from one of `archive/web_pro_derivation_2026-07-17/docs/derivation_workflow/window_prompts/*.md`, follow its two-phase, one-window-one-task boundary and do not begin the next task automatically.
 - Prompt upload lists, local run manifests, YAML repair, diffs, validation, snapshots, and archival are Codex responsibilities. Do not ask the user to perform mechanical checks; ask only for engineering or physics decisions that cannot be resolved from authoritative project files.
+
+## Simulator-development entry points
+
+- Start simulator planning and implementation tasks at `docs/simulator_development/README.md` and follow `docs/simulator_development/REQUIREMENTS_DISCUSSION_WORKFLOW.md`.
+- Each simulator module uses a requirements-discussion window followed by a separate implementation window. A requirements window must not start coding, and an implementation prompt must be generated from the frozen module requirements rather than from a generic template.
+- Respect the M00→M07 dependency and frozen-requirements gates in `docs/simulator_development/SIMULATOR_MODULE_PLAN.md`. M08 C diagnostics are deferred and do not block the first A/B release.
+- The plotting module is a read-only consumer of versioned result data. It must not import or invoke simulator internals, mutate canonical results, or rerun simulations. Missing raw data must be proposed through a versioned `PLOT_DATA_GAP_REQUEST` and implemented by the owning source module in a separate task.
+- First-release results remain `DEV_PRIOR / synthetic_surface / no_damage / not_certifiable`. Do not request absent experimental data or silently promote development priors into measured material parameters.
