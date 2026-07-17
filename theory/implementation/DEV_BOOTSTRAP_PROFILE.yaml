@@ -1,0 +1,220 @@
+schema_version: "0.1.0"
+profile_id: "spine-sim-v3-dev-bootstrap-2026-07-17"
+status: "DEV_PRIOR_NOT_CERTIFIABLE"
+purpose:
+  - "solver_development"
+  - "analytic_regression"
+  - "synthetic_surface_sensitivity"
+  - "drag_experiment_summary_calibration"
+prohibited_claims:
+  - "target_wall_true_microtopography"
+  - "identified_local_friction_or_strength"
+  - "quantitatively_validated_damage"
+  - "certified_c_level_eccentric_capacity"
+
+units:
+  length: "mm"
+  force: "N"
+  stress: "MPa"
+  stiffness: "N/mm"
+  moment: "N*mm"
+  speed: "mm/s"
+
+fixed_context:
+  wall_plane: "global_XY"
+  wall_outward_axis: "+global_Z"
+  local_drag_axis: "+local_x"
+  local_y_definition: "global_Z_cross_local_x"
+  tip_radius_mm: [0.05, 0.10]
+  needle_diameter_mm: [0.60, 0.80]
+  exposed_length_baseline_mm: 4.0
+  installation_angle_deg: [50, 60, 70, 80]
+  array_nx: [2, 3, 4, 5, 6]
+  array_ny: [2, 3, 4, 5, 6]
+  spacing_mm: [4, 5, 6]
+  single_spine_preload_N: 0.5
+  unit_preload_grid_N: [0.5, 1.0, 1.5, 2.0]
+  drag_speed_mm_per_s: 1.0
+  drag_travel_mm: 100.0
+  spring_travel_range_mm:
+    min: 0.0
+    max: 4.0
+
+needle_elasticity:
+  provenance: "DEV_PRIOR_handbook_range_not_material_certificate"
+  model_primary: "euler_bernoulli"
+  bending_enabled_primary: true
+  youngs_modulus_baseline_MPa: 210000
+  youngs_modulus_grid_MPa: [200000, 205000, 210000]
+  poisson_ratio_baseline: 0.30
+  poisson_ratio_grid: [0.28, 0.29, 0.30]
+  quantitative_strength_certification: false
+  yield_strength_MPa: null
+  ultimate_strength_MPa: null
+  root_stress_concentration_factor: null
+  required_regression_models:
+    - "timoshenko"
+    - "corotational_beam"
+
+mount:
+  modes:
+    - "RIGID_MOUNT"
+    - "INDEPENDENT_AXIAL_SPRINGS"
+  spring_stiffness_grid_N_per_mm: [0.1, 0.2, 0.5, 1.0, 2.0]
+  spring_zero_branch_policy: "USE_A_AT_ORIGINAL_LENGTH_RECONCILE_B_SUMMARY"
+  large_penalty_as_rigid_physics: false
+
+contact:
+  primary_model: "rigid_signorini_coulomb"
+  normal_compliance_mm_per_N: 0.0
+  friction_baseline: 0.40
+  friction_grid: [0.15, 0.25, 0.40, 0.60, 0.80]
+  friction_provenance: "DEV_PRIOR_sensitivity_only"
+  penalty_contact_allowed_for_numerical_regularization: true
+  penalty_value_is_physical_parameter: false
+  penalty_convergence_required: true
+
+surface:
+  material_label: "synthetic_unidentified"
+  query_domain_mm: [150.0, 150.0]
+  regression_families:
+    - "plane"
+    - "slope"
+    - "sinusoid"
+    - "single_bump_or_pit"
+    - "multi_bump"
+    - "known_nearest_feature_switch"
+  stochastic_family: "self_affine_gaussian"
+  hurst_baseline: 0.7
+  hurst_grid: [0.5, 0.7, 0.9]
+  rms_height_over_tip_radius_grid: [0.25, 1.0, 4.0]
+  correlation_length_over_tip_radius_grid: [5.0, 20.0, 80.0]
+  anisotropy_ratio_grid: [1.0, 2.0]
+  representation:
+    primary: "procedural_or_lazy_tiles"
+    uniform_full_domain_micron_grid: false
+  local_resolution_study:
+    initial_delta_over_tip_radius: 0.20
+    refinement_delta_over_tip_radius: [0.125, 0.10]
+  use_as_claimed_red_brick_surface: false
+
+material:
+  primary_model: "no_damage"
+  primary_outputs_allowed:
+    - "geometry"
+    - "contact_state"
+    - "friction_response"
+    - "elastic_response"
+    - "load_sharing"
+    - "event_and_transaction_behavior"
+  failure_prediction_allowed: false
+  continuum_patch:
+    enabled: false
+    parameters_identified: false
+  algorithm_test_fixture:
+    enabled: false
+    enable_only_after_damage_P0_repairs: true
+    model: "resultant_capacity"
+    provenance: "DEV_PRIOR_algorithm_path_only"
+    capacity_over_preload_grid: [2.0, 4.0, 8.0]
+    log_standard_deviation: 0.5
+    residual_capacity_ratio_grid: [0.0, 0.2]
+    allowed_in_design_ranking: false
+
+solver:
+  continuation_parameter: "drag_displacement_x"
+  initial_step_over_tip_radius: 0.5
+  maximum_step_over_tip_radius: 1.0
+  minimum_step_over_tip_radius: 0.001
+  event_position_tolerance_over_tip_radius: 0.01
+  force_residual_absolute_N: 1.0e-6
+  force_residual_relative: 1.0e-5
+  max_newton_iterations: 50
+  max_event_bracket_iterations: 80
+  max_same_position_cascade: 50
+  signed_event_functions_required: true
+  rebalance_normal_equilibrium_at_every_event_probe: true
+  a_level_event_fraction_is_predictor_only: true
+  convergence_required:
+    - "analytic_solution"
+    - "step_refinement"
+    - "surface_resolution"
+    - "event_order"
+    - "energy_and_residual"
+    - "random_sample_rank_stability"
+
+sampling:
+  common_random_numbers: true
+  smoke_seeds: 4
+  development_seeds: 16
+  screening_seeds: 64
+  sequential_final_seed_counts: [64, 128, 256, 512]
+  stop_rule: "rank_and_confidence_interval_stable_for_two_successive_levels"
+
+experimental_calibration:
+  observation: "scalar_drag_force_vs_encoder_position_and_time"
+  fit_physical_microparameters_individually: false
+  primary_effective_targets:
+    - "first_engagement_survival_or_hazard"
+    - "effective_series_stiffness"
+    - "conditional_peak_force_distribution"
+    - "force_drop_and_reengagement_spacing_distribution"
+    - "positive_drag_work"
+    - "same_track_empirical_retention"
+    - "design_preload_direction_trend_ranking"
+  optional_parametric_search_model:
+    enabled_by_default: false
+    form: "(1-p0)*exp(-lambda*x)"
+  initial_independent_tracks_per_cell: 12
+  added_tracks_per_batch: 8
+  split_unit: "whole_track_or_wall_region"
+  same_track_repeats_are_independent_samples: false
+  required_raw_fields:
+    - "time"
+    - "encoder_position"
+    - "raw_drag_force"
+    - "active_preload_command"
+    - "design_id"
+    - "surface_batch"
+    - "wall_region_id"
+    - "track_id"
+    - "drag_direction"
+    - "track_reused"
+    - "sensor_calibration_id"
+
+c_layer:
+  current_contract: "B_TO_C_1.0"
+  preload_boundary_decision:
+    paper_mainline: "C_R_rigid_reference_common_pose_and_common_s"
+    paper_mainline_b_mode: "PRESCRIBED_XZ_RESIDUAL"
+    independent_z_case: "C_I_conditional_only_with_four_explicit_actuator_strokes_and_endpoints"
+    independent_z_case_b_mode: "UX_PZ_BALANCED"
+    current_physical_certification: "unavailable_until_actuator_and_test_rig_boundaries_are_frozen"
+  allowed_now:
+    - "request_response_schema"
+    - "contract_coverage_audit"
+    - "zero_increment_replay"
+    - "pure_global_Z_regression"
+    - "conditional_xz_preload_trial"
+    - "prescribed_s_scan_without_qualified_lock"
+    - "isolated_analytic_mock"
+  analytic_mock_labels:
+    - "not_certifiable"
+    - "not_comparable"
+  prohibited_now:
+    - "nonzero_global_X_eccentric_loading"
+    - "nonzero_45deg_eccentric_loading"
+    - "rocking"
+    - "formal_Fcrit"
+  prohibited_request_response: "C_CONTRACT_EXTENSION_REQUIRED"
+  state_history_curve_peak_progression_on_rejection: "zero"
+  formal_Fcrit_on_rejection: null
+  unlock_path:
+    translation_only: "B_2.0_fixed_orientation_xyz"
+    rocking: "B_2.x_full_SE3_dynamic_geometry_and_6D_tangent_graph"
+
+provenance:
+  theory_verification: "../review/DERIVATION_VERIFICATION_2026-07-17.md"
+  policy: "BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md"
+  authoritative_system_model: "../system/SYSTEM_INTEGRATED_MODEL.md"
+  authoritative_engineering_context: "../../archive/web_pro_derivation_2026-07-17/engineering_fixed_context/engineering_fixed_context.md"
