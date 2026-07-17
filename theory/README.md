@@ -4,8 +4,8 @@
 
 ## 0. 本轮复核与开发入口（2026-07-17）
 
-- [`paper/MECHANISM_DERIVATION_FORMAL.md`](paper/MECHANISM_DERIVATION_FORMAL.md)：`0.1.0-proposed`，可逐式审查的完整形式化推导；它给出建议闭合方式、适用条件和阻断边界，但不是 accepted 1.0 的静默替代品；
-- [`paper/MECHANISM_DERIVATION_TUTORIAL.md`](paper/MECHANISM_DERIVATION_TUTORIAL.md)：教学解释稿，从牛顿平衡开始解释 wrench、残量、算子、互补接触、A/B/C 装配、事件和可辨识性；
+- [`paper/MECHANISM_DERIVATION_FORMAL.md`](paper/MECHANISM_DERIVATION_FORMAL.md)：`0.2.0-proposed`，按“表面证据—有限尖端—受载接触—结构变形—释放/再挂接—阵列重平衡—整机 wrench”因果链重写的完整形式化推导；它给出建议闭合方式、适用条件和阻断边界，但不是 accepted 1.0 的静默替代品；
+- [`paper/MECHANISM_DERIVATION_TUTORIAL.md`](paper/MECHANISM_DERIVATION_TUTORIAL.md)：`0.2.0-tutorial`，跟随一根爪刺的一次完整遭遇，以故事顺序解释问题、机理来源、运行方式、阵列重分配、整机承载和当前合同阻断；
 - [`review/DERIVATION_VERIFICATION_2026-07-17.md`](review/DERIVATION_VERIFICATION_2026-07-17.md)：独立代数/物理复核；其中 P0/P1 是编码安全边界，不能因 accepted 标签而跳过；
 - [`implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md`](implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md)：无白光轮廓仪、仅有直线拖曳实验时的开发期参数替代、实验辨识和分阶段决策；
 - [`implementation/DEV_BOOTSTRAP_PROFILE.yaml`](implementation/DEV_BOOTSTRAP_PROFILE.yaml)：上述 M0 开发基线的机器可读配置，不代表真实壁面标定值；
