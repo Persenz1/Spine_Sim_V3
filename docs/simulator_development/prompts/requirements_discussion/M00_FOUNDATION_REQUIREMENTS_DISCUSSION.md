@@ -6,6 +6,7 @@
 
 ```text
 TASK_ID: M00_FOUNDATION_REQUIREMENTS
+PROMPT_VERSION: 0.1.2
 
 本窗口只讨论并冻结 M00 FOUNDATION（基础契约、配置、结果 API）的需求。不得编写求解器或绘图代码，不得自动开始 M01 或实现阶段。
 
@@ -23,13 +24,13 @@ TASK_ID: M00_FOUNDATION_REQUIREMENTS
 9. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；
 10. theory/system/SYSTEM_INTEGRATED_MODEL.md，重点核对第 25–30、40–45 节，但不得只凭摘要猜测全局对象边界。
 
-权威顺序：正式工程事实 > accepted system/module/contracts。复核报告中的 P0 是实现安全边界；proposed 文件可提供闭合建议，但不得静默改写 accepted 1.0。DEV_BOOTSTRAP_PROFILE 只是开发配置，不是真实材料标定。
+权威顺序：正式工程事实 > accepted system 的全局协调 > accepted A/B/C 的层内机理与模块内嵌合同；theory/interfaces 只是合同镜像。复核报告中的 P0 是实现安全边界；proposed 文件只能标为 PROPOSED_SUPPLEMENT，不能静默改写 accepted 1.0。DEV_BOOTSTRAP_PROFILE 只属于 DEV_POLICY，不是真实材料标定。
 
 讨论方式：
 - 先根据仓库证据提出一版明确默认方案和你认为必须由用户决定的少量事项；
 - 每轮最多问 1–3 个会真正改变需求的问题；
 - 不询问实验数据；
-- 分轮讨论“配置/单位与身份”“状态与事务对象”“结果存储和读取 API”“schema 演化与重放”“性能和验收”；
+- 分轮讨论“配置/单位与身份”“来源/成熟度与状态对象”“事务对象”“结果存储和读取 API”“schema 演化与重放”“性能和验收”；
 - 持续维护 accepted/rejected/deferred/unresolved 决策表。
 
 本窗口必须关闭的问题：
@@ -44,13 +45,16 @@ TASK_ID: M00_FOUNDATION_REQUIREMENTS
 9. deterministic replay manifest、版本和来源哈希；
 10. additive 与 breaking schema 变更及旧结果读取策略；
 11. 各物理模块怎样注册扩展字段而不反向依赖 M00；
-12. M00 自身的单元测试、schema 测试、重放测试和最小性能要求。
+12. FIXED_ENGINEERING/ACCEPTED_AUTHORITY/PROPOSED_SUPPLEMENT/DEV_POLICY/VALIDATION_ONLY 的保存和查询方式；
+13. theory_defined/code_implemented/numerically_verified/experimentally_validated 四种成熟度怎样分栏，且不替代物理状态与认证状态；
+14. M00 自身的单元测试、schema 测试、重放测试和最小性能要求。
 
 硬边界：
 - M00 不拥有任何接触、摩擦、梁、阵列或 C 层物理；
 - 不把 trial 值写成 accepted 曲线；
 - 不允许隐式单位、frame、reference point 或参数默认；
 - 不用单个 complete/success 布尔值掩盖成熟度和失败分类；
+- 不把 PROPOSED_SUPPLEMENT 或 VALIDATION_ONLY 字段提升成 accepted 物理；
 - 不为绘图预先删减原始字段。
 
 只有用户明确确认“冻结/按这个做”后，才：
@@ -60,6 +64,8 @@ TASK_ID: M00_FOUNDATION_REQUIREMENTS
 4. 校验链接、字段语义和与系统输出外壳的一致性；
 5. 提交并推送需求产物；
 6. 报告需求版本、提交号和实现提示词路径后停止。
+
+提交前严格执行 REQUIREMENTS_DISCUSSION_WORKFLOW 的 Git 安全交接：只精确暂存本任务文件，检查 cached diff，禁止使用 git add -A/git add .，不得纳入其他窗口的工作区改动。
 
 不得在本窗口实现 M00。
 ```

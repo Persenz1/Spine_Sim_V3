@@ -6,6 +6,7 @@
 
 ```text
 TASK_ID: M06_PLOTTING_REQUIREMENTS
+PROMPT_VERSION: 0.1.2
 
 本窗口只讨论并冻结 M06 PLOTTING（只读结果解析、动态绘图配方和派生数据）的需求。不得编码，不得运行任何仿真，不得导入或调用求解器，不得修改 canonical result bundle。
 
@@ -36,9 +37,9 @@ TASK_ID: M06_PLOTTING_REQUIREMENTS
 1. ResultReader 的唯一读取入口和支持的 schema 版本；
 2. recipe 的注册、参数、版本、依赖字段和适用模块；
 3. case/design/seed/状态/事件的筛选、分组、分面和叠图；
-4. 单运行路径图、事件局部图、多 seed 分布图、参数趋势图、排名图；
-5. surface、numerics、A、B、experiment 的基线 recipe 清单；
-6. 原始、派生、滤波、对齐和摘要字段的视觉标识；
+4. 单运行路径图、候选—接触—承载阶段图、释放—再接触事件局部图、多 seed 分布图、首次挂接生存/右删失图、参数趋势图和排名图；
+5. surface、numerics、A、B、experiment 的基线 recipe 清单，以及缺少新桥接字段时的 gap/deferred 行为；
+6. 原始、派生、滤波、对齐、摘要、来源身份和成熟度字段的视觉标识；
 7. 事件标记、状态带、置信区间和 unavailable 的表现；
 8. 大结果按需读取、抽样仅用于显示、缓存和内存预算；
 9. PNG/SVG/PDF/交互格式、尺寸、DPI、字体、中文、颜色与无障碍；
@@ -50,11 +51,11 @@ TASK_ID: M06_PLOTTING_REQUIREMENTS
 15. “删除求解器代码后仍能读取结果出图”的隔离验收。
 
 逐模块至少讨论这些图：
-- M01：高度/剖面/坡度/法向/PSD/分辨率；
-- M02：残量/迭代/步长/事件括区/失败分类；
-- M03：Rx-x/t、uz、状态带、局部接触、梁/弹簧、事件、功残量；
-- M04：单元曲线、逐针热图、N*、不均载、余程、重分配、设计对比；
-- M05：因素效应、分布、置信区间、seed 收敛、排名翻转、运行成本。
+- M01：高度/剖面/坡度/法向/PSD/可信带/分辨率，以及 surface source/provenance 摘要；
+- M02：残量/迭代/步长/事件括区/释放—再接触事件链/失败分类；
+- M03：Rx-x/t、uz、候选—受压—摩擦稳定—承载阶段带、局部接触、梁/弹簧、释放/再接触、功残量；
+- M04：单元曲线、逐针热图、计数漏斗、N*、不均载、能力—载荷对齐、双侧裕度、余程、重分配、设计对比；
+- M05：首次有效挂接生存/右删失、伪挂接/episode、释放—再挂接间距、因素效应、分布、置信区间、seed 收敛、排名翻转、运行成本。
 
 硬边界：
 - 不 import surface/A/B/C/numerical solver 包；
@@ -62,6 +63,7 @@ TASK_ID: M06_PLOTTING_REQUIREMENTS
 - 不把绘图时重新计算的物理量写回 canonical raw；
 - 不用滤波曲线覆盖原始曲线；
 - 不因缺字段猜测单位、frame、reference point 或状态；
+- 不因缺字段把 geometric candidate、loaded contact 或 frictionally stable 绘成 load-bearing；
 - 不直接修改源模块输出；
 - 不把绘图失败改写成仿真失败。
 
@@ -74,6 +76,8 @@ TASK_ID: M06_PLOTTING_REQUIREMENTS
 4. 生成 docs/simulator_development/implementation_prompts/M06_PLOTTING_IMPLEMENTATION_WINDOW_PROMPT.md；
 5. 校验没有仿真反向依赖；
 6. 提交推送并报告后停止。
+
+提交前严格执行 REQUIREMENTS_DISCUSSION_WORKFLOW 的 Git 安全交接：只精确暂存本任务文件，检查 cached diff，禁止使用 git add -A/git add .，不得纳入其他窗口的工作区改动。
 
 不得在本窗口实现绘图，也不得补跑仿真。
 ```

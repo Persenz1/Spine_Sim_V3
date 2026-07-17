@@ -1,5 +1,7 @@
 # 逐模块需求讨论提示词
 
+**版本：** 0.1.2
+
 这些提示词用于新建“需求讨论窗口”，不用于实现。推荐按顺序复制正文：
 
 | 顺序 | 模块 | 提示词 | 结果 |
@@ -23,3 +25,6 @@
 - M08 不阻塞 M07；
 - 当前理论和工程事实从 `theory/README.md` 与 `theory/evidence_reassessment/` 工作副本读取，不修改归档源；
 - `theory/interfaces/` 是模块内嵌公共合同的独立镜像，不得与 `theory/modules/` 形成第二套物理。
+- 每个冻结决定都要使用工作流定义的 `FIXED_ENGINEERING / ACCEPTED_AUTHORITY / PROPOSED_SUPPLEMENT / DEV_POLICY / VALIDATION_ONLY` 来源身份；
+- proposed 机理桥只能形成 additive schema、诊断、验证或明确 deferred/amendment，不得静默替换 accepted；
+- 提交前精确暂存本模块产物并检查 cached diff，禁止把其他窗口的工作区改动一并提交。

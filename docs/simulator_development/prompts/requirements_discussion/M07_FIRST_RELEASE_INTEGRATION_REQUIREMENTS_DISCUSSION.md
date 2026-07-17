@@ -6,6 +6,7 @@
 
 ```text
 TASK_ID: M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS
+PROMPT_VERSION: 0.1.2
 
 本窗口只讨论并冻结 M07 FIRST RELEASE INTEGRATION（首版完整无实验数据合成实验）的需求。不得编码，不得在集成层发明新物理。
 
@@ -35,17 +36,18 @@ TASK_ID: M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS
 2. baseline 中的解析表面、合成表面、seed 和设计对照；
 3. 单刺、2×5/5×2、rigid/spring 以及至少两个设计因素的最小覆盖；
 4. 哪些 case 跑完整 100 mm，哪些只能作为明确标记的调试 fixture；
-5. 至少一个预期 unavailable/失败 case 的分类验证；
-6. 首版 smoke 的时间、内存、磁盘预算和超时策略；
-7. 中断恢复、case 级失败隔离和重放；
-8. raw/event/summary/manifest 的完整性门；
-9. M06 作为独立命令/进程读取既有 bundle 的验收；
-10. 基线图清单与 plot manifest；
-11. 删除绘图依赖后仿真仍运行、删除求解器依赖后绘图仍读取的隔离测试；
-12. step/surface/seed 精化的最小数值证据；
-13. DEV_PRIOR/synthetic_surface/no_damage/not_certifiable 的强制标签；
-14. README、示例配置、运行说明和结果解释边界；
-15. “首版完成”与 future backlog 的准确清单。
+5. 负例/事件级 fixture：几何候选但零力、释放后路径/时间不重置并可再接触、阵列活动承载针数 N→N-1→N、prepare/commit 故障全量 rollback；
+6. 至少一个预期 unavailable/失败 case 的分类验证，且不与上述物理事件混为一类；
+7. 首版 smoke 的时间、内存、磁盘预算和超时策略；
+8. 中断恢复、case 级失败隔离和重放；
+9. raw/event/summary/manifest 的完整性门；
+10. M06 作为独立命令/进程读取既有 bundle 的验收；
+11. 基线图清单与 plot manifest；
+12. 删除绘图依赖后仿真仍运行、删除求解器依赖后绘图仍读取的隔离测试；
+13. step/surface/seed 精化的最小数值证据；
+14. DEV_PRIOR/synthetic_surface/no_damage/not_certifiable、来源身份和成熟度分栏的强制标签；
+15. README、示例配置、运行说明和结果解释边界；
+16. “首版完成”与 future backlog 的准确清单。
 
 硬边界：
 - 不实现 C 非零 +X、45°、rocking 或 Fcrit；
@@ -55,6 +57,7 @@ TASK_ID: M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS
 - 不把所有设计组合一次性穷举作为首版门槛；
 - 不要求任何实验文件；
 - 不把一张图成功生成当作物理/数值验证完成。
+- 不把候选零载、可恢复释放、unavailable、numerical failure 和 physical infeasible 混成同一种“失败”。
 
 用户确认冻结后：
 1. 写 docs/simulator_development/requirements/M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS.md；
@@ -62,6 +65,8 @@ TASK_ID: M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS
 3. 生成 docs/simulator_development/implementation_prompts/M07_FIRST_RELEASE_INTEGRATION_IMPLEMENTATION_WINDOW_PROMPT.md；
 4. 校验所有模块依赖单向、输出字段可用和 C 边界；
 5. 提交推送并报告后停止。
+
+提交前严格执行 REQUIREMENTS_DISCUSSION_WORKFLOW 的 Git 安全交接：只精确暂存本任务文件，检查 cached diff，禁止使用 git add -A/git add .，不得纳入其他窗口的工作区改动。
 
 不得在本窗口集成或运行正式实验。
 ```

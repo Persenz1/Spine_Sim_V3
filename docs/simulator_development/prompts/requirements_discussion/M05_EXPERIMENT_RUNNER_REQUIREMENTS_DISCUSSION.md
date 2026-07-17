@@ -6,6 +6,7 @@
 
 ```text
 TASK_ID: M05_EXPERIMENT_RUNNER_REQUIREMENTS
+PROMPT_VERSION: 0.1.2
 
 本窗口只讨论并冻结 M05 EXPERIMENT RUNNER（实验矩阵、批量执行、摘要与排名输入）的需求。不得编码，不得修改 M01/M03/M04 的物理。
 
@@ -38,11 +39,13 @@ TASK_ID: M05_EXPERIMENT_RUNNER_REQUIREMENTS
 8. 并发、检查点、恢复、中断、重试和单 case 失败隔离；
 9. completed/failed/unavailable/skipped 的严格含义；
 10. 原始结果引用与 experiment-level index；
-11. 允许派生的峰值、多峰、正功、事件间距、Neff、加载不均和计算成本摘要；
-12. 排名、置信区间、seed 收敛和排名翻转，不固定单一综合评分；
-13. 结果 provenance 与 DEV_PRIOR/not_certifiable 标签；
-14. M06 需要的筛选、分组和分面字段；
-15. 小型端到端 fixture、恢复重放、并发确定性和统计验收。
+11. geometric candidate、loaded contact 和首次 load-bearing 事件怎样区分，怎样记录伪挂接、释放、再接触和同一次 episode；
+12. 首次有效挂接距离的非参数生存/风险曲线、100 mm 未挂接右删失和可选参数化模型的显式 opt-in；
+13. 允许派生的峰值、多峰、正功、释放—再挂接间距、episode 持续距离、Neff、加载不均和计算成本摘要；
+14. 排名、置信区间、seed 收敛和排名翻转，不固定单一综合评分；
+15. 结果 provenance、来源身份与 DEV_PRIOR/synthetic_surface/no_damage/not_certifiable 标签；
+16. M06 需要的筛选、分组和分面字段；
+17. 小型端到端 fixture、右删失、恢复重放、并发确定性和统计验收。
 
 首版完整实验矩阵应保持“小而完整”，至少覆盖：
 - 一个解析事件表面和一个合成随机表面族；
@@ -57,6 +60,8 @@ TASK_ID: M05_EXPERIMENT_RUNNER_REQUIREMENTS
 - 不把 case 失败自动重试到改变物理配置；
 - 不用失败样本静默补零；
 - 不把同一高采样轨迹的点当独立 replicate；
+- 不把 geometric candidate、零力接触或短暂摩擦稳定直接计作有效挂接；
+- 不把 100 mm 内未挂接样本删除或当作零距离，必须保留右删失；
 - 不把单个 seed 的最大峰当设计结论；
 - 不在 M05 重新计算低层物理或修改 canonical raw；
 - 第一版不包含正式 C Fcrit 排名。
@@ -67,6 +72,8 @@ TASK_ID: M05_EXPERIMENT_RUNNER_REQUIREMENTS
 3. 生成 docs/simulator_development/implementation_prompts/M05_EXPERIMENT_RUNNER_IMPLEMENTATION_WINDOW_PROMPT.md；
 4. 校验与 M00–M04、profile 和绘图读取需求闭合；
 5. 提交推送并报告后停止。
+
+提交前严格执行 REQUIREMENTS_DISCUSSION_WORKFLOW 的 Git 安全交接：只精确暂存本任务文件，检查 cached diff，禁止使用 git add -A/git add .，不得纳入其他窗口的工作区改动。
 
 不得在本窗口编码或运行正式实验。
 ```

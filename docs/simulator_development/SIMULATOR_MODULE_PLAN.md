@@ -1,6 +1,6 @@
 # 第一版仿真器模块规划
 
-**版本：** 0.1.1
+**版本：** 0.1.2
 **日期：** 2026-07-17
 **产品定位：** 面向爪刺几何、阵列和柔顺参数的趋势分析与方案筛选工具
 
@@ -16,7 +16,7 @@
 - A/B 的连续准静态路径、活动集、事件定位、重平衡和事务；
 - 公共随机数与宽先验下的排序稳定性。
 
-正式 C 非零 `+X`、`45°`、rocking 和 `Fcrit` 受 `B_TO_C 1.0` 阻断，不得用投影或经验能力域绕过。因此首版完整实验以 A/B 设计筛选为闭环；C 只在首版后实现 schema、拒绝、纯 Z 和 prescribed-s 诊断。
+正式 C 非零 `+X`、`45°`、rocking 和 `Fcrit` 受 `B_TO_C 1.0.0` 阻断，不得用投影或经验能力域绕过。因此首版完整实验以 A/B 设计筛选为闭环；C 只在首版后实现 schema、拒绝、纯 Z 和 prescribed-s 诊断。
 
 ### 1.1 理论交接边界
 
@@ -25,7 +25,16 @@
 - A→B、B→C 的独立实现入口位于 `theory/interfaces/`，正文必须与模块内嵌合同保持逐字一致；
 - P0/P1、安全开发分支和参数政策分别由 `theory/review/` 与 `theory/implementation/` 约束；
 - `theory/evidence_reassessment/` 只提供工程事实/文献工作副本，不拥有本构或参数升级权；
+- `theory/paper/MECHANISM_DERIVATION_FORMAL 0.2.0-proposed` 只提供结构性补充和验证路由；任何补充都必须携带 `PROPOSED_SUPPLEMENT` 身份，不能静默改写 accepted；
 - A3/B3/C3 滚动上下文只存在于归档，属于追溯材料，不得与集成模型并列实现。
+
+### 1.2 首版需要保真的机理故事链
+
+第一版虽然只运行 A/B-M0，也必须在 schema、状态和验证中保留这条因果链的可观察边界：
+
+`surface evidence → geometric candidate → loaded contact → frictionally stable → load-bearing → release/recontact → B rebalance`。
+
+候选几何不等于正压力，正压力不等于摩擦稳定，摩擦稳定也不自动等于对声明任务方向有效承载。C-R/C-I、执行器端口和非零偏心承载留在 M08/后续 amendment，不得倒灌进首版 A/B。
 
 ## 2. “完整实验”的定义
 
@@ -70,6 +79,7 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 **唯一职责**
 
 - 冻结单位、坐标、ID、版本、错误分类和 provenance 外壳；
+- 冻结来源身份和 `theory_defined/code_implemented/numerically_verified/experimentally_validated` 成熟度分栏；
 - 区分 immutable config、accepted physical state、trial cache、event、transaction 和 output；
 - 定义配置解析/校验、resolved config、运行 manifest、结果 writer/reader 和 schema 演化；
 - 允许各模块注册自己的字段和表，而不让 M00 拥有物理本构。
@@ -99,8 +109,9 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 
 - 平面、斜坡、正弦、单峰/坑、多峰和最近特征切换等解析表面；
 - 无材料标签的 self-affine Gaussian 合成表面；
+- 定义 `surface_source_kind`、坐标/单位、可信尺度、生成/处理链和质量掩膜；首版 `measured` 分支只保留 schema/deferred 语义；
 - 程序化/lazy tile 查询；
-- 统一高度、点、法向、坡度、曲率/质量、邻域和碰撞查询。
+- 统一高度、点、法向、坡度、曲率/质量、邻域、最近特征和碰撞查询，并声明 signed-distance/closest-feature 能力是 exact、approximate 还是 unavailable。
 
 **参数讨论重点**
 
@@ -129,6 +140,7 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 
 - 位移延拓、残量求解、活动集/graph 协调；
 - signed event guard、括区和事件定位；
+- 为接触建立、释放、扫掠碰撞和再接触提供不跨事件的公共数值协议，但不拥有事件的物理含义；
 - 同位置同时事件/级联上限；
 - trial/prepare/commit/rollback 和确定性重放；
 - 数值失败、物理无解和认证拒绝的分离。
@@ -164,6 +176,8 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 - 刚性 Signorini/Coulomb；
 - EB 梁和 A 权威安装弹簧图；
 - 预载、100 mm 连续拖曳、粘着/滑动/释放/再搜索；
+- 分栏输出 geometric candidate、loaded contact、frictionally stable、load-bearing 和 released/reengaged；
+- 释放后沿显式 unload/drive-off/lift-off 或 reverse-search 路径检查扫掠碰撞和再接触；未实现回位时停在 release pose；
 - `no_damage` 主线下的 contact-only wrench、状态和事件。
 
 **参数讨论重点**
@@ -209,7 +223,8 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 
 - 单元六维 contact-only wrench、`Rx,ux,uz,Pz`；
 - 每针 wrench、gap、状态、梁、弹簧和事件；
-- `Nnominal,Ngeom,Nload,Neff` 与明确通道的不均载指标；
+- accepted `Nnominal,Ngeom,Nload,Neff` 与明确通道的不均载指标；proposed `Ncandidate/Ncontact` 仅作版本化只读补充，且 `Ncandidate` 只有定义完全一致时才可映射 `Ngeom`；
+- capability–load alignment、双侧裕度、位姿敏感性和分支切换率等只读诊断；
 - 事件前后 `delta Wi`、重平衡残量和事务。
 
 **首批出图需求**
@@ -229,6 +244,7 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 - smoke/development/screening 运行档；
 - common random numbers、恢复、检查点、并发和失败隔离；
 - 从原始结果计算版本化摘要与排序输入；
+- 计算首次有效挂接距离的生存/风险曲线、100 mm 右删失、伪挂接和释放—再挂接间距等版本化摘要；
 - 不拥有表面或 A/B 物理。
 
 **参数讨论重点**
@@ -270,6 +286,7 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 - 图片格式、尺寸、主题、论文/调试模式；
 - 大结果的按需读取和缓存；
 - 缺字段时怎样生成 `PLOT_DATA_GAP_REQUEST`。
+- 候选—接触—承载漏斗、释放—再接触事件链、首次挂接生存/右删失和阵列只读诊断的 recipe/缺口处理。
 
 **输出**
 
@@ -287,7 +304,8 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 - 冻结一个小而完整的首版无实验数据基准矩阵；
 - 从干净环境用一个文档化入口跑完并生成结果；
 - 另行调用 M06 读取结果，证明绘图与仿真单向解耦；
-- 形成回归证据和用户运行说明。
+- 形成回归证据和用户运行说明；
+- 形成几何候选零载、释放后连续再接触、阵列活动针数下降再恢复和事务故障注入等负例/事件级证据。
 
 **必须验收**
 
@@ -310,6 +328,8 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 - B→C coverage audit；
 - zero increment、pure Z、conditional x/z preload trial；
 - C-R prescribed-s scan，不自动锁定；
+- 明确 accepted C 1.0、proposed C-R 和 conditional C-I 的互斥身份；
+- 诊断电机坐标到 `s`、执行器双端/作用线到 active wrench、相对行程和功的硬件端口覆盖；缺失时真实预紧认证 unavailable；
 - 解析 mock，强制 `not_certifiable/not_comparable`；
 - 非零 `+X`、`45°`、rocking 的 `C_CONTRACT_EXTENSION_REQUIRED` 零推进记录。
 
@@ -333,6 +353,8 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 5. `RUN_AND_PLOT_CONFIGURATION`：只影响执行或展示，不改变物理。
 
 任何 `unavailable/unresolved` 项必须保留字段和原因，不能用默认值悄悄补齐。
+
+每项需求还必须声明工作流定义的来源身份；文献中的具体参数、拟合式、阈值和样机传动模型不得作为未审查的默认值进入上述五类参数。
 
 ## 6. 输出与绘图协作规则
 
