@@ -2,7 +2,7 @@ run:
   id: "SYSTEM_INTEGRATION-r01"
   task: "SYSTEM_INTEGRATION"
   scope: "SYSTEM"
-  phase: "pre_web_preparation"
+  phase: "artifact_recovered_and_accepted"
   prepared_on: "2026-07-17"
   run_directory: "derivation/runs/SYSTEM_INTEGRATION"
   prompt_version: "1.0.0"
@@ -88,7 +88,37 @@ expected_outputs:
   require_run_update_summary: false
   require_citation_brief: false
 
-received_outputs: []
+received_outputs:
+  - name: "SYSTEM_INTEGRATED_MODEL.md"
+    source_path: "C:/Users/23635/Downloads/SYSTEM_INTEGRATED_MODEL.md"
+    archived_path: "derivation/runs/SYSTEM_INTEGRATION/raw_downloads/SYSTEM_INTEGRATED_MODEL.md"
+    normalized_candidate_path: "derivation/runs/SYSTEM_INTEGRATION/SYSTEM_INTEGRATED_MODEL_CANDIDATE.md"
+    bytes: 147901
+    sha256: "97727736147dcffbe530ecbeaf0c929faca524cf90a3c2aad42fd05a328e5802"
+    byte_identical_candidate_copy: true
+
+raw_response:
+  path: "derivation/runs/SYSTEM_INTEGRATION/RAW_RESPONSE.md"
+  attachment_only_marker: true
+  bytes: 7
+  sha256: "0871e777e5359cd18464698fdcc6982c6d14146444d170d477e33f28095a56f8"
+
+accepted_outputs:
+  status: "accepted"
+  accepted_on: "2026-07-17"
+  files:
+    - name: "SYSTEM_INTEGRATED_MODEL.md"
+      path: "derivation/system/SYSTEM_INTEGRATED_MODEL.md"
+      bytes: 149353
+      sha256: "8600f4fefb0d779e6a7a8cffd9212f8570d5108864f3db56475be8285f5db91f"
+  candidate_to_accepted_repairs_only: true
+  engineering_context_changed: false
+  A_B_C_models_or_contracts_changed: false
+  engineering_or_physics_decision_required: false
+  global_theory_and_specification_closed: true
+  current_eccentric_runtime_contract_closed: false
+  current_eccentric_runtime_blocker: "B_TO_C 1.0 lacks local y, dynamic pose, and full twist; formal nonzero +X/45deg/rocking remains a zero-history C_CONTRACT_EXTENSION_REQUIRED rejection until B 2.x is formally accepted."
+  next_task_started: false
 
 preparation_validation:
   engineering_context_generator_check: "pass"
@@ -100,3 +130,15 @@ preparation_validation:
   output_contract_verified: true
   explicit_evidence_gap_found: false
   unresolved_interface_gap_preserved_in_prompt: "B_TO_C 1.0 certifies local x/global Z translation only; unsupported nonzero +X/45deg eccentric loading must return C_CONTRACT_EXTENSION_REQUIRED with zero history advance."
+
+artifact_validation:
+  raw_download_and_candidate_byte_identical: true
+  engineering_context_generator_check: "pass"
+  input_snapshot_validation: "pass"
+  global_interface_and_mechanism_review: "pass"
+  coordinate_reference_unit_force_power_review: "pass"
+  state_event_history_transaction_review: "pass"
+  raw_experiment_output_preservation_review: "pass"
+  candidate_to_accepted_diff_review: "pass"
+  markdown_and_required_structure_validation: "pass"
+  semantic_conflict_requiring_user_decision: false
