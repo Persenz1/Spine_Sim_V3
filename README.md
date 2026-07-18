@@ -31,8 +31,8 @@ Spine_Sim_V3/
 │   └── fixtures/                  # 兼容性与旧 bundle fixture
 ├── scripts/                       # M00/M01 性能与验收辅助入口
 ├── reports/
-│   ├── m00/                       # M00 验收与性能报告
-│   └── m01/                       # M01 验收、性能报告与六张演示图
+│   ├── m00/                       # M00 Markdown 验收报告；机器产物本地重建
+│   └── m01/                       # M01 Markdown 验收/验证报告；机器产物本地重建
 ├── docs/
 │   ├── PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md
 │   └── simulator_development/
@@ -156,6 +156,6 @@ Spine_Sim_V3/
 | 模块 | 需求状态 | 实现状态 | 当前入口 |
 |---|---|---|---|
 | M00 FOUNDATION | `1.0.0 frozen` | 已完成并通过验收 | [实施追踪](docs/simulator_development/implementation/M00_FOUNDATION_TRACEABILITY.md)、[验收报告](reports/m00/M00_ACCEPTANCE_REPORT.md) |
-| M01 SURFACE | `1.0.0 frozen` | 已完成并通过验收（仅表面/几何） | [实施追踪](docs/simulator_development/implementation/M01_SURFACE_TRACEABILITY.md)、[验收报告](reports/m01/M01_ACCEPTANCE_REPORT.md)、[验证报告](reports/m01/M01_VALIDATION_REPORT.md)、[性能报告](reports/m01/M01_PERFORMANCE_REPORT.json)、[演示地形](reports/m01/demo/m01_medium_3d.png) |
+| M01 SURFACE | `1.0.0 frozen` | 已完成并通过验收（仅表面/几何） | [实施追踪](docs/simulator_development/implementation/M01_SURFACE_TRACEABILITY.md)、[验收报告](reports/m01/M01_ACCEPTANCE_REPORT.md)、[验证报告](reports/m01/M01_VALIDATION_REPORT.md)；性能 JSON 与演示图按文档命令在本地重建，默认不追踪 |
 | M02–M07 | 未冻结 | 未开始；下一门仅进入 M02 需求讨论 | [M02 需求讨论提示词](docs/simulator_development/prompts/requirements_discussion/M02_NUMERICS_REQUIREMENTS_DISCUSSION.md)、[模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |
 | M08 C DIAGNOSTIC | deferred | 未开始；不阻塞首版 A/B | [模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |

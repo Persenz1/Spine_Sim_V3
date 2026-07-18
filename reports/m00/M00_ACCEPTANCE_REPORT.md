@@ -31,7 +31,7 @@
 | 8 float64 columns / 1,009,000 rows | 0.163 s | ≤ 5 s | PASS |
 | 10 GiB logical chunk probe extra RSS | 8,441,856 bytes | ≤ 536,870,912 bytes | PASS |
 
-原始精度指标、磁盘信息和逐项布尔检查保存在 `M00_PERFORMANCE_REPORT.json`，不以单一 pass 布尔值替代。
+原始精度指标、磁盘信息和逐项布尔检查可由验收命令在本地重建为 `M00_PERFORMANCE_REPORT.json`；机器生成 JSON 默认不追踪，也不以单一 pass 布尔值替代。
 
 ## 仍不可用或不适用
 

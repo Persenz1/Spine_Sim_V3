@@ -27,8 +27,7 @@
 - [实现窗口提示词](implementation_prompts/)：当前已有 M00 与 M01；
 - [M00 实施追踪与验收](implementation/M00_FOUNDATION_TRACEABILITY.md)：记录基础包、测试、性能和解释边界；
 - [M01 实施追踪](implementation/M01_SURFACE_TRACEABILITY.md)：记录冻结要求到表面契约、查询、物化、Result 扩展和验证的映射；
-- [M01 验收报告](../../reports/m01/M01_ACCEPTANCE_REPORT.md)、[验证报告](../../reports/m01/M01_VALIDATION_REPORT.md)与[性能 JSON](../../reports/m01/M01_PERFORMANCE_REPORT.json)：保存验收命令、结果和边界；
-- [M01 演示地形（medium 3D）](../../reports/m01/demo/m01_medium_3d.png)：同目录保存 gentle/medium/sharp 的 2D/3D 六张图及 plot manifest；
+- [M01 验收报告](../../reports/m01/M01_ACCEPTANCE_REPORT.md)与[验证报告](../../reports/m01/M01_VALIDATION_REPORT.md)：保存验收命令、结果和边界；性能 JSON、canonical bundle、PNG 与 plot manifest 均为本地可重建产物，默认由 `.gitignore` 排除；
 - [项目指令迁移记录](../PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md)：说明旧项目级 `AGENTS.md` 的拆分位置和历史引用处理。
 
 ## 3. 推荐窗口顺序

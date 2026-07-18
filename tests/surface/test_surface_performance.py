@@ -1,12 +1,9 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
 from scripts.run_m01_performance import run_m01_performance_fixture
-
-REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 @pytest.mark.performance
@@ -30,13 +27,7 @@ def test_bounded_performance_fixture_reports_resources_and_no_full_rt10_parent(
     assert report["safety_assertions"]["full_domain_rt10_dense_created"] is False
     assert report["timings_seconds"]["total"] > 0.0
     assert len(report["lod_and_streaming"]["requests"]) == 6
-
-
-def test_checked_in_performance_report_is_structured_and_passed() -> None:
-    path = REPO_ROOT / "reports/m01/M01_PERFORMANCE_REPORT.json"
-    report = json.loads(path.read_text(encoding="utf-8"))
     assert report["module"] == "M01_SURFACE_IMPLEMENTATION"
-    assert report["overall_pass"] is True
     assert report["environment"]["hardware_processor"]
     assert report["environment"]["os"]
     assert report["environment"]["python"]

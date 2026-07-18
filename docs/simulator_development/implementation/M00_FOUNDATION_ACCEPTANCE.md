@@ -34,4 +34,4 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/pytest -m performance
 
 非性能测试覆盖 strict config、单位、ID/hash、来源/成熟度/多轴状态、registry、强类型 writer、reader、显式 join、array、lineage、plot gap、兼容/migration、replay、corruption 和五个事务故障点。架构测试检查 foundation/Reader 不反向导入未来物理、solver、surface 或 plotting package。
 
-版本化验收摘要见 `reports/m00/M00_ACCEPTANCE_REPORT.md`；性能原始指标见 `reports/m00/M00_PERFORMANCE_REPORT.json`。
+版本化验收摘要见 `reports/m00/M00_ACCEPTANCE_REPORT.md`；性能原始指标由上述命令在本地重建为 `reports/m00/M00_PERFORMANCE_REPORT.json`，默认不追踪。
