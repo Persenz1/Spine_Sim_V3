@@ -1,6 +1,6 @@
 # 模块需求讨论工作流
 
-**版本：** 0.1.2
+**版本：** 0.1.3
 
 ## 1. 两类窗口严格分开
 
@@ -76,6 +76,23 @@
 `surface evidence → geometric candidate → loaded contact → frictionally stable → load-bearing → release/recontact → B rebalance → C contract/certification`。
 
 这不是要求每个模块实现整条链。M01 只证明几何输入可用，A 决定接触和单刺承载，B 决定共同平衡与重分配，C/System 才能解释整机 wrench；任何阶段都不得用单个 `engaged/success` 布尔值替代相邻阶段。
+
+### 3.2 模块 README 的人类可读输出概览
+
+M00–M07，以及以后实现的 M08，必须在各自模块根目录的 `README.md` 中提供简短的 `## 输出概览`。若实现布局没有独立模块目录，必须在最接近该模块公共入口的 README 中提供同名、可直接链接的模块小节。
+
+输出概览至少说明：
+
+- 模块输出什么、由谁消费；
+- canonical raw、event、diagnostic、summary 的核心 dataset；
+- 关键索引、单位、frame 和 reference point；
+- `unavailable/unsupported` 与主要失败状态怎样表达；
+- 如何通过 ResultReader 查看最小 demo 输出；
+- 来源身份、四栏成熟度和认证标签。
+
+README 只作为人类导航，machine-readable schema 和 ResultReader/API 仍是正式权威。README 不得复制完整 schema、替代字段元数据或为展示删减 raw 输出。README 中引用的 dataset/field ID 必须由自动测试验证确实存在。
+
+M06 的输出概览只描述 figure、plot manifest、recipe、derived artifact 和数据缺口请求，不得声称拥有或修改仿真物理。M07 的输出概览必须提供首版完整实验的结果入口和各模块输出导航。
 
 ## 4. 输出字段冻结规则
 
@@ -157,6 +174,7 @@ PLOT_DATA_GAP_REQUEST:
 2. 根据冻结需求生成 `implementation_prompts/<MODULE>_IMPLEMENTATION_WINDOW_PROMPT.md`；
 3. 校验所有链接、参数状态、输入/输出闭合和与上游合同的一致性；
 4. 明确列出延期项和首版不做内容；
-5. 按第 7 节精确暂存、提交并推送本次需求产物；
-6. 最终报告需求版本、提交号和下一实现窗口提示词；
-7. 停止，不得在同一窗口开始编码。
+5. 把第 3.2 节的模块 README 输出概览写入实现提示词和验收标准；
+6. 按第 7 节精确暂存、提交并推送本次需求产物；
+7. 最终报告需求版本、提交号和下一实现窗口提示词；
+8. 停止，不得在同一窗口开始编码。
