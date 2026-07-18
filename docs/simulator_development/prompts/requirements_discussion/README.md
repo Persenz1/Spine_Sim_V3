@@ -16,7 +16,7 @@
 | 8 | M07 FIRST RELEASE INTEGRATION | [M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS_DISCUSSION.md](M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS_DISCUSSION.md) | 第一版完整无实验数据闭环 |
 | 9 | M08 C DIAGNOSTIC | [M08_C_DIAGNOSTIC_REQUIREMENTS_DISCUSSION.md](M08_C_DIAGNOSTIC_REQUIREMENTS_DISCUSSION.md) | 延期 C 合同诊断与安全拒绝 |
 
-当前门状态：`M00_FOUNDATION_REQUIREMENTS 1.0.0` 已冻结，M00 基础软件实现已在提交 `777ba4d` 通过验收，其讨论和实现提示词都不应重复启动；冻结时实际使用的需求讨论提示词 `0.1.2` 由提交 `3af780d` 保留，当前文件的 `0.1.3` 只修复阅读入口。M01 是当前第一个可进入需求讨论的模块；M02 及以后仍受各自前置 requirements 冻结门约束。
+当前门状态：`M00_FOUNDATION_REQUIREMENTS 1.0.0` 已冻结且 M00 基础软件实现已在提交 `777ba4d` 通过验收；`M01_SURFACE_REQUIREMENTS 1.0.0` 已冻结但尚未实现，其讨论窗口不得重复启动。下一步应使用 [M01 实现窗口提示词](../../implementation_prompts/M01_SURFACE_IMPLEMENTATION_WINDOW_PROMPT.md)；M02 及以后仍受各自前置 requirements 冻结门约束。
 
 规则：
 

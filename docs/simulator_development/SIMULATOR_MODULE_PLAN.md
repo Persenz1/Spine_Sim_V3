@@ -1,7 +1,7 @@
 # 第一版仿真器模块规划
 
-**版本：** 0.1.2
-**日期：** 2026-07-17
+**版本：** 0.1.3
+**日期：** 2026-07-18
 **产品定位：** 面向爪刺几何、阵列和柔顺参数的趋势分析与方案筛选工具
 
 ## 1. 规划决定
@@ -110,7 +110,8 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 - 平面、斜坡、正弦、单峰/坑、多峰和最近特征切换等解析表面；
 - 无材料标签的 self-affine Gaussian 合成表面；
 - 定义 `surface_source_kind`、坐标/单位、可信尺度、生成/处理链和质量掩膜；首版 `measured` 分支只保留 schema/deferred 语义；
-- 程序化/lazy tile 查询；
+- 150 × 150 mm 逻辑 parent domain 上的程序化/lazy tile 查询，实际只物化 100 mm 扫掠包络、阵列宽度和 guard 覆盖的活动走廊；
+- 针尖邻域按 `Rt/5 -> Rt/8 -> Rt/10` 自适应细化，缓存可删重建且不得改变 realization；
 - 统一高度、点、法向、坡度、曲率/质量、邻域、最近特征和碰撞查询，并声明 signed-distance/closest-feature 能力是 exact、approximate 还是 unavailable。
 
 **参数讨论重点**
@@ -128,11 +129,9 @@ M08 C diagnostic depends on M00/M02/M04, but is deferred and does not gate M07.
 
 **首批出图需求**
 
-- 高度图和代表性剖面；
-- 坡度/法向方向图；
-- 高度与坡度分布；
-- PSD/方向谱和分辨率收敛；
-- 针尖尺度与表面尺度的无量纲对照。
+- M01 轻量预览只提供斜俯视 3D 地形图和 2D 高度图，便于实现后立即检查；
+- 代表性剖面、坡度/法向、高度与坡度分布、PSD/方向谱、可信带、分辨率收敛和针尖尺度对照作为工程验收证据；
+- 啮合角热力图留给后续 A/M03 生产语义、M06 正式绘制，M01 不把表面坡度命名为实际啮合角。
 
 ### M02 — NUMERICS：延拓、事件、事务与重放
 
