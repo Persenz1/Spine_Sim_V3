@@ -12,13 +12,15 @@
 
 **后续窗口：** [M00 实现窗口提示词](../implementation_prompts/M00_FOUNDATION_IMPLEMENTATION_WINDOW_PROMPT.md)
 
+**入口维护：** 2026-07-18 移除项目级 `AGENTS.md`；仅更新阅读入口，不改变需求版本或冻结语义，见[迁移记录](../../PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md)。
+
 ## 1. 权威输入、目标和来源身份
 
 ### 1.1 实际权威输入
 
 本需求冻结时完整读取并使用了以下文件：
 
-- [仓库 agent 规则](../../../AGENTS.md)；
+- 冻结时读取了当时存在的仓库 `AGENTS.md`；其用户级信任与项目规则后来拆分，见[项目指令迁移记录](../../PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md)；
 - [项目 README](../../../README.md) 与 [theory 阅读入口](../../../theory/README.md)；
 - [仿真器开发入口](../README.md)；
 - [模块规划](../SIMULATOR_MODULE_PLAN.md)；

@@ -21,8 +21,8 @@ proposed 严格稿不会自动覆盖 accepted 文件。遇到复核报告中的 
 ```text
 Spine_Sim_V3/
 ├── README.md
-├── AGENTS.md
 ├── docs/
+│   ├── PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md
 │   └── simulator_development/       # M00–M08 规划、工作流和需求讨论提示词
 ├── theory/                         # 当前有效、供复核和论文化的机理文件
 │   ├── README.md                   # 理论阅读地图与权威顺序

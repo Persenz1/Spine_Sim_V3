@@ -6,14 +6,14 @@
 
 ```text
 TASK_ID: M03_SINGLE_SPINE_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M03 SINGLE SPINE（A-M0 单刺算子）的产品、参数、输出和出图需求。不得编码，不得开始 B 阵列。
 
 本模块服务趋势和参数选型。第一版必须能够在解析/合成表面上，用 no_damage、刚性 Signorini/Coulomb、Euler–Bernoulli 梁和权威安装分支完成预载及 100 mm 连续拖曳；不能声称预测真实砖面破坏。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00、M01、M02 requirements；
 4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；

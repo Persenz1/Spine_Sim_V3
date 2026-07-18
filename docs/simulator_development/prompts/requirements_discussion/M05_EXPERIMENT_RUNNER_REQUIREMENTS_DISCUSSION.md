@@ -6,14 +6,14 @@
 
 ```text
 TASK_ID: M05_EXPERIMENT_RUNNER_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M05 EXPERIMENT RUNNER（实验矩阵、批量执行、摘要与排名输入）的需求。不得编码，不得修改 M01/M03/M04 的物理。
 
 第一版没有任何实测数据。这里的“实验”是可重放的计算实验：以宽先验和公共随机数比较设计趋势。M05 只组织 case 和读取模块结果，不拥有表面生成、接触、单刺或阵列本构。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M04 requirements；
 4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；

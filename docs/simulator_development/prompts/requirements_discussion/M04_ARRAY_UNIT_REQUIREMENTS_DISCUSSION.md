@@ -6,14 +6,14 @@
 
 ```text
 TASK_ID: M04_ARRAY_UNIT_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M04 ARRAY UNIT（B-M0 阵列爪单元）的需求。不得编码，不得开始实验运行器或 C 层。
 
 本模块是第一版参数选型的核心。它必须调用 M03/A embedded kernel，通过共同背板平衡产生部分接触、载荷不均、事件后重平衡和再挂接；不得用 Neffective×单刺平均力或人为均分载荷替代。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M03 requirements 和 M03 输出合同；
 4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；

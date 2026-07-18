@@ -6,14 +6,14 @@
 
 ```text
 TASK_ID: M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M07 FIRST RELEASE INTEGRATION（首版完整无实验数据合成实验）的需求。不得编码，不得在集成层发明新物理。
 
 首版完成含义是：M00–M05 能从配置独立生成 A/B 合成实验结果，M06 能在另一个只读进程中消费结果并出图。正式 C 偏心加载不是本任务范围。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M06 requirements 和全部 output contracts；
 4. 所有已生成的 output change requests 及其处理状态；

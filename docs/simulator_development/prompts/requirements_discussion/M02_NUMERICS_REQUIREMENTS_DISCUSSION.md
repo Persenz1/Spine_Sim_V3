@@ -6,14 +6,14 @@
 
 ```text
 TASK_ID: M02_NUMERICS_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M02 NUMERICS（延拓、事件、事务和重放服务）的需求。不得编码，不得替 A/B 选择或改写物理本构。
 
 第一版必须能在无实验数据下可靠推进 A/B 的非光滑准静态路径。M02 是数值与状态协调服务：它可以求残量、定位事件、管理 trial/commit，但不能拥有摩擦、梁、弹簧或阵列载荷共享规律。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00_FOUNDATION_REQUIREMENTS.md；
 4. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；

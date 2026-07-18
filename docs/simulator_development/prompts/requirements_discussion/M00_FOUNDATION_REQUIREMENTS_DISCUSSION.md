@@ -6,23 +6,22 @@
 
 ```text
 TASK_ID: M00_FOUNDATION_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M00 FOUNDATION（基础契约、配置、结果 API）的需求。不得编写求解器或绘图代码，不得自动开始 M01 或实现阶段。
 
 项目定位是爪刺参数选型和趋势筛选，不是绝对承载数字孪生。第一版没有任何实验数据，必须支持 synthetic_surface + no_damage + DEV_PRIOR 的完整 A/B 合成实验。绘图模块以后只能读取结果 API，不能调用或参与仿真，因此 M00 必须先提供稳定、可扩展且可重放的数据外壳。
 
 开始前完整读取：
-1. AGENTS.md；
-2. README.md、theory/README.md；
-3. docs/simulator_development/README.md；
-4. docs/simulator_development/SIMULATOR_MODULE_PLAN.md；
-5. docs/simulator_development/REQUIREMENTS_DISCUSSION_WORKFLOW.md；
-6. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
-7. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
-8. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
-9. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；
-10. theory/system/SYSTEM_INTEGRATED_MODEL.md，重点核对第 25–30、40–45 节，但不得只凭摘要猜测全局对象边界。
+1. README.md、theory/README.md；
+2. docs/simulator_development/README.md；
+3. docs/simulator_development/SIMULATOR_MODULE_PLAN.md；
+4. docs/simulator_development/REQUIREMENTS_DISCUSSION_WORKFLOW.md；
+5. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；
+6. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
+7. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
+8. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；
+9. theory/system/SYSTEM_INTEGRATED_MODEL.md，重点核对第 25–30、40–45 节，但不得只凭摘要猜测全局对象边界。
 
 权威顺序：正式工程事实 > accepted system 的全局协调 > accepted A/B/C 的层内机理与模块内嵌合同；theory/interfaces 只是合同镜像。复核报告中的 P0 是实现安全边界；proposed 文件只能标为 PROPOSED_SUPPLEMENT，不能静默改写 accepted 1.0。DEV_BOOTSTRAP_PROFILE 只属于 DEV_POLICY，不是真实材料标定。
 

@@ -1,8 +1,8 @@
 # 逐模块需求讨论提示词
 
-**版本：** 0.1.2
+**版本：** 0.1.3
 
-这些提示词用于新建“需求讨论窗口”，不用于实现。推荐按顺序复制正文：
+这些提示词用于新建“需求讨论窗口”，不用于实现。必须先核对当前门状态，再按顺序复制尚未冻结模块的正文：
 
 | 顺序 | 模块 | 提示词 | 结果 |
 |---:|---|---|---|
@@ -15,6 +15,8 @@
 | 7 | M06 PLOTTING | [M06_PLOTTING_REQUIREMENTS_DISCUSSION.md](M06_PLOTTING_REQUIREMENTS_DISCUSSION.md) | 只读 reader、动态 recipe 与数据缺口 |
 | 8 | M07 FIRST RELEASE INTEGRATION | [M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS_DISCUSSION.md](M07_FIRST_RELEASE_INTEGRATION_REQUIREMENTS_DISCUSSION.md) | 第一版完整无实验数据闭环 |
 | 9 | M08 C DIAGNOSTIC | [M08_C_DIAGNOSTIC_REQUIREMENTS_DISCUSSION.md](M08_C_DIAGNOSTIC_REQUIREMENTS_DISCUSSION.md) | 延期 C 合同诊断与安全拒绝 |
+
+当前门状态：`M00_FOUNDATION_REQUIREMENTS 1.0.0` 已冻结，M00 基础软件实现已在提交 `777ba4d` 通过验收，其讨论和实现提示词都不应重复启动；冻结时实际使用的需求讨论提示词 `0.1.2` 由提交 `3af780d` 保留，当前文件的 `0.1.3` 只修复阅读入口。M01 是当前第一个可进入需求讨论的模块；M02 及以后仍受各自前置 requirements 冻结门约束。
 
 规则：
 

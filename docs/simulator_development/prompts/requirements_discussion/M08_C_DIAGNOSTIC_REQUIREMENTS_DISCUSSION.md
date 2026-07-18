@@ -6,7 +6,7 @@
 
 ```text
 TASK_ID: M08_C_DIAGNOSTIC_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M08 C DIAGNOSTIC（受限 C 层合同安全诊断）的需求。它是首版 A/B 完成后的延期模块，不得反向阻塞或扩大 M07。
 
@@ -15,7 +15,7 @@ PROMPT_VERSION: 0.1.2
 必须先分开三种身份：accepted C 1.0 当前主线使用 UX_PZ_BALANCED；MECHANISM_DERIVATION_FORMAL 0.2.0-proposed 建议的 C-R 是共同刚体 pose + 共同 s，并以 PRESCRIBED_XZ_RESIDUAL 做条件性诊断；C-I 只有实际存在四个独立 Z 执行器且双端、行程、作用线和功均冻结时才成立。M08 可以实现隔离的 proposed prescribed-s 诊断，但不能把 C-R 或 C-I 静默升级为 accepted/认证预紧。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00、M02、M04、M05、M06、M07 requirements；
 4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；

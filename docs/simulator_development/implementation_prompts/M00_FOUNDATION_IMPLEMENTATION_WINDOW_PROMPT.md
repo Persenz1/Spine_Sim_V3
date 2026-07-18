@@ -6,24 +6,23 @@
 
 ~~~text
 TASK_ID: M00_FOUNDATION_IMPLEMENTATION
-PROMPT_VERSION: 1.0.0
+PROMPT_VERSION: 1.0.1
 REQUIREMENTS_VERSION: M00_FOUNDATION_REQUIREMENTS 1.0.0 frozen
 
 本窗口只实现、测试和验收 M00 FOUNDATION：基础契约、严格配置、单位/身份、事务持久化外壳、canonical result bundle、ResultWriter/ResultReader、schema 演化和重放。不得实现任何表面、接触、摩擦、梁、弹簧、阵列、损伤、C 层物理或绘图代码；不得自动开始 M01。
 
 开始前必须完整读取：
-1. AGENTS.md；
-2. README.md、theory/README.md；
-3. docs/simulator_development/README.md；
-4. docs/simulator_development/SIMULATOR_MODULE_PLAN.md；
-5. docs/simulator_development/REQUIREMENTS_DISCUSSION_WORKFLOW.md；
-6. docs/simulator_development/requirements/M00_FOUNDATION_REQUIREMENTS.md；
-7. theory/evidence_reassessment/README.md；
-8. theory/evidence_reassessment/engineering_fixed_context.md；
-9. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
-10. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
-11. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；
-12. theory/system/SYSTEM_INTEGRATED_MODEL.md，必须全文读取并重点复核第 25–30、40–45 节。
+1. README.md、theory/README.md；
+2. docs/simulator_development/README.md；
+3. docs/simulator_development/SIMULATOR_MODULE_PLAN.md；
+4. docs/simulator_development/REQUIREMENTS_DISCUSSION_WORKFLOW.md；
+5. docs/simulator_development/requirements/M00_FOUNDATION_REQUIREMENTS.md；
+6. theory/evidence_reassessment/README.md；
+7. theory/evidence_reassessment/engineering_fixed_context.md；
+8. theory/review/DERIVATION_VERIFICATION_2026-07-17.md；
+9. theory/implementation/BOOTSTRAP_CALIBRATION_AND_PARAMETER_POLICY.md；
+10. theory/implementation/DEV_BOOTSTRAP_PROFILE.yaml；
+11. theory/system/SYSTEM_INTEGRATED_MODEL.md，必须全文读取并重点复核第 25–30、40–45 节。
 
 权威顺序：
 正式工程事实 > accepted system 全局协调 > accepted A/B/C 层内机理与模块内嵌合同 > M00 冻结软件合同。若实现便利与冻结需求冲突，冻结需求优先；若冻结需求与更高物理权威存在实质冲突，停止并报告，不能静默修订需求或物理。

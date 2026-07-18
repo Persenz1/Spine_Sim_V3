@@ -6,7 +6,7 @@
 
 ```text
 TASK_ID: M01_SURFACE_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M01 SURFACE（解析/合成表面提供者）的需求。不得编码，不得开始数值内核、单刺或实现阶段。
 
@@ -15,7 +15,7 @@ PROMPT_VERSION: 0.1.2
 MECHANISM_DERIVATION_FORMAL 0.2.0-proposed 的 SurfaceGenerationAndAcquisitionContract 只作为 PROPOSED_SUPPLEMENT：本窗口可以把它转成 additive provenance/schema 和验证义务，但不能据此改写 accepted A 的几何、接触或接口。首版只实现 synthetic/analytic provider；measured 分支只冻结可扩展 schema、显式 deferred/unavailable 和迁移边界，不实现仪器采集管线。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00_FOUNDATION_REQUIREMENTS.md；若尚未冻结则停止并说明前置缺失；
 4. theory/evidence_reassessment/README.md 与 theory/evidence_reassessment/engineering_fixed_context.md；

@@ -6,7 +6,7 @@
 
 ```text
 TASK_ID: M06_PLOTTING_REQUIREMENTS
-PROMPT_VERSION: 0.1.2
+PROMPT_VERSION: 0.1.3
 
 本窗口只讨论并冻结 M06 PLOTTING（只读结果解析、动态绘图配方和派生数据）的需求。不得编码，不得运行任何仿真，不得导入或调用求解器，不得修改 canonical result bundle。
 
@@ -18,7 +18,7 @@ PROMPT_VERSION: 0.1.2
 - 绘图模块不得成为仿真依赖图的一部分。
 
 开始前完整读取：
-1. AGENTS.md、README.md、theory/README.md；
+1. README.md、theory/README.md；
 2. docs/simulator_development/README.md、SIMULATOR_MODULE_PLAN.md、REQUIREMENTS_DISCUSSION_WORKFLOW.md；
 3. 已冻结的 M00–M05 requirements，重点读取所有 canonical output 和 plotting needs；
 4. theory/system/SYSTEM_INTEGRATED_MODEL.md 第 25–30 节；
