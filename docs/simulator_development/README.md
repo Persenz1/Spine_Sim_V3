@@ -1,10 +1,10 @@
 # 仿真器开发任务入口
 
-**版本：** 0.2.0
-**状态：** m00-implementation-accepted / m01-implementation-accepted / m02-requirements-discussion-next
+**版本：** 0.2.1
+**状态：** m00-implementation-accepted / m01-implementation-accepted / m02-requirements-frozen / m02-implementation-next
 **适用范围：** 第一版无实验数据的 A/B 趋势选型仿真器，以及后续受限 C 层诊断
 
-本目录把仿真器开发拆成“需求讨论窗口”和“实现窗口”两个阶段。当前 M00 基础软件合同与 M01 表面/几何服务均已通过验收，下一道门是 M02 需求讨论，不是 M02 实现。M01 不包含接触、力、摩擦、材料或抓附成功语义；M02 以及后续物理/运行模块仍未冻结、未实现。
+本目录把仿真器开发拆成“需求讨论窗口”和“实现窗口”两个阶段。当前 M00 基础软件合同与 M01 表面/几何服务均已通过验收，M02 数值/事件/事务/重放需求已冻结，下一道门是独立的 M02 实现窗口。M01 不包含接触、力、摩擦、材料或抓附成功语义；M02 也只协调物理 owner 提供的残量、guard 和提交意图，不拥有 A/B 本构。M03 以及后续物理/运行模块仍未冻结、未实现。
 
 ## 1. 第一版目标
 
@@ -23,8 +23,8 @@
 - [仿真器模块规划](SIMULATOR_MODULE_PLAN.md)：模块边界、依赖顺序、参数与输出职责、首版完整实验定义；
 - [需求讨论工作流](REQUIREMENTS_DISCUSSION_WORKFLOW.md)：每个讨论窗口的统一规则、冻结产物和绘图数据缺口流程；
 - [逐模块需求讨论提示词](prompts/requirements_discussion/README.md)：复制到各自新窗口使用；
-- [已冻结需求](requirements/)：`M00_FOUNDATION_REQUIREMENTS 1.0.0` 与 `M01_SURFACE_REQUIREMENTS 1.0.0`；
-- [实现窗口提示词](implementation_prompts/)：当前已有 M00 与 M01；
+- [已冻结需求](requirements/)：`M00_FOUNDATION_REQUIREMENTS 1.0.0`、`M01_SURFACE_REQUIREMENTS 1.0.0` 与 [`M02_NUMERICS_REQUIREMENTS 1.0.0`](requirements/M02_NUMERICS_REQUIREMENTS.md)；
+- [实现窗口提示词](implementation_prompts/)：当前已有 M00、M01 与 [`M02`](implementation_prompts/M02_NUMERICS_IMPLEMENTATION_WINDOW_PROMPT.md)；
 - [M00 实施追踪与验收](implementation/M00_FOUNDATION_TRACEABILITY.md)：记录基础包、测试、性能和解释边界；
 - [M01 实施追踪](implementation/M01_SURFACE_TRACEABILITY.md)：记录冻结要求到表面契约、查询、物化、Result 扩展和验证的映射；
 - [M01 验收报告](../../reports/m01/M01_ACCEPTANCE_REPORT.md)与[验证报告](../../reports/m01/M01_VALIDATION_REPORT.md)：保存验收命令、结果和边界；性能 JSON、canonical bundle、PNG 与 plot manifest 均为本地可重建产物，默认由 `.gitignore` 排除；
@@ -43,7 +43,7 @@
 9. `M08_C_DIAGNOSTIC`：首版之后的 C 合同安全诊断，不阻塞前八项。
 
 每个需求讨论窗口结束后必须停止。实现提示词只能根据该窗口最终冻结的需求生成，不能用当前通用规划直接开始编码。
-当前只应进入 [M02 需求讨论窗口](prompts/requirements_discussion/M02_NUMERICS_REQUIREMENTS_DISCUSSION.md)；M02、M03 或 M06 均未获准直接实现。
+当前只应另开并完整使用 [M02 实现窗口提示词](implementation_prompts/M02_NUMERICS_IMPLEMENTATION_WINDOW_PROMPT.md)；不得在需求讨论窗口直接编码，也不得提前实现 M03、M04、M05 或 M06。
 
 ## 4. 当前进度
 
@@ -51,7 +51,8 @@
 |---|---|---|
 | M00 FOUNDATION | `1.0.0 frozen` | completed / acceptance passed（仅基础软件范围） |
 | M01 SURFACE | `1.0.0 frozen` | completed / acceptance passed（仅表面/几何范围） |
-| M02–M05 | 未冻结；下一门为 M02 需求讨论 | 未开始 |
+| M02 NUMERICS | `1.0.0 frozen` | 未开始；下一门为独立实现窗口 |
+| M03–M05 | 未冻结 | 未开始 |
 | M06 PLOTTING | 未冻结；M01 仅附带两个可选验证预览配方，不等于 M06 | 未开始 |
 | M07 | 未冻结 | 未开始 |
 | M08 | deferred；不阻塞首版 A/B | 未开始 |
