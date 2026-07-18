@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "module": "M02_NUMERICS",
+  "requirements_authority": "M02_NUMERICS_REQUIREMENTS 1.0.0 frozen",
+  "evidence_date": "2026-07-18",
+  "validation_status": "PASSED",
+  "acceptance_scope": "SOFTWARE_PROTOCOL_AND_NUMERICAL_FIXTURES",
+  "source_identity": [
+    "DEV_POLICY",
+    "VALIDATION_ONLY"
+  ],
+  "experimentally_validated": "BLOCKED_UNAVAILABLE",
+  "certification_status": "NOT_CERTIFIABLE",
+  "a_b_physics": "NOT_IMPLEMENTED_BY_M02",
+  "mock_or_synthetic_owner_is_a_b_physics": false,
+  "test_gates": {
+    "repository_wide": {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/pytest -q",
+      "status": "PASSED",
+      "passed": 431,
+      "failed": 0
+    },
+    "numerics": {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/pytest -q tests/numerics",
+      "status": "PASSED",
+      "passed": 238,
+      "failed": 0
+    },
+    "foundation_and_surface": {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/pytest -q tests/foundation tests/surface",
+      "status": "PASSED",
+      "passed": 193,
+      "failed": 0
+    },
+    "ruff_check": "PASSED",
+    "ruff_format_check": "PASSED",
+    "mypy_configured_strict": "PASSED",
+    "package_build": {
+      "status": "PASSED",
+      "version": "0.3.0"
+    }
+  },
+  "canonical_demo": {
+    "command": ".venv/bin/python -m spine_sim.numerics.demo_validation_only build/M02_VALIDATION_ONLY.spine-result",
+    "status": "PASSED",
+    "tracked": false,
+    "rebuildable": true,
+    "local_snapshot_size_bytes": 1675441,
+    "local_snapshot_bundle_semantic_hash": "32169444e52b3069d52fb5101697a517e8479facbd66c14f9b90fc8ec422d0b8",
+    "semantic_hash_note": "git commit and dirty provenance are inputs, so a post-commit rebuild is expected to have a different bundle hash",
+    "registered_dataset_count_total": 34,
+    "registered_m02_dataset_count": 20,
+    "manifest_files_checked": 25,
+    "full_files_checked": 25,
+    "committed_markers_checked": 1,
+    "receipt_count": 1,
+    "accepted_step_count": 1,
+    "lineage_event_count": 2,
+    "isolated_rejected_diagnostic_count": 1,
+    "recipe_count": 6,
+    "recipe_query_projection_count": 15,
+    "all_recipe_queries_satisfied": true
+  },
+  "m01_compatibility_panels": [
+    {
+      "panel_id": "M02_M01_SMOKE_4",
+      "status": "PASSED",
+      "diagnostic_level": "FULL",
+      "scenario_count": 4,
+      "fixture_count": 5,
+      "full_path_count": 20,
+      "path_length_mm": 100.0,
+      "query_count": 180,
+      "event_probe_count": 20,
+      "materialization_request_count": 420,
+      "failure_count": 0,
+      "wall_time_seconds": 0.41374531899964495,
+      "peak_rss_bytes": 224186368,
+      "audit_output_size_bytes": 580838,
+      "semantic_result_hash": "9ff6c6fa15b6321f2a5f87703bc4afab0d5345a95941fb5dc883da0f6de48de4"
+    },
+    {
+      "panel_id": "M02_M01_STANDARD_64",
+      "status": "PASSED",
+      "diagnostic_level": "STANDARD",
+      "scenario_count": 64,
+      "fixture_count": 5,
+      "full_path_count": 320,
+      "path_length_mm": 100.0,
+      "query_count": 2880,
+      "event_probe_count": 320,
+      "materialization_request_count": 6720,
+      "failure_count": 0,
+      "wall_time_seconds": 3.7255648270001984,
+      "peak_rss_bytes": 224169984,
+      "audit_output_size_bytes": 7958605,
+      "semantic_result_hash": "8e5fd18ae6ff56dfa80e5fcd3da43c1ca9076f15c3de5a0b0bb2aad095d3a802"
+    },
+    {
+      "panel_id": "M02_M01_STRESS_256",
+      "status": "PASSED",
+      "diagnostic_level": "COMPACT_WITH_32_STANDARD_WITNESSES",
+      "scenario_count": 256,
+      "fixture_count": 5,
+      "full_path_count": 1280,
+      "path_length_mm": 100.0,
+      "query_count": 11520,
+      "event_probe_count": 1280,
+      "materialization_request_count": 26880,
+      "failure_count": 0,
+      "wall_time_seconds": 14.108046948000265,
+      "peak_rss_bytes": 224186368,
+      "audit_output_size_bytes": 16117269,
+      "semantic_result_hash": "fd48e54daca7641e95be559d717f9e54de11d395cdf732d2379ffa03bb1452a6"
+    }
+  ],
+  "deterministic_replay": {
+    "command": ".venv/bin/python scripts/run_m02_replay_validation.py --output build/m02/M02_REPLAY_VALIDATION.json",
+    "status": "PASSED",
+    "case_count": 2,
+    "decision_count": 26,
+    "bitwise_chain_hash": "13c86cdc7f475515d05e30570a9fb8db8a75fdf0ec8df0f974e462a18833e451",
+    "semantic_chain_hash": "ddda4bc9cc91b7725f8fcf9b08c1ea47ce1616f044c4ce87f6b51d6555d1e78b",
+    "positive_checks": [
+      "exact_repeat_bitwise",
+      "serial_parallel_case_owner_order_semantic",
+      "m01_cold_warm_materialization_bitwise",
+      "within_tolerance_semantic"
+    ],
+    "structured_negative_checks": [
+      "backend_profile_negative",
+      "config_hash_negative",
+      "owner_hash_negative",
+      "within_tolerance_bitwise_negative"
+    ]
+  },
+  "streaming_scalability": {
+    "command": ".venv/bin/python scripts/run_m02_streaming_validation.py --output build/m02/M02_STREAMING_VALIDATION.json --bundle-output build/m02/M02_STREAMING_VALIDATION.spine-result",
+    "status": "PASSED",
+    "plan_case_counts": [
+      64,
+      256,
+      256,
+      4000,
+      16000
+    ],
+    "pause_resume_all_matched": true,
+    "replay_all_matched": true,
+    "merge_all_matched": true,
+    "campaign_cases_retained": 0,
+    "max_buffered_case_count_during_plan_evaluation": 1,
+    "m02_cache_bytes_min": 65536,
+    "m02_cache_bytes_max": 65536,
+    "per_case_cache_limit_bytes": 268435456,
+    "wall_time_seconds_including_m00_bundle_write_and_full_readback": 6.839539083997806,
+    "peak_rss_bytes": 239230976,
+    "m00_bundle_round_trip": {
+      "status": "PASSED",
+      "replay_row_count": 16000,
+      "rejected_diagnostic_count": 63,
+      "all_failures_full": true,
+      "output_size_bytes": 7626762,
+      "max_transaction_buffered_case_count": 256,
+      "max_transaction_buffered_bytes": 655184,
+      "bundle_semantic_hash": "98c53b9283debcffa9bcdffb3d9afe01d25783d26279857126a1b87f11dd908c"
+    }
+  },
+  "requirements_18_evidence": {
+    "analytic_residual_continuation_and_rigid_graph": "PASSED",
+    "event_roots_order_touch_same_sign_double_root_b_rebalance_recontact": "PASSED",
+    "event_post_dag_cascade_zeno": "PASSED",
+    "transaction_idempotency_rollback_fault_injection": "PASSED",
+    "bitwise_semantic_replay_and_order_cache_invariance": "PASSED",
+    "m01_20_320_1280_panels": "PASSED",
+    "result_reader_recipes_and_4000_16000_streaming": "PASSED"
+  },
+  "interpretation": {
+    "numerical_convergence_is_physical_stability": false,
+    "numerical_failure_is_physical_infeasibility": false,
+    "synthetic_failure_is_design_performance": false,
+    "performance_is_cross_platform_sla": false,
+    "physical_feasibility": "NOT_ASSESSED",
+    "certifiable": false
+  }
+}

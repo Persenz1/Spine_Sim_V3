@@ -215,9 +215,13 @@ class ResultReader:
         entries: list[DatasetCatalogEntry] = []
         allowed = {item.value for item in DEFAULT_READER_IDENTITIES}
         for item in self._datasets.values():
-            if not include_diagnostics and item["dataset_class"] == DatasetClass.REJECTED.value:
-                continue
-            if not include_non_default and (
+            is_rejected = item["dataset_class"] == DatasetClass.REJECTED.value
+            if is_rejected:
+                if not include_diagnostics:
+                    continue
+                if not include_non_default and item["source_identity"] not in allowed:
+                    continue
+            elif not include_non_default and (
                 not item["default_visible"] or item["source_identity"] not in allowed
             ):
                 continue
@@ -239,14 +243,24 @@ class ResultReader:
         )
 
     def list_fields(
-        self, selector: str = "*", *, include_non_default: bool = False
+        self,
+        selector: str = "*",
+        *,
+        include_non_default: bool = False,
+        include_diagnostics: bool = False,
     ) -> tuple[FieldMetadataView, ...]:
         allowed = {item.value for item in DEFAULT_READER_IDENTITIES}
         fields = []
         for field_id, metadata in self._fields.items():
             if not fnmatch.fnmatch(field_id, selector):
                 continue
+            descriptor = self._datasets[metadata["dataset_id"]]
+            is_rejected = descriptor["dataset_class"] == DatasetClass.REJECTED.value
+            if is_rejected and not include_diagnostics:
+                continue
             if not include_non_default and metadata["source_identity"] not in allowed:
+                continue
+            if not is_rejected and not include_non_default and not descriptor["default_visible"]:
                 continue
             fields.append(FieldMetadataView(field_id, metadata["dataset_id"], dict(metadata)))
         return tuple(sorted(fields, key=lambda value: value.field_id))

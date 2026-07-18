@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "spine-sim"
-version = "0.2.0"
-description = "Typed foundation, deterministic surface geometry, and canonical results for Spine Sim V3"
+version = "0.3.0"
+description = "Typed foundation, deterministic surface geometry, numerical orchestration, and canonical results for Spine Sim V3"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -33,6 +33,7 @@ preview = [
 spine-sim-m00-validation-demo = "spine_sim.foundation.demo_validation_only:main"
 spine-sim-m01-validation-demo = "spine_sim.surface.demo_validation_only:main"
 spine-sim-m01-preview = "spine_sim.surface.preview.cli:main"
+spine-sim-m02-validation-demo = "spine_sim.numerics.demo_validation_only:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/spine_sim"]

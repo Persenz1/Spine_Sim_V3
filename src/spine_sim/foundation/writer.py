@@ -4,14 +4,13 @@ from __future__ import annotations
 
 import dataclasses
 import json
-import shutil
 import time
 import uuid
 from collections import defaultdict
 from collections.abc import Callable, Iterable, Mapping
 from itertools import pairwise
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol, cast
 
 import numpy as np
 import pyarrow.parquet as pq
@@ -19,7 +18,11 @@ import pyarrow.parquet as pq
 from .canonical import semantic_hash, stable_content_id, uuid7
 from .config import ResolvedConfig
 from .errors import ContractViolation, IdempotencyConflict, TransactionError
-from .integrity import build_integrity_index, committed_markers
+from .integrity import (
+    build_integrity_index,
+    committed_markers,
+    rejected_diagnostic_markers,
+)
 from .models import (
     AcceptedPointBase,
     CaseIndexBase,
@@ -30,7 +33,6 @@ from .models import (
     RejectedTrialBase,
     RunEnvelope,
     SourceIdentity,
-    SummaryBase,
     ValuePresence,
 )
 from .registry import BUNDLE_SCHEMA_VERSION, RESULT_API_VERSION, DatasetClass, SchemaRegistry
@@ -45,6 +47,24 @@ from .storage import (
 )
 
 FaultInjector = Callable[[str], None]
+
+
+class VersionedSummaryRecord(Protocol):
+    """Structural summary boundary for registered owner extension records."""
+
+    @property
+    def case_id(self) -> str: ...
+
+    @property
+    def summary_id(self) -> str: ...
+
+    @property
+    def summary_kind(self) -> str: ...
+
+    @property
+    def included_dataset_classes(self) -> tuple[str, ...]: ...
+
+    def storage_dict(self) -> dict[str, Any]: ...
 
 
 def _noop_fault(_: str) -> None:
@@ -123,6 +143,7 @@ class ResultWriter:
             (root / directory).mkdir()
         (root / "transactions" / "staging").mkdir()
         (root / "transactions" / "committed").mkdir()
+        (root / "rejected_trials" / "completed").mkdir()
         write_json_atomic(root / "schemas" / "registry.json", registry.snapshot())
         registry.validate_record(run_envelope)
         write_parquet_records(
@@ -213,31 +234,130 @@ class ResultWriter:
         existing = self._find_idempotency(case_id, idempotency_key)
         return ResultTransaction(self, case_id, parent_state_id, idempotency_key, existing)
 
-    def record_rejected_trial(self, record: RejectedTrialBase) -> Path:
-        descriptor = self.registry.validate_record(record)
-        self._validate_case_identity(record)
-        if descriptor.dataset_class is not DatasetClass.REJECTED:
-            raise ContractViolation("record_rejected_trial accepts only rejected records")
-        if (
-            record.accepted_state_advanced
-            or record.committed_event_id is not None
-            or record.commit_receipt_id is not None
-        ):
-            raise ContractViolation("rejected trial cannot own accepted/event/receipt identity")
-        path = (
-            self.root
-            / "rejected_trials"
-            / safe_component(record.case_id)
-            / f"{safe_component(record.trial_id)}.parquet"
-        )
-        if path.exists():
-            raise ContractViolation(f"rejected trial already exists: {record.trial_id}")
-        write_parquet_records(path, [record.storage_dict()], compression=self.parquet_compression)
-        return path
+    def record_rejected_trial(
+        self,
+        record: RejectedTrialBase,
+        *,
+        extension_records: Iterable[RecordBase] = (),
+    ) -> Path:
+        """Atomically publish one core rejected trial and its registered diagnostic extensions."""
 
-    def write_versioned_summary(self, record: SummaryBase) -> Path:
         descriptor = self.registry.validate_record(record)
         self._validate_case_identity(record)
+        if (
+            descriptor.dataset_id != RejectedTrialBase.__dataset_id__
+            or descriptor.dataset_class is not DatasetClass.REJECTED
+        ):
+            raise ContractViolation("record_rejected_trial requires the M00 rejected base record")
+        self._validate_rejected_identity(record)
+
+        grouped: dict[str, list[RecordBase]] = {descriptor.dataset_id: [record]}
+        for extension in extension_records:
+            extension_descriptor = self.registry.validate_record(extension)
+            self._validate_case_identity(extension)
+            if (
+                extension_descriptor.dataset_class is not DatasetClass.REJECTED
+                or extension_descriptor.namespace == "core"
+            ):
+                raise ContractViolation(
+                    "rejected trial extensions must be non-core REJECTED datasets"
+                )
+            if getattr(extension, "trial_id", None) != record.trial_id:
+                raise ContractViolation("rejected extension trial_id does not match the M00 base")
+            if getattr(extension, "case_id", None) != record.case_id:
+                raise ContractViolation("rejected extension case_id does not match the M00 base")
+            self._validate_rejected_identity(extension)
+            grouped.setdefault(extension_descriptor.dataset_id, []).append(extension)
+        self._validate_primary_keys(grouped)
+
+        diagnostic_group_id = stable_content_id(
+            "rejected-diagnostic-group",
+            {"case_id": record.case_id, "trial_id": record.trial_id},
+        )
+        safe_group = safe_component(diagnostic_group_id.replace(":", "_"))
+        marker_path = self.root / "rejected_trials" / "completed" / f"{safe_group}.json"
+        if marker_path.exists():
+            raise ContractViolation(f"rejected trial already exists: {record.trial_id}")
+
+        staging_root = self.root / "transactions" / "staging" / f"rejected-{uuid.uuid4().hex}"
+        staging_root.mkdir(parents=True)
+        staged: dict[str, tuple[Path, dict[str, Any]]] = {}
+        final_paths: dict[str, Path] = {}
+        moved: list[Path] = []
+        try:
+            for dataset_id, records in sorted(grouped.items()):
+                staging_path = staging_root / f"{dataset_id.replace('.', '__')}.parquet"
+                entry = write_parquet_records(
+                    staging_path,
+                    [item.storage_dict() for item in records],
+                    compression=self.parquet_compression,
+                )
+                self.fault_injector(
+                    "rejected_write"
+                    if dataset_id == RejectedTrialBase.__dataset_id__
+                    else "rejected_extension_write"
+                )
+                final_path = (
+                    self.root
+                    / "rejected_trials"
+                    / safe_component(record.case_id)
+                    / dataset_id.replace(".", "__")
+                    / f"{safe_group}.parquet"
+                )
+                if final_path.exists():
+                    raise ContractViolation(
+                        f"rejected diagnostic shard already exists: {dataset_id}"
+                    )
+                staged[dataset_id] = (staging_path, entry)
+                final_paths[dataset_id] = final_path
+
+            datasets: dict[str, dict[str, Any]] = {}
+            for dataset_id, (staging_path, entry) in sorted(staged.items()):
+                final_path = final_paths[dataset_id]
+                final_path.parent.mkdir(parents=True, exist_ok=True)
+                staging_path.replace(final_path)
+                moved.append(final_path)
+                entry["path"] = final_path.as_posix()
+                datasets[dataset_id] = relative_entry(entry, self.root)
+
+            marker_preimage = {
+                "diagnostic_group_id": diagnostic_group_id,
+                "case_id": record.case_id,
+                "trial_id": record.trial_id,
+                "paths": sorted(item["path"] for item in datasets.values()),
+            }
+            marker = {
+                "marker_schema_version": "1.0.0",
+                **marker_preimage,
+                "completion_marker_hash": semantic_hash(marker_preimage),
+                "semantic_content_hash": semantic_hash(
+                    {
+                        dataset_id: entry["semantic_hash"]
+                        for dataset_id, entry in sorted(datasets.items())
+                    }
+                ),
+                "accepted_state_advanced": False,
+                "committed_event_id": None,
+                "commit_receipt_id": None,
+                "datasets": datasets,
+            }
+            self.fault_injector("rejected_marker_publish")
+            write_json_atomic(marker_path, marker)
+        except Exception:
+            for path in moved:
+                if path.exists():
+                    remove_owned_path(path, root=self.root)
+            if staging_root.exists():
+                remove_owned_path(staging_root, root=self.root)
+            raise
+        if staging_root.exists():
+            remove_owned_path(staging_root, root=self.root)
+        return final_paths[RejectedTrialBase.__dataset_id__]
+
+    def write_versioned_summary(self, record: VersionedSummaryRecord) -> Path:
+        registered_record = cast(RecordBase, record)
+        descriptor = self.registry.validate_record(registered_record)
+        self._validate_case_identity(registered_record)
         if descriptor.dataset_class is not DatasetClass.SUMMARY:
             raise ContractViolation("write_versioned_summary accepts only summary records")
         included = set(record.included_dataset_classes)
@@ -302,10 +422,6 @@ class ResultWriter:
         auxiliary_sources = (
             ("core.indices.runs", (self.root / "indices").glob("runs.parquet")),
             ("core.indices.cases", (self.root / "indices" / "cases").glob("*.parquet")),
-            (
-                "core.rejected_trials.diagnostics",
-                (self.root / "rejected_trials").rglob("*.parquet"),
-            ),
             ("core.summaries.case", (self.root / "summaries").rglob("*.parquet")),
         )
         for default_dataset_id, paths in auxiliary_sources:
@@ -327,6 +443,9 @@ class ResultWriter:
                         "row_count": len(rows),
                     }
                 )
+        for _, marker in rejected_diagnostic_markers(self.root):
+            for dataset_id, entry in sorted(marker.get("datasets", {}).items()):
+                auxiliary_datasets[dataset_id].append(dict(entry))
         bundle_semantic_hash = semantic_hash(
             {
                 "run_fingerprint": self.run_envelope.run_fingerprint,
@@ -372,8 +491,19 @@ class ResultWriter:
             for entry in list(marker.get("datasets", {}).values())
             + list(marker.get("arrays", {}).values())
         }
+        referenced.update(
+            entry["path"]
+            for _, marker in rejected_diagnostic_markers(self.root)
+            for entry in marker.get("datasets", {}).values()
+        )
         removed_orphans = 0
-        for base_name in ("accepted_points", "committed_events", "transactions/receipts"):
+        for base_name in (
+            "accepted_points",
+            "committed_events",
+            "rejected_trials",
+            "transactions/receipts",
+            "transactions/extensions",
+        ):
             for file_path in (self.root / base_name).rglob("*.parquet"):
                 relative = file_path.relative_to(self.root).as_posix()
                 if relative not in referenced:
@@ -385,6 +515,38 @@ class ResultWriter:
                 remove_owned_path(array_path, root=self.root)
                 removed_orphans += 1
         return {"removed_staging": removed_staging, "removed_orphans": removed_orphans}
+
+    @staticmethod
+    def _validate_rejected_identity(record: RecordBase) -> None:
+        if getattr(record, "accepted_state_advanced", False):
+            raise ContractViolation("rejected trial cannot advance accepted state")
+        if getattr(record, "committed_event_id", None) is not None:
+            raise ContractViolation("rejected trial cannot own committed event identity")
+        if getattr(record, "commit_receipt_id", None) is not None:
+            raise ContractViolation("rejected trial cannot own commit receipt identity")
+
+    def _validate_primary_keys(
+        self,
+        grouped: Mapping[str, Iterable[RecordBase]],
+    ) -> None:
+        for dataset_id, records in sorted(grouped.items()):
+            descriptor = self.registry.datasets[dataset_id]
+            seen: dict[str, int] = {}
+            for index, record in enumerate(records):
+                key_values = {name: getattr(record, name) for name in descriptor.primary_keys}
+                key_hash = semantic_hash(key_values)
+                previous = seen.get(key_hash)
+                if previous is not None:
+                    raise ContractViolation(
+                        f"duplicate primary key in staged dataset {dataset_id}",
+                        details={
+                            "dataset_id": dataset_id,
+                            "primary_keys": key_values,
+                            "first_row": previous,
+                            "duplicate_row": index,
+                        },
+                    )
+                seen[key_hash] = index
 
     def _find_idempotency(self, case_id: str, key: str) -> dict[str, Any] | None:
         for marker in self._committed_marker_cache:
@@ -442,12 +604,34 @@ class ResultTransaction:
         self._candidate_hash: str | None = None
         self._ordered_intents_hash: str | None = None
         self._closed = False
+        self._committed_receipt: CommitReceiptBase | None = None
+        self._commit_marker_published = False
+
+    @property
+    def committed_receipt(self) -> CommitReceiptBase | None:
+        """Return the authoritative receipt once its marker is visible.
+
+        This recovery surface deliberately survives best-effort staging cleanup
+        failures so an M02 caller can never reinterpret a published commit as a
+        rollback-eligible transaction.
+        """
+
+        return self._committed_receipt
+
+    @property
+    def commit_marker_published(self) -> bool:
+        return self._commit_marker_published
 
     def stage_accepted_point(self, *records: RecordBase) -> None:
         self._stage_records(records, DatasetClass.ACCEPTED)
 
     def stage_committed_events(self, *records: RecordBase) -> None:
         self._stage_records(records, DatasetClass.EVENT)
+
+    def stage_transaction_records(self, *records: RecordBase) -> None:
+        """Stage non-core transaction extension rows under the commit receipt marker."""
+
+        self._stage_records(records, DatasetClass.TRANSACTION, allow_core=False)
 
     def stage_state_and_ledger_references(self, refs: Iterable[str]) -> None:
         self._ensure_open()
@@ -487,6 +671,7 @@ class ResultTransaction:
         self.writer.fault_injector("prepare")
         if not self._records:
             raise TransactionError("transaction has no staged records")
+        self._validate_staged_primary_keys()
         accepted = [
             record
             for records in self._records.values()
@@ -573,7 +758,8 @@ class ResultTransaction:
             raise TransactionError("prepare must succeed before commit")
         if self.existing_marker is not None:
             receipt = self._read_existing_receipt(self.existing_marker)
-            self.rollback()
+            self._mark_committed(receipt, self.existing_marker)
+            self._discard_staging_best_effort()
             return receipt
         receipt_id = stable_content_id(
             "receipt",
@@ -629,16 +815,21 @@ class ResultTransaction:
         datasets: dict[str, dict[str, Any]] = {}
         arrays: dict[str, dict[str, Any]] = {}
         moved: list[Path] = []
+        marker_path: Path | None = None
+        marker: dict[str, Any] | None = None
         try:
             for dataset_id, records in sorted(self._records.items()):
                 patched: list[RecordBase] = []
+                receipt_ref_patched = False
                 for record in records:
                     changes: dict[str, Any] = {}
-                    if isinstance(record, AcceptedPointBase):
+                    if hasattr(record, "commit_receipt_id"):
                         changes["commit_receipt_id"] = receipt_id
-                    if isinstance(record, CommittedEventBase):
-                        changes["commit_receipt_id"] = receipt_id
-                    patched.append(dataclasses.replace(record, **changes) if changes else record)
+                    patched_record = dataclasses.replace(record, **changes) if changes else record
+                    if changes:
+                        self.writer.registry.validate_record(patched_record)
+                        receipt_ref_patched = True
+                    patched.append(patched_record)
                 staging_path = self.staging_root / f"{dataset_id.replace('.', '__')}.parquet"
                 entry = write_parquet_records(
                     staging_path,
@@ -647,7 +838,8 @@ class ResultTransaction:
                 )
                 entry["semantic_hash"] = (
                     semantic_hash([record.semantic_dict() for record in patched])
-                    if any(
+                    if receipt_ref_patched
+                    or any(
                         isinstance(record, AcceptedPointBase | CommittedEventBase)
                         for record in records
                     )
@@ -744,24 +936,72 @@ class ResultTransaction:
             marker_path = self.writer.root / "transactions" / "committed" / f"{safe_receipt}.json"
             self.writer.fault_injector("manifest_publish")
             write_json_atomic(marker_path, marker)
-            self.writer._committed_marker_cache.append(marker)
         except Exception:
+            # Atomic replacement may have completed before a filesystem wrapper
+            # surfaced an acknowledgement error.  Once the matching marker is
+            # visible, publication is authoritative and rollback is forbidden.
+            if marker_path is not None and marker is not None and marker_path.exists():
+                try:
+                    published_marker = read_json(marker_path)
+                except Exception:
+                    published_marker = None
+                if (
+                    published_marker is not None
+                    and published_marker.get("receipt_id") == receipt.receipt_id
+                    and published_marker.get("commit_marker_hash") == receipt.commit_marker_hash
+                ):
+                    self._mark_committed(receipt, published_marker)
+                    self._discard_staging_best_effort()
+                    return receipt
             for path in moved:
                 if path.exists():
                     remove_owned_path(path, root=self.writer.root)
             self.rollback()
             raise
-        self._closed = True
-        if self.staging_root.exists():
-            shutil.rmtree(self.staging_root)
+        assert marker is not None
+        self._mark_committed(receipt, marker)
+        self._discard_staging_best_effort()
         return receipt
 
     def rollback(self) -> None:
+        if self._commit_marker_published:
+            raise TransactionError("a published transaction cannot be rolled back")
         if self.staging_root.exists():
             remove_owned_path(self.staging_root, root=self.writer.root)
         self._closed = True
 
-    def _stage_records(self, records: Iterable[RecordBase], expected: DatasetClass) -> None:
+    def _mark_committed(self, receipt: CommitReceiptBase, marker: Mapping[str, Any]) -> None:
+        self._committed_receipt = receipt
+        self._commit_marker_published = True
+        self._closed = True
+        if not any(
+            item.get("receipt_id") == receipt.receipt_id
+            for item in self.writer._committed_marker_cache
+        ):
+            self.writer._committed_marker_cache.append(dict(marker))
+
+    def _discard_staging_best_effort(self) -> None:
+        """Remove unpublished scratch data without weakening a published commit."""
+
+        if not self.staging_root.exists():
+            return
+        try:
+            remove_owned_path(self.staging_root, root=self.writer.root)
+        except Exception:
+            # ``recover_crash_artifacts`` owns eventual cleanup.  Propagating
+            # here would falsely report that the already-published commit failed.
+            return
+
+    def _validate_staged_primary_keys(self) -> None:
+        self.writer._validate_primary_keys(self._records)
+
+    def _stage_records(
+        self,
+        records: Iterable[RecordBase],
+        expected: DatasetClass,
+        *,
+        allow_core: bool = True,
+    ) -> None:
         self._ensure_open()
         for record in records:
             descriptor = self.writer.registry.validate_record(record)
@@ -769,6 +1009,13 @@ class ResultTransaction:
                 raise ContractViolation(
                     f"{record.__dataset_id__} is not a {expected.value} dataset"
                 )
+            if not allow_core and descriptor.namespace == "core":
+                raise ContractViolation("core transaction receipt records are owned by M00")
+            if (
+                hasattr(record, "commit_receipt_id")
+                and cast(Any, record).commit_receipt_id is not None
+            ):
+                raise ContractViolation("staged records cannot provide a commit receipt identity")
             case_id = getattr(record, "case_id", self.case_id)
             if case_id != self.case_id:
                 raise ContractViolation("record partition does not belong to transaction case")
@@ -786,6 +1033,7 @@ class ResultTransaction:
             base = {
                 DatasetClass.ACCEPTED: "accepted_points",
                 DatasetClass.EVENT: "committed_events",
+                DatasetClass.TRANSACTION: "transactions/extensions",
             }[dataset_class]
             paths[f"dataset:{dataset_id}"] = (
                 Path(base)
