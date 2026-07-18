@@ -1,0 +1,44 @@
+{
+  "matrix_schema_version": "1.0.0",
+  "result_api": {
+    "current": "1.0.0",
+    "rules": {
+      "same_major_older_minor": "FULL_READ_WITH_NULL_UNAVAILABLE_FOR_NEW_FIELDS",
+      "same_major_newer_minor": "PARTIAL_SCHEMA_SUPPORT_KNOWN_FIELDS_ONLY",
+      "different_major": "BREAKING_SCHEMA_UNSUPPORTED_MINIMAL_MANIFEST_ONLY"
+    }
+  },
+  "bundle_schema": {
+    "current": "1.1.0",
+    "supported": [
+      {
+        "bundle_version": "1.0.0",
+        "reader_version": "1.1.0",
+        "status": "READ_TIME_ADAPTER_ACTIVE",
+        "adapter_id": "M00_MISSING_OPTIONAL_FIELD_ADAPTER_1"
+      },
+      {
+        "bundle_version": "1.1.0",
+        "reader_version": "1.1.0",
+        "status": "FULL_SCHEMA_SUPPORT",
+        "adapter_id": null
+      },
+      {
+        "bundle_version": "1.2.0",
+        "reader_version": "1.1.0",
+        "status": "PARTIAL_SCHEMA_SUPPORT",
+        "adapter_id": null
+      }
+    ],
+    "breaking_example": {
+      "bundle_version": "2.0.0",
+      "reader_version": "1.1.0",
+      "status": "BREAKING_SCHEMA_UNSUPPORTED"
+    }
+  },
+  "migration_policy": {
+    "in_place": false,
+    "lineage_required": true,
+    "source_bundle_immutable": true
+  }
+}

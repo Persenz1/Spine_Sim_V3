@@ -1,0 +1,63 @@
+{
+  "checks": {
+    "bounded_memory": true,
+    "field_catalog": true,
+    "fixture_shape": true,
+    "open": true,
+    "scan": true,
+    "single_case": true,
+    "writer": true
+  },
+  "environment": {
+    "cpu_logical_count": 20,
+    "dependencies": {
+      "numpy": "2.5.1",
+      "psutil": "7.2.2",
+      "pyarrow": "25.0.0",
+      "zarr": "3.2.1"
+    },
+    "disk_free_bytes_after": 354172940288,
+    "disk_total_bytes": 392322129920,
+    "hardware": "x86_64",
+    "machine": "x86_64",
+    "os": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "physical_memory_bytes": 32714612736,
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  },
+  "fixture": {
+    "accepted_rows": 1009000,
+    "bundle": "build/M00_PERFORMANCE_FINAL.spine-result",
+    "canonical_numeric_dtype": "float64",
+    "case_count": 1000,
+    "rows_per_case": 1000,
+    "source_identity": "VALIDATION_ONLY",
+    "writer_workers": 8
+  },
+  "limits": {
+    "eight_column_million_row_scan_seconds": 5.0,
+    "field_catalog_seconds": 0.5,
+    "logical_10_gib_peak_extra_rss_bytes": 536870912,
+    "open_and_catalog_manifest_seconds": 2.0,
+    "single_case_10000_point_first_result_seconds": 1.0,
+    "writer_seconds": 30.0
+  },
+  "metrics": {
+    "eight_column_million_row_scan_seconds": 0.16309507799996936,
+    "field_catalog_seconds": 0.0002157379994969233,
+    "field_count": 13,
+    "logical_10_gib_batch_probe": {
+      "checksum": 0.0,
+      "chunk_bytes": 4194304,
+      "elapsed_seconds": 1.2175464900001316,
+      "logical_bytes": 10737418240,
+      "peak_extra_rss_bytes": 8441856
+    },
+    "open_and_catalog_manifest_seconds": 0.08129933399959555,
+    "scan_rows": 1009000,
+    "single_case_10000_point_first_result_seconds": 0.0033885140001075342,
+    "single_case_rows": 10000,
+    "writer_seconds": 24.406970228999853
+  },
+  "overall_pass": true,
+  "report_schema_version": "1.0.0"
+}

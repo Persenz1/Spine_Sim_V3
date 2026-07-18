@@ -1,0 +1,20 @@
+{
+  "fixture_id": "M00_LEGACY_BUNDLE_1_0_0",
+  "fixture_class": "VALIDATION_ONLY",
+  "bundle_schema_version": "1.0.0",
+  "result_api_version": "1.0.0",
+  "description": "Read-time adapter fixture representing an older additive-minor canonical row.",
+  "dataset_id": "core.accepted_points.common",
+  "row": {
+    "point_id": "point:legacy-validation-only",
+    "accepted_state_id": "state:legacy-validation-only",
+    "path_coordinate": 0.0,
+    "path_unit": "1"
+  },
+  "field_absent_in_old_schema": "core.accepted_points.common.future_optional",
+  "expected_adapted_value": null,
+  "expected_capability_status": "UNAVAILABLE",
+  "expected_reason_code": "FIELD_NOT_PRESENT_IN_SCHEMA_VERSION",
+  "certification": "not_certifiable",
+  "physical_interpretation": "none"
+}
