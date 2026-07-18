@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 import inspect
 import re
+import tomllib
 from pathlib import Path
 
 from spine_sim.foundation.demo_validation_only import validation_extension
@@ -121,7 +122,11 @@ def test_frozen_public_api_signatures_and_strong_writer_boundary() -> None:
     assert "include_diagnostics" in inspect.signature(ResultReader.query).parameters
 
 
-def test_project_has_no_plotting_runtime_dependency() -> None:
-    project = (REPO_ROOT / "pyproject.toml").read_text().lower()
-    assert "matplotlib" not in project
-    assert "plotly" not in project
+def test_foundation_base_runtime_has_no_plotting_dependency() -> None:
+    project = tomllib.loads((REPO_ROOT / "pyproject.toml").read_text())
+    base_dependencies = tuple(item.lower() for item in project["project"]["dependencies"])
+    assert not any("matplotlib" in item or "plotly" in item for item in base_dependencies)
+    preview_dependencies = tuple(
+        item.lower() for item in project["project"]["optional-dependencies"]["preview"]
+    )
+    assert any("matplotlib" in item for item in preview_dependencies)

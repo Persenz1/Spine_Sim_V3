@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "spine-sim"
-version = "0.1.0"
-description = "Typed foundation and canonical result contracts for Spine Sim V3"
+version = "0.2.0"
+description = "Typed foundation, deterministic surface geometry, and canonical results for Spine Sim V3"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -18,15 +18,21 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+  "build>=1.2",
   "mypy>=1.11",
   "psutil>=6.0",
   "pytest>=8.3",
   "pytest-cov>=5.0",
   "ruff>=0.6",
 ]
+preview = [
+  "matplotlib>=3.9",
+]
 
 [project.scripts]
 spine-sim-m00-validation-demo = "spine_sim.foundation.demo_validation_only:main"
+spine-sim-m01-validation-demo = "spine_sim.surface.demo_validation_only:main"
+spine-sim-m01-preview = "spine_sim.surface.preview.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/spine_sim"]
@@ -36,7 +42,7 @@ addopts = "-ra --strict-config --strict-markers"
 testpaths = ["tests"]
 pythonpath = ["."]
 markers = [
-  "performance: M00 performance and bounded-memory acceptance checks",
+  "performance: bounded-memory performance acceptance checks",
 ]
 
 [tool.ruff]
@@ -52,8 +58,8 @@ ignore = ["E501"]
 python_version = "3.12"
 strict = true
 warn_unreachable = true
-packages = ["spine_sim.foundation"]
+packages = ["spine_sim"]
 
 [[tool.mypy.overrides]]
-module = ["pyarrow.*", "yaml.*", "zarr.*"]
+module = ["matplotlib.*", "pyarrow.*", "yaml.*", "zarr.*"]
 ignore_missing_imports = true

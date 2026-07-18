@@ -1,10 +1,10 @@
 # 仿真器开发任务入口
 
-**版本：** 0.1.3
-**状态：** m00-requirements-frozen / m00-implementation-accepted / m01-requirements-frozen / m01-implementation-not-started
+**版本：** 0.2.0
+**状态：** m00-implementation-accepted / m01-implementation-accepted / m02-requirements-discussion-next
 **适用范围：** 第一版无实验数据的 A/B 趋势选型仿真器，以及后续受限 C 层诊断
 
-本目录把仿真器开发拆成“需求讨论窗口”和“实现窗口”两个阶段。当前已冻结并实现 M00，其基础软件合同已通过验收；M01 需求已经冻结但尚未实现，后续物理模块也未实现，仓库仍不包含表面、接触或其他求解器物理。
+本目录把仿真器开发拆成“需求讨论窗口”和“实现窗口”两个阶段。当前 M00 基础软件合同与 M01 表面/几何服务均已通过验收，下一道门是 M02 需求讨论，不是 M02 实现。M01 不包含接触、力、摩擦、材料或抓附成功语义；M02 以及后续物理/运行模块仍未冻结、未实现。
 
 ## 1. 第一版目标
 
@@ -16,7 +16,7 @@
 
 理论与工程事实入口统一从 [`theory/README.md`](../../theory/README.md) 进入。层内实现以 `theory/modules/` 为权威，`theory/interfaces/` 是嵌入合同的独立镜像；工程事实与文献反向复核使用 `theory/evidence_reassessment/` 工作副本。归档保留完整源和历史运行，不作为普通开发任务的默认输入。
 
-本目录的 `0.1.2` 对齐 `MECHANISM_DERIVATION_FORMAL 0.2.0-proposed` 新增的故事桥接，但不提升其规范等级。后续冻结需求必须把输入分成 `FIXED_ENGINEERING`、`ACCEPTED_AUTHORITY`、`PROPOSED_SUPPLEMENT`、`DEV_POLICY` 和 `VALIDATION_ONLY`；proposed 的表面合同、接触阶段分栏、释放—再接触路径、阵列诊断和执行器端口桥只能作为结构性补充或验证义务，不能静默覆盖 accepted 1.0。
+本目录的 `0.2.0` 延续 `0.1.2` 对 `MECHANISM_DERIVATION_FORMAL 0.2.0-proposed` 新增故事桥接的对齐，但不提升其规范等级。后续冻结需求必须把输入分成 `FIXED_ENGINEERING`、`ACCEPTED_AUTHORITY`、`PROPOSED_SUPPLEMENT`、`DEV_POLICY` 和 `VALIDATION_ONLY`；proposed 的表面合同、接触阶段分栏、释放—再接触路径、阵列诊断和执行器端口桥只能作为结构性补充或验证义务，不能静默覆盖 accepted 1.0。
 
 ## 2. 文件导航
 
@@ -26,6 +26,9 @@
 - [已冻结需求](requirements/)：`M00_FOUNDATION_REQUIREMENTS 1.0.0` 与 `M01_SURFACE_REQUIREMENTS 1.0.0`；
 - [实现窗口提示词](implementation_prompts/)：当前已有 M00 与 M01；
 - [M00 实施追踪与验收](implementation/M00_FOUNDATION_TRACEABILITY.md)：记录基础包、测试、性能和解释边界；
+- [M01 实施追踪](implementation/M01_SURFACE_TRACEABILITY.md)：记录冻结要求到表面契约、查询、物化、Result 扩展和验证的映射；
+- [M01 验收报告](../../reports/m01/M01_ACCEPTANCE_REPORT.md)、[验证报告](../../reports/m01/M01_VALIDATION_REPORT.md)与[性能 JSON](../../reports/m01/M01_PERFORMANCE_REPORT.json)：保存验收命令、结果和边界；
+- [M01 演示地形（medium 3D）](../../reports/m01/demo/m01_medium_3d.png)：同目录保存 gentle/medium/sharp 的 2D/3D 六张图及 plot manifest；
 - [项目指令迁移记录](../PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md)：说明旧项目级 `AGENTS.md` 的拆分位置和历史引用处理。
 
 ## 3. 推荐窗口顺序
@@ -41,15 +44,16 @@
 9. `M08_C_DIAGNOSTIC`：首版之后的 C 合同安全诊断，不阻塞前八项。
 
 每个需求讨论窗口结束后必须停止。实现提示词只能根据该窗口最终冻结的需求生成，不能用当前通用规划直接开始编码。
+当前只应进入 [M02 需求讨论窗口](prompts/requirements_discussion/M02_NUMERICS_REQUIREMENTS_DISCUSSION.md)；M02、M03 或 M06 均未获准直接实现。
 
 ## 4. 当前进度
 
 | 模块 | 需求 | 实现 |
 |---|---|---|
 | M00 FOUNDATION | `1.0.0 frozen` | completed / acceptance passed（仅基础软件范围） |
-| M01 SURFACE | `1.0.0 frozen` | 未开始；下一实现窗口 |
-| M02–M05 | 未冻结 | 未开始 |
-| M06 PLOTTING | 未冻结；M00 ResultReader 已提供，仍待 M01–M05 demo | 未开始 |
+| M01 SURFACE | `1.0.0 frozen` | completed / acceptance passed（仅表面/几何范围） |
+| M02–M05 | 未冻结；下一门为 M02 需求讨论 | 未开始 |
+| M06 PLOTTING | 未冻结；M01 仅附带两个可选验证预览配方，不等于 M06 | 未开始 |
 | M07 | 未冻结 | 未开始 |
 | M08 | deferred；不阻塞首版 A/B | 未开始 |
 

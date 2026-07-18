@@ -1,0 +1,32 @@
+{
+  "certification_status": "NOT_CERTIFIABLE",
+  "colormap": "viridis",
+  "coordinate_unit": "mm",
+  "figure_path": "reports/m01/demo/m01_gentle_2d.png",
+  "figure_sha256": "b4aae2550c90dba789850fdc76d44feb7bb1080c7e178733728ff0288d6866a2",
+  "height_unit": "mm",
+  "low_pass_method": "saved_M01_visualization_band_v1",
+  "plot_id": "m01_plot:a0b059b21246e260dbca836d4e783f424a06fa3660751ae22fc7a4b55e380938",
+  "recipe": "height_map_2d",
+  "recipe_version": "1.0.0",
+  "rendered_grid_shape": [
+    1024,
+    1024
+  ],
+  "source_data_hash": "38e3ef7fc91b84b9430f6473bcdae9419558d6c0eb94309fe0bbb39de31972bb",
+  "source_grid_shape": [
+    1024,
+    1024
+  ],
+  "source_identity": "DEV_POLICY synthetic_unidentified or VALIDATION_ONLY analytic",
+  "surface_realization_id": "surface_realization:1e985cb40194b982630bf2c97156e998a5a414191414930b0ae104d0c5fc000f",
+  "vertical_exaggeration": 1.0,
+  "visualization_q_max_rad_per_mm": 21.42566189748111,
+  "visualization_sample_id": "visualization_sample:e325a28a020ca1fa0f0e47d89c52d7e3067e3f11055cb81241ecaebdcacd3f44",
+  "window_mm": [
+    0.0,
+    150.0,
+    0.0,
+    150.0
+  ]
+}

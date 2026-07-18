@@ -2,7 +2,7 @@
 
 面向钩爪式爬壁机器人爪刺啮合问题的三维准静态机理与求解器工程。
 
-> 当前阶段分为理论与仿真器两条进度线。理论侧已完成网页端 `A1 → C3`、A/B/C 大模块集成和全局系统集成，归档的正式 1.0 文件仍是当前 `accepted` 规范；2026-07-17 的独立复核另形成 proposed 严格推导、入门教程和开发期参数策略，但尚未静默改写 accepted 1.0。仿真器侧已完成并验收 `M00 FOUNDATION`，`M01 SURFACE` 需求已冻结、实现尚未开始，M02–M08 仍处于未冻结或延期状态。`accepted` 机理不等于求解器、数值收敛、参数标定或实验验证已经完成；M00 通过也只表示基础软件合同通过，不表示任何物理模块已经实现。
+> 当前阶段分为理论与仿真器两条进度线。理论侧已完成网页端 `A1 → C3`、A/B/C 大模块集成和全局系统集成，归档的正式 1.0 文件仍是当前 `accepted` 规范；2026-07-17 的独立复核另形成 proposed 严格推导、入门教程和开发期参数策略，但尚未静默改写 accepted 1.0。仿真器侧已完成并验收 `M00 FOUNDATION` 与 `M01 SURFACE`，下一道门是 M02 需求讨论；M02–M07 尚未冻结、M08 仍延期。M01 只提供表面/几何、查询、物化与验证能力，不实现接触、力、摩擦或材料物理。`accepted` 机理不等于求解器、数值收敛、参数标定或实验验证已经完成；M00/M01 通过也不提升任何 A/B/C 物理成熟度。
 
 ## 1. 默认阅读入口
 
@@ -23,18 +23,22 @@ Spine_Sim_V3/
 ├── README.md
 ├── pyproject.toml                  # Python 3.12 package、依赖和测试/lint 配置
 ├── src/spine_sim/
-│   └── foundation/                # 已实现并验收的 M00 基础包与 Result API
+│   ├── foundation/                # 已实现并验收的 M00 基础包与 Result API
+│   └── surface/                   # 已实现并验收的 M01 表面/几何服务
 ├── tests/
 │   ├── foundation/                # M00 单元、schema、重放、故障和性能测试
+│   ├── surface/                   # M01 契约、几何、重放、缓存和演示测试
 │   └── fixtures/                  # 兼容性与旧 bundle fixture
-├── scripts/                       # M00 性能/验收辅助入口
-├── reports/m00/                   # M00 验收与性能报告
+├── scripts/                       # M00/M01 性能与验收辅助入口
+├── reports/
+│   ├── m00/                       # M00 验收与性能报告
+│   └── m01/                       # M01 验收、性能报告与六张演示图
 ├── docs/
 │   ├── PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md
 │   └── simulator_development/
 │       ├── README.md              # 当前模块门状态与开发入口
 │       ├── requirements/          # 已冻结 M00、M01 需求
-│       ├── implementation/        # M00 实施追踪与验收命令
+│       ├── implementation/        # M00/M01 实施追踪与验收命令
 │       └── implementation_prompts/ # M00、M01 独立实现窗口提示词
 ├── theory/                         # 当前有效、供复核和论文化的机理文件
 │   ├── README.md                   # 理论阅读地图与权威顺序
@@ -113,7 +117,7 @@ Spine_Sim_V3/
 - proposed 严格稿把 C 层拆成 `C-R`（共同参考位姿/共同径向坐标，论文与 M0 主线）和 `C-I`（独立 Z 执行器，仅在真实硬件具备该自由度时启用）。这个选择尚需通过版本化修订进入 accepted 模型。
 - 当前 `B_TO_C 1.0.0` 只认证单元局部 x 与全局 Z 平移，不支持非零 `+X`、`45°` 偏心加载或 rocking 所需的局部 y、动态姿态和完整 twist。正式运行必须返回 `C_CONTRACT_EXTENSION_REQUIRED` 且零推进；这不是“零承载”或“物理失败”。
 - 关闭该阻断需要版本化的 B 2.x 完整运动/姿态/6D graph 扩展及相应验证，不能用投影、旋转旧 wrench 或经验能力域绕过。
-- 当前成熟度必须分层记录：M00 基础软件合同已实现并通过软件验收；M01 表面与 M02–M08 物理/运行/绘图模块尚未实现；物理数值验证、参数标定和实验验证仍未完成。不得用 M00 的代码通过状态提升任何 A/B/C 物理成熟度。
+- 当前成熟度必须分层记录：M00 基础软件合同与 M01 表面/几何服务已实现并通过软件验收；M02–M07 尚未实现，M08 仍延期；接触、力、摩擦、材料、物理数值验证、参数标定和实验验证仍未完成。不得用 M00/M01 的代码通过状态提升任何 A/B/C 物理成熟度。
 
 ## 6. 项目物理主线
 
@@ -129,14 +133,13 @@ Spine_Sim_V3/
 
 ## 7. 可立即启动的开发基线
 
-在没有白光轮廓仪、目前只能做直线模组拖曳实验的条件下，编程不需要等待完整实验。M00 已提供严格配置、单位/身份、schema registry、事务、canonical bundle、`ResultWriter/ResultReader` 和重放基础；下一开发门是按已冻结的 `M01_SURFACE_REQUIREMENTS 1.0.0` 实现表面服务。尚未实现的 M0 物理基线固定为：
+在没有白光轮廓仪、目前只能做直线模组拖曳实验的条件下，编程不需要等待完整实验。M00 已提供严格配置、单位/身份、schema registry、事务、canonical bundle、`ResultWriter/ResultReader` 和重放基础；M01 已提供可重放的解析/合成表面、查询、球尖纯几何、tile/cache 物化及验证输出。下一开发门是 [M02 需求讨论](docs/simulator_development/prompts/requirements_discussion/M02_NUMERICS_REQUIREMENTS_DISCUSSION.md)，不是直接实现 M02。尚未实现的 M0 物理基线包括：
 
-1. 解析/合成表面与有限球尖几何；
-2. 刚性 Signorini 法向接触与 Coulomb 摩擦；
-3. Euler–Bernoulli 针体柔顺和 A 层权威弹簧图；
-4. A/B 层平衡、活动集、事件定位和原子提交/回滚；
-5. `no_damage` 作为首个连续回归分支，再逐步启用强度与损伤；
-6. C 层先做 schema、拒绝路径、纯 Z/零载荷和径向扫描诊断；被合同阻断的工况保持 `Fcrit: null`。
+1. 刚性 Signorini 法向接触与 Coulomb 摩擦；
+2. Euler–Bernoulli 针体柔顺和 A 层权威弹簧图；
+3. A/B 层平衡、活动集、事件定位和原子提交/回滚；
+4. `no_damage` 作为首个连续回归分支，再逐步启用强度与损伤；
+5. C 层先做 schema、拒绝路径、纯 Z/零载荷和径向扫描诊断；被合同阻断的工况保持 `Fcrit: null`。
 
 `DEV_PRIOR` 参数只能用于宽范围扫描、灵敏度分析和代码回归，不能宣称为真实砖墙参数。现有拖曳实验优先辨识整机等效摩擦/阻力、峰值、稳态段、波动统计和速度依赖；单条总拉力曲线不能唯一反演表面 PSD、局部摩擦、针尖强度和损伤参数。
 
@@ -153,6 +156,6 @@ Spine_Sim_V3/
 | 模块 | 需求状态 | 实现状态 | 当前入口 |
 |---|---|---|---|
 | M00 FOUNDATION | `1.0.0 frozen` | 已完成并通过验收 | [实施追踪](docs/simulator_development/implementation/M00_FOUNDATION_TRACEABILITY.md)、[验收报告](reports/m00/M00_ACCEPTANCE_REPORT.md) |
-| M01 SURFACE | `1.0.0 frozen` | 未开始；下一实现窗口 | [冻结需求](docs/simulator_development/requirements/M01_SURFACE_REQUIREMENTS.md)、[实现提示词](docs/simulator_development/implementation_prompts/M01_SURFACE_IMPLEMENTATION_WINDOW_PROMPT.md) |
-| M02–M07 | 未冻结 | 未开始 | [模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |
+| M01 SURFACE | `1.0.0 frozen` | 已完成并通过验收（仅表面/几何） | [实施追踪](docs/simulator_development/implementation/M01_SURFACE_TRACEABILITY.md)、[验收报告](reports/m01/M01_ACCEPTANCE_REPORT.md)、[验证报告](reports/m01/M01_VALIDATION_REPORT.md)、[性能报告](reports/m01/M01_PERFORMANCE_REPORT.json)、[演示地形](reports/m01/demo/m01_medium_3d.png) |
+| M02–M07 | 未冻结 | 未开始；下一门仅进入 M02 需求讨论 | [M02 需求讨论提示词](docs/simulator_development/prompts/requirements_discussion/M02_NUMERICS_REQUIREMENTS_DISCUSSION.md)、[模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |
 | M08 C DIAGNOSTIC | deferred | 未开始；不阻塞首版 A/B | [模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |
