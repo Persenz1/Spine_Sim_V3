@@ -52,7 +52,7 @@ def test_cli_default_and_project_release_metadata_are_m02_scoped() -> None:
     assert parse_args([]).destination == DEFAULT_BUNDLE_PATH == Path("build/m02")
     project = Path(__file__).parents[2] / "pyproject.toml"
     text = project.read_text(encoding="utf-8")
-    assert 'version = "0.3.0"' in text
+    assert 'version = "0.4.0"' in text
     assert "numerical orchestration" in text
     assert 'spine-sim-m02-validation-demo = "spine_sim.numerics.demo_validation_only:main"' in text
 

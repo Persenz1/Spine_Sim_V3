@@ -373,17 +373,21 @@ class SchemaRegistry:
                 raise ContractViolation(f"required field is null: {metadata.field_id}")
             if value is None:
                 continue
-            if metadata.dtype == "float64" and (
-                isinstance(value, bool) or not isinstance(value, float)
+            if (
+                not metadata.shape
+                and metadata.dtype == "float64"
+                and (isinstance(value, bool) or not isinstance(value, float))
             ):
                 raise ContractViolation(
                     f"field requires runtime float64 value: {metadata.field_id}"
                 )
-            if metadata.dtype == "int64" and (
-                isinstance(value, bool) or not isinstance(value, int)
+            if (
+                not metadata.shape
+                and metadata.dtype == "int64"
+                and (isinstance(value, bool) or not isinstance(value, int))
             ):
                 raise ContractViolation(f"field requires runtime int64 value: {metadata.field_id}")
-            if metadata.dtype == "bool" and not isinstance(value, bool):
+            if not metadata.shape and metadata.dtype == "bool" and not isinstance(value, bool):
                 raise ContractViolation(f"field requires runtime bool value: {metadata.field_id}")
             if annotation in {"str", "str | None"} and not isinstance(value, str):
                 raise ContractViolation(f"field requires runtime string value: {metadata.field_id}")
@@ -406,10 +410,39 @@ class SchemaRegistry:
                     raise ContractViolation(
                         f"field shape does not match schema: {metadata.field_id}"
                     )
-            if isinstance(value, float) and not math.isfinite(value):
-                if descriptor.dataset_class is not DatasetClass.REJECTED:
+                _validate_shaped_primitive(metadata, value)
+            if descriptor.dataset_class is not DatasetClass.REJECTED:
+                if isinstance(value, float) and not math.isfinite(value):
+                    raise ContractViolation(f"non-finite canonical value: {metadata.field_id}")
+                if (
+                    metadata.shape
+                    and metadata.dtype == "float64"
+                    and not np.isfinite(np.asarray(value, dtype=np.float64)).all()
+                ):
                     raise ContractViolation(f"non-finite canonical value: {metadata.field_id}")
         return descriptor
+
+    def storage_dict(self, record: RecordBase) -> dict[str, Any]:
+        """Serialize one validated record without stringifying shaped primitive fields.
+
+        ``RecordBase.storage_dict`` deliberately uses canonical JSON strings for
+        tuples, mappings, and nested status objects.  A field whose registered
+        metadata declares both a primitive dtype and a non-scalar shape is a
+        different contract: it must remain a numeric/list column for projection
+        and read-only consumers.  Keep that distinction schema-driven so existing
+        scalar and canonical-JSON storage semantics remain unchanged.
+        """
+
+        descriptor = self.validate_record(record)
+        output = record.storage_dict()
+        for metadata in descriptor.fields:
+            if not metadata.shape or metadata.dtype not in {"float64", "int64", "bool"}:
+                continue
+            name = metadata.field_id.rsplit(".", 1)[-1]
+            value = getattr(record, name)
+            if value is not None:
+                output[name] = np.asarray(value).tolist()
+        return output
 
     def _add_dataset(self, descriptor: DatasetDescriptor) -> None:
         if descriptor.dataset_id in self._datasets:
@@ -442,6 +475,26 @@ class SchemaRegistry:
                 f"relation references unknown dataset: {descriptor.relation_id}"
             )
         self._relations[descriptor.relation_id] = descriptor
+
+
+def _validate_shaped_primitive(metadata: FieldMetadata, value: Any) -> None:
+    expected_python_type = {
+        "float64": float,
+        "int64": int,
+        "bool": bool,
+    }.get(metadata.dtype)
+    if expected_python_type is None:
+        return
+    expected_numpy_dtype = np.dtype(metadata.dtype)
+    components = np.asarray(value, dtype=object).flat
+    for component in components:
+        if type(component) is expected_python_type:
+            continue
+        if isinstance(component, np.generic) and component.dtype == expected_numpy_dtype:
+            continue
+        raise ContractViolation(
+            f"field requires runtime {metadata.dtype} components: {metadata.field_id}"
+        )
 
 
 def _enum_values(value: Any) -> Any:

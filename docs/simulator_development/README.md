@@ -1,10 +1,10 @@
 # 仿真器开发任务入口
 
-**版本：** 0.3.0
-**状态：** m00-implementation-accepted / m01-implementation-accepted / m02-implementation-accepted / m03-requirements-discussion-next
+**版本：** 0.4.0
+**状态：** m00-implementation-accepted / m01-implementation-accepted / m02-implementation-accepted / m03-implementation-delivered-acceptance-blocked
 **适用范围：** 第一版无实验数据的 A/B 趋势选型仿真器，以及后续受限 C 层诊断
 
-本目录把仿真器开发拆成“需求讨论窗口”和“实现窗口”两个阶段。当前 M00 基础软件合同、M01 表面/几何服务与 M02 数值/事件/事务/重放编排均已通过各自软件验收，下一道门是独立的 M03 单刺需求讨论。M01 不包含接触、力、摩擦、材料或抓附成功语义；M02 也只协调 physical owner 提供的残量、质量、signed guards 和提交意图，不拥有 A/B 本构。M03 以及后续物理/运行模块仍未冻结、未实现。
+本目录把仿真器开发拆成“需求讨论窗口”和“实现窗口”两个阶段。当前 M00 基础软件合同、M01 表面/几何服务与 M02 数值/事件/事务/重放编排均已通过各自软件验收。`M03_SINGLE_SPINE_REQUIREMENTS 1.0.0` 已冻结，M03 A-M0 代码已交付；standalone 的 receipt-backed accepted/event/rejected/operation 持久化路径已有回读证据，5/5 normal-bearing full candidates 也已保存。最终 38-case campaign 已全部执行并形成明确 capability termination，但没有 100 mm、final receipt 或趋势值；退化 `normal=None` 候选 schema、独立功闭合、最终变形几何与全 runtime event coverage 仍未闭合，因此 M03 仍是 acceptance blocked/evidence incomplete。M04–M06 未开始，不得把 M03 的 campaign/recipe 边界当成这些模块的提前实现。
 
 ## 1. 第一版目标
 
@@ -23,13 +23,16 @@
 - [仿真器模块规划](SIMULATOR_MODULE_PLAN.md)：模块边界、依赖顺序、参数与输出职责、首版完整实验定义；
 - [需求讨论工作流](REQUIREMENTS_DISCUSSION_WORKFLOW.md)：每个讨论窗口的统一规则、冻结产物和绘图数据缺口流程；
 - [逐模块需求讨论提示词](prompts/requirements_discussion/README.md)：复制到各自新窗口使用；
-- [已冻结需求](requirements/)：`M00_FOUNDATION_REQUIREMENTS 1.0.0`、`M01_SURFACE_REQUIREMENTS 1.0.0` 与 [`M02_NUMERICS_REQUIREMENTS 1.0.0`](requirements/M02_NUMERICS_REQUIREMENTS.md)；
-- [实现窗口提示词](implementation_prompts/)：当前已有 M00、M01 与 [`M02`](implementation_prompts/M02_NUMERICS_IMPLEMENTATION_WINDOW_PROMPT.md)；
+- [已冻结需求](requirements/)：`M00_FOUNDATION_REQUIREMENTS 1.0.0`、`M01_SURFACE_REQUIREMENTS 1.0.0`、[`M02_NUMERICS_REQUIREMENTS 1.0.0`](requirements/M02_NUMERICS_REQUIREMENTS.md) 与 [`M03_SINGLE_SPINE_REQUIREMENTS 1.0.0`](requirements/M03_SINGLE_SPINE_REQUIREMENTS.md)；
+- [实现窗口提示词](implementation_prompts/)：当前已有 M00–M03；M03 入口为 [`M03_SINGLE_SPINE_IMPLEMENTATION_WINDOW_PROMPT.md`](implementation_prompts/M03_SINGLE_SPINE_IMPLEMENTATION_WINDOW_PROMPT.md)；
 - [M00 实施追踪与验收](implementation/M00_FOUNDATION_TRACEABILITY.md)：记录基础包、测试、性能和解释边界；
 - [M01 实施追踪](implementation/M01_SURFACE_TRACEABILITY.md)：记录冻结要求到表面契约、查询、物化、Result 扩展和验证的映射；
 - [M01 验收报告](../../reports/m01/M01_ACCEPTANCE_REPORT.md)与[验证报告](../../reports/m01/M01_VALIDATION_REPORT.md)：保存验收命令、结果和边界；性能 JSON、canonical bundle、PNG 与 plot manifest 均为本地可重建产物，默认由 `.gitignore` 排除；
 - [M02 实施追踪](implementation/M02_NUMERICS_TRACEABILITY.md)：记录冻结要求到 continuation、nonlinear、event、transaction、replay、Result extension、M01 compatibility 和 streaming 的映射；
 - [M02 验收报告](../../reports/m02/M02_ACCEPTANCE_REPORT.md)、[验证报告](../../reports/m02/M02_VALIDATION_REPORT.md)与[性能报告](../../reports/m02/M02_PERFORMANCE_REPORT.md)：保存 20/320/1280 panels、4000/16000 plan 和 canonical/streaming bundle 的实跑证据；大型明细与 bundles 按命令本地重建；
+- [M03 实施追踪](implementation/M03_SINGLE_SPINE_TRACEABILITY.md)：逐项映射 frozen §1–§20，并登记当前 acceptance blockers；
+- [M03 包说明](../../src/spine_sim/single_spine/README.md)、[测试目录](../../tests/single_spine/)与[脚本目录](../../scripts/)：本征核、standalone、result extension、解析 suite、campaign 和 Reader-only validation evidence 的实际代码入口；
+- [M03 报告入口](../../reports/m03/)：验证、性能和验收状态；在实施追踪的 blockers 关闭前不得标为 `ACCEPTED`；
 - [项目指令迁移记录](../PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md)：说明旧项目级 `AGENTS.md` 的拆分位置和历史引用处理。
 
 ## 3. 推荐窗口顺序
@@ -45,7 +48,7 @@
 9. `M08_C_DIAGNOSTIC`：首版之后的 C 合同安全诊断，不阻塞前八项。
 
 每个需求讨论窗口结束后必须停止。实现提示词只能根据该窗口最终冻结的需求生成，不能用当前通用规划直接开始编码。
-当前只应另开并完整使用 [M03 需求讨论提示词](prompts/requirements_discussion/M03_SINGLE_SPINE_REQUIREMENTS_DISCUSSION.md)；不得在需求讨论窗口直接编码，也不得从 M02 的 `ACCEPTED` 自动推导或提前实现 M03、M04、M05 或 M06。
+当前工作门是核对 [M03 frozen requirements](requirements/M03_SINGLE_SPINE_REQUIREMENTS.md) 并关闭 [M03 实施追踪](implementation/M03_SINGLE_SPINE_TRACEABILITY.md) 中的验收 blocker；不得从 M03 代码交付状态自动推导 M03 `ACCEPTED`，也不得自动开始 M04、M05 或 M06。
 
 ## 4. 当前进度
 
@@ -54,7 +57,8 @@
 | M00 FOUNDATION | `1.0.0 frozen` | completed / acceptance passed（仅基础软件范围） |
 | M01 SURFACE | `1.0.0 frozen` | completed / acceptance passed（仅表面/几何范围） |
 | M02 NUMERICS | `1.0.0 frozen` | completed / acceptance passed（仅数值编排与 validation fixtures，不含 A/B 物理） |
-| M03–M05 | 未冻结 | 未开始；下一门为 M03 独立需求讨论 |
+| M03 SINGLE_SPINE | `1.0.0 frozen` | implementation delivered；acceptance blocked / evidence incomplete |
+| M04–M05 | 未冻结 | 未开始；不得由 M03 自动推进 |
 | M06 PLOTTING | 未冻结；M01 仅附带两个可选验证预览配方，不等于 M06 | 未开始 |
 | M07 | 未冻结 | 未开始 |
 | M08 | deferred；不阻塞首版 A/B | 未开始 |

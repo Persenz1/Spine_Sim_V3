@@ -2,7 +2,7 @@
 
 面向钩爪式爬壁机器人爪刺啮合问题的三维准静态机理与求解器工程。
 
-> 当前阶段分为理论与仿真器两条进度线。理论侧已完成网页端 `A1 → C3`、A/B/C 大模块集成和全局系统集成，归档的正式 1.0 文件仍是当前 `accepted` 规范；2026-07-17 的独立复核另形成 proposed 严格推导、入门教程和开发期参数策略，但尚未静默改写 accepted 1.0。仿真器侧已完成并验收 `M00 FOUNDATION`、`M01 SURFACE` 与 `M02 NUMERICS` 的软件范围，下一道门是 M03 独立需求讨论；M03–M07 尚未冻结、M08 仍延期。M02 只编排 owner 提供的残量、质量、signed events 和事务意图，不实现 A/B 接触、摩擦、梁/弹簧、材料、损伤或阵列共享。`accepted` 机理与 M00–M02 软件通过都不等于 A/B 物理、参数标定或实验验证已经完成。
+> 当前阶段分为理论与仿真器两条进度线。理论侧已完成网页端 `A1 → C3`、A/B/C 大模块集成和全局系统集成，归档的正式 1.0 文件仍是当前 `accepted` 规范；2026-07-17 的独立复核另形成 proposed 严格推导、入门教程和开发期参数策略，但尚未静默改写 accepted 1.0。仿真器侧已完成并验收 `M00 FOUNDATION`、`M01 SURFACE` 与 `M02 NUMERICS` 的软件范围；`M03 SINGLE_SPINE_REQUIREMENTS 1.0.0` 已冻结，M03 实现已交付。本征 artifact-backed standalone 路径已保存 5/5 个具有法向量的候选，并覆盖 fault rollback、idempotency 和 semantic replay；独立梯形 actuator 功积分与 14 类本征 runtime guards 也已实现。最终 medium 36 + gentle/sharp 2 已全部执行并形成明确 capability termination，但 0 个完成 100 mm、0 个 final M00 receipt、0 个趋势值；退化 `normal=None` 候选仍无法由冻结的 non-null schema 表示，真实平面功失配与完整事件/变形几何证据也仍阻断验收，因此当前状态是 blocked/evidence incomplete。M04–M07 未开始，M08 仍延期。`accepted` 机理、软件测试或解析 fixture 都不等于 A/B 物理、参数标定或实验验证已经完成。
 
 ## 1. 默认阅读入口
 
@@ -25,24 +25,27 @@ Spine_Sim_V3/
 ├── src/spine_sim/
 │   ├── foundation/                # 已实现并验收的 M00 基础包与 Result API
 │   ├── surface/                   # 已实现并验收的 M01 表面/几何服务
-│   └── numerics/                  # 已实现并验收的 M02 数值/事件/事务/重放编排
+│   ├── numerics/                  # 已实现并验收的 M02 数值/事件/事务/重放编排
+│   └── single_spine/              # M03 A-M0 实现；验收证据尚未闭合
 ├── tests/
 │   ├── foundation/                # M00 单元、schema、重放、故障和性能测试
 │   ├── surface/                   # M01 契约、几何、重放、缓存和演示测试
 │   ├── numerics/                  # M02 残量、事件、事务、重放、兼容和规模测试
+│   ├── single_spine/              # M03 合同、几何、力学、事件、结果、campaign 和图证据测试
 │   └── fixtures/                  # 兼容性与旧 bundle fixture
-├── scripts/                       # M00/M01/M02 性能、兼容与验收辅助入口
+├── scripts/                       # M00–M03 验证、性能、campaign、兼容与验收辅助入口
 ├── reports/
 │   ├── m00/                       # M00 Markdown 验收报告；机器产物本地重建
 │   ├── m01/                       # M01 Markdown 验收/验证报告；机器产物本地重建
-│   └── m02/                       # M02 验证、性能、验收与机器可读摘要
+│   ├── m02/                       # M02 验证、性能、验收与机器可读摘要
+│   └── m03/                       # M03 验证/性能/验收状态；当前不得标 ACCEPTED
 ├── docs/
 │   ├── PROJECT_INSTRUCTION_MIGRATION_2026-07-18.md
 │   └── simulator_development/
 │       ├── README.md              # 当前模块门状态与开发入口
-│       ├── requirements/          # 已冻结 M00、M01、M02 需求
-│       ├── implementation/        # M00–M02 实施追踪与验收命令
-│       └── implementation_prompts/ # M00–M02 独立实现窗口提示词
+│       ├── requirements/          # 已冻结 M00–M03 需求
+│       ├── implementation/        # M00–M03 实施追踪与验收证据入口
+│       └── implementation_prompts/ # M00–M03 独立实现窗口提示词
 ├── theory/                         # 当前有效、供复核和论文化的机理文件
 │   ├── README.md                   # 理论阅读地图与权威顺序
 │   ├── paper/
@@ -120,7 +123,7 @@ Spine_Sim_V3/
 - proposed 严格稿把 C 层拆成 `C-R`（共同参考位姿/共同径向坐标，论文与 M0 主线）和 `C-I`（独立 Z 执行器，仅在真实硬件具备该自由度时启用）。这个选择尚需通过版本化修订进入 accepted 模型。
 - 当前 `B_TO_C 1.0.0` 只认证单元局部 x 与全局 Z 平移，不支持非零 `+X`、`45°` 偏心加载或 rocking 所需的局部 y、动态姿态和完整 twist。正式运行必须返回 `C_CONTRACT_EXTENSION_REQUIRED` 且零推进；这不是“零承载”或“物理失败”。
 - 关闭该阻断需要版本化的 B 2.x 完整运动/姿态/6D graph 扩展及相应验证，不能用投影、旋转旧 wrench 或经验能力域绕过。
-- 当前成熟度必须分层记录：M00 基础软件合同、M01 表面/几何服务与 M02 数值编排已实现并通过各自软件验收；M03–M07 尚未冻结/实现，M08 仍延期；A/B 接触、力、摩擦、梁/弹簧、材料、损伤、参数标定和实验验证仍未完成。不得用 M00–M02 的代码通过状态提升任何 A/B/C 物理成熟度。
+- 当前成熟度必须分层记录：M00 基础软件合同、M01 表面/几何服务与 M02 数值编排已实现并通过各自软件验收；M03 需求已冻结且代码已交付，但系统级验收证据不完整，不能标为 `ACCEPTED`；M04–M07 未开始，M08 仍延期。M03 的 `no_damage` 接触/梁/弹簧代码、单元测试和解析 fixture 不代表材料损伤、参数标定或实验验证已经完成，也不得提升任何 B/C 物理成熟度。
 
 ## 6. 项目物理主线
 
@@ -136,13 +139,13 @@ Spine_Sim_V3/
 
 ## 7. 可立即启动的开发基线
 
-在没有白光轮廓仪、目前只能做直线模组拖曳实验的条件下，编程不需要等待完整实验。M00 已提供严格配置、单位/身份、schema registry、事务、canonical bundle、`ResultWriter/ResultReader` 和重放基础；M01 已提供可重放的解析/合成表面、查询、球尖纯几何、tile/cache 物化及验证输出；M02 已提供 continuation、残量质量、signed events、event/post、原子事务、重放和诊断编排。下一开发门是 [M03 独立需求讨论](docs/simulator_development/prompts/requirements_discussion/M03_SINGLE_SPINE_REQUIREMENTS_DISCUSSION.md)，不是从通用规划直接实现 A 层。尚未实现的 M0 物理基线包括：
+在没有白光轮廓仪、目前只能做直线模组拖曳实验的条件下，编程不需要等待完整实验。M00 已提供严格配置、单位/身份、schema registry、事务、canonical bundle、`ResultWriter/ResultReader` 和重放基础；M01 已提供可重放的解析/合成表面、查询、球尖纯几何、tile/cache 物化及验证输出；M02 已提供 continuation、残量质量、signed events、event/post、原子事务、重放和诊断编排。M03 已按 [frozen 1.0.0 requirements](docs/simulator_development/requirements/M03_SINGLE_SPINE_REQUIREMENTS.md) 交付 typed contracts、本征核、standalone 外层驱动、result extension、解析验证、campaign 编排和只读验证图。当前门是关闭 [M03 实施追踪](docs/simulator_development/implementation/M03_SINGLE_SPINE_TRACEABILITY.md) 中的验收 blocker，而不是开始 M04。仍需闭合的 M03 证据包括：
 
-1. 刚性 Signorini 法向接触与 Coulomb 摩擦；
-2. Euler–Bernoulli 针体柔顺和 A 层权威弹簧图；
-3. A/B physical owner 的残量、质量、guards、活动分支和有序 intents，以及与 M02 的 production 集成；
-4. `no_damage` 作为首个连续回归分支，再逐步启用强度与损伤；
-5. C 层先做 schema、拒绝路径、纯 Z/零载荷和径向扫描诊断；被合同阻断的工况保持 `Fcrit: null`。
+1. 真实本征核的 standalone 100 mm 基线，以及退化 `normal=None` 候选的可表示性与系统级 canonical persistence 闭合；
+2. 修正真实力学/功模型，使已独立计算的梯形 actuator 输入功通过 closure，并补齐 return energy 累积及 step/event/LOD refinement；
+3. 在现有 14 类本征 guards 与 standalone guards 之外，闭合冻结事件集合的 support migration、event/post 和路径级 replay 证据；
+4. medium 36 distinct cases 加 gentle/sharp baseline 已整轮 streaming 执行并通过 capability-terminal pause/resume、serial/parallel slice 与 cold/warm 语义复核；仍需关闭事件/几何能力，使本征 baseline 完成 100 mm 并产生 final receipt 和趋势值；
+5. 在已有真实 M01 局部极大/鞍点拒绝、解析平面 `Rt/8→Rt/10` witness 和终止行 replay 之外，补齐 rough/general refinement、最终变形几何重查询、previous-active lineage、弯曲体碰撞、full-kernel hard-stop 与 committed 100 mm replay。
 
 `DEV_PRIOR` 参数只能用于宽范围扫描、灵敏度分析和代码回归，不能宣称为真实砖墙参数。现有拖曳实验优先辨识整机等效摩擦/阻力、峰值、稳态段、波动统计和速度依赖；单条总拉力曲线不能唯一反演表面 PSD、局部摩擦、针尖强度和损伤参数。
 
@@ -161,5 +164,6 @@ Spine_Sim_V3/
 | M00 FOUNDATION | `1.0.0 frozen` | 已完成并通过验收 | [实施追踪](docs/simulator_development/implementation/M00_FOUNDATION_TRACEABILITY.md)、[验收报告](reports/m00/M00_ACCEPTANCE_REPORT.md) |
 | M01 SURFACE | `1.0.0 frozen` | 已完成并通过验收（仅表面/几何） | [实施追踪](docs/simulator_development/implementation/M01_SURFACE_TRACEABILITY.md)、[验收报告](reports/m01/M01_ACCEPTANCE_REPORT.md)、[验证报告](reports/m01/M01_VALIDATION_REPORT.md)；性能 JSON 与演示图按文档命令在本地重建，默认不追踪 |
 | M02 NUMERICS | `1.0.0 frozen` | 已完成并通过软件验收（不含 A/B 物理） | [实施追踪](docs/simulator_development/implementation/M02_NUMERICS_TRACEABILITY.md)、[验收报告](reports/m02/M02_ACCEPTANCE_REPORT.md)、[验证报告](reports/m02/M02_VALIDATION_REPORT.md)、[性能报告](reports/m02/M02_PERFORMANCE_REPORT.md)；大型 audit/bundle 按文档命令本地重建 |
-| M03–M07 | 未冻结 | 未开始；下一门仅进入 M03 需求讨论 | [M03 需求讨论提示词](docs/simulator_development/prompts/requirements_discussion/M03_SINGLE_SPINE_REQUIREMENTS_DISCUSSION.md)、[模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |
+| M03 SINGLE_SPINE | `1.0.0 frozen` | implementation delivered；acceptance blocked / evidence incomplete | [冻结需求](docs/simulator_development/requirements/M03_SINGLE_SPINE_REQUIREMENTS.md)、[实施追踪](docs/simulator_development/implementation/M03_SINGLE_SPINE_TRACEABILITY.md)、[M03 报告入口](reports/m03/) |
+| M04–M07 | 未冻结 | 未开始；M03 blocker 关闭前不自动推进 | [模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |
 | M08 C DIAGNOSTIC | deferred | 未开始；不阻塞首版 A/B | [模块规划](docs/simulator_development/SIMULATOR_MODULE_PLAN.md) |

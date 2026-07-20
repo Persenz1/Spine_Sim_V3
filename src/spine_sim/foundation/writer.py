@@ -145,10 +145,9 @@ class ResultWriter:
         (root / "transactions" / "committed").mkdir()
         (root / "rejected_trials" / "completed").mkdir()
         write_json_atomic(root / "schemas" / "registry.json", registry.snapshot())
-        registry.validate_record(run_envelope)
         write_parquet_records(
             root / "indices" / "runs.parquet",
-            [run_envelope.storage_dict()],
+            [registry.storage_dict(run_envelope)],
             compression=parquet_compression,
         )
         write_json_atomic(
@@ -289,7 +288,7 @@ class ResultWriter:
                 staging_path = staging_root / f"{dataset_id.replace('.', '__')}.parquet"
                 entry = write_parquet_records(
                     staging_path,
-                    [item.storage_dict() for item in records],
+                    [self.registry.storage_dict(item) for item in records],
                     compression=self.parquet_compression,
                 )
                 self.fault_injector(
@@ -372,7 +371,11 @@ class ResultWriter:
         path = case_dir / f"{safe_component(record.summary_id)}.parquet"
         if path.exists():
             raise ContractViolation(f"summary already exists: {record.summary_id}")
-        write_parquet_records(path, [record.storage_dict()], compression=self.parquet_compression)
+        write_parquet_records(
+            path,
+            [self.registry.storage_dict(registered_record)],
+            compression=self.parquet_compression,
+        )
         return path
 
     def finalize_case(self, case_id: str) -> CaseIndexBase:
@@ -399,7 +402,7 @@ class ResultWriter:
         self.registry.validate_record(record)
         write_parquet_records(
             self.root / "indices" / "cases" / f"{safe_component(case_id)}.parquet",
-            [record.storage_dict()],
+            [self.registry.storage_dict(record)],
             compression=self.parquet_compression,
         )
         index_payload = {
@@ -833,7 +836,7 @@ class ResultTransaction:
                 staging_path = self.staging_root / f"{dataset_id.replace('.', '__')}.parquet"
                 entry = write_parquet_records(
                     staging_path,
-                    [record.storage_dict() for record in patched],
+                    [self.writer.registry.storage_dict(record) for record in patched],
                     compression=self.writer.parquet_compression,
                 )
                 entry["semantic_hash"] = (
@@ -900,7 +903,7 @@ class ResultTransaction:
             receipt_staging = self.staging_root / "receipt.parquet"
             receipt_entry = write_parquet_records(
                 receipt_staging,
-                [receipt.storage_dict()],
+                [self.writer.registry.storage_dict(receipt)],
                 compression=self.writer.parquet_compression,
             )
             self.writer.fault_injector("receipt")

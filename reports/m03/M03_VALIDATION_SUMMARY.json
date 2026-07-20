@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0.0",
+  "module": "M03_SINGLE_SPINE",
+  "requirements_authority": "M03_SINGLE_SPINE_REQUIREMENTS 1.0.0 frozen",
+  "evidence_date": "2026-07-20",
+  "validation_status": "PARTIAL_EVIDENCE",
+  "acceptance_status": "NOT_ACCEPTED",
+  "acceptance_reason": "BLOCKED_EVIDENCE_INCOMPLETE",
+  "physics_scope": "no_damage + rigid Signorini/Coulomb + Euler-Bernoulli + A-authoritative mount",
+  "source_identity": [
+    "FIXED_ENGINEERING",
+    "ACCEPTED_AUTHORITY",
+    "PROPOSED_SUPPLEMENT",
+    "DEV_POLICY",
+    "VALIDATION_ONLY"
+  ],
+  "experimentally_validated": "NOT_ASSESSED",
+  "certification_status": "NOT_CERTIFIABLE",
+  "material_model": "no_damage",
+  "strength_capability": {
+    "status": "UNAVAILABLE",
+    "reason_code": "NEEDLE_STRENGTH_UNAVAILABLE",
+    "yield_margin": null,
+    "fracture_margin": null,
+    "failure_prediction_allowed": false
+  },
+  "analytic_suite": {
+    "command": ".venv/bin/python scripts/run_m03_analytic_suite.py --output build/m03/M03_ANALYTIC_SUITE.json",
+    "status": "PASSED",
+    "case_count": 6,
+    "passed_count": 6,
+    "failed_count": 0,
+    "total_check_count": 84,
+    "artifact": "build/m03/M03_ANALYTIC_SUITE.json",
+    "artifact_size_bytes": 87085,
+    "artifact_sha256": "88be8f67d246266d9e5fc3f5c202036fb7984d41b30a80e079ce082284d8a033",
+    "suite_id": "m03_analytic_validation_suite:60a01df350e956b34fcce732a9750ab1a79ba2edf9679b29a3887d9858b83731",
+    "scope": "M01 public query plus M03 analytic geometry; this does not establish 100 mm standalone mechanics"
+  },
+  "canonical_validation": {
+    "command": ".venv/bin/python scripts/run_m03_validation.py --bundle-output build/m03/M03_VALIDATION_ONLY.spine-result --figure-output build/m03/validation_figures --output build/m03/M03_VALIDATION_RUN.json --formats png svg",
+    "status": "PASSED_WITHIN_EMBEDDED_DEMO_SCOPE",
+    "validation_run_artifact": "build/m03/M03_VALIDATION_RUN.json",
+    "validation_run_artifact_size_bytes": 1670,
+    "validation_run_artifact_sha256": "bd1f1632a62ac267999b2a78e804ad90eb14b0032aaaefa3c54d4dec696b085b",
+    "bundle": {
+      "path": "build/m03/M03_VALIDATION_ONLY.spine-result",
+      "directory_size_bytes": 1748393,
+      "bundle_semantic_hash": "ca29cc6278da732a14e3f7183cadc5457ff736f7b0d23415cf2362a853ac4106",
+      "bundle_manifest_file_sha256": "aa270a33a6fd50d5de19fa968b90af4d6d5fb85c0af20753cae6a3557f5a0c1a",
+      "manifest_integrity_passed": true,
+      "full_integrity_passed": true,
+      "registered_dataset_count": 26,
+      "registered_m03_dataset_count": 12,
+      "accepted_row_count": 1,
+      "committed_event_row_count": 1,
+      "isolated_rejected_row_count": 1,
+      "derived_summary_row_count": 7,
+      "plot_recipe_row_count": 8,
+      "scope_note": "Minimal embedded analytic demo; not a complete standalone or campaign run"
+    },
+    "figures": {
+      "directory": "build/m03/validation_figures",
+      "directory_size_bytes": 1194929,
+      "recipe_artifact_count": 8,
+      "rendered_file_count": 16,
+      "formats": [
+        "png",
+        "svg"
+      ],
+      "rendered_with_data_gaps": 0,
+      "manifest_internal_hash": "832a6aa4b153e11f70b7a36430eb4bd7c5e2296609b29c98f485761f7729bc63",
+      "manifest_file_sha256": "ff41d60c85bb2dd0318bda27e5a7334832f244ff1929a26f788a1656cf4c2ec7",
+      "reader_compatibility_status": "FULL_SCHEMA_SUPPORT",
+      "interpretation": "Reader/rendering evidence only; parameter-trends is demo data, not a physical campaign trend"
+    },
+    "performance": {
+      "bundle_wall_time_seconds": 1.2668831939990923,
+      "figure_wall_time_seconds": 2.2556485649984097,
+      "total_wall_time_seconds": 3.6193864039996697,
+      "process_peak_rss_bytes": 245661696
+    }
+  },
+  "campaign": {
+    "plan_command": ".venv/bin/python scripts/run_m03_campaign.py --plan-only --output build/m03/M03_CAMPAIGN_PLAN_ONLY.json",
+    "execute_command": ".venv/bin/python scripts/run_m03_campaign.py --execute --output build/m03/M03_CAMPAIGN_RUN.json --cursor-output build/m03/M03_CAMPAIGN_CURSOR.json",
+    "plan_id": "M03_SYNTHETIC_36_PLUS_2_STREAMING_V1",
+    "campaign_replay_manifest_id": "m03_campaign_replay_manifest:078bcf4bde3ae5572d2d2cd67817b4543998f8ef14d8a949aaac65bcbf139c73",
+    "frozen_case_count": 38,
+    "primary_case_count": 36,
+    "smoke_case_count": 2,
+    "emitted_case_result_count": 38,
+    "physically_completed_100_mm_count": 0,
+    "explicit_non_numerical_termination_count": 38,
+    "trend_eligible_count": 0,
+    "trend_value_count": 0,
+    "canonical_final_receipt_count": 0,
+    "terminal_status_counts": {
+      "CAPABILITY_TERMINATION": 38
+    },
+    "failure_axis_counts": {
+      "CAPABILITY_UNAVAILABLE": 38
+    },
+    "reason_code_counts": {
+      "M01_RESOLUTION_REFINEMENT_REQUIRED": 37,
+      "M03_GEOMETRY_UNCERTAIN": 1
+    },
+    "plan_artifact": {
+      "path": "build/m03/M03_CAMPAIGN_PLAN_ONLY.json",
+      "size_bytes": 65289,
+      "sha256": "975d992214fb781dd8c86b826acf6a62e81c4e33e71306d76a653fb5762463c0"
+    },
+    "run_artifact": {
+      "path": "build/m03/M03_CAMPAIGN_RUN.json",
+      "size_bytes": 140089,
+      "sha256": "425c7b95420c80cfe7269a89f19f0181d62b8e0eba71c5153851f63908db54dc"
+    },
+    "aggregate_metrics": {
+      "runner_wall_time_seconds": 293.06294233600056,
+      "case_wall_time_seconds": {
+        "sum": 292.09402964598485,
+        "min": 1.0682987280015368,
+        "mean": 7.686684990683812,
+        "max": 29.05771905399888
+      },
+      "peak_rss_bytes": {
+        "min": 132276224,
+        "mean": 145433977.2631579,
+        "max": 153763840
+      },
+      "transient_full_history_artifact_size_bytes": {
+        "sum": 157254765,
+        "min": 3829201,
+        "mean": 4138283.289473684,
+        "max": 15233981
+      },
+      "accepted_count_sum": 0,
+      "trial_count_sum": 41,
+      "committed_event_count_sum": 0,
+      "query_count_sum": 164,
+      "cache_payload_bytes_sum": 0,
+      "cache_hit_count_sum": 0,
+      "cache_miss_count_sum": 0,
+      "cache_regeneration_count_sum": 0
+    },
+    "streaming_evidence": {
+      "checkpoint_interval_cases": 1,
+      "maximum_full_histories_allowed": 1,
+      "maximum_full_histories_observed": 1,
+      "retained_completed_full_history_count": 0,
+      "full_domain_dense_grid_created": false
+    },
+    "semantic_replay_evidence": {
+      "pause_resume_case_slices_checked": [
+        0,
+        1
+      ],
+      "independent_parallel_equivalence_slices_checked": [
+        2,
+        3
+      ],
+      "cold_warm_case_checked": 0,
+      "semantic_case_result_ids_equal": true,
+      "case_replay_ids_equal": true,
+      "nonvolatile_metrics_equal": true,
+      "execution_profile_equal": true,
+      "trend_eligibility_evidence_equal": true,
+      "scope_note": "Equivalence is established for explicit capability-terminal rows; there is no committed 100 mm campaign history to replay"
+    },
+    "interpretation": "The runner completed all 38 requested executions and emitted auditable non-numerical outcomes. Its field completed_case_count=38 means execution rows were completed, not that any case travelled 100 mm. Thirty-seven rows preserve M01_RESOLUTION_REFINEMENT_REQUIRED instead of masking it with a secondary missing-guard reason."
+  },
+  "loaded_plane_work_audit": {
+    "direction": "A_on_B contact-only wrench",
+    "actuator_input_work_n_mm": 0.00004326195278823709,
+    "delta_beam_energy_n_mm": 1.38051194592e-7,
+    "delta_spring_energy_n_mm": 0.0000332088486136,
+    "friction_dissipation_n_mm": 0.0000198339659972,
+    "closure_error_n_mm": -0.00000991891301724,
+    "normalized_closure_error": 0.1865128,
+    "hard_quality_passed": false,
+    "terminal_status": "REJECTED_TRIAL",
+    "failure_axis": "NUMERICAL_FAILURE",
+    "reason_code": "M03_HARD_RESIDUAL_QUALITY_FAILED",
+    "interpretation": "The independent signed quadrature and hard gate are working; the mechanics/work closure is not accepted."
+  },
+  "verification": {
+    "full_pytest": "574 passed in 107.61 s",
+    "m03_pytest_count": 134,
+    "lower_module_pytest_count": 440,
+    "ruff_check": "PASSED: .venv/bin/ruff check src tests scripts",
+    "ruff_format_check": "132 files already formatted: src tests scripts",
+    "strict_mypy": "Success: no issues found in 75 source files: src/spine_sim scripts",
+    "build": "wheel and sdist built successfully",
+    "wheel": {
+      "path": "dist/spine_sim-0.4.0-py3-none-any.whl",
+      "size_bytes": 457304,
+      "sha256": "2e924be86c2a73d6bb22dbb4f44fd1f3f38548c3218c3553bbaa4521541d21e5"
+    },
+    "local_markdown_link_check": "7 documents, 105 local links, 0 missing"
+  },
+  "unavailable_or_deferred": {
+    "damage": "NOT_APPLICABLE_NO_DAMAGE_MODEL",
+    "fracture_energy": "NOT_APPLICABLE_NO_DAMAGE_MODEL",
+    "needle_strength": "NEEDLE_STRENGTH_UNAVAILABLE",
+    "degenerate_candidate_normal_schema": "UNREPRESENTABLE_WITH_FROZEN_NON_NULL_FIELD",
+    "independent_actuator_work_closure": "FAILED_HARD_QUALITY_GATE",
+    "all_runtime_event_guards": "INCOMPLETE",
+    "baseline_100_mm": "NOT_COMPLETED",
+    "campaign_trends": "UNAVAILABLE_NO_ELIGIBLE_CASES",
+    "m04_array": "NOT_STARTED",
+    "m05_scheduler_ranker": "NOT_STARTED",
+    "m06_production_plotting": "NOT_STARTED"
+  },
+  "blockers": [
+    "M03-B01 radial_normal_global=None cannot be represented by the frozen non-null candidate normal schema without fabricating evidence",
+    "M03-B02 the independently integrated loaded-plane work ledger fails its hard closure gate by 18.65 percent and returned-energy lifecycle evidence is incomplete",
+    "M03-B03 final deformed tip/support geometry is not re-queried to convergence and previous-active receipt lineage is not yet carried by a transaction-owned append-only continuation evidence store",
+    "M03-B04 the real intrinsic path does not provide complete M01-bound coverage or 32-kind one-sided event/post evidence; the campaign terminates at geometry quality before exercising that matrix",
+    "M03-B05 thirty-seven cases require new M01 refinement evidence and one is geometry-uncertain; no intrinsic case completes 100 mm, has a canonical final M00 receipt, or yields an eligible trend",
+    "M03-B06 rough/general refinement, bent-centerline collision, full-kernel hard-stop, and step/event/LOD work convergence remain incomplete",
+    "M03-B07 operation persistence can retain raw_guard indirectly while publishing a null operation raw_guard field and endpoint-derived quality; this evidence contract remains incomplete"
+  ],
+  "interpretation": {
+    "analytic_pass_is_module_acceptance": false,
+    "canonical_demo_is_standalone_completion": false,
+    "campaign_execution_row_is_100_mm_completion": false,
+    "explicit_capability_termination_is_numerical_failure": false,
+    "renderer_data_gap_free_is_physical_trend_evidence": false,
+    "synthetic_or_analytic_evidence_is_experimental_validation": false,
+    "certifiable": false
+  }
+}

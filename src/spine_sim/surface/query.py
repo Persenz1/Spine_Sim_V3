@@ -594,7 +594,25 @@ class SurfaceQueryHandle:
         residuals: list[float] = []
         errors: list[float] = []
         global_cells: list[int] = []
-        for index in np.flatnonzero(classified.validity):
+        valid_indices = np.flatnonzero(classified.validity)
+        approximate_results: dict[int, tuple[list[_Candidate], float, float, int]] = {}
+        if declared is not QueryCapability.EXACT and valid_indices.size:
+            mapped_points = points[valid_indices].copy()
+            mapped_points[:, :2] = classified.mapped_coordinates_mm[valid_indices]
+            approximate_results = dict(
+                zip(
+                    (int(index) for index in valid_indices),
+                    _approximate_candidates_many(
+                        self.evaluator,
+                        mapped_points,
+                        requested_tolerance_mm=requested_tolerance_mm,
+                        co_minimal_tolerance_mm=co_minimal_tolerance_mm,
+                        maximum_global_cells=maximum_global_cells,
+                    ),
+                    strict=True,
+                )
+            )
+        for index in valid_indices:
             point = points[index].copy()
             point[:2] = classified.mapped_coordinates_mm[index]
             if declared is QueryCapability.EXACT:
@@ -603,13 +621,7 @@ class SurfaceQueryHandle:
                 error = 0.0
                 cells = 0
             else:
-                candidates, residual, error, cells = _approximate_candidates(
-                    self.evaluator,
-                    point,
-                    requested_tolerance_mm=requested_tolerance_mm,
-                    co_minimal_tolerance_mm=co_minimal_tolerance_mm,
-                    maximum_global_cells=maximum_global_cells,
-                )
+                candidates, residual, error, cells = approximate_results[int(index)]
             if not candidates:
                 continue
             signed_sign = _inside_sign(self.evaluator, point)
@@ -729,13 +741,25 @@ class SurfaceQueryHandle:
         requested_tolerance_mm: float | None = None,
         co_minimal_tolerance_mm: float = 1.0e-9,
         maximum_global_cells: int = 20_000,
+        _precomputed_closest_response: QueryResponse | None = None,
     ) -> QueryResponse:
-        closest = self.query_closest_features(
-            points_mm,
-            requested_tolerance_mm=requested_tolerance_mm,
-            co_minimal_tolerance_mm=co_minimal_tolerance_mm,
-            maximum_global_cells=maximum_global_cells,
-        )
+        points = _xyz_points(points_mm)
+        if _precomputed_closest_response is None:
+            closest = self.query_closest_features(
+                points,
+                requested_tolerance_mm=requested_tolerance_mm,
+                co_minimal_tolerance_mm=co_minimal_tolerance_mm,
+                maximum_global_cells=maximum_global_cells,
+            )
+        else:
+            closest = _validate_precomputed_closest_response(
+                self,
+                points,
+                _precomputed_closest_response,
+                requested_tolerance_mm=requested_tolerance_mm,
+                co_minimal_tolerance_mm=co_minimal_tolerance_mm,
+                maximum_global_cells=maximum_global_cells,
+            )
         values = np.zeros(len(closest.domain_status), dtype=np.float64)
         validity = closest.quality_mask.copy()
         for index, items in enumerate(closest.feature_sets):
@@ -754,14 +778,14 @@ class SurfaceQueryHandle:
         )
         return self._response(
             operation="signed_distance",
-            requested={"points_mm": _xyz_points(points_mm)},
+            requested={"points_mm": points},
             capability=closest.capability,
             method_id=closest.method_id,
             domain=DomainClassification(
-                _xyz_points(points_mm)[:, :2],
+                points[:, :2],
                 closest.mapped_coordinates_mm
                 if closest.mapped_coordinates_mm is not None
-                else _xyz_points(points_mm)[:, :2],
+                else points[:, :2],
                 closest.domain_status,
                 closest.quality_mask,
             ),
@@ -1039,6 +1063,51 @@ def _validate_closest_options(
         raise ContractViolation("co_minimal_tolerance_mm must be finite and non-negative")
     if maximum_global_cells < 16 or maximum_global_cells > 1_000_000:
         raise ContractViolation("maximum_global_cells must be in [16, 1000000]")
+
+
+def _validate_precomputed_closest_response(
+    handle: SurfaceQueryHandle,
+    points: FloatArray,
+    response: QueryResponse,
+    *,
+    requested_tolerance_mm: float | None,
+    co_minimal_tolerance_mm: float,
+    maximum_global_cells: int,
+) -> QueryResponse:
+    """Validate an internal same-call closest result before deterministic reuse."""
+
+    _validate_closest_options(
+        requested_tolerance_mm,
+        co_minimal_tolerance_mm,
+        maximum_global_cells,
+    )
+    expected_request_hash = semantic_hash(
+        {
+            "points_mm": points,
+            "co_minimal_tolerance_mm": co_minimal_tolerance_mm,
+        }
+    )
+    metadata = dict(response.metadata)
+    cells = metadata.get("global_bound_cells_by_point")
+    if isinstance(cells, tuple):
+        valid_cells = len(cells) <= len(points) and all(
+            isinstance(value, int) and 0 <= value <= maximum_global_cells + 3 for value in cells
+        )
+    else:
+        valid_cells = False
+    if (
+        response.operation != "closest_features"
+        or response.surface_realization_id != handle.realization.surface_realization_id
+        or response.surface_spec_id != handle.realization.surface_spec_id
+        or response.requested_points_or_region_hash != expected_request_hash
+        or response.requested_tolerance != requested_tolerance_mm
+        or len(response.domain_status) != len(points)
+        or not valid_cells
+    ):
+        raise ContractViolation(
+            "precomputed closest response does not match the signed-distance request"
+        )
+    return response
 
 
 def _inside_sign(evaluator: GraphEvaluator, query: FloatArray) -> float:
@@ -1386,6 +1455,123 @@ def _approximate_candidates(
     co_minimal_tolerance_mm: float,
     maximum_global_cells: int,
 ) -> tuple[list[_Candidate], float, float, int]:
+    return _approximate_candidates_many(
+        evaluator,
+        np.asarray(query, dtype=np.float64).reshape(1, 3),
+        requested_tolerance_mm=requested_tolerance_mm,
+        co_minimal_tolerance_mm=co_minimal_tolerance_mm,
+        maximum_global_cells=maximum_global_cells,
+    )[0]
+
+
+def _approximate_candidates_many(
+    evaluator: GraphEvaluator,
+    queries: FloatArray,
+    *,
+    requested_tolerance_mm: float | None,
+    co_minimal_tolerance_mm: float,
+    maximum_global_cells: int,
+) -> tuple[tuple[list[_Candidate], float, float, int], ...]:
+    query_array = np.asarray(queries, dtype=np.float64)
+    if query_array.ndim != 2 or query_array.shape[1] != 3 or len(query_array) == 0:
+        raise ValueError("approximate closest queries must have shape (N, 3), N >= 1")
+    local_results = _approximate_local_candidates_many(
+        evaluator,
+        query_array,
+        co_minimal_tolerance_mm=co_minimal_tolerance_mm,
+    )
+    best_distances = np.asarray(
+        [
+            min(math.dist(item.point, tuple(query)) for item in local)
+            for query, (local, _) in zip(query_array, local_results, strict=True)
+        ],
+        dtype=np.float64,
+    )
+    target = requested_tolerance_mm if requested_tolerance_mm is not None else 1.0e-6
+    global_results = _adaptive_global_lower_bounds(
+        evaluator,
+        query_array,
+        best_distances,
+        target,
+        maximum_global_cells,
+    )
+    results: list[tuple[list[_Candidate], float, float, int]] = []
+    for (local, residual), best_distance, (lower, cells) in zip(
+        local_results,
+        best_distances,
+        global_results,
+        strict=True,
+    ):
+        global_error = max(
+            float(best_distance) - lower,
+            np.finfo(np.float64).eps * max(1.0, float(best_distance)),
+        )
+        results.append((local, residual, global_error, cells))
+    return tuple(results)
+
+
+def _approximate_local_candidates(
+    evaluator: GraphEvaluator,
+    query: FloatArray,
+    *,
+    co_minimal_tolerance_mm: float,
+) -> tuple[list[_Candidate], float]:
+    starts = _approximate_newton_starts(evaluator, query)
+    projected, residuals = _project_graph_newton_many(evaluator, query, starts)
+    evaluation = evaluator.evaluate(projected[:, 0], projected[:, 1], derivative_order=2)
+    return _projected_local_candidates(
+        evaluator,
+        query,
+        evaluation,
+        residuals,
+        range(len(projected)),
+        co_minimal_tolerance_mm,
+    )
+
+
+def _approximate_local_candidates_many(
+    evaluator: GraphEvaluator,
+    queries: FloatArray,
+    *,
+    co_minimal_tolerance_mm: float,
+) -> tuple[tuple[list[_Candidate], float], ...]:
+    starts_by_query = tuple(_approximate_newton_starts(evaluator, query) for query in queries)
+    combined_starts = np.concatenate(starts_by_query, axis=0)
+    targets = np.concatenate(
+        tuple(
+            np.repeat(query[np.newaxis, :], len(starts), axis=0)
+            for query, starts in zip(queries, starts_by_query, strict=True)
+        ),
+        axis=0,
+    )
+    projected, residuals = _project_graph_newton_pairs(
+        evaluator,
+        targets,
+        combined_starts,
+    )
+    evaluation = evaluator.evaluate(projected[:, 0], projected[:, 1], derivative_order=2)
+    results: list[tuple[list[_Candidate], float]] = []
+    offset = 0
+    for query, starts in zip(queries, starts_by_query, strict=True):
+        stop = offset + len(starts)
+        results.append(
+            _projected_local_candidates(
+                evaluator,
+                query,
+                evaluation,
+                residuals,
+                range(offset, stop),
+                co_minimal_tolerance_mm,
+            )
+        )
+        offset = stop
+    return tuple(results)
+
+
+def _approximate_newton_starts(
+    evaluator: GraphEvaluator,
+    query: FloatArray,
+) -> FloatArray:
     domain = evaluator.spec.logical_domain
     seeds = [query[:2].copy()]
     p = evaluator.parameters
@@ -1415,45 +1601,47 @@ def _approximate_candidates(
     )
     seed_eval = evaluator.evaluate(seed_array[:, 0], seed_array[:, 1])
     seed_distance2 = np.sum((seed_eval.points - query) ** 2, axis=1)
-    starts = seed_array[np.argsort(seed_distance2)[: min(16, len(seed_array))]]
+    return seed_array[np.argsort(seed_distance2)[: min(16, len(seed_array))]]
+
+
+def _projected_local_candidates(
+    evaluator: GraphEvaluator,
+    query: FloatArray,
+    evaluation: AnalyticEvaluation,
+    residuals: FloatArray,
+    indices: Iterable[int],
+    co_minimal_tolerance_mm: float,
+) -> tuple[list[_Candidate], float]:
     local: list[_Candidate] = []
-    for start in starts:
-        uv, residual = _project_graph_newton(evaluator, query, start)
-        evaluation = evaluator.evaluate(uv[0], uv[1], derivative_order=2)
-        evaluated_point = evaluation.points[0]
+    for index in indices:
+        evaluated_point = evaluation.points[index]
         point = (
             float(evaluated_point[0]),
             float(evaluated_point[1]),
             float(evaluated_point[2]),
         )
-        evaluated_normal = evaluation.normal[0]
-        normals = evaluation.one_sided_normals[0] or (
+        evaluated_normal = evaluation.normal[index]
+        normals = evaluation.one_sided_normals[index] or (
             (
                 float(evaluated_normal[0]),
                 float(evaluated_normal[1]),
                 float(evaluated_normal[2]),
             ),
         )
-        feature_ids = evaluation.feature_sets[0] or (f"{evaluator.family.value}_smooth_face",)
+        feature_ids = evaluation.feature_sets[index] or (f"{evaluator.family.value}_smooth_face",)
         local.append(
             _Candidate(
                 point,
                 normals,
                 "+".join(feature_ids),
                 "analytic_graph_candidate",
-                residual,
+                float(residuals[index]),
                 0.0,
             )
         )
     local = _co_minimal_candidates(local, query, co_minimal_tolerance_mm)
-    best_distance = min(math.dist(item.point, tuple(query)) for item in local)
-    target = requested_tolerance_mm if requested_tolerance_mm is not None else 1.0e-6
-    lower, cells = _adaptive_global_lower_bound(
-        evaluator, query, best_distance, target, maximum_global_cells
-    )
-    global_error = max(best_distance - lower, np.finfo(np.float64).eps * max(1.0, best_distance))
     residual = max((item.residual for item in local), default=0.0)
-    return local, residual, global_error, cells
+    return local, residual
 
 
 def _project_graph_newton(
@@ -1506,6 +1694,142 @@ def _project_graph_newton(
     return uv, float(np.linalg.norm(tangent))
 
 
+def _project_graph_newton_many(
+    evaluator: GraphEvaluator,
+    query: FloatArray,
+    starts: FloatArray,
+) -> tuple[FloatArray, FloatArray]:
+    targets = np.repeat(
+        np.asarray(query, dtype=np.float64).reshape(1, 3),
+        len(starts),
+        axis=0,
+    )
+    return _project_graph_newton_pairs(evaluator, targets, starts)
+
+
+def _project_graph_newton_pairs(
+    evaluator: GraphEvaluator,
+    queries: FloatArray,
+    starts: FloatArray,
+) -> tuple[FloatArray, FloatArray]:
+    """Project independent starts while batching evaluator calls.
+
+    The Newton, clipping, Armijo, and stopping rules are deliberately the same
+    as :func:`_project_graph_newton`.  Only surface evaluation is batched.  This
+    matters for finite-mode synthetic fields: their locked reduction order is
+    over modes, so evaluating all active starts together preserves each
+    point's ordered sum while avoiding one Python mode loop per start.
+    """
+
+    domain = evaluator.spec.logical_domain
+    lower = np.array([domain.x_min_mm, domain.y_min_mm])
+    upper = np.array([domain.x_max_mm, domain.y_max_mm])
+    uv = np.clip(np.asarray(starts, dtype=np.float64), lower, upper).copy()
+    query_array = np.asarray(queries, dtype=np.float64)
+    if uv.ndim != 2 or uv.shape[1] != 2:
+        raise ValueError("Newton starts must have shape (N, 2)")
+    if query_array.shape != (len(uv), 3):
+        raise ValueError("Newton query targets must have shape (N, 3)")
+    active = np.ones(len(uv), dtype=np.bool_)
+    query_scales = 1.0e-13 * np.maximum(
+        1.0,
+        np.linalg.norm(query_array, axis=1),
+    )
+
+    for _ in range(64):
+        active_indices = np.flatnonzero(active)
+        if active_indices.size == 0:
+            break
+        value = evaluator.evaluate(
+            uv[active_indices, 0],
+            uv[active_indices, 1],
+            derivative_order=2,
+        )
+        search_indices: list[int] = []
+        search_steps: list[FloatArray] = []
+        search_gradients: list[FloatArray] = []
+        search_objectives: list[float] = []
+        for local_index, global_index in enumerate(active_indices):
+            query = query_array[global_index]
+            height = float(value.height[local_index])
+            gradient = value.gradient[local_index]
+            delta_z = height - query[2]
+            objective_gradient = uv[global_index] - query[:2] + delta_z * gradient
+            if np.linalg.norm(objective_gradient) <= query_scales[global_index]:
+                active[global_index] = False
+                continue
+            objective_hessian = np.eye(2) + np.outer(gradient, gradient)
+            if value.hessian is not None and value.hessian_validity[local_index]:
+                objective_hessian += delta_z * value.hessian[local_index]
+            try:
+                step = np.linalg.solve(objective_hessian, objective_gradient)
+            except np.linalg.LinAlgError:
+                step = objective_gradient / max(np.linalg.norm(objective_gradient), 1.0)
+            current_point = value.points[local_index]
+            current_objective = 0.5 * float(np.dot(current_point - query, current_point - query))
+            search_indices.append(int(global_index))
+            search_steps.append(step)
+            search_gradients.append(objective_gradient)
+            search_objectives.append(current_objective)
+
+        if not search_indices:
+            continue
+        indices = np.asarray(search_indices, dtype=np.int64)
+        steps = np.asarray(search_steps, dtype=np.float64)
+        gradients = np.asarray(search_gradients, dtype=np.float64)
+        objectives = np.asarray(search_objectives, dtype=np.float64)
+        scales = np.ones(len(indices), dtype=np.float64)
+        accepted = np.zeros(len(indices), dtype=np.bool_)
+        pending = np.ones(len(indices), dtype=np.bool_)
+        for _ in range(24):
+            pending_positions = np.flatnonzero(pending)
+            if pending_positions.size == 0:
+                break
+            pending_indices = indices[pending_positions]
+            trials = np.clip(
+                uv[pending_indices]
+                - scales[pending_positions, np.newaxis] * steps[pending_positions],
+                lower,
+                upper,
+            )
+            trial_value = evaluator.evaluate(
+                trials[:, 0],
+                trials[:, 1],
+                derivative_order=0,
+            )
+            for local_index, position in enumerate(pending_positions):
+                query = query_array[indices[position]]
+                delta = trial_value.points[local_index] - query
+                objective = 0.5 * float(np.dot(delta, delta))
+                armijo = objectives[position] - 1.0e-4 * scales[position] * float(
+                    np.dot(gradients[position], steps[position])
+                )
+                if objective <= armijo:
+                    uv[indices[position]] = trials[local_index]
+                    accepted[position] = True
+                    pending[position] = False
+                else:
+                    scales[position] *= 0.5
+
+        for final_position in range(len(indices)):
+            final_global_index = int(indices[final_position])
+            if not accepted[final_position] or np.linalg.norm(
+                scales[final_position] * steps[final_position]
+            ) <= 1.0e-13 * max(1.0, np.linalg.norm(uv[final_global_index])):
+                active[final_global_index] = False
+
+    value = evaluator.evaluate(uv[:, 0], uv[:, 1], derivative_order=1)
+    residuals = np.empty(len(uv), dtype=np.float64)
+    for index in range(len(uv)):
+        # Keep the scalar arithmetic order of ``_project_graph_newton`` so
+        # receipt-bearing residuals remain bitwise stable.
+        surface_delta = value.points[index] - query_array[index]
+        normal = value.normal[index]
+        tangent = surface_delta - np.dot(surface_delta, normal) * normal
+        residuals[index] = np.linalg.norm(tangent)
+    return uv, residuals
+
+
 def _interval_distance(value: float, lower: float, upper: float) -> float:
     if value < lower:
         return lower - value
@@ -1521,50 +1845,128 @@ def _adaptive_global_lower_bound(
     tolerance: float,
     maximum_cells: int,
 ) -> tuple[float, int]:
+    return _adaptive_global_lower_bounds(
+        evaluator,
+        np.asarray(query, dtype=np.float64).reshape(1, 3),
+        np.asarray([upper_distance], dtype=np.float64),
+        tolerance,
+        maximum_cells,
+    )[0]
+
+
+def _adaptive_global_lower_bounds(
+    evaluator: GraphEvaluator,
+    queries: FloatArray,
+    upper_distances: FloatArray,
+    tolerance: float,
+    maximum_cells: int,
+) -> tuple[tuple[float, int], ...]:
+    """Run independent best-first bounds with cross-query evaluator batches."""
+
+    query_array = np.asarray(queries, dtype=np.float64)
+    upper_array = np.asarray(upper_distances, dtype=np.float64)
+    if query_array.ndim != 2 or query_array.shape[1] != 3 or len(query_array) == 0:
+        raise ValueError("global-bound queries must have shape (N, 3), N >= 1")
+    if upper_array.shape != (len(query_array),):
+        raise ValueError("global-bound upper distances must have shape (N,)")
     domain = evaluator.spec.logical_domain
     slope_bound = evaluator.global_slope_bound()
-    serial = 0
-    heap: list[tuple[float, int, tuple[float, float, float, float]]] = []
+    serials = [0 for _ in query_array]
+    heaps: list[list[tuple[float, int, tuple[float, float, float, float]]]] = [
+        [] for _ in query_array
+    ]
+    created = [1 for _ in query_array]
 
-    def bound(cell: tuple[float, float, float, float]) -> float:
-        x0, x1, y0, y1 = cell
-        xc = 0.5 * (x0 + x1)
-        yc = 0.5 * (y0 + y1)
-        height = float(evaluator.evaluate(xc, yc, derivative_order=0).height[0])
-        radius = 0.5 * math.hypot(x1 - x0, y1 - y0)
-        z0 = height - slope_bound * radius
-        z1 = height + slope_bound * radius
-        dx = _interval_distance(float(query[0]), x0, x1)
-        dy = _interval_distance(float(query[1]), y0, y1)
-        dz = _interval_distance(float(query[2]), z0, z1)
-        return math.sqrt(dx * dx + dy * dy + dz * dz)
+    def bounds(
+        cells: Sequence[tuple[float, float, float, float]],
+        query_indices: Sequence[int],
+    ) -> tuple[float, ...]:
+        centers = np.asarray(
+            [(0.5 * (x0 + x1), 0.5 * (y0 + y1)) for x0, x1, y0, y1 in cells],
+            dtype=np.float64,
+        )
+        heights = evaluator.evaluate(
+            centers[:, 0],
+            centers[:, 1],
+            derivative_order=0,
+        ).height
+        result: list[float] = []
+        for cell, height_value, query_index in zip(
+            cells,
+            heights,
+            query_indices,
+            strict=True,
+        ):
+            x0, x1, y0, y1 = cell
+            height = float(height_value)
+            radius = 0.5 * math.hypot(x1 - x0, y1 - y0)
+            z0 = height - slope_bound * radius
+            z1 = height + slope_bound * radius
+            query = query_array[query_index]
+            dx = _interval_distance(float(query[0]), x0, x1)
+            dy = _interval_distance(float(query[1]), y0, y1)
+            dz = _interval_distance(float(query[2]), z0, z1)
+            result.append(math.sqrt(dx * dx + dy * dy + dz * dz))
+        return tuple(result)
 
     initial = (domain.x_min_mm, domain.x_max_mm, domain.y_min_mm, domain.y_max_mm)
-    heapq.heappush(heap, (bound(initial), serial, initial))
-    created = 1
-    while heap and created < maximum_cells:
-        lower_bound, _, cell = heap[0]
-        if upper_distance - lower_bound <= tolerance:
+    initial_cells = tuple(initial for _ in query_array)
+    initial_bounds = bounds(initial_cells, tuple(range(len(query_array))))
+    for query_index, initial_bound in enumerate(initial_bounds):
+        heapq.heappush(heaps[query_index], (initial_bound, 0, initial))
+
+    active = np.ones(len(query_array), dtype=np.bool_)
+    while active.any():
+        work: list[tuple[int, tuple[tuple[float, float, float, float], ...]]] = []
+        for active_query_index in np.flatnonzero(active):
+            query_index = int(active_query_index)
+            heap = heaps[query_index]
+            if not heap or created[query_index] >= maximum_cells:
+                active[query_index] = False
+                continue
+            lower_bound, _, cell = heap[0]
+            if upper_array[query_index] - lower_bound <= tolerance:
+                active[query_index] = False
+                continue
+            heapq.heappop(heap)
+            x0, x1, y0, y1 = cell
+            if max(x1 - x0, y1 - y0) <= np.finfo(np.float64).eps * 1024:
+                heapq.heappush(heap, (lower_bound, serials[query_index], cell))
+                active[query_index] = False
+                continue
+            xm = 0.5 * (x0 + x1)
+            ym = 0.5 * (y0 + y1)
+            work.append(
+                (
+                    int(query_index),
+                    (
+                        (x0, xm, y0, ym),
+                        (xm, x1, y0, ym),
+                        (x0, xm, ym, y1),
+                        (xm, x1, ym, y1),
+                    ),
+                )
+            )
+        if not work:
             break
-        heapq.heappop(heap)
-        x0, x1, y0, y1 = cell
-        if max(x1 - x0, y1 - y0) <= np.finfo(np.float64).eps * 1024:
-            heapq.heappush(heap, (lower_bound, serial, cell))
-            break
-        xm = 0.5 * (x0 + x1)
-        ym = 0.5 * (y0 + y1)
-        for child in (
-            (x0, xm, y0, ym),
-            (xm, x1, y0, ym),
-            (x0, xm, ym, y1),
-            (xm, x1, ym, y1),
-        ):
-            child_bound = bound(child)
-            created += 1
-            serial += 1
-            if child_bound <= upper_distance:
-                heapq.heappush(heap, (child_bound, serial, child))
-    return (min((item[0] for item in heap), default=upper_distance), created)
+        cells = tuple(child for _, children in work for child in children)
+        query_indices = tuple(query_index for query_index, children in work for _ in children)
+        child_bounds = iter(bounds(cells, query_indices))
+        for query_index, children in work:
+            for child in children:
+                child_bound = next(child_bounds)
+                created[query_index] += 1
+                serials[query_index] += 1
+                if child_bound <= upper_array[query_index]:
+                    heapq.heappush(
+                        heaps[query_index],
+                        (child_bound, serials[query_index], child),
+                    )
+
+    return tuple(
+        (min((item[0] for item in heap), default=float(upper_array[index])), created[index])
+        for index, heap in enumerate(heaps)
+    )
 
 
 def _family_feature_ids(family: SurfaceFamily) -> tuple[str, ...]:

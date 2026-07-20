@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0.0",
+  "module": "M03_SINGLE_SPINE",
+  "requirements_authority": "M03_SINGLE_SPINE_REQUIREMENTS 1.0.0 sections 16.8 and 20",
+  "evidence_date": "2026-07-20",
+  "performance_status": "EXECUTED_BOUNDED_BUT_BASELINE_INCOMPLETE",
+  "acceptance_status": "NOT_ACCEPTED",
+  "acceptance_reason": "BLOCKED_EVIDENCE_INCOMPLETE",
+  "measurement_kind": "LOCAL_DEV_PRIOR_OBSERVATION_NOT_SLA",
+  "scope": {
+    "experimentally_validated": "NOT_ASSESSED",
+    "certification_status": "NOT_CERTIFIABLE",
+    "material_model": "no_damage",
+    "needle_strength": "NEEDLE_STRENGTH_UNAVAILABLE",
+    "cross_platform_sla": false,
+    "physically_completed_100_mm_case_count": 0
+  },
+  "environment": {
+    "system": "Linux",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python_implementation": "CPython",
+    "python_version": "3.12.3",
+    "cpu_model": "AMD Ryzen AI 9 H 365 w/ Radeon 880M",
+    "physical_cpu_count": 10,
+    "logical_cpu_count": 20,
+    "physical_memory_bytes": 32711241728,
+    "git_base_commit": "4e1239d0ddf1",
+    "git_worktree_state": "DIRTY_INTEGRATION_TREE"
+  },
+  "analytic_suite": {
+    "command": ".venv/bin/python scripts/run_m03_analytic_suite.py --output build/m03/M03_ANALYTIC_SUITE.json",
+    "status": "PASSED",
+    "case_count": 6,
+    "passed_count": 6,
+    "check_count": 84,
+    "artifact_path": "build/m03/M03_ANALYTIC_SUITE.json",
+    "artifact_size_bytes": 87085,
+    "artifact_sha256": "88be8f67d246266d9e5fc3f5c202036fb7984d41b30a80e079ce082284d8a033",
+    "timing_note": "The final regeneration was not wrapped by an independent resource sampler; no final wall/RSS number is asserted here."
+  },
+  "canonical_validation": {
+    "command": ".venv/bin/python scripts/run_m03_validation.py --bundle-output build/m03/M03_VALIDATION_ONLY.spine-result --figure-output build/m03/validation_figures --output build/m03/M03_VALIDATION_RUN.json --formats png svg",
+    "status": "PASSED_WITHIN_EMBEDDED_DEMO_SCOPE",
+    "bundle_wall_time_seconds": 1.2668831939990923,
+    "figure_wall_time_seconds": 2.2556485649984097,
+    "total_wall_time_seconds": 3.6193864039996697,
+    "process_peak_rss_bytes": 245661696,
+    "validation_run_artifact": {
+      "path": "build/m03/M03_VALIDATION_RUN.json",
+      "size_bytes": 1670,
+      "sha256": "bd1f1632a62ac267999b2a78e804ad90eb14b0032aaaefa3c54d4dec696b085b"
+    },
+    "bundle": {
+      "path": "build/m03/M03_VALIDATION_ONLY.spine-result",
+      "directory_size_bytes": 1748393,
+      "semantic_hash": "ca29cc6278da732a14e3f7183cadc5457ff736f7b0d23415cf2362a853ac4106",
+      "manifest_file_size_bytes": 8208,
+      "manifest_file_sha256": "aa270a33a6fd50d5de19fa968b90af4d6d5fb85c0af20753cae6a3557f5a0c1a"
+    },
+    "figures": {
+      "directory": "build/m03/validation_figures",
+      "directory_size_bytes": 1194929,
+      "recipe_count": 8,
+      "rendered_file_count": 16,
+      "png_count": 8,
+      "svg_count": 8,
+      "data_gap_count": 0,
+      "manifest_file_size_bytes": 20260,
+      "manifest_file_sha256": "ff41d60c85bb2dd0318bda27e5a7334832f244ff1929a26f788a1656cf4c2ec7",
+      "manifest_internal_hash": "832a6aa4b153e11f70b7a36430eb4bd7c5e2296609b29c98f485761f7729bc63"
+    }
+  },
+  "campaign_plan": {
+    "command": ".venv/bin/python scripts/run_m03_campaign.py --plan-only --output build/m03/M03_CAMPAIGN_PLAN_ONLY.json",
+    "status": "PASSED",
+    "planned_case_count": 38,
+    "primary_case_count": 36,
+    "smoke_case_count": 2,
+    "artifact_size_bytes": 65289,
+    "artifact_sha256": "975d992214fb781dd8c86b826acf6a62e81c4e33e71306d76a653fb5762463c0",
+    "performance_interpretation": "Plan serialization only; active execution is reported separately."
+  },
+  "real_campaign": {
+    "command": ".venv/bin/python scripts/run_m03_campaign.py --execute --output build/m03/M03_CAMPAIGN_RUN.json --cursor-output build/m03/M03_CAMPAIGN_CURSOR.json",
+    "status": "ALL_REQUESTED_EXECUTIONS_EMITTED_CAPABILITY_TERMINATIONS",
+    "campaign_replay_manifest_id": "m03_campaign_replay_manifest:078bcf4bde3ae5572d2d2cd67817b4543998f8ef14d8a949aaac65bcbf139c73",
+    "selected_case_count": 38,
+    "emitted_case_result_count": 38,
+    "physically_completed_100_mm_case_count": 0,
+    "capability_terminal_case_count": 38,
+    "numerical_failure_case_count": 0,
+    "trend_eligible_case_count": 0,
+    "final_receipt_count": 0,
+    "reason_code_counts": {
+      "M01_RESOLUTION_REFINEMENT_REQUIRED": 37,
+      "M03_GEOMETRY_UNCERTAIN": 1
+    },
+    "runner_wall_time_seconds": 293.06294233600056,
+    "case_wall_time_seconds": {
+      "sum": 292.09402964598485,
+      "min": 1.0682987280015368,
+      "mean": 7.686684990683812,
+      "max": 29.05771905399888
+    },
+    "case_peak_rss_bytes": {
+      "min": 132276224,
+      "mean": 145433977.2631579,
+      "max": 153763840
+    },
+    "transient_full_history_artifact_size_bytes": {
+      "sum": 157254765,
+      "min": 3829201,
+      "mean": 4138283.289473684,
+      "max": 15233981
+    },
+    "aggregate_json": {
+      "path": "build/m03/M03_CAMPAIGN_RUN.json",
+      "size_bytes": 140089,
+      "sha256": "425c7b95420c80cfe7269a89f19f0181d62b8e0eba71c5153851f63908db54dc"
+    },
+    "count_totals": {
+      "accepted": 0,
+      "trials": 41,
+      "committed_events": 0,
+      "queries": 164
+    },
+    "count_ranges": {
+      "accepted": [
+        0,
+        0
+      ],
+      "trials": [
+        1,
+        4
+      ],
+      "committed_events": [
+        0,
+        0
+      ],
+      "queries": [
+        4,
+        16
+      ]
+    },
+    "cache_metrics": {
+      "mode": "M01_RANDOM_ACCESS_SPECTRAL_NO_TILE_CACHE",
+      "payload_bytes_sum": 0,
+      "hit_count_sum": 0,
+      "miss_count_sum": 0,
+      "regeneration_count_sum": 0
+    },
+    "streaming": {
+      "checkpoint_interval_cases": 1,
+      "maximum_full_histories_allowed": 1,
+      "maximum_full_histories_observed": 1,
+      "retained_completed_full_history_count": 0,
+      "full_domain_dense_grid_created": false,
+      "bounded_memory_orchestration_observed": true
+    },
+    "interpretation": "Scheduling and bounded streaming are demonstrated for short capability-terminal executions. The frozen baseline performance gate still fails because no case completes 100 mm."
+  },
+  "semantic_equivalence_checks": {
+    "pause_resume": {
+      "case_ordinals": [
+        0,
+        1
+      ],
+      "status": "EXACT_FOR_NONVOLATILE_CASE_EVIDENCE"
+    },
+    "independent_parallel_slices": {
+      "case_ordinals": [
+        2,
+        3
+      ],
+      "status": "EXACT_FOR_NONVOLATILE_CASE_EVIDENCE",
+      "throughput_claimed": false
+    },
+    "cold_warm_same_process": {
+      "case_ordinal": 0,
+      "cold_wall_time_seconds": 7.385470757002622,
+      "warm_wall_time_seconds": 7.116122278999683,
+      "semantic_case_result_id_equal": true,
+      "case_replay_id_equal": true,
+      "execution_profile_equal": true,
+      "nonvolatile_metrics_equal": true,
+      "trend_eligibility_evidence_equal": true
+    },
+    "scope_note": "These checks compare capability-terminal cases. They do not prove replay of a committed 100 mm accepted history."
+  },
+  "m01_query_optimization": {
+    "implementation_scope": "Batch evaluator calls, closest-query reuse, and bounded semantic caching while preserving independent query heaps, budgets, Newton/Armijo rules, receipt order, and responses",
+    "five_probe_sixteen_cell_scalar_seconds": 3.5456,
+    "after_batching_seconds": 0.9208,
+    "observed_batching_speedup": 3.85,
+    "final_hot_path_seconds_approximate": 0.33,
+    "response_semantics_equal": true,
+    "newton_projection_and_residual_bitwise_equal": true,
+    "global_heap_lower_bound_and_cell_count_exact_equal": true,
+    "measurement_note": "Local microbenchmark only; not a cross-platform SLA and not evidence of physical 100 mm completion."
+  },
+  "verification": {
+    "full_pytest": "574 passed in 107.61 s",
+    "m03_pytest_count": 134,
+    "lower_module_pytest_count": 440,
+    "ruff_check": "PASSED: .venv/bin/ruff check src tests scripts",
+    "ruff_format_check": "132 files already formatted: src tests scripts",
+    "strict_mypy": "Success: no issues found in 75 source files: src/spine_sim scripts",
+    "build": "wheel and sdist built successfully"
+  },
+  "remaining_risks": [
+    "No intrinsic baseline or campaign case completes 100 mm, so section 16.8 remains NOT_MET.",
+    "Thirty-seven cases require M01 resolution refinement and one terminates with M03 geometry uncertainty before the runtime event matrix can be exercised.",
+    "No campaign row has a final canonical M00 commit receipt or an eligible trend value.",
+    "The campaign wall/RSS figures characterize early capability termination, not full-path solver throughput.",
+    "The loaded-plane independent work ledger fails its hard closure gate by 18.65 percent.",
+    "Generated hashes come from a dirty integration tree and may legitimately change with provenance or rebuild metadata."
+  ],
+  "interpretation": {
+    "analytic_fixture_performance_is_campaign_performance": false,
+    "canonical_demo_performance_is_standalone_baseline_performance": false,
+    "emitted_campaign_row_is_100_mm_completion": false,
+    "performance_is_cross_platform_sla": false,
+    "campaign_scheduling_evidence_available": true,
+    "baseline_100_mm_performance_gate_passed": false,
+    "certifiable": false
+  }
+}

@@ -67,6 +67,7 @@ class ExtensionTransactionRecord(RecordBase):
     trace_id: str
     commit_receipt_id: str | None
     detail_hash: str
+    vector_value: tuple[float, float, float]
     source_identity: SourceIdentity
 
 
@@ -85,7 +86,8 @@ class ExtensionRejectedRecord(RecordBase):
 
 def _field(dataset_id: str, item: dataclasses.Field[Any]) -> FieldMetadata:
     annotation = str(item.type)
-    dtype = "bool" if annotation == "bool" else "utf8"
+    is_numeric_vector = item.name == "vector_value"
+    dtype = "float64" if is_numeric_vector else "bool" if annotation == "bool" else "utf8"
     return FieldMetadata(
         field_id=f"{dataset_id}.{item.name}",
         namespace="validation_ext",
@@ -93,12 +95,12 @@ def _field(dataset_id: str, item: dataclasses.Field[Any]) -> FieldMetadata:
         semantics=f"validation-only {item.name}",
         classification=DataClassification.DIAGNOSTIC,
         dtype=dtype,
-        shape=(),
-        dimensions=(),
-        raggedness="scalar",
-        unit="1",
-        frame="NOT_APPLICABLE",
-        reference_point="NOT_APPLICABLE",
+        shape=(3,) if is_numeric_vector else (),
+        dimensions=("global_component",) if is_numeric_vector else (),
+        raggedness="fixed" if is_numeric_vector else "scalar",
+        unit="N" if is_numeric_vector else "1",
+        frame="GLOBAL" if is_numeric_vector else "NOT_APPLICABLE",
+        reference_point="GLOBAL_ORIGIN" if is_numeric_vector else "NOT_APPLICABLE",
         sign_semantics="NOT_APPLICABLE",
         action_semantics="NOT_APPLICABLE",
         indices=("run_id", "case_id"),
@@ -113,7 +115,7 @@ def _field(dataset_id: str, item: dataclasses.Field[Any]) -> FieldMetadata:
         deprecated_version=None,
         storage_dataset=dataset_id,
         encoding="parquet_zstd_lossless",
-        precision="exact",
+        precision="float64" if is_numeric_vector else "exact",
         required="None" not in annotation,
     )
 
@@ -244,6 +246,7 @@ def _trace(run_id: str, *, receipt_id: str | None = None) -> ExtensionTransactio
         trace_id="trace:validation-extension",
         commit_receipt_id=receipt_id,
         detail_hash=semantic_hash("transaction-detail"),
+        vector_value=(1.0, 2.0, 3.0),
         source_identity=SourceIdentity.DEV_POLICY,
     )
 
@@ -314,6 +317,7 @@ def test_transaction_extension_is_marker_gated_and_receipt_linked(tmp_path: Path
     trace_path = writer.root / marker["datasets"][TRANSACTION_DATASET]["path"]
     row = pq.read_table(trace_path).to_pylist()[0]
     assert row["commit_receipt_id"] == receipt.receipt_id
+    assert row["vector_value"] == [1.0, 2.0, 3.0]
     assert marker["committed_state_id"] == state
 
     retry = writer.begin_transaction(DEMO_CASE_ID, parent, "extension-transaction")
@@ -329,10 +333,35 @@ def test_transaction_extension_is_marker_gated_and_receipt_linked(tmp_path: Path
     reader = ResultReader.open(writer.root)
     trace = reader.query(
         TRANSACTION_DATASET,
-        ("trace_id", "commit_receipt_id"),
+        ("trace_id", "commit_receipt_id", "vector_value"),
         include_non_default=True,
     ).read_all()
     assert trace["commit_receipt_id"].to_pylist() == [receipt.receipt_id]
+    assert trace["vector_value"].to_pylist() == [[1.0, 2.0, 3.0]]
+
+
+@pytest.mark.parametrize(
+    ("vector_value", "message"),
+    (
+        ((1.0, 2.0), "shape does not match"),
+        ((1.0, 2, 3.0), "runtime float64 components"),
+        ((1.0, float("inf"), 3.0), "non-finite canonical value"),
+    ),
+)
+def test_shaped_numeric_extension_rejects_invalid_values(
+    tmp_path: Path,
+    vector_value: tuple[object, ...],
+    message: str,
+) -> None:
+    writer, parent, _, _ = _writer(tmp_path)
+    transaction = writer.begin_transaction(DEMO_CASE_ID, parent, "invalid-shaped-numeric")
+    invalid = dataclasses.replace(
+        _trace(writer.run_envelope.run_id),
+        vector_value=vector_value,  # type: ignore[arg-type]
+    )
+    with pytest.raises(ContractViolation, match=message):
+        transaction.stage_transaction_records(invalid)
+    transaction.rollback()
 
 
 def test_transaction_extension_rejects_a_competing_receipt(tmp_path: Path) -> None:
